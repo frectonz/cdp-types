@@ -1,3 +1,7 @@
+use color_eyre::eyre::Result;
+use heck::ToSnakeCase;
+use proc_macro2::TokenStream;
+use quote::quote;
 use serde::Deserialize;
 
 type Str = Box<str>;
@@ -141,8 +145,56 @@ pub struct Event {
     pub experimental: bool,
 }
 
-fn main() {
-    let data = std::fs::read_to_string("data/browser_protocol.json").unwrap();
-    let data: BrowserProtocol = serde_json::from_str(&data).unwrap();
-    dbg!(data);
+impl Domain {
+    fn module_name(&self) -> String {
+        self.domain.to_snake_case()
+    }
+
+    fn to_rust(&self) -> RustFile {
+        let content = quote! {};
+
+        RustFile {
+            name: self.module_name(),
+            content,
+        }
+    }
+}
+
+impl BrowserProtocol {
+    fn generate(self) -> Result<()> {
+        for domain in self.domains {
+            domain.to_rust().write()?;
+        }
+
+        Ok(())
+    }
+}
+
+struct RustFile {
+    name: String,
+    content: TokenStream,
+}
+
+impl RustFile {
+    fn write(self) -> Result<()> {
+        let file: syn::File = syn::parse2(self.content)?;
+        let file = prettyplease::unparse(&file);
+        std::fs::write(format!("out/{}.rs", self.name), file)?;
+
+        Ok(())
+    }
+}
+
+fn main() -> Result<()> {
+    let data = std::fs::read_to_string("data/browser_protocol.json")?;
+    let protocol: BrowserProtocol = serde_json::from_str(&data)?;
+
+    println!(
+        "Generating types for CDP version {}.{}",
+        protocol.version.major, protocol.version.minor
+    );
+
+    protocol.generate()?;
+
+    Ok(())
 }
