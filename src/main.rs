@@ -180,9 +180,27 @@ impl Domain {
 
 impl BrowserProtocol {
     fn generate(self) -> Result<()> {
+        let mut modules = Vec::with_capacity(self.domains.len());
         for domain in self.domains {
-            domain.to_rust().write()?;
+            let ident = domain.to_rust().write()?;
+            modules.push(ident);
         }
+
+        let modules = modules.into_iter().map(|module| {
+            quote! {
+                mod #module;
+                pub use #module::*;
+            }
+        });
+
+        let lib_rs = RustFile {
+            name: "lib".to_owned(),
+            content: quote! {
+                #(#modules)*
+            },
+        };
+
+        lib_rs.write()?;
 
         Ok(())
     }
@@ -194,12 +212,13 @@ struct RustFile {
 }
 
 impl RustFile {
-    fn write(self) -> Result<()> {
+    fn write(self) -> Result<Ident> {
         let file: syn::File = syn::parse2(self.content)?;
         let file = prettyplease::unparse(&file);
         std::fs::write(format!("out/{}.rs", self.name), file)?;
 
-        Ok(())
+        let ident = Ident::new(&self.name, Span::call_site());
+        Ok(ident)
     }
 }
 
