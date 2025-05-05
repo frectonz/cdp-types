@@ -223,6 +223,8 @@ impl RustFile {
 }
 
 fn main() -> Result<()> {
+    color_eyre::install()?;
+
     let data = std::fs::read_to_string("data/browser_protocol.json")?;
     let protocol: BrowserProtocol = serde_json::from_str(&data)?;
 
