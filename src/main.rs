@@ -147,13 +147,20 @@ pub struct Event {
 }
 
 impl Type {
-    fn id_ident(&self) -> Ident {
-        let id = self.id.to_pascal_case();
-        Ident::new(&id, Span::call_site())
+    fn id_ident(&self, domain: &str) -> Ident {
+        if self.id.starts_with(&domain) {
+            let id = self.id.to_pascal_case();
+            Ident::new(&id, Span::call_site())
+        } else {
+            let id = self.id.as_ref();
+            let id = format!("{domain}{id}");
+            let id = id.to_pascal_case();
+            Ident::new(&id, Span::call_site())
+        }
     }
 
-    fn to_rust(&self) -> TokenStream {
-        let id = self.id_ident();
+    fn to_rust(&self, domain: &str) -> TokenStream {
+        let id = self.id_ident(domain);
 
         quote! {
             pub type #id = ();
@@ -169,7 +176,7 @@ impl Domain {
     fn to_rust(&self) -> RustFile {
         let name = self.module_name();
 
-        let types = self.types.iter().map(Type::to_rust);
+        let types = self.types.iter().map(|t| t.to_rust(&self.domain));
         let content = quote! {
             #(#types)*
         };
@@ -215,7 +222,7 @@ impl RustFile {
     fn write(self) -> Result<Ident> {
         let file: syn::File = syn::parse2(self.content)?;
         let file = prettyplease::unparse(&file);
-        std::fs::write(format!("out/{}.rs", self.name), file)?;
+        std::fs::write(format!("cdp-test/src/{}.rs", self.name), file)?;
 
         let ident = Ident::new(&self.name, Span::call_site());
         Ok(ident)
