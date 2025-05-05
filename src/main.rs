@@ -1,8 +1,9 @@
 use color_eyre::eyre::Result;
-use heck::ToSnakeCase;
-use proc_macro2::TokenStream;
+use heck::{ToPascalCase, ToSnakeCase};
+use proc_macro2::{Span, TokenStream};
 use quote::quote;
 use serde::Deserialize;
+use syn::Ident;
 
 type Str = Box<str>;
 type List<T> = Box<[T]>;
@@ -145,18 +146,35 @@ pub struct Event {
     pub experimental: bool,
 }
 
+impl Type {
+    fn id_ident(&self) -> Ident {
+        let id = self.id.to_pascal_case();
+        Ident::new(&id, Span::call_site())
+    }
+
+    fn to_rust(&self) -> TokenStream {
+        let id = self.id_ident();
+
+        quote! {
+            pub type #id = ();
+        }
+    }
+}
+
 impl Domain {
     fn module_name(&self) -> String {
         self.domain.to_snake_case()
     }
 
     fn to_rust(&self) -> RustFile {
-        let content = quote! {};
+        let name = self.module_name();
 
-        RustFile {
-            name: self.module_name(),
-            content,
-        }
+        let types = self.types.iter().map(Type::to_rust);
+        let content = quote! {
+            #(#types)*
+        };
+
+        RustFile { name, content }
     }
 }
 
