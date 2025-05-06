@@ -69,11 +69,12 @@ pub struct Parameter {
 #[derive(Debug, Deserialize)]
 pub struct Type {
     pub id: Str,
-    pub r#type: Str,
     pub items: Option<Items>,
     pub description: Option<Str>,
-    pub r#enum: Option<List<Str>>,
     pub properties: Option<List<Property>>,
+
+    pub r#type: Str,
+    pub r#enum: Option<List<Str>>,
 
     #[serde(default)]
     pub deprecated: bool,
@@ -148,7 +149,7 @@ pub struct Event {
 
 impl Type {
     fn id_ident(&self, domain: &str) -> Ident {
-        if self.id.starts_with(&domain) {
+        if self.id.starts_with(domain) {
             let id = self.id.to_pascal_case();
             Ident::new(&id, Span::call_site())
         } else {
@@ -159,11 +160,43 @@ impl Type {
         }
     }
 
+    fn enum_variants(&self) -> Option<TokenStream> {
+        self.r#enum.as_ref().map(|enums| {
+            // All enums have the type `string`.
+            assert_eq!(self.r#type.as_ref(), "string");
+
+            let enum_defs = enums.into_iter().map(|e| {
+                let enum_name = if e.as_ref() == "Self" {
+                    "SELF".to_owned()
+                } else {
+                    e.to_pascal_case()
+                };
+
+                let enum_name = Ident::new(&enum_name, Span::call_site());
+                quote! {
+                    #enum_name
+                }
+            });
+
+            quote! {
+                #(#enum_defs),*
+            }
+        })
+    }
+
     fn to_rust(&self, domain: &str) -> TokenStream {
         let id = self.id_ident(domain);
+        let enum_variants = self.enum_variants();
 
-        quote! {
-            pub type #id = ();
+        match enum_variants {
+            Some(enum_variants) => {
+                quote! {
+                    pub enum #id { #enum_variants }
+                }
+            }
+            None => quote! {
+                pub type #id = ();
+            },
         }
     }
 }
