@@ -206,11 +206,30 @@ impl Domain {
         self.domain.to_snake_case()
     }
 
+    fn dependency_names(&self) -> impl Iterator<Item = TokenStream> {
+        self.dependencies
+            .as_ref()
+            .into_iter()
+            .filter(|x| x.as_ref() != "Runtime")
+            .filter(|x| x.as_ref() != "Debugger")
+            .map(|dep| {
+                let dep = dep.to_snake_case();
+                let dep = Ident::new(&dep, Span::call_site());
+
+                quote! {
+                    use crate::#dep::*;
+                }
+            })
+    }
+
     fn to_rust(&self) -> RustFile {
         let name = self.module_name();
 
+        let dependecies = self.dependency_names();
         let types = self.types.iter().map(|t| t.to_rust(&self.domain));
+
         let content = quote! {
+            #(#dependecies)*
             #(#types)*
         };
 
@@ -228,8 +247,7 @@ impl BrowserProtocol {
 
         let modules = modules.into_iter().map(|module| {
             quote! {
-                mod #module;
-                pub use #module::*;
+                pub mod #module;
             }
         });
 
