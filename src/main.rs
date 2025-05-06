@@ -226,6 +226,32 @@ impl Type {
             };
         }
 
+        if self.r#type.as_ref() == "integer" {
+            return quote! {
+                pub struct #id(i64);
+            };
+        }
+
+        if self.r#type.as_ref() == "number" {
+            return quote! {
+                pub struct #id(u64);
+            };
+        }
+
+        if self.r#type.as_ref() == "string" {
+            return quote! {
+                pub struct #id(String);
+            };
+        }
+
+        if self.r#type.as_ref() == "object" {
+            return quote! {
+                pub struct #id(serde_json::Map<String, serde_json::Value>);
+            };
+        }
+
+        println!("Name: {} Type: {}", self.id, self.r#type);
+
         quote! {
             pub type #id = ();
         }
