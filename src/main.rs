@@ -147,6 +147,19 @@ pub struct Event {
     pub experimental: bool,
 }
 
+fn get_rust_type(typ: &str) -> Option<TokenStream> {
+    match typ {
+        "integer" => Some(quote! { i64 }),
+        "number" => Some(quote! { u64 }),
+        "string" => Some(quote! { String }),
+        "object" => Some(quote! {
+            serde_json::Map<String, serde_json::Value>
+        }),
+
+        _ => None,
+    }
+}
+
 impl Type {
     fn id_ident(&self, domain: &str) -> Ident {
         if self.id.starts_with(domain) {
@@ -209,8 +222,18 @@ impl Type {
         })
     }
 
+    fn items(&self) -> Option<TokenStream> {
+        self.items.as_ref().and_then(|items| {
+            // All arrays have the type `array`.
+            assert_eq!(self.r#type.as_ref(), "array");
+
+            items.r#type.as_ref().and_then(|typ| get_rust_type(typ))
+        })
+    }
+
     fn to_rust(&self, domain: &str) -> TokenStream {
         let id = self.id_ident(domain);
+        let items = self.items();
         let properties = self.properties();
         let enum_variants = self.enum_variants();
 
@@ -226,27 +249,15 @@ impl Type {
             };
         }
 
-        if self.r#type.as_ref() == "integer" {
+        if let Some(typ) = get_rust_type(&self.r#type) {
             return quote! {
-                pub struct #id(i64);
+                pub struct #id(#typ);
             };
         }
 
-        if self.r#type.as_ref() == "number" {
+        if let Some(items) = items {
             return quote! {
-                pub struct #id(u64);
-            };
-        }
-
-        if self.r#type.as_ref() == "string" {
-            return quote! {
-                pub struct #id(String);
-            };
-        }
-
-        if self.r#type.as_ref() == "object" {
-            return quote! {
-                pub struct #id(serde_json::Map<String, serde_json::Value>);
+                pub struct #id(Vec<#items>);
             };
         }
 
