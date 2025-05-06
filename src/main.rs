@@ -184,19 +184,50 @@ impl Type {
         })
     }
 
+    fn properties(&self) -> Option<TokenStream> {
+        self.properties.as_ref().map(|props| {
+            // All objects have the type `object`.
+            assert_eq!(self.r#type.as_ref(), "object");
+
+            let property_defs = props.into_iter().map(|p| {
+                let name = if p.name.as_ref() == "type" {
+                    "_type".to_owned()
+                } else {
+                    p.name.to_snake_case()
+                };
+
+                let name = Ident::new(&name, Span::call_site());
+
+                quote! {
+                    pub #name: ()
+                }
+            });
+
+            quote! {
+                #(#property_defs),*
+            }
+        })
+    }
+
     fn to_rust(&self, domain: &str) -> TokenStream {
         let id = self.id_ident(domain);
+        let properties = self.properties();
         let enum_variants = self.enum_variants();
 
-        match enum_variants {
-            Some(enum_variants) => {
-                quote! {
-                    pub enum #id { #enum_variants }
-                }
-            }
-            None => quote! {
-                pub type #id = ();
-            },
+        if let Some(enum_variants) = enum_variants {
+            return quote! {
+                pub enum #id { #enum_variants }
+            };
+        }
+
+        if let Some(properties) = properties {
+            return quote! {
+                pub struct #id { #properties }
+            };
+        }
+
+        quote! {
+            pub type #id = ();
         }
     }
 }
@@ -209,7 +240,7 @@ impl Domain {
     fn dependency_names(&self) -> impl Iterator<Item = TokenStream> {
         self.dependencies
             .as_ref()
-            .into_iter()
+            .iter()
             .filter(|x| x.as_ref() != "Runtime")
             .filter(|x| x.as_ref() != "Debugger")
             .map(|dep| {
