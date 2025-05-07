@@ -86,18 +86,18 @@ pub struct Parameter {
 
 #[derive(Debug, Deserialize)]
 pub struct Type {
-    pub id: Str,
-    pub items: Option<Items>,
-    pub description: Option<Str>,
-    pub properties: Option<List<Property>>,
+    id: Str,
+    items: Option<Items>,
+    description: Option<Str>,
+    properties: Option<List<Property>>,
 
-    pub r#type: Str,
-    pub r#enum: Option<List<Str>>,
+    r#type: Str,
+    r#enum: Option<List<Str>>,
 
     #[serde(default)]
-    pub deprecated: bool,
+    deprecated: bool,
     #[serde(default)]
-    pub experimental: bool,
+    experimental: bool,
 }
 
 #[derive(Debug, Deserialize)]
@@ -273,12 +273,33 @@ impl Type {
         }
     }
 
+    fn description(&self, domain: &str) -> TokenStream {
+        let typ = self.id.as_ref();
+        let desc = format!(
+            " <https://chromedevtools.github.io/devtools-protocol/tot/{domain}/#type-{typ}>"
+        );
+
+        let description = match self.description.as_ref() {
+            Some(desc) => {
+                let desc = format!(" {desc}");
+                quote! { #[doc = #desc] }
+            }
+            None => quote! {},
+        };
+
+        quote! {
+            #description
+            #[doc = #desc]
+        }
+    }
+
     fn to_rust(&self, domain: &str, type_to_domain: &HashMap<Str, Str>) -> TokenStream {
         let id = self.id_ident(domain);
         let items = self.items(type_to_domain);
         let properties = self.properties();
         let enum_variants = self.enum_variants();
 
+        let description = self.description(domain);
         let deprecated = self.deprecated_flag();
         let experimental = self.experimental_flag();
 
@@ -286,6 +307,7 @@ impl Type {
             return quote! {
                 #deprecated
                 #experimental
+                #description
                 pub enum #id { #enum_variants }
             };
         }
@@ -294,6 +316,7 @@ impl Type {
             return quote! {
                 #deprecated
                 #experimental
+                #description
                 pub struct #id { #properties }
             };
         }
@@ -302,6 +325,7 @@ impl Type {
             return quote! {
                 #deprecated
                 #experimental
+                #description
                 pub struct #id(#typ);
             };
         }
@@ -309,6 +333,8 @@ impl Type {
         if let Some(items) = items {
             return quote! {
                 #deprecated
+                #experimental
+                #description
                 pub struct #id(Vec<#items>);
             };
         }
