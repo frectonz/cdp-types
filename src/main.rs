@@ -1,7 +1,9 @@
+use std::collections::HashMap;
+
 use color_eyre::eyre::Result;
 use heck::{ToPascalCase, ToSnakeCase};
 use proc_macro2::{Span, TokenStream};
-use quote::quote;
+use quote::{format_ident, quote};
 use serde::Deserialize;
 use syn::Ident;
 
@@ -12,6 +14,22 @@ type List<T> = Box<[T]>;
 pub struct BrowserProtocol {
     pub version: Version,
     pub domains: List<Domain>,
+}
+
+impl BrowserProtocol {
+    fn type_to_domain_map(&self) -> HashMap<Str, Str> {
+        type Type = Str;
+        type Domain = Str;
+        let mut type_to_domain: HashMap<Type, Domain> = HashMap::new();
+
+        for domain in self.domains.iter() {
+            for typ in domain.types.iter() {
+                type_to_domain.insert(typ.id.clone(), domain.domain.clone());
+            }
+        }
+
+        type_to_domain
+    }
 }
 
 #[derive(Debug, Deserialize)]
@@ -222,18 +240,26 @@ impl Type {
         })
     }
 
-    fn items(&self) -> Option<TokenStream> {
+    fn items(&self, type_to_domain: &HashMap<Str, Str>) -> Option<TokenStream> {
         self.items.as_ref().and_then(|items| {
             // All arrays have the type `array`.
             assert_eq!(self.r#type.as_ref(), "array");
 
-            items.r#type.as_ref().and_then(|typ| get_rust_type(typ))
+            let items_typ = items.r#type.as_ref().and_then(|typ| get_rust_type(typ));
+            let items_ref = items.r#ref.as_ref().and_then(|typ| {
+                let domain = type_to_domain.get(typ)?.to_pascal_case();
+                let typ_ident = format_ident!("{domain}{typ}");
+
+                Some(quote! { #typ_ident })
+            });
+
+            items_typ.or(items_ref)
         })
     }
 
-    fn to_rust(&self, domain: &str) -> TokenStream {
+    fn to_rust(&self, domain: &str, type_to_domain: &HashMap<Str, Str>) -> TokenStream {
         let id = self.id_ident(domain);
-        let items = self.items();
+        let items = self.items(type_to_domain);
         let properties = self.properties();
         let enum_variants = self.enum_variants();
 
@@ -290,11 +316,14 @@ impl Domain {
             })
     }
 
-    fn to_rust(&self) -> RustFile {
+    fn to_rust(&self, type_to_domain: &HashMap<Str, Str>) -> RustFile {
         let name = self.module_name();
 
         let dependecies = self.dependency_names();
-        let types = self.types.iter().map(|t| t.to_rust(&self.domain));
+        let types = self
+            .types
+            .iter()
+            .map(|t| t.to_rust(&self.domain, type_to_domain));
 
         let content = quote! {
             #(#dependecies)*
@@ -307,9 +336,11 @@ impl Domain {
 
 impl BrowserProtocol {
     fn generate(self) -> Result<()> {
+        let type_to_domain = self.type_to_domain_map();
+
         let mut modules = Vec::with_capacity(self.domains.len());
         for domain in self.domains {
-            let ident = domain.to_rust().write()?;
+            let ident = domain.to_rust(&type_to_domain).write()?;
             modules.push(ident);
         }
 
