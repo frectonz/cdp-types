@@ -257,41 +257,63 @@ impl Type {
         })
     }
 
+    fn deprecated_flag(&self) -> TokenStream {
+        if self.deprecated {
+            quote! { #[deprecated] }
+        } else {
+            quote! {}
+        }
+    }
+
+    fn experimental_flag(&self) -> TokenStream {
+        if self.experimental {
+            quote! { #[doc = " ⚠️ Experimental"] }
+        } else {
+            quote! {}
+        }
+    }
+
     fn to_rust(&self, domain: &str, type_to_domain: &HashMap<Str, Str>) -> TokenStream {
         let id = self.id_ident(domain);
         let items = self.items(type_to_domain);
         let properties = self.properties();
         let enum_variants = self.enum_variants();
 
+        let deprecated = self.deprecated_flag();
+        let experimental = self.experimental_flag();
+
         if let Some(enum_variants) = enum_variants {
             return quote! {
+                #deprecated
+                #experimental
                 pub enum #id { #enum_variants }
             };
         }
 
         if let Some(properties) = properties {
             return quote! {
+                #deprecated
+                #experimental
                 pub struct #id { #properties }
             };
         }
 
         if let Some(typ) = get_rust_type(&self.r#type) {
             return quote! {
+                #deprecated
+                #experimental
                 pub struct #id(#typ);
             };
         }
 
         if let Some(items) = items {
             return quote! {
+                #deprecated
                 pub struct #id(Vec<#items>);
             };
         }
 
-        println!("Name: {} Type: {}", self.id, self.r#type);
-
-        quote! {
-            pub type #id = ();
-        }
+        unreachable!("Couldn't convert '{}' to a Rust type.", self.id);
     }
 }
 
