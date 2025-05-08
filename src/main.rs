@@ -303,38 +303,36 @@ impl Type {
         let deprecated = self.deprecated_flag();
         let experimental = self.experimental_flag();
 
+        let attrs = quote! {
+            #deprecated
+            #experimental
+            #description
+        };
+
         if let Some(enum_variants) = enum_variants {
             return quote! {
-                #deprecated
-                #experimental
-                #description
+                #attrs
                 pub enum #id { #enum_variants }
             };
         }
 
         if let Some(properties) = properties {
             return quote! {
-                #deprecated
-                #experimental
-                #description
+                #attrs
                 pub struct #id { #properties }
             };
         }
 
         if let Some(typ) = get_rust_type(&self.r#type) {
             return quote! {
-                #deprecated
-                #experimental
-                #description
+                #attrs
                 pub struct #id(#typ);
             };
         }
 
         if let Some(items) = items {
             return quote! {
-                #deprecated
-                #experimental
-                #description
+                #attrs
                 pub struct #id(Vec<#items>);
             };
         }
