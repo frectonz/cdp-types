@@ -188,6 +188,16 @@ impl Property {
 
         let name = Ident::new(&name, Span::call_site());
 
+        let basic_type = self.r#type.as_ref().and_then(|typ| get_rust_type(typ));
+
+        let property_type = basic_type;
+
+        if let Some(typ) = property_type {
+            return quote! {
+                pub #name: #typ
+            };
+        }
+
         quote! {
             pub #name: ()
         }
