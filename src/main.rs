@@ -178,6 +178,22 @@ fn get_rust_type(typ: &str) -> Option<TokenStream> {
     }
 }
 
+impl Property {
+    fn to_rust(&self) -> TokenStream {
+        let name = if self.name.as_ref() == "type" {
+            "_type".to_owned()
+        } else {
+            self.name.to_snake_case()
+        };
+
+        let name = Ident::new(&name, Span::call_site());
+
+        quote! {
+            pub #name: ()
+        }
+    }
+}
+
 impl Type {
     fn id_ident(&self, domain: &str) -> Ident {
         if self.id.starts_with(domain) {
@@ -220,19 +236,7 @@ impl Type {
             // All objects have the type `object`.
             assert_eq!(self.r#type.as_ref(), "object");
 
-            let property_defs = props.into_iter().map(|p| {
-                let name = if p.name.as_ref() == "type" {
-                    "_type".to_owned()
-                } else {
-                    p.name.to_snake_case()
-                };
-
-                let name = Ident::new(&name, Span::call_site());
-
-                quote! {
-                    pub #name: ()
-                }
-            });
+            let property_defs = props.into_iter().map(|p| p.to_rust());
 
             quote! {
                 #(#property_defs),*
@@ -279,13 +283,14 @@ impl Type {
             " <https://chromedevtools.github.io/devtools-protocol/tot/{domain}/#type-{typ}>"
         );
 
-        let description = match self.description.as_ref() {
-            Some(desc) => {
+        let description = self
+            .description
+            .as_ref()
+            .map(|desc| {
                 let desc = format!(" {desc}");
                 quote! { #[doc = #desc] }
-            }
-            None => quote! {},
-        };
+            })
+            .unwrap_or_default();
 
         quote! {
             #description
