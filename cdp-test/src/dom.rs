@@ -8,8 +8,8 @@ pub struct DomBackendNodeId(i64);
 /// Backend node with a friendly name.
 /// <https://chromedevtools.github.io/devtools-protocol/tot/DOM/#type-BackendNode>
 pub struct DomBackendNode {
-    pub node_type: (),
-    pub node_name: (),
+    pub node_type: i64,
+    pub node_name: String,
     pub backend_node_id: (),
 }
 /// Pseudo element type.
@@ -93,23 +93,23 @@ pub struct DomNode {
     pub node_id: (),
     pub parent_id: (),
     pub backend_node_id: (),
-    pub node_type: (),
-    pub node_name: (),
-    pub local_name: (),
-    pub node_value: (),
-    pub child_node_count: (),
+    pub node_type: i64,
+    pub node_name: String,
+    pub local_name: String,
+    pub node_value: String,
+    pub child_node_count: i64,
     pub children: (),
     pub attributes: (),
-    pub document_url: (),
-    pub base_url: (),
-    pub public_id: (),
-    pub system_id: (),
-    pub internal_subset: (),
-    pub xml_version: (),
-    pub name: (),
-    pub value: (),
+    pub document_url: String,
+    pub base_url: String,
+    pub public_id: String,
+    pub system_id: String,
+    pub internal_subset: String,
+    pub xml_version: String,
+    pub name: String,
+    pub value: String,
     pub pseudo_type: (),
-    pub pseudo_identifier: (),
+    pub pseudo_identifier: String,
     pub shadow_root_type: (),
     pub frame_id: (),
     pub content_document: (),
@@ -132,10 +132,10 @@ pub struct DomDetachedElementInfo {
 /// A structure holding an RGBA color.
 /// <https://chromedevtools.github.io/devtools-protocol/tot/DOM/#type-RGBA>
 pub struct Domrgba {
-    pub r: (),
-    pub g: (),
-    pub b: (),
-    pub a: (),
+    pub r: i64,
+    pub g: i64,
+    pub b: i64,
+    pub a: u64,
 }
 /// An array of quad vertices, x immediately followed by y for each point, points clock-wise.
 /// <https://chromedevtools.github.io/devtools-protocol/tot/DOM/#type-Quad>
@@ -147,8 +147,8 @@ pub struct DomBoxModel {
     pub padding: (),
     pub border: (),
     pub margin: (),
-    pub width: (),
-    pub height: (),
+    pub width: i64,
+    pub height: i64,
     pub shape_outside: (),
 }
 /// CSS Shape Outside details.
@@ -161,13 +161,13 @@ pub struct DomShapeOutsideInfo {
 /// Rectangle.
 /// <https://chromedevtools.github.io/devtools-protocol/tot/DOM/#type-Rect>
 pub struct DomRect {
-    pub x: (),
-    pub y: (),
-    pub width: (),
-    pub height: (),
+    pub x: u64,
+    pub y: u64,
+    pub width: u64,
+    pub height: u64,
 }
 /// <https://chromedevtools.github.io/devtools-protocol/tot/DOM/#type-CSSComputedStyleProperty>
 pub struct DomcssComputedStyleProperty {
-    pub name: (),
-    pub value: (),
+    pub name: String,
+    pub value: String,
 }

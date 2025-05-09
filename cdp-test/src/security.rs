@@ -23,17 +23,17 @@ pub enum SecurityState {
 /// Details about the security state of the page certificate.
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Security/#type-CertificateSecurityState>
 pub struct SecurityCertificateSecurityState {
-    pub protocol: (),
-    pub key_exchange: (),
-    pub key_exchange_group: (),
-    pub cipher: (),
-    pub mac: (),
+    pub protocol: String,
+    pub key_exchange: String,
+    pub key_exchange_group: String,
+    pub cipher: String,
+    pub mac: String,
     pub certificate: (),
-    pub subject_name: (),
-    pub issuer: (),
+    pub subject_name: String,
+    pub issuer: String,
     pub valid_from: (),
     pub valid_to: (),
-    pub certificate_network_error: (),
+    pub certificate_network_error: String,
     pub certificate_has_weak_signature: (),
     pub certificate_has_sha1_signature: (),
     pub modern_ssl: (),
@@ -52,7 +52,7 @@ pub enum SecuritySafetyTipStatus {
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Security/#type-SafetyTipInfo>
 pub struct SecuritySafetyTipInfo {
     pub safety_tip_status: (),
-    pub safe_url: (),
+    pub safe_url: String,
 }
 /// ⚠️ Experimental
 /// Security state information about the page.
@@ -67,9 +67,9 @@ pub struct SecurityVisibleSecurityState {
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Security/#type-SecurityStateExplanation>
 pub struct SecurityStateExplanation {
     pub security_state: (),
-    pub title: (),
-    pub summary: (),
-    pub description: (),
+    pub title: String,
+    pub summary: String,
+    pub description: String,
     pub mixed_content_type: (),
     pub certificate: (),
     pub recommendations: (),

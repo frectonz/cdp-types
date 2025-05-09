@@ -6,12 +6,12 @@ pub struct PreloadRuleSetId(String);
 pub struct PreloadRuleSet {
     pub id: (),
     pub loader_id: (),
-    pub source_text: (),
+    pub source_text: String,
     pub backend_node_id: (),
-    pub url: (),
+    pub url: String,
     pub request_id: (),
     pub error_type: (),
-    pub error_message: (),
+    pub error_message: String,
 }
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Preload/#type-RuleSetErrorType>
 pub enum PreloadRuleSetErrorType {
@@ -43,7 +43,7 @@ still keyed with the initial URL.*/
 pub struct PreloadingAttemptKey {
     pub loader_id: (),
     pub action: (),
-    pub url: (),
+    pub url: String,
     pub target_hint: (),
 }
 /** Lists sources for a preloading attempt, specifically the ids of rule sets
@@ -197,7 +197,7 @@ pub enum PreloadPrefetchStatus {
 /// Information of headers to be displayed when the header mismatch occurred.
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Preload/#type-PrerenderMismatchedHeaders>
 pub struct PreloadPrerenderMismatchedHeaders {
-    pub header_name: (),
-    pub initial_value: (),
-    pub activation_value: (),
+    pub header_name: String,
+    pub initial_value: String,
+    pub activation_value: String,
 }

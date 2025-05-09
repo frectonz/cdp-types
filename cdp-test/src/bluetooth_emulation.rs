@@ -35,23 +35,23 @@ pub enum BluetoothEmulationDescriptorOperationType {
 /// Stores the manufacturer data
 /// <https://chromedevtools.github.io/devtools-protocol/tot/BluetoothEmulation/#type-ManufacturerData>
 pub struct BluetoothEmulationManufacturerData {
-    pub key: (),
-    pub data: (),
+    pub key: i64,
+    pub data: String,
 }
 /// Stores the byte data of the advertisement packet sent by a Bluetooth device.
 /// <https://chromedevtools.github.io/devtools-protocol/tot/BluetoothEmulation/#type-ScanRecord>
 pub struct BluetoothEmulationScanRecord {
-    pub name: (),
+    pub name: String,
     pub uuids: (),
-    pub appearance: (),
-    pub tx_power: (),
+    pub appearance: i64,
+    pub tx_power: i64,
     pub manufacturer_data: (),
 }
 /// Stores the advertisement packet information that is sent by a Bluetooth device.
 /// <https://chromedevtools.github.io/devtools-protocol/tot/BluetoothEmulation/#type-ScanEntry>
 pub struct BluetoothEmulationScanEntry {
-    pub device_address: (),
-    pub rssi: (),
+    pub device_address: String,
+    pub rssi: i64,
     pub scan_record: (),
 }
 /** Describes the properties of a characteristic. This follows Bluetooth Core

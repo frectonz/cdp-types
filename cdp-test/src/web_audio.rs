@@ -43,10 +43,10 @@ pub enum WebAudioAutomationRate {
 /// Fields in AudioContext that change in real-time.
 /// <https://chromedevtools.github.io/devtools-protocol/tot/WebAudio/#type-ContextRealtimeData>
 pub struct WebAudioContextRealtimeData {
-    pub current_time: (),
-    pub render_capacity: (),
-    pub callback_interval_mean: (),
-    pub callback_interval_variance: (),
+    pub current_time: u64,
+    pub render_capacity: u64,
+    pub callback_interval_mean: u64,
+    pub callback_interval_variance: u64,
 }
 /// Protocol object for BaseAudioContext
 /// <https://chromedevtools.github.io/devtools-protocol/tot/WebAudio/#type-BaseAudioContext>
@@ -55,9 +55,9 @@ pub struct WebAudioBaseAudioContext {
     pub context_type: (),
     pub context_state: (),
     pub realtime_data: (),
-    pub callback_buffer_size: (),
-    pub max_output_channel_count: (),
-    pub sample_rate: (),
+    pub callback_buffer_size: u64,
+    pub max_output_channel_count: u64,
+    pub sample_rate: u64,
 }
 /// Protocol object for AudioListener
 /// <https://chromedevtools.github.io/devtools-protocol/tot/WebAudio/#type-AudioListener>
@@ -71,9 +71,9 @@ pub struct WebAudioAudioNode {
     pub node_id: (),
     pub context_id: (),
     pub node_type: (),
-    pub number_of_inputs: (),
-    pub number_of_outputs: (),
-    pub channel_count: (),
+    pub number_of_inputs: u64,
+    pub number_of_outputs: u64,
+    pub channel_count: u64,
     pub channel_count_mode: (),
     pub channel_interpretation: (),
 }
@@ -85,7 +85,7 @@ pub struct WebAudioAudioParam {
     pub context_id: (),
     pub param_type: (),
     pub rate: (),
-    pub default_value: (),
-    pub min_value: (),
-    pub max_value: (),
+    pub default_value: u64,
+    pub min_value: u64,
+    pub max_value: u64,
 }

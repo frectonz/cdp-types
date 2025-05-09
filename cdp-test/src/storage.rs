@@ -23,15 +23,15 @@ pub enum StorageType {
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Storage/#type-UsageForType>
 pub struct StorageUsageForType {
     pub storage_type: (),
-    pub usage: (),
+    pub usage: u64,
 }
 /// ⚠️ Experimental
 /** Pair of issuer origin and number of available (signed, but not used) Trust
 Tokens from that issuer.*/
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Storage/#type-TrustTokens>
 pub struct StorageTrustTokens {
-    pub issuer_origin: (),
-    pub count: (),
+    pub issuer_origin: String,
+    pub count: u64,
 }
 /// Protected audience interest group auction identifier.
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Storage/#type-InterestGroupAuctionId>
@@ -96,57 +96,57 @@ pub enum StorageSharedStorageAccessMethod {
 /// Struct for a single key-value pair in an origin's shared storage.
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Storage/#type-SharedStorageEntry>
 pub struct StorageSharedStorageEntry {
-    pub key: (),
-    pub value: (),
+    pub key: String,
+    pub value: String,
 }
 /// Details for an origin's shared storage.
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Storage/#type-SharedStorageMetadata>
 pub struct StorageSharedStorageMetadata {
     pub creation_time: (),
-    pub length: (),
-    pub remaining_budget: (),
-    pub bytes_used: (),
+    pub length: i64,
+    pub remaining_budget: u64,
+    pub bytes_used: i64,
 }
 /** Represents a dictionary object passed in as privateAggregationConfig to
 run or selectURL.*/
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Storage/#type-SharedStoragePrivateAggregationConfig>
 pub struct StorageSharedStoragePrivateAggregationConfig {
-    pub aggregation_coordinator_origin: (),
-    pub context_id: (),
-    pub filtering_id_max_bytes: (),
-    pub max_contributions: (),
+    pub aggregation_coordinator_origin: String,
+    pub context_id: String,
+    pub filtering_id_max_bytes: i64,
+    pub max_contributions: i64,
 }
 /// Pair of reporting metadata details for a candidate URL for `selectURL()`.
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Storage/#type-SharedStorageReportingMetadata>
 pub struct StorageSharedStorageReportingMetadata {
-    pub event_type: (),
-    pub reporting_url: (),
+    pub event_type: String,
+    pub reporting_url: String,
 }
 /// Bundles a candidate URL with its reporting metadata.
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Storage/#type-SharedStorageUrlWithMetadata>
 pub struct StorageSharedStorageUrlWithMetadata {
-    pub url: (),
+    pub url: String,
     pub reporting_metadata: (),
 }
 /** Bundles the parameters for shared storage access events whose
 presence/absence can vary according to SharedStorageAccessType.*/
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Storage/#type-SharedStorageAccessParams>
 pub struct StorageSharedStorageAccessParams {
-    pub script_source_url: (),
-    pub data_origin: (),
-    pub operation_name: (),
+    pub script_source_url: String,
+    pub data_origin: String,
+    pub operation_name: String,
     pub keep_alive: (),
     pub private_aggregation_config: (),
-    pub serialized_data: (),
+    pub serialized_data: String,
     pub urls_with_metadata: (),
-    pub urn_uuid: (),
-    pub key: (),
-    pub value: (),
+    pub urn_uuid: String,
+    pub key: String,
+    pub value: String,
     pub ignore_if_present: (),
-    pub worklet_id: (),
-    pub with_lock: (),
-    pub batch_update_id: (),
-    pub batch_size: (),
+    pub worklet_id: String,
+    pub with_lock: String,
+    pub batch_update_id: String,
+    pub batch_size: i64,
 }
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Storage/#type-StorageBucketsDurability>
 pub enum StorageBucketsDurability {
@@ -156,14 +156,14 @@ pub enum StorageBucketsDurability {
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Storage/#type-StorageBucket>
 pub struct StorageBucket {
     pub storage_key: (),
-    pub name: (),
+    pub name: String,
 }
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Storage/#type-StorageBucketInfo>
 pub struct StorageBucketInfo {
     pub bucket: (),
-    pub id: (),
+    pub id: String,
     pub expiration: (),
-    pub quota: (),
+    pub quota: u64,
     pub persistent: (),
     pub durability: (),
 }
@@ -185,14 +185,14 @@ pub struct StorageSignedInt64AsBase10(String);
 /// ⚠️ Experimental
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Storage/#type-AttributionReportingFilterDataEntry>
 pub struct StorageAttributionReportingFilterDataEntry {
-    pub key: (),
+    pub key: String,
     pub values: (),
 }
 /// ⚠️ Experimental
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Storage/#type-AttributionReportingFilterConfig>
 pub struct StorageAttributionReportingFilterConfig {
     pub filter_values: (),
-    pub lookback_window: (),
+    pub lookback_window: i64,
 }
 /// ⚠️ Experimental
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Storage/#type-AttributionReportingFilterPair>
@@ -203,13 +203,13 @@ pub struct StorageAttributionReportingFilterPair {
 /// ⚠️ Experimental
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Storage/#type-AttributionReportingAggregationKeysEntry>
 pub struct StorageAttributionReportingAggregationKeysEntry {
-    pub key: (),
+    pub key: String,
     pub value: (),
 }
 /// ⚠️ Experimental
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Storage/#type-AttributionReportingEventReportWindows>
 pub struct StorageAttributionReportingEventReportWindows {
-    pub start: (),
+    pub start: i64,
     pub ends: (),
 }
 /// ⚠️ Experimental
@@ -228,40 +228,40 @@ pub enum StorageAttributionReportingTriggerDataMatching {
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Storage/#type-AttributionReportingAggregatableDebugReportingData>
 pub struct StorageAttributionReportingAggregatableDebugReportingData {
     pub key_piece: (),
-    pub value: (),
+    pub value: u64,
     pub types: (),
 }
 /// ⚠️ Experimental
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Storage/#type-AttributionReportingAggregatableDebugReportingConfig>
 pub struct StorageAttributionReportingAggregatableDebugReportingConfig {
-    pub budget: (),
+    pub budget: u64,
     pub key_piece: (),
     pub debug_data: (),
-    pub aggregation_coordinator_origin: (),
+    pub aggregation_coordinator_origin: String,
 }
 /// ⚠️ Experimental
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Storage/#type-AttributionScopesData>
 pub struct StorageAttributionScopesData {
     pub values: (),
-    pub limit: (),
-    pub max_event_states: (),
+    pub limit: u64,
+    pub max_event_states: u64,
 }
 /// ⚠️ Experimental
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Storage/#type-AttributionReportingNamedBudgetDef>
 pub struct StorageAttributionReportingNamedBudgetDef {
-    pub name: (),
-    pub budget: (),
+    pub name: String,
+    pub budget: i64,
 }
 /// ⚠️ Experimental
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Storage/#type-AttributionReportingSourceRegistration>
 pub struct StorageAttributionReportingSourceRegistration {
     pub time: (),
-    pub expiry: (),
+    pub expiry: i64,
     pub trigger_specs: (),
-    pub aggregatable_report_window: (),
+    pub aggregatable_report_window: i64,
     pub _type: (),
-    pub source_origin: (),
-    pub reporting_origin: (),
+    pub source_origin: String,
+    pub reporting_origin: String,
     pub destination_sites: (),
     pub event_id: (),
     pub priority: (),
@@ -272,10 +272,10 @@ pub struct StorageAttributionReportingSourceRegistration {
     pub destination_limit_priority: (),
     pub aggregatable_debug_reporting_config: (),
     pub scopes_data: (),
-    pub max_event_level_reports: (),
+    pub max_event_level_reports: i64,
     pub named_budgets: (),
     pub debug_reporting: (),
-    pub event_level_epsilon: (),
+    pub event_level_epsilon: u64,
 }
 /// ⚠️ Experimental
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Storage/#type-AttributionReportingSourceRegistrationResult>
@@ -306,8 +306,8 @@ pub enum StorageAttributionReportingSourceRegistrationTimeConfig {
 /// ⚠️ Experimental
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Storage/#type-AttributionReportingAggregatableValueDictEntry>
 pub struct StorageAttributionReportingAggregatableValueDictEntry {
-    pub key: (),
-    pub value: (),
+    pub key: String,
+    pub value: u64,
     pub filtering_id: (),
 }
 /// ⚠️ Experimental
@@ -340,7 +340,7 @@ pub struct StorageAttributionReportingAggregatableDedupKey {
 /// ⚠️ Experimental
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Storage/#type-AttributionReportingNamedBudgetCandidate>
 pub struct StorageAttributionReportingNamedBudgetCandidate {
-    pub name: (),
+    pub name: String,
     pub filters: (),
 }
 /// ⚠️ Experimental
@@ -352,11 +352,11 @@ pub struct StorageAttributionReportingTriggerRegistration {
     pub event_trigger_data: (),
     pub aggregatable_trigger_data: (),
     pub aggregatable_values: (),
-    pub aggregatable_filtering_id_max_bytes: (),
+    pub aggregatable_filtering_id_max_bytes: i64,
     pub debug_reporting: (),
-    pub aggregation_coordinator_origin: (),
+    pub aggregation_coordinator_origin: String,
     pub source_registration_time_config: (),
-    pub trigger_context_id: (),
+    pub trigger_context_id: String,
     pub aggregatable_debug_reporting_config: (),
     pub scopes: (),
     pub named_budgets: (),

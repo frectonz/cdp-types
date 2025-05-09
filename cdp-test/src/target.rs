@@ -6,22 +6,22 @@ pub struct TargetSessionId(String);
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Target/#type-TargetInfo>
 pub struct TargetInfo {
     pub target_id: (),
-    pub _type: (),
-    pub title: (),
-    pub url: (),
+    pub _type: String,
+    pub title: String,
+    pub url: String,
     pub attached: (),
     pub opener_id: (),
     pub can_access_opener: (),
     pub opener_frame_id: (),
     pub browser_context_id: (),
-    pub subtype: (),
+    pub subtype: String,
 }
 /// ⚠️ Experimental
 /// A filter used by target query/discovery/auto-attach operations.
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Target/#type-FilterEntry>
 pub struct TargetFilterEntry {
     pub exclude: (),
-    pub _type: (),
+    pub _type: String,
 }
 /// ⚠️ Experimental
 /** The entries in TargetFilter are matched sequentially against targets and
@@ -35,8 +35,8 @@ pub struct TargetFilter(Vec<TargetFilterEntry>);
 /// ⚠️ Experimental
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Target/#type-RemoteLocation>
 pub struct TargetRemoteLocation {
-    pub host: (),
-    pub port: (),
+    pub host: String,
+    pub port: i64,
 }
 /// ⚠️ Experimental
 /// The state of the target window.

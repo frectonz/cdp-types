@@ -8,5 +8,5 @@ pub struct DeviceAccessDeviceId(String);
 /// <https://chromedevtools.github.io/devtools-protocol/tot/DeviceAccess/#type-PromptDevice>
 pub struct DeviceAccessPromptDevice {
     pub id: (),
-    pub name: (),
+    pub name: String,
 }

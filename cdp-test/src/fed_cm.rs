@@ -29,14 +29,14 @@ pub enum FedCmAccountUrlType {
 /// Corresponds to IdentityRequestAccount
 /// <https://chromedevtools.github.io/devtools-protocol/tot/FedCm/#type-Account>
 pub struct FedCmAccount {
-    pub account_id: (),
-    pub email: (),
-    pub name: (),
-    pub given_name: (),
-    pub picture_url: (),
-    pub idp_config_url: (),
-    pub idp_login_url: (),
+    pub account_id: String,
+    pub email: String,
+    pub name: String,
+    pub given_name: String,
+    pub picture_url: String,
+    pub idp_config_url: String,
+    pub idp_login_url: String,
     pub login_state: (),
-    pub terms_of_service_url: (),
-    pub privacy_policy_url: (),
+    pub terms_of_service_url: String,
+    pub privacy_policy_url: String,
 }

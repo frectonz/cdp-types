@@ -227,9 +227,9 @@ pub enum PageOriginTrialUsageRestriction {
 /// ⚠️ Experimental
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-OriginTrialToken>
 pub struct PageOriginTrialToken {
-    pub origin: (),
+    pub origin: String,
     pub match_sub_domains: (),
-    pub trial_name: (),
+    pub trial_name: String,
     pub expiry_time: (),
     pub is_third_party: (),
     pub usage_restriction: (),
@@ -237,14 +237,14 @@ pub struct PageOriginTrialToken {
 /// ⚠️ Experimental
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-OriginTrialTokenWithStatus>
 pub struct PageOriginTrialTokenWithStatus {
-    pub raw_token_text: (),
+    pub raw_token_text: String,
     pub parsed_token: (),
     pub status: (),
 }
 /// ⚠️ Experimental
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-OriginTrial>
 pub struct PageOriginTrial {
-    pub trial_name: (),
+    pub trial_name: String,
     pub status: (),
     pub tokens_with_status: (),
 }
@@ -260,14 +260,14 @@ pub struct PageFrame {
     pub id: (),
     pub parent_id: (),
     pub loader_id: (),
-    pub name: (),
-    pub url: (),
-    pub url_fragment: (),
-    pub domain_and_registry: (),
-    pub security_origin: (),
+    pub name: String,
+    pub url: String,
+    pub url_fragment: String,
+    pub domain_and_registry: String,
+    pub security_origin: String,
     pub security_origin_details: (),
-    pub mime_type: (),
-    pub unreachable_url: (),
+    pub mime_type: String,
+    pub unreachable_url: String,
     pub ad_frame_status: (),
     pub secure_context_type: (),
     pub cross_origin_isolated_context_type: (),
@@ -277,11 +277,11 @@ pub struct PageFrame {
 /// Information about the Resource on the page.
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-FrameResource>
 pub struct PageFrameResource {
-    pub url: (),
+    pub url: String,
     pub _type: (),
-    pub mime_type: (),
+    pub mime_type: String,
     pub last_modified: (),
-    pub content_size: (),
+    pub content_size: u64,
     pub failed: (),
     pub canceled: (),
 }
@@ -322,22 +322,22 @@ pub enum PageTransitionType {
 /// Navigation history entry.
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-NavigationEntry>
 pub struct PageNavigationEntry {
-    pub id: (),
-    pub url: (),
-    pub user_typed_url: (),
-    pub title: (),
+    pub id: i64,
+    pub url: String,
+    pub user_typed_url: String,
+    pub title: String,
     pub transition_type: (),
 }
 /// ⚠️ Experimental
 /// Screencast frame metadata.
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-ScreencastFrameMetadata>
 pub struct PageScreencastFrameMetadata {
-    pub offset_top: (),
-    pub page_scale_factor: (),
-    pub device_width: (),
-    pub device_height: (),
-    pub scroll_offset_x: (),
-    pub scroll_offset_y: (),
+    pub offset_top: u64,
+    pub page_scale_factor: u64,
+    pub device_width: u64,
+    pub device_height: u64,
+    pub scroll_offset_x: u64,
+    pub scroll_offset_y: u64,
     pub timestamp: (),
 }
 /// Javascript dialog type.
@@ -351,71 +351,71 @@ pub enum PageDialogType {
 /// Error while paring app manifest.
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-AppManifestError>
 pub struct PageAppManifestError {
-    pub message: (),
-    pub critical: (),
-    pub line: (),
-    pub column: (),
+    pub message: String,
+    pub critical: i64,
+    pub line: i64,
+    pub column: i64,
 }
 /// ⚠️ Experimental
 /// Parsed app manifest properties.
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-AppManifestParsedProperties>
 pub struct PageAppManifestParsedProperties {
-    pub scope: (),
+    pub scope: String,
 }
 /// Layout viewport position and dimensions.
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-LayoutViewport>
 pub struct PageLayoutViewport {
-    pub page_x: (),
-    pub page_y: (),
-    pub client_width: (),
-    pub client_height: (),
+    pub page_x: i64,
+    pub page_y: i64,
+    pub client_width: i64,
+    pub client_height: i64,
 }
 /// Visual viewport position, dimensions, and scale.
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-VisualViewport>
 pub struct PageVisualViewport {
-    pub offset_x: (),
-    pub offset_y: (),
-    pub page_x: (),
-    pub page_y: (),
-    pub client_width: (),
-    pub client_height: (),
-    pub scale: (),
-    pub zoom: (),
+    pub offset_x: u64,
+    pub offset_y: u64,
+    pub page_x: u64,
+    pub page_y: u64,
+    pub client_width: u64,
+    pub client_height: u64,
+    pub scale: u64,
+    pub zoom: u64,
 }
 /// Viewport for capturing screenshot.
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-Viewport>
 pub struct PageViewport {
-    pub x: (),
-    pub y: (),
-    pub width: (),
-    pub height: (),
-    pub scale: (),
+    pub x: u64,
+    pub y: u64,
+    pub width: u64,
+    pub height: u64,
+    pub scale: u64,
 }
 /// ⚠️ Experimental
 /// Generic font families collection.
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-FontFamilies>
 pub struct PageFontFamilies {
-    pub standard: (),
-    pub fixed: (),
-    pub serif: (),
-    pub sans_serif: (),
-    pub cursive: (),
-    pub fantasy: (),
-    pub math: (),
+    pub standard: String,
+    pub fixed: String,
+    pub serif: String,
+    pub sans_serif: String,
+    pub cursive: String,
+    pub fantasy: String,
+    pub math: String,
 }
 /// ⚠️ Experimental
 /// Font families collection for a script.
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-ScriptFontFamilies>
 pub struct PageScriptFontFamilies {
-    pub script: (),
+    pub script: String,
     pub font_families: (),
 }
 /// ⚠️ Experimental
 /// Default font sizes.
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-FontSizes>
 pub struct PageFontSizes {
-    pub standard: (),
-    pub fixed: (),
+    pub standard: i64,
+    pub fixed: i64,
 }
 /// ⚠️ Experimental
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-ClientNavigationReason>
@@ -442,14 +442,14 @@ pub enum PageClientNavigationDisposition {
 /// ⚠️ Experimental
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-InstallabilityErrorArgument>
 pub struct PageInstallabilityErrorArgument {
-    pub name: (),
-    pub value: (),
+    pub name: String,
+    pub value: String,
 }
 /// ⚠️ Experimental
 /// The installability error
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-InstallabilityError>
 pub struct PageInstallabilityError {
-    pub error_id: (),
+    pub error_id: String,
     pub error_arguments: (),
 }
 /// ⚠️ Experimental
@@ -469,105 +469,105 @@ pub enum PageReferrerPolicy {
 /// Per-script compilation cache parameters for `Page.produceCompilationCache`
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-CompilationCacheParams>
 pub struct PageCompilationCacheParams {
-    pub url: (),
+    pub url: String,
     pub eager: (),
 }
 /// ⚠️ Experimental
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-FileFilter>
 pub struct PageFileFilter {
-    pub name: (),
+    pub name: String,
     pub accepts: (),
 }
 /// ⚠️ Experimental
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-FileHandler>
 pub struct PageFileHandler {
-    pub action: (),
-    pub name: (),
+    pub action: String,
+    pub name: String,
     pub icons: (),
     pub accepts: (),
-    pub launch_type: (),
+    pub launch_type: String,
 }
 /// ⚠️ Experimental
 /// The image definition used in both icon and screenshot.
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-ImageResource>
 pub struct PageImageResource {
-    pub url: (),
-    pub sizes: (),
-    pub _type: (),
+    pub url: String,
+    pub sizes: String,
+    pub _type: String,
 }
 /// ⚠️ Experimental
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-LaunchHandler>
 pub struct PageLaunchHandler {
-    pub client_mode: (),
+    pub client_mode: String,
 }
 /// ⚠️ Experimental
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-ProtocolHandler>
 pub struct PageProtocolHandler {
-    pub protocol: (),
-    pub url: (),
+    pub protocol: String,
+    pub url: String,
 }
 /// ⚠️ Experimental
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-RelatedApplication>
 pub struct PageRelatedApplication {
-    pub id: (),
-    pub url: (),
+    pub id: String,
+    pub url: String,
 }
 /// ⚠️ Experimental
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-ScopeExtension>
 pub struct PageScopeExtension {
-    pub origin: (),
+    pub origin: String,
     pub has_origin_wildcard: (),
 }
 /// ⚠️ Experimental
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-Screenshot>
 pub struct PageScreenshot {
     pub image: (),
-    pub form_factor: (),
-    pub label: (),
+    pub form_factor: String,
+    pub label: String,
 }
 /// ⚠️ Experimental
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-ShareTarget>
 pub struct PageShareTarget {
-    pub action: (),
-    pub method: (),
-    pub enctype: (),
-    pub title: (),
-    pub text: (),
-    pub url: (),
+    pub action: String,
+    pub method: String,
+    pub enctype: String,
+    pub title: String,
+    pub text: String,
+    pub url: String,
     pub files: (),
 }
 /// ⚠️ Experimental
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-Shortcut>
 pub struct PageShortcut {
-    pub name: (),
-    pub url: (),
+    pub name: String,
+    pub url: String,
 }
 /// ⚠️ Experimental
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-WebAppManifest>
 pub struct PageWebAppManifest {
-    pub background_color: (),
-    pub description: (),
-    pub dir: (),
-    pub display: (),
+    pub background_color: String,
+    pub description: String,
+    pub dir: String,
+    pub display: String,
     pub display_overrides: (),
     pub file_handlers: (),
     pub icons: (),
-    pub id: (),
-    pub lang: (),
+    pub id: String,
+    pub lang: String,
     pub launch_handler: (),
-    pub name: (),
-    pub orientation: (),
+    pub name: String,
+    pub orientation: String,
     pub prefer_related_applications: (),
     pub protocol_handlers: (),
     pub related_applications: (),
-    pub scope: (),
+    pub scope: String,
     pub scope_extensions: (),
     pub screenshots: (),
     pub share_target: (),
-    pub short_name: (),
+    pub short_name: String,
     pub shortcuts: (),
-    pub start_url: (),
-    pub theme_color: (),
+    pub start_url: String,
+    pub theme_color: String,
 }
 /// ⚠️ Experimental
 /// Enum of possible auto-response for permission / prompt dialogs.
@@ -743,23 +743,23 @@ pub enum PageBackForwardCacheNotRestoredReasonType {
 /// ⚠️ Experimental
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-BackForwardCacheBlockingDetails>
 pub struct PageBackForwardCacheBlockingDetails {
-    pub url: (),
-    pub function: (),
-    pub line_number: (),
-    pub column_number: (),
+    pub url: String,
+    pub function: String,
+    pub line_number: i64,
+    pub column_number: i64,
 }
 /// ⚠️ Experimental
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-BackForwardCacheNotRestoredExplanation>
 pub struct PageBackForwardCacheNotRestoredExplanation {
     pub _type: (),
     pub reason: (),
-    pub context: (),
+    pub context: String,
     pub details: (),
 }
 /// ⚠️ Experimental
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-BackForwardCacheNotRestoredExplanationTree>
 pub struct PageBackForwardCacheNotRestoredExplanationTree {
-    pub url: (),
+    pub url: String,
     pub explanations: (),
     pub children: (),
 }

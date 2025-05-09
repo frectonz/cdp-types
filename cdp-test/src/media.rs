@@ -7,34 +7,34 @@ pub struct MediaTimestamp(u64);
 Corresponds to kMessage*/
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Media/#type-PlayerMessage>
 pub struct MediaPlayerMessage {
-    pub level: (),
-    pub message: (),
+    pub level: String,
+    pub message: String,
 }
 /// Corresponds to kMediaPropertyChange
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Media/#type-PlayerProperty>
 pub struct MediaPlayerProperty {
-    pub name: (),
-    pub value: (),
+    pub name: String,
+    pub value: String,
 }
 /// Corresponds to kMediaEventTriggered
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Media/#type-PlayerEvent>
 pub struct MediaPlayerEvent {
     pub timestamp: (),
-    pub value: (),
+    pub value: String,
 }
 /** Represents logged source line numbers reported in an error.
 NOTE: file and line are from chromium c++ implementation code, not js.*/
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Media/#type-PlayerErrorSourceLocation>
 pub struct MediaPlayerErrorSourceLocation {
-    pub file: (),
-    pub line: (),
+    pub file: String,
+    pub line: i64,
 }
 /// Corresponds to kMediaError
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Media/#type-PlayerError>
 pub struct MediaPlayerError {
-    pub error_type: (),
-    pub code: (),
+    pub error_type: String,
+    pub code: i64,
     pub stack: (),
     pub cause: (),
-    pub data: (),
+    pub data: serde_json::Map<String, serde_json::Value>,
 }

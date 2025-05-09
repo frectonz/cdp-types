@@ -3,35 +3,35 @@ use crate::page::*;
 /// ⚠️ Experimental
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Emulation/#type-SafeAreaInsets>
 pub struct EmulationSafeAreaInsets {
-    pub top: (),
-    pub top_max: (),
-    pub left: (),
-    pub left_max: (),
-    pub bottom: (),
-    pub bottom_max: (),
-    pub right: (),
-    pub right_max: (),
+    pub top: i64,
+    pub top_max: i64,
+    pub left: i64,
+    pub left_max: i64,
+    pub bottom: i64,
+    pub bottom_max: i64,
+    pub right: i64,
+    pub right_max: i64,
 }
 /// Screen orientation.
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Emulation/#type-ScreenOrientation>
 pub struct EmulationScreenOrientation {
-    pub _type: (),
-    pub angle: (),
+    pub _type: String,
+    pub angle: i64,
 }
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Emulation/#type-DisplayFeature>
 pub struct EmulationDisplayFeature {
-    pub orientation: (),
-    pub offset: (),
-    pub mask_length: (),
+    pub orientation: String,
+    pub offset: i64,
+    pub mask_length: i64,
 }
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Emulation/#type-DevicePosture>
 pub struct EmulationDevicePosture {
-    pub _type: (),
+    pub _type: String,
 }
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Emulation/#type-MediaFeature>
 pub struct EmulationMediaFeature {
-    pub name: (),
-    pub value: (),
+    pub name: String,
+    pub value: String,
 }
 /// ⚠️ Experimental
 /** advance: If the scheduler runs out of immediate work, the virtual time base may fast forward to
@@ -48,8 +48,8 @@ pub enum EmulationVirtualTimePolicy {
 /// Used to specify User Agent Client Hints to emulate. See https://wicg.github.io/ua-client-hints
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Emulation/#type-UserAgentBrandVersion>
 pub struct EmulationUserAgentBrandVersion {
-    pub brand: (),
-    pub version: (),
+    pub brand: String,
+    pub version: String,
 }
 /// ⚠️ Experimental
 /** Used to specify User Agent Client Hints to emulate. See https://wicg.github.io/ua-client-hints
@@ -58,13 +58,13 @@ Missing optional values will be filled in by the target with what it would norma
 pub struct EmulationUserAgentMetadata {
     pub brands: (),
     pub full_version_list: (),
-    pub full_version: (),
-    pub platform: (),
-    pub platform_version: (),
-    pub architecture: (),
-    pub model: (),
+    pub full_version: String,
+    pub platform: String,
+    pub platform_version: String,
+    pub architecture: String,
+    pub model: String,
     pub mobile: (),
-    pub bitness: (),
+    pub bitness: String,
     pub wow64: (),
 }
 /// ⚠️ Experimental
@@ -85,28 +85,28 @@ pub enum EmulationSensorType {
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Emulation/#type-SensorMetadata>
 pub struct EmulationSensorMetadata {
     pub available: (),
-    pub minimum_frequency: (),
-    pub maximum_frequency: (),
+    pub minimum_frequency: u64,
+    pub maximum_frequency: u64,
 }
 /// ⚠️ Experimental
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Emulation/#type-SensorReadingSingle>
 pub struct EmulationSensorReadingSingle {
-    pub value: (),
+    pub value: u64,
 }
 /// ⚠️ Experimental
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Emulation/#type-SensorReadingXYZ>
 pub struct EmulationSensorReadingXyz {
-    pub x: (),
-    pub y: (),
-    pub z: (),
+    pub x: u64,
+    pub y: u64,
+    pub z: u64,
 }
 /// ⚠️ Experimental
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Emulation/#type-SensorReadingQuaternion>
 pub struct EmulationSensorReadingQuaternion {
-    pub x: (),
-    pub y: (),
-    pub z: (),
-    pub w: (),
+    pub x: u64,
+    pub y: u64,
+    pub z: u64,
+    pub w: u64,
 }
 /// ⚠️ Experimental
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Emulation/#type-SensorReading>

@@ -9,7 +9,7 @@ pub struct LayerTreeSnapshotId(String);
 /// <https://chromedevtools.github.io/devtools-protocol/tot/LayerTree/#type-ScrollRect>
 pub struct LayerTreeScrollRect {
     pub rect: (),
-    pub _type: (),
+    pub _type: String,
 }
 /// Sticky position constraints.
 /// <https://chromedevtools.github.io/devtools-protocol/tot/LayerTree/#type-StickyPositionConstraint>
@@ -22,9 +22,9 @@ pub struct LayerTreeStickyPositionConstraint {
 /// Serialized fragment of layer picture along with its offset within the layer.
 /// <https://chromedevtools.github.io/devtools-protocol/tot/LayerTree/#type-PictureTile>
 pub struct LayerTreePictureTile {
-    pub x: (),
-    pub y: (),
-    pub picture: (),
+    pub x: u64,
+    pub y: u64,
+    pub picture: String,
 }
 /// Information about a compositing layer.
 /// <https://chromedevtools.github.io/devtools-protocol/tot/LayerTree/#type-Layer>
@@ -32,15 +32,15 @@ pub struct LayerTreeLayer {
     pub layer_id: (),
     pub parent_layer_id: (),
     pub backend_node_id: (),
-    pub offset_x: (),
-    pub offset_y: (),
-    pub width: (),
-    pub height: (),
+    pub offset_x: u64,
+    pub offset_y: u64,
+    pub width: u64,
+    pub height: u64,
     pub transform: (),
-    pub anchor_x: (),
-    pub anchor_y: (),
-    pub anchor_z: (),
-    pub paint_count: (),
+    pub anchor_x: u64,
+    pub anchor_y: u64,
+    pub anchor_z: u64,
+    pub paint_count: i64,
     pub draws_content: (),
     pub invisible: (),
     pub scroll_rects: (),

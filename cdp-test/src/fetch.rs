@@ -16,28 +16,28 @@ pub enum FetchRequestStage {
 }
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Fetch/#type-RequestPattern>
 pub struct FetchRequestPattern {
-    pub url_pattern: (),
+    pub url_pattern: String,
     pub resource_type: (),
     pub request_stage: (),
 }
 /// Response HTTP header entry
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Fetch/#type-HeaderEntry>
 pub struct FetchHeaderEntry {
-    pub name: (),
-    pub value: (),
+    pub name: String,
+    pub value: String,
 }
 /// Authorization challenge for HTTP status code 401 or 407.
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Fetch/#type-AuthChallenge>
 pub struct FetchAuthChallenge {
-    pub source: (),
-    pub origin: (),
-    pub scheme: (),
-    pub realm: (),
+    pub source: String,
+    pub origin: String,
+    pub scheme: String,
+    pub realm: String,
 }
 /// Response to an AuthChallenge.
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Fetch/#type-AuthChallengeResponse>
 pub struct FetchAuthChallengeResponse {
-    pub response: (),
-    pub username: (),
-    pub password: (),
+    pub response: String,
+    pub username: String,
+    pub password: String,
 }

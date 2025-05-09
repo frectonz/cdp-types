@@ -16,13 +16,13 @@ pub enum CssStyleSheetOrigin {
 /// <https://chromedevtools.github.io/devtools-protocol/tot/CSS/#type-PseudoElementMatches>
 pub struct CssPseudoElementMatches {
     pub pseudo_type: (),
-    pub pseudo_identifier: (),
+    pub pseudo_identifier: String,
     pub matches: (),
 }
 /// CSS style coming from animations with the name of the animation.
 /// <https://chromedevtools.github.io/devtools-protocol/tot/CSS/#type-CSSAnimationStyle>
 pub struct CssAnimationStyle {
-    pub name: (),
+    pub name: String,
     pub style: (),
 }
 /// Inherited CSS rule collection from ancestor node.
@@ -51,7 +51,7 @@ pub struct CssRuleMatch {
 /// Data for a simple selector (these are delimited by commas in a selector list).
 /// <https://chromedevtools.github.io/devtools-protocol/tot/CSS/#type-Value>
 pub struct CssValue {
-    pub text: (),
+    pub text: String,
     pub range: (),
     pub specificity: (),
 }
@@ -60,36 +60,36 @@ pub struct CssValue {
 https://drafts.csswg.org/selectors/#specificity-rules*/
 /// <https://chromedevtools.github.io/devtools-protocol/tot/CSS/#type-Specificity>
 pub struct CssSpecificity {
-    pub a: (),
-    pub b: (),
-    pub c: (),
+    pub a: i64,
+    pub b: i64,
+    pub c: i64,
 }
 /// Selector list data.
 /// <https://chromedevtools.github.io/devtools-protocol/tot/CSS/#type-SelectorList>
 pub struct CssSelectorList {
     pub selectors: (),
-    pub text: (),
+    pub text: String,
 }
 /// CSS stylesheet metainformation.
 /// <https://chromedevtools.github.io/devtools-protocol/tot/CSS/#type-CSSStyleSheetHeader>
 pub struct CssStyleSheetHeader {
     pub style_sheet_id: (),
     pub frame_id: (),
-    pub source_url: (),
-    pub source_map_url: (),
+    pub source_url: String,
+    pub source_map_url: String,
     pub origin: (),
-    pub title: (),
+    pub title: String,
     pub owner_node: (),
     pub disabled: (),
     pub has_source_url: (),
     pub is_inline: (),
     pub is_mutable: (),
     pub is_constructed: (),
-    pub start_line: (),
-    pub start_column: (),
-    pub length: (),
-    pub end_line: (),
-    pub end_column: (),
+    pub start_line: u64,
+    pub start_column: u64,
+    pub length: u64,
+    pub end_line: u64,
+    pub end_column: u64,
     pub loading_failed: (),
 }
 /// CSS rule representation.
@@ -125,28 +125,28 @@ pub enum CssRuleType {
 /// <https://chromedevtools.github.io/devtools-protocol/tot/CSS/#type-RuleUsage>
 pub struct CssRuleUsage {
     pub style_sheet_id: (),
-    pub start_offset: (),
-    pub end_offset: (),
+    pub start_offset: u64,
+    pub end_offset: u64,
     pub used: (),
 }
 /// Text range within a resource. All numbers are zero-based.
 /// <https://chromedevtools.github.io/devtools-protocol/tot/CSS/#type-SourceRange>
 pub struct CssSourceRange {
-    pub start_line: (),
-    pub start_column: (),
-    pub end_line: (),
-    pub end_column: (),
+    pub start_line: i64,
+    pub start_column: i64,
+    pub end_line: i64,
+    pub end_column: i64,
 }
 /// <https://chromedevtools.github.io/devtools-protocol/tot/CSS/#type-ShorthandEntry>
 pub struct CssShorthandEntry {
-    pub name: (),
-    pub value: (),
+    pub name: String,
+    pub value: String,
     pub important: (),
 }
 /// <https://chromedevtools.github.io/devtools-protocol/tot/CSS/#type-CSSComputedStyleProperty>
 pub struct CssComputedStyleProperty {
-    pub name: (),
-    pub value: (),
+    pub name: String,
+    pub value: String,
 }
 /// CSS style representation.
 /// <https://chromedevtools.github.io/devtools-protocol/tot/CSS/#type-CSSStyle>
@@ -154,17 +154,17 @@ pub struct CssStyle {
     pub style_sheet_id: (),
     pub css_properties: (),
     pub shorthand_entries: (),
-    pub css_text: (),
+    pub css_text: String,
     pub range: (),
 }
 /// CSS property declaration data.
 /// <https://chromedevtools.github.io/devtools-protocol/tot/CSS/#type-CSSProperty>
 pub struct CssProperty {
-    pub name: (),
-    pub value: (),
+    pub name: String,
+    pub value: String,
     pub important: (),
     pub implicit: (),
-    pub text: (),
+    pub text: String,
     pub parsed_ok: (),
     pub disabled: (),
     pub range: (),
@@ -173,9 +173,9 @@ pub struct CssProperty {
 /// CSS media rule descriptor.
 /// <https://chromedevtools.github.io/devtools-protocol/tot/CSS/#type-CSSMedia>
 pub struct CssMedia {
-    pub text: (),
-    pub source: (),
-    pub source_url: (),
+    pub text: String,
+    pub source: String,
+    pub source_url: String,
     pub range: (),
     pub style_sheet_id: (),
     pub media_list: (),
@@ -189,20 +189,20 @@ pub struct CssMediaQuery {
 /// Media query expression descriptor.
 /// <https://chromedevtools.github.io/devtools-protocol/tot/CSS/#type-MediaQueryExpression>
 pub struct CssMediaQueryExpression {
-    pub value: (),
-    pub unit: (),
-    pub feature: (),
+    pub value: u64,
+    pub unit: String,
+    pub feature: String,
     pub value_range: (),
-    pub computed_length: (),
+    pub computed_length: u64,
 }
 /// ⚠️ Experimental
 /// CSS container query rule descriptor.
 /// <https://chromedevtools.github.io/devtools-protocol/tot/CSS/#type-CSSContainerQuery>
 pub struct CssContainerQuery {
-    pub text: (),
+    pub text: String,
     pub range: (),
     pub style_sheet_id: (),
-    pub name: (),
+    pub name: String,
     pub physical_axes: (),
     pub logical_axes: (),
     pub queries_scroll_state: (),
@@ -211,7 +211,7 @@ pub struct CssContainerQuery {
 /// CSS Supports at-rule descriptor.
 /// <https://chromedevtools.github.io/devtools-protocol/tot/CSS/#type-CSSSupports>
 pub struct CssSupports {
-    pub text: (),
+    pub text: String,
     pub active: (),
     pub range: (),
     pub style_sheet_id: (),
@@ -220,7 +220,7 @@ pub struct CssSupports {
 /// CSS Scope at-rule descriptor.
 /// <https://chromedevtools.github.io/devtools-protocol/tot/CSS/#type-CSSScope>
 pub struct CssScope {
-    pub text: (),
+    pub text: String,
     pub range: (),
     pub style_sheet_id: (),
 }
@@ -228,7 +228,7 @@ pub struct CssScope {
 /// CSS Layer at-rule descriptor.
 /// <https://chromedevtools.github.io/devtools-protocol/tot/CSS/#type-CSSLayer>
 pub struct CssLayer {
-    pub text: (),
+    pub text: String,
     pub range: (),
     pub style_sheet_id: (),
 }
@@ -243,40 +243,40 @@ pub struct CssStartingStyle {
 /// CSS Layer data.
 /// <https://chromedevtools.github.io/devtools-protocol/tot/CSS/#type-CSSLayerData>
 pub struct CssLayerData {
-    pub name: (),
+    pub name: String,
     pub sub_layers: (),
-    pub order: (),
+    pub order: u64,
 }
 /// Information about amount of glyphs that were rendered with given font.
 /// <https://chromedevtools.github.io/devtools-protocol/tot/CSS/#type-PlatformFontUsage>
 pub struct CssPlatformFontUsage {
-    pub family_name: (),
-    pub post_script_name: (),
+    pub family_name: String,
+    pub post_script_name: String,
     pub is_custom_font: (),
-    pub glyph_count: (),
+    pub glyph_count: u64,
 }
 /// Information about font variation axes for variable fonts
 /// <https://chromedevtools.github.io/devtools-protocol/tot/CSS/#type-FontVariationAxis>
 pub struct CssFontVariationAxis {
-    pub tag: (),
-    pub name: (),
-    pub min_value: (),
-    pub max_value: (),
-    pub default_value: (),
+    pub tag: String,
+    pub name: String,
+    pub min_value: u64,
+    pub max_value: u64,
+    pub default_value: u64,
 }
 /** Properties of a web font: https://www.w3.org/TR/2008/REC-CSS2-20080411/fonts.html#font-descriptions
 and additional information such as platformFontFamily and fontVariationAxes.*/
 /// <https://chromedevtools.github.io/devtools-protocol/tot/CSS/#type-FontFace>
 pub struct CssFontFace {
-    pub font_family: (),
-    pub font_style: (),
-    pub font_variant: (),
-    pub font_weight: (),
-    pub font_stretch: (),
-    pub font_display: (),
-    pub unicode_range: (),
-    pub src: (),
-    pub platform_font_family: (),
+    pub font_family: String,
+    pub font_style: String,
+    pub font_variant: String,
+    pub font_weight: String,
+    pub font_stretch: String,
+    pub font_display: String,
+    pub unicode_range: String,
+    pub src: String,
+    pub platform_font_family: String,
     pub font_variation_axes: (),
 }
 /// CSS try rule representation.
@@ -304,10 +304,10 @@ pub struct CssKeyframesRule {
 /// Representation of a custom property registration through CSS.registerProperty
 /// <https://chromedevtools.github.io/devtools-protocol/tot/CSS/#type-CSSPropertyRegistration>
 pub struct CssPropertyRegistration {
-    pub property_name: (),
+    pub property_name: String,
     pub initial_value: (),
     pub inherits: (),
-    pub syntax: (),
+    pub syntax: String,
 }
 /// CSS font-palette-values rule representation.
 /// <https://chromedevtools.github.io/devtools-protocol/tot/CSS/#type-CSSFontPaletteValuesRule>
@@ -328,8 +328,8 @@ pub struct CssPropertyRule {
 /// CSS function argument representation.
 /// <https://chromedevtools.github.io/devtools-protocol/tot/CSS/#type-CSSFunctionParameter>
 pub struct CssFunctionParameter {
-    pub name: (),
-    pub _type: (),
+    pub name: String,
+    pub _type: String,
 }
 /// CSS function conditional block representation.
 /// <https://chromedevtools.github.io/devtools-protocol/tot/CSS/#type-CSSFunctionConditionNode>
@@ -338,7 +338,7 @@ pub struct CssFunctionConditionNode {
     pub container_queries: (),
     pub supports: (),
     pub children: (),
-    pub condition_text: (),
+    pub condition_text: String,
 }
 /// Section of the body of a CSS function rule.
 /// <https://chromedevtools.github.io/devtools-protocol/tot/CSS/#type-CSSFunctionNode>
@@ -368,5 +368,5 @@ pub struct CssKeyframeRule {
 pub struct CssStyleDeclarationEdit {
     pub style_sheet_id: (),
     pub range: (),
-    pub text: (),
+    pub text: String,
 }

@@ -36,15 +36,15 @@ pub struct WebAuthnVirtualAuthenticatorOptions {
 }
 /// <https://chromedevtools.github.io/devtools-protocol/tot/WebAuthn/#type-Credential>
 pub struct WebAuthnCredential {
-    pub credential_id: (),
+    pub credential_id: String,
     pub is_resident_credential: (),
-    pub rp_id: (),
-    pub private_key: (),
-    pub user_handle: (),
-    pub sign_count: (),
-    pub large_blob: (),
+    pub rp_id: String,
+    pub private_key: String,
+    pub user_handle: String,
+    pub sign_count: i64,
+    pub large_blob: String,
     pub backup_eligibility: (),
     pub backup_state: (),
-    pub user_name: (),
-    pub user_display_name: (),
+    pub user_name: String,
+    pub user_display_name: String,
 }

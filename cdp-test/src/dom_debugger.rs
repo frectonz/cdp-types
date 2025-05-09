@@ -16,13 +16,13 @@ pub enum DomDebuggerCspViolationType {
 /// Object event listener.
 /// <https://chromedevtools.github.io/devtools-protocol/tot/DOMDebugger/#type-EventListener>
 pub struct DomDebuggerEventListener {
-    pub _type: (),
+    pub _type: String,
     pub use_capture: (),
     pub passive: (),
     pub once: (),
     pub script_id: (),
-    pub line_number: (),
-    pub column_number: (),
+    pub line_number: i64,
+    pub column_number: i64,
     pub handler: (),
     pub original_handler: (),
     pub backend_node_id: (),

@@ -5,52 +5,52 @@ use crate::page::*;
 /// A Node in the DOM tree.
 /// <https://chromedevtools.github.io/devtools-protocol/tot/DOMSnapshot/#type-DOMNode>
 pub struct DomSnapshotDomNode {
-    pub node_type: (),
-    pub node_name: (),
-    pub node_value: (),
-    pub text_value: (),
-    pub input_value: (),
+    pub node_type: i64,
+    pub node_name: String,
+    pub node_value: String,
+    pub text_value: String,
+    pub input_value: String,
     pub input_checked: (),
     pub option_selected: (),
     pub backend_node_id: (),
     pub child_node_indexes: (),
     pub attributes: (),
     pub pseudo_element_indexes: (),
-    pub layout_node_index: (),
-    pub document_url: (),
-    pub base_url: (),
-    pub content_language: (),
-    pub document_encoding: (),
-    pub public_id: (),
-    pub system_id: (),
+    pub layout_node_index: i64,
+    pub document_url: String,
+    pub base_url: String,
+    pub content_language: String,
+    pub document_encoding: String,
+    pub public_id: String,
+    pub system_id: String,
     pub frame_id: (),
-    pub content_document_index: (),
+    pub content_document_index: i64,
     pub pseudo_type: (),
     pub shadow_root_type: (),
     pub is_clickable: (),
     pub event_listeners: (),
-    pub current_source_url: (),
-    pub origin_url: (),
-    pub scroll_offset_x: (),
-    pub scroll_offset_y: (),
+    pub current_source_url: String,
+    pub origin_url: String,
+    pub scroll_offset_x: u64,
+    pub scroll_offset_y: u64,
 }
 /** Details of post layout rendered text positions. The exact layout should not be regarded as
 stable and may change between versions.*/
 /// <https://chromedevtools.github.io/devtools-protocol/tot/DOMSnapshot/#type-InlineTextBox>
 pub struct DomSnapshotInlineTextBox {
     pub bounding_box: (),
-    pub start_character_index: (),
-    pub num_characters: (),
+    pub start_character_index: i64,
+    pub num_characters: i64,
 }
 /// Details of an element in the DOM tree with a LayoutObject.
 /// <https://chromedevtools.github.io/devtools-protocol/tot/DOMSnapshot/#type-LayoutTreeNode>
 pub struct DomSnapshotLayoutTreeNode {
-    pub dom_node_index: (),
+    pub dom_node_index: i64,
     pub bounding_box: (),
-    pub layout_text: (),
+    pub layout_text: String,
     pub inline_text_nodes: (),
-    pub style_index: (),
-    pub paint_order: (),
+    pub style_index: i64,
+    pub paint_order: i64,
     pub is_stacking_context: (),
 }
 /// A subset of the full ComputedStyle as defined by the request whitelist.
@@ -61,8 +61,8 @@ pub struct DomSnapshotComputedStyle {
 /// A name/value pair.
 /// <https://chromedevtools.github.io/devtools-protocol/tot/DOMSnapshot/#type-NameValue>
 pub struct DomSnapshotNameValue {
-    pub name: (),
-    pub value: (),
+    pub name: String,
+    pub value: String,
 }
 /// Index of the string in the strings table.
 /// <https://chromedevtools.github.io/devtools-protocol/tot/DOMSnapshot/#type-StringIndex>
@@ -101,10 +101,10 @@ pub struct DomSnapshotDocumentSnapshot {
     pub nodes: (),
     pub layout: (),
     pub text_boxes: (),
-    pub scroll_offset_x: (),
-    pub scroll_offset_y: (),
-    pub content_width: (),
-    pub content_height: (),
+    pub scroll_offset_x: u64,
+    pub scroll_offset_y: u64,
+    pub content_width: u64,
+    pub content_height: u64,
 }
 /// Table containing nodes.
 /// <https://chromedevtools.github.io/devtools-protocol/tot/DOMSnapshot/#type-NodeTreeSnapshot>

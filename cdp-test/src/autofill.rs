@@ -1,15 +1,15 @@
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Autofill/#type-CreditCard>
 pub struct AutofillCreditCard {
-    pub number: (),
-    pub name: (),
-    pub expiry_month: (),
-    pub expiry_year: (),
-    pub cvc: (),
+    pub number: String,
+    pub name: String,
+    pub expiry_month: String,
+    pub expiry_year: String,
+    pub cvc: String,
 }
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Autofill/#type-AddressField>
 pub struct AutofillAddressField {
-    pub name: (),
-    pub value: (),
+    pub name: String,
+    pub value: String,
 }
 /// A list of address fields.
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Autofill/#type-AddressFields>
@@ -39,11 +39,11 @@ pub enum AutofillFillingStrategy {
 }
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Autofill/#type-FilledField>
 pub struct AutofillFilledField {
-    pub html_type: (),
-    pub id: (),
-    pub name: (),
-    pub value: (),
-    pub autofill_type: (),
+    pub html_type: String,
+    pub id: String,
+    pub name: String,
+    pub value: String,
+    pub autofill_type: String,
     pub filling_strategy: (),
     pub frame_id: (),
     pub field_id: (),

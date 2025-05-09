@@ -17,10 +17,10 @@ pub enum BrowserWindowState {
 /// Browser window bounds information
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Browser/#type-Bounds>
 pub struct BrowserBounds {
-    pub left: (),
-    pub top: (),
-    pub width: (),
-    pub height: (),
+    pub left: i64,
+    pub top: i64,
+    pub width: i64,
+    pub height: i64,
     pub window_state: (),
 }
 /// ⚠️ Experimental
@@ -76,7 +76,7 @@ pub enum BrowserPermissionSetting {
 https://w3c.github.io/permissions/#dom-permissiondescriptor.*/
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Browser/#type-PermissionDescriptor>
 pub struct BrowserPermissionDescriptor {
-    pub name: (),
+    pub name: String,
     pub sysex: (),
     pub user_visible_only: (),
     pub allow_without_sanitization: (),
@@ -95,17 +95,17 @@ pub enum BrowserCommandId {
 /// Chrome histogram bucket.
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Browser/#type-Bucket>
 pub struct BrowserBucket {
-    pub low: (),
-    pub high: (),
-    pub count: (),
+    pub low: i64,
+    pub high: i64,
+    pub count: i64,
 }
 /// ⚠️ Experimental
 /// Chrome histogram.
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Browser/#type-Histogram>
 pub struct BrowserHistogram {
-    pub name: (),
-    pub sum: (),
-    pub count: (),
+    pub name: String,
+    pub sum: i64,
+    pub count: i64,
     pub buckets: (),
 }
 /// ⚠️ Experimental

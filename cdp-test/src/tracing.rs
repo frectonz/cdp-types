@@ -5,8 +5,8 @@ use crate::io::*;
 pub struct TracingMemoryDumpConfig(serde_json::Map<String, serde_json::Value>);
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Tracing/#type-TraceConfig>
 pub struct TracingTraceConfig {
-    pub record_mode: (),
-    pub trace_buffer_size_in_kb: (),
+    pub record_mode: String,
+    pub trace_buffer_size_in_kb: u64,
     pub enable_sampling: (),
     pub enable_systrace: (),
     pub enable_argument_filter: (),

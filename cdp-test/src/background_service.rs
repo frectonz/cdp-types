@@ -13,17 +13,17 @@ pub enum BackgroundServiceServiceName {
 /// A key-value pair for additional event information to pass along.
 /// <https://chromedevtools.github.io/devtools-protocol/tot/BackgroundService/#type-EventMetadata>
 pub struct BackgroundServiceEventMetadata {
-    pub key: (),
-    pub value: (),
+    pub key: String,
+    pub value: String,
 }
 /// <https://chromedevtools.github.io/devtools-protocol/tot/BackgroundService/#type-BackgroundServiceEvent>
 pub struct BackgroundServiceEvent {
     pub timestamp: (),
-    pub origin: (),
+    pub origin: String,
     pub service_worker_registration_id: (),
     pub service: (),
-    pub event_name: (),
-    pub instance_id: (),
+    pub event_name: String,
+    pub instance_id: String,
     pub event_metadata: (),
-    pub storage_key: (),
+    pub storage_key: String,
 }

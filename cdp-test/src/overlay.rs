@@ -53,7 +53,7 @@ pub struct OverlayFlexItemHighlightConfig {
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#type-LineStyle>
 pub struct OverlayLineStyle {
     pub color: (),
-    pub pattern: (),
+    pub pattern: String,
 }
 /// Style information for drawing a box.
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#type-BoxStyle>
@@ -131,8 +131,8 @@ pub struct OverlayHingeConfig {
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#type-WindowControlsOverlayConfig>
 pub struct OverlayWindowControlsOverlayConfig {
     pub show_css: (),
-    pub selected_platform: (),
-    pub theme_color: (),
+    pub selected_platform: String,
+    pub theme_color: String,
 }
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#type-ContainerQueryHighlightConfig>
 pub struct OverlayContainerQueryHighlightConfig {

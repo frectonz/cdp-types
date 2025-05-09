@@ -52,19 +52,19 @@ pub enum AccessibilityAxValueNativeSourceType {
 pub struct AccessibilityAxValueSource {
     pub _type: (),
     pub value: (),
-    pub attribute: (),
+    pub attribute: String,
     pub attribute_value: (),
     pub superseded: (),
     pub native_source: (),
     pub native_source_value: (),
     pub invalid: (),
-    pub invalid_reason: (),
+    pub invalid_reason: String,
 }
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Accessibility/#type-AXRelatedNode>
 pub struct AccessibilityAxRelatedNode {
     pub backend_dom_node_id: (),
-    pub idref: (),
-    pub text: (),
+    pub idref: String,
+    pub text: String,
 }
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Accessibility/#type-AXProperty>
 pub struct AccessibilityAxProperty {

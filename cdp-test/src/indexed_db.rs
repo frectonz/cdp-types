@@ -2,14 +2,14 @@ use crate::storage::*;
 /// Database with an array of object stores.
 /// <https://chromedevtools.github.io/devtools-protocol/tot/IndexedDB/#type-DatabaseWithObjectStores>
 pub struct IndexedDbDatabaseWithObjectStores {
-    pub name: (),
-    pub version: (),
+    pub name: String,
+    pub version: u64,
     pub object_stores: (),
 }
 /// Object store.
 /// <https://chromedevtools.github.io/devtools-protocol/tot/IndexedDB/#type-ObjectStore>
 pub struct IndexedDbObjectStore {
-    pub name: (),
+    pub name: String,
     pub key_path: (),
     pub auto_increment: (),
     pub indexes: (),
@@ -17,7 +17,7 @@ pub struct IndexedDbObjectStore {
 /// Object store index.
 /// <https://chromedevtools.github.io/devtools-protocol/tot/IndexedDB/#type-ObjectStoreIndex>
 pub struct IndexedDbObjectStoreIndex {
-    pub name: (),
+    pub name: String,
     pub key_path: (),
     pub unique: (),
     pub multi_entry: (),
@@ -25,10 +25,10 @@ pub struct IndexedDbObjectStoreIndex {
 /// Key.
 /// <https://chromedevtools.github.io/devtools-protocol/tot/IndexedDB/#type-Key>
 pub struct IndexedDbKey {
-    pub _type: (),
-    pub number: (),
-    pub string: (),
-    pub date: (),
+    pub _type: String,
+    pub number: u64,
+    pub string: String,
+    pub date: u64,
     pub array: (),
 }
 /// Key range.
@@ -49,7 +49,7 @@ pub struct IndexedDbDataEntry {
 /// Key path.
 /// <https://chromedevtools.github.io/devtools-protocol/tot/IndexedDB/#type-KeyPath>
 pub struct IndexedDbKeyPath {
-    pub _type: (),
-    pub string: (),
+    pub _type: String,
+    pub string: String,
     pub array: (),
 }

@@ -2,15 +2,15 @@ use crate::network::*;
 /// Information about a cookie that is affected by an inspector issue.
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-AffectedCookie>
 pub struct AuditsAffectedCookie {
-    pub name: (),
-    pub path: (),
-    pub domain: (),
+    pub name: String,
+    pub path: String,
+    pub domain: String,
 }
 /// Information about a request that is affected by an inspector issue.
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-AffectedRequest>
 pub struct AuditsAffectedRequest {
     pub request_id: (),
-    pub url: (),
+    pub url: String,
 }
 /// Information about the frame affected by an inspector issue.
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-AffectedFrame>
@@ -64,7 +64,7 @@ pub enum AuditsInsightType {
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-CookieIssueInsight>
 pub struct AuditsCookieIssueInsight {
     pub _type: (),
-    pub table_entry_url: (),
+    pub table_entry_url: String,
 }
 /** This information is currently necessary, as the front-end has a difficult
 time finding a specific cookie. With this, we can convey specific error
@@ -72,12 +72,12 @@ information without the cookie.*/
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-CookieIssueDetails>
 pub struct AuditsCookieIssueDetails {
     pub cookie: (),
-    pub raw_cookie_line: (),
+    pub raw_cookie_line: String,
     pub cookie_warning_reasons: (),
     pub cookie_exclusion_reasons: (),
     pub operation: (),
-    pub site_for_cookies: (),
-    pub cookie_url: (),
+    pub site_for_cookies: String,
+    pub cookie_url: String,
     pub request: (),
     pub insight: (),
 }
@@ -123,8 +123,8 @@ pub enum AuditsMixedContentResourceType {
 pub struct AuditsMixedContentIssueDetails {
     pub resource_type: (),
     pub resolution_status: (),
-    pub insecure_url: (),
-    pub main_resource_url: (),
+    pub insecure_url: String,
+    pub main_resource_url: String,
     pub request: (),
     pub frame: (),
 }
@@ -181,14 +181,14 @@ pub enum AuditsContentSecurityPolicyViolationType {
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-SourceCodeLocation>
 pub struct AuditsSourceCodeLocation {
     pub script_id: (),
-    pub url: (),
-    pub line_number: (),
-    pub column_number: (),
+    pub url: String,
+    pub line_number: i64,
+    pub column_number: i64,
 }
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-ContentSecurityPolicyIssueDetails>
 pub struct AuditsContentSecurityPolicyIssueDetails {
-    pub blocked_url: (),
-    pub violated_directive: (),
+    pub blocked_url: String,
+    pub violated_directive: String,
     pub is_report_only: (),
     pub content_security_policy_violation_type: (),
     pub frame_ancestor: (),
@@ -211,12 +211,12 @@ pub struct AuditsSharedArrayBufferIssueDetails {
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-LowTextContrastIssueDetails>
 pub struct AuditsLowTextContrastIssueDetails {
     pub violating_node_id: (),
-    pub violating_node_selector: (),
-    pub contrast_ratio: (),
-    pub threshold_aa: (),
-    pub threshold_aaa: (),
-    pub font_size: (),
-    pub font_weight: (),
+    pub violating_node_selector: String,
+    pub contrast_ratio: u64,
+    pub threshold_aa: u64,
+    pub threshold_aaa: u64,
+    pub font_size: String,
+    pub font_weight: String,
 }
 /** Details for a CORS related issue, e.g. a warning or error related to
 CORS RFC1918 enforcement.*/
@@ -226,7 +226,7 @@ pub struct AuditsCorsIssueDetails {
     pub is_warning: (),
     pub request: (),
     pub location: (),
-    pub initiator_origin: (),
+    pub initiator_origin: String,
     pub resource_ip_address_space: (),
     pub client_security_state: (),
 }
@@ -311,7 +311,7 @@ pub struct AuditsAttributionReportingIssueDetails {
     pub violation_type: (),
     pub request: (),
     pub violating_node_id: (),
-    pub invalid_parameter: (),
+    pub invalid_parameter: String,
 }
 /** Details for issues about documents in Quirks Mode
 or Limited Quirks Mode that affects page layouting.*/
@@ -319,14 +319,14 @@ or Limited Quirks Mode that affects page layouting.*/
 pub struct AuditsQuirksModeIssueDetails {
     pub is_limited_quirks_mode: (),
     pub document_node_id: (),
-    pub url: (),
+    pub url: String,
     pub frame_id: (),
     pub loader_id: (),
 }
 #[deprecated]
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-NavigatorUserAgentIssueDetails>
 pub struct AuditsNavigatorUserAgentIssueDetails {
-    pub url: (),
+    pub url: String,
     pub location: (),
 }
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-SharedDictionaryIssueDetails>
@@ -337,7 +337,7 @@ pub struct AuditsSharedDictionaryIssueDetails {
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-SRIMessageSignatureIssueDetails>
 pub struct AuditsSriMessageSignatureIssueDetails {
     pub error: (),
-    pub signature_base: (),
+    pub signature_base: String,
     pub integrity_assertions: (),
     pub request: (),
 }
@@ -361,7 +361,7 @@ pub struct AuditsGenericIssueDetails {
     pub error_type: (),
     pub frame_id: (),
     pub violating_node_id: (),
-    pub violating_node_attribute: (),
+    pub violating_node_attribute: String,
     pub request: (),
 }
 /** This issue tracks information needed to print a deprecation message.
@@ -370,7 +370,7 @@ https://source.chromium.org/chromium/chromium/src/+/main:third_party/blink/rende
 pub struct AuditsDeprecationIssueDetails {
     pub affected_frame: (),
     pub source_code_location: (),
-    pub _type: (),
+    pub _type: String,
 }
 /** This issue warns about sites in the redirect chain of a finished navigation
 that may be flagged as trackers and have their state cleared if they don't
@@ -389,7 +389,7 @@ would be `example.test`.*/
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-CookieDeprecationMetadataIssueDetails>
 pub struct AuditsCookieDeprecationMetadataIssueDetails {
     pub allowed_sites: (),
-    pub opt_out_percentage: (),
+    pub opt_out_percentage: u64,
     pub is_opt_out_top_level: (),
     pub operation: (),
 }
@@ -485,8 +485,8 @@ pub struct AuditsClientHintIssueDetails {
 }
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-FailedRequestInfo>
 pub struct AuditsFailedRequestInfo {
-    pub url: (),
-    pub failure_message: (),
+    pub url: String,
+    pub failure_message: String,
     pub request_id: (),
 }
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-PartitioningBlobURLInfo>
@@ -496,7 +496,7 @@ pub enum AuditsPartitioningBlobUrlInfo {
 }
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-PartitioningBlobURLIssueDetails>
 pub struct AuditsPartitioningBlobUrlIssueDetails {
-    pub url: (),
+    pub url: String,
     pub partitioning_blob_url_info: (),
 }
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-SelectElementAccessibilityIssueReason>
@@ -539,7 +539,7 @@ registrations being ignored.*/
 pub struct AuditsPropertyRuleIssueDetails {
     pub source_code_location: (),
     pub property_rule_issue_reason: (),
-    pub property_value: (),
+    pub property_value: String,
 }
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Audits/#type-UserReidentificationIssueType>
 pub enum AuditsUserReidentificationIssueType {

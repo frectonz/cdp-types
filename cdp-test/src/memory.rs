@@ -7,8 +7,8 @@ pub enum MemoryPressureLevel {
 /// Heap profile sample.
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Memory/#type-SamplingProfileNode>
 pub struct MemorySamplingProfileNode {
-    pub size: (),
-    pub total: (),
+    pub size: u64,
+    pub total: u64,
     pub stack: (),
 }
 /// Array of heap profile samples.
@@ -20,14 +20,14 @@ pub struct MemorySamplingProfile {
 /// Executable module information
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Memory/#type-Module>
 pub struct MemoryModule {
-    pub name: (),
-    pub uuid: (),
-    pub base_address: (),
-    pub size: (),
+    pub name: String,
+    pub uuid: String,
+    pub base_address: String,
+    pub size: u64,
 }
 /// DOM object counter data.
 /// <https://chromedevtools.github.io/devtools-protocol/tot/Memory/#type-DOMCounter>
 pub struct MemoryDomCounter {
-    pub name: (),
-    pub count: (),
+    pub name: String,
+    pub count: i64,
 }
