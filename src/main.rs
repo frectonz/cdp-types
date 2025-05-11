@@ -1,4 +1,4 @@
-use std::collections::HashMap;
+use std::collections::{HashMap, HashSet};
 
 use color_eyre::eyre::Result;
 use heck::{ToPascalCase, ToSnakeCase};
@@ -16,6 +16,12 @@ pub struct BrowserProtocol {
     pub domains: List<Domain>,
 }
 
+#[derive(Debug)]
+struct ProtocolData {
+    common_type_ids: Vec<Str>,
+    common_types: HashSet<Type>,
+}
+
 impl BrowserProtocol {
     fn type_to_domain_map(&self) -> HashMap<Str, Str> {
         type Type = Str;
@@ -29,6 +35,43 @@ impl BrowserProtocol {
         }
 
         type_to_domain
+    }
+
+    fn protocol_data(&self) -> ProtocolData {
+        let common_type_ids = self.common_type_ids();
+        let mut common_types = HashSet::with_capacity(common_type_ids.len());
+
+        for domain in self.domains.iter() {
+            for typ in domain.types.iter() {
+                if common_type_ids.contains(&typ.id) {
+                    common_types.insert(typ.to_owned());
+                }
+            }
+        }
+
+        ProtocolData {
+            common_type_ids,
+            common_types,
+        }
+    }
+
+    fn common_type_ids(&self) -> Vec<Str> {
+        let mut type_to_count: HashMap<Str, u8> = HashMap::new();
+
+        for domain in self.domains.iter() {
+            for typ in domain.types.iter() {
+                type_to_count
+                    .entry(typ.id.clone())
+                    .and_modify(|count| *count += 1)
+                    .or_insert(1);
+            }
+        }
+
+        type_to_count
+            .into_iter()
+            .filter(|(_, c)| *c > 1)
+            .map(|(t, _)| t)
+            .collect()
     }
 }
 
@@ -57,7 +100,7 @@ pub struct Domain {
     pub experimental: bool,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Clone, Debug, Deserialize, Hash, PartialEq, Eq)]
 pub struct Items {
     pub r#type: Option<Str>,
     #[serde(rename = "$ref")]
@@ -84,7 +127,7 @@ pub struct Parameter {
     pub experimental: bool,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Clone, Debug, Deserialize, Hash, PartialEq, Eq)]
 pub struct Type {
     id: Str,
     items: Option<Items>,
@@ -100,7 +143,7 @@ pub struct Type {
     experimental: bool,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Clone, Debug, Deserialize, Hash, PartialEq, Eq)]
 pub struct Property {
     pub name: Str,
     pub items: Option<Items>,
@@ -398,6 +441,9 @@ impl Domain {
 impl BrowserProtocol {
     fn generate(self) -> Result<()> {
         let type_to_domain = self.type_to_domain_map();
+
+        let protocol_data = self.protocol_data();
+        dbg!(protocol_data);
 
         let mut modules = Vec::with_capacity(self.domains.len());
         for domain in self.domains {
