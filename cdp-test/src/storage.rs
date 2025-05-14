@@ -90,7 +90,7 @@ pub struct SharedStorageEntry {
 }
 /// Details for an origin's shared storage.
 pub struct SharedStorageMetadata {
-    pub creation_time: Box<TimeSinceEpoch>,
+    pub creation_time: Box<NetworkTimeSinceEpoch>,
     pub length: Box<i64>,
     pub remaining_budget: Box<u64>,
     pub bytes_used: Box<i64>,
@@ -143,7 +143,7 @@ pub struct StorageBucket {
 pub struct StorageBucketInfo {
     pub bucket: Box<StorageBucket>,
     pub id: Box<String>,
-    pub expiration: Box<TimeSinceEpoch>,
+    pub expiration: Box<NetworkTimeSinceEpoch>,
     pub quota: Box<u64>,
     pub persistent: (),
     pub durability: Box<StorageBucketsDurability>,
@@ -220,7 +220,7 @@ pub struct AttributionReportingNamedBudgetDef {
 }
 /// ⚠️ Experimental
 pub struct AttributionReportingSourceRegistration {
-    pub time: Box<TimeSinceEpoch>,
+    pub time: Box<NetworkTimeSinceEpoch>,
     pub expiry: Box<i64>,
     pub trigger_specs: (),
     pub aggregatable_report_window: Box<i64>,

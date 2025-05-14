@@ -8,7 +8,7 @@ pub struct RuleSet {
     pub source_text: Box<String>,
     pub backend_node_id: Box<BackendNodeId>,
     pub url: Box<String>,
-    pub request_id: Box<RequestId>,
+    pub request_id: Box<NetworkRequestId>,
     pub error_type: Box<RuleSetErrorType>,
     pub error_message: Box<String>,
 }

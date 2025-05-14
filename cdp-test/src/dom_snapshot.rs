@@ -23,7 +23,7 @@ pub struct DomNode {
     pub document_encoding: Box<String>,
     pub public_id: Box<String>,
     pub system_id: Box<String>,
-    pub frame_id: Box<FrameId>,
+    pub frame_id: Box<crate::page::FrameId>,
     pub content_document_index: Box<i64>,
     pub pseudo_type: Box<PseudoType>,
     pub shadow_root_type: Box<ShadowRootType>,

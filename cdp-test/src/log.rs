@@ -10,7 +10,7 @@ pub struct LogEntry {
     pub url: Box<String>,
     pub line_number: Box<i64>,
     pub stack_trace: Box<StackTrace>,
-    pub network_request_id: Box<RequestId>,
+    pub network_request_id: Box<NetworkRequestId>,
     pub worker_id: Box<String>,
     pub args: (),
 }

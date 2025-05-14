@@ -640,7 +640,7 @@ pub struct ReportingApiReport {
     pub initiator_url: Box<String>,
     pub destination: Box<String>,
     pub _type: Box<String>,
-    pub timestamp: Box<TimeSinceEpoch>,
+    pub timestamp: Box<NetworkTimeSinceEpoch>,
     pub depth: Box<i64>,
     pub completed_attempts: Box<i64>,
     pub body: Box<serde_json::Map<String, serde_json::Value>>,

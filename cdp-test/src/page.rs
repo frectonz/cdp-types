@@ -215,7 +215,7 @@ pub struct OriginTrialToken {
     pub origin: Box<String>,
     pub match_sub_domains: (),
     pub trial_name: Box<String>,
-    pub expiry_time: Box<TimeSinceEpoch>,
+    pub expiry_time: Box<NetworkTimeSinceEpoch>,
     pub is_third_party: (),
     pub usage_restriction: Box<OriginTrialUsageRestriction>,
 }
@@ -260,7 +260,7 @@ pub struct FrameResource {
     pub url: Box<String>,
     pub _type: Box<ResourceType>,
     pub mime_type: Box<String>,
-    pub last_modified: Box<TimeSinceEpoch>,
+    pub last_modified: Box<NetworkTimeSinceEpoch>,
     pub content_size: Box<u64>,
     pub failed: (),
     pub canceled: (),
@@ -312,7 +312,7 @@ pub struct ScreencastFrameMetadata {
     pub device_height: Box<u64>,
     pub scroll_offset_x: Box<u64>,
     pub scroll_offset_y: Box<u64>,
-    pub timestamp: Box<TimeSinceEpoch>,
+    pub timestamp: Box<NetworkTimeSinceEpoch>,
 }
 /// Error while paring app manifest.
 pub struct AppManifestError {

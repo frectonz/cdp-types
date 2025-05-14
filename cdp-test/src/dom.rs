@@ -102,7 +102,7 @@ pub struct Node {
     pub pseudo_type: Box<PseudoType>,
     pub pseudo_identifier: Box<String>,
     pub shadow_root_type: Box<ShadowRootType>,
-    pub frame_id: Box<FrameId>,
+    pub frame_id: Box<crate::page::FrameId>,
     pub content_document: Box<Node>,
     pub shadow_roots: (),
     pub template_content: Box<Node>,

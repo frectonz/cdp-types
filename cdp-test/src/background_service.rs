@@ -16,7 +16,7 @@ pub struct EventMetadata {
     pub value: Box<String>,
 }
 pub struct BackgroundServiceEvent {
-    pub timestamp: Box<TimeSinceEpoch>,
+    pub timestamp: Box<NetworkTimeSinceEpoch>,
     pub origin: Box<String>,
     pub service_worker_registration_id: Box<RegistrationId>,
     pub service: Box<ServiceName>,

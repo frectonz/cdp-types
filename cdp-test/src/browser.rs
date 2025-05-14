@@ -10,7 +10,7 @@ pub struct Bounds {
     pub top: Box<i64>,
     pub width: Box<i64>,
     pub height: Box<i64>,
-    pub window_state: Box<WindowState>,
+    pub window_state: Box<BrowserWindowState>,
 }
 /// ⚠️ Experimental
 pub enum PermissionType {

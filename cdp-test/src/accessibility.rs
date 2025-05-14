@@ -135,5 +135,5 @@ pub struct AxNode {
     pub parent_id: Box<AxNodeId>,
     pub child_ids: (),
     pub backend_dom_node_id: Box<BackendNodeId>,
-    pub frame_id: Box<FrameId>,
+    pub frame_id: Box<crate::page::FrameId>,
 }

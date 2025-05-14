@@ -63,7 +63,7 @@ pub struct SelectorList {
 /// CSS stylesheet metainformation.
 pub struct CssStyleSheetHeader {
     pub style_sheet_id: Box<StyleSheetId>,
-    pub frame_id: Box<FrameId>,
+    pub frame_id: Box<crate::page::FrameId>,
     pub source_url: Box<String>,
     pub source_map_url: Box<String>,
     pub origin: Box<StyleSheetOrigin>,

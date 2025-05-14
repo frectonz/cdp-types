@@ -8,12 +8,12 @@ pub struct AffectedCookie {
 }
 /// Information about a request that is affected by an inspector issue.
 pub struct AffectedRequest {
-    pub request_id: Box<RequestId>,
+    pub request_id: Box<NetworkRequestId>,
     pub url: Box<String>,
 }
 /// Information about the frame affected by an inspector issue.
 pub struct AffectedFrame {
-    pub frame_id: Box<FrameId>,
+    pub frame_id: Box<crate::page::FrameId>,
 }
 pub enum CookieExclusionReason {
     ExcludeSameSiteUnspecifiedTreatedAsLax,
@@ -292,7 +292,7 @@ pub struct QuirksModeIssueDetails {
     pub is_limited_quirks_mode: (),
     pub document_node_id: Box<BackendNodeId>,
     pub url: Box<String>,
-    pub frame_id: Box<FrameId>,
+    pub frame_id: Box<crate::page::FrameId>,
     pub loader_id: Box<LoaderId>,
 }
 #[deprecated]
@@ -326,7 +326,7 @@ pub enum GenericIssueErrorType {
 /// Depending on the concrete errorType, different properties are set.
 pub struct GenericIssueDetails {
     pub error_type: Box<GenericIssueErrorType>,
-    pub frame_id: Box<FrameId>,
+    pub frame_id: Box<crate::page::FrameId>,
     pub violating_node_id: Box<BackendNodeId>,
     pub violating_node_attribute: Box<String>,
     pub request: Box<AffectedRequest>,
@@ -446,7 +446,7 @@ pub struct ClientHintIssueDetails {
 pub struct FailedRequestInfo {
     pub url: Box<String>,
     pub failure_message: Box<String>,
-    pub request_id: Box<RequestId>,
+    pub request_id: Box<NetworkRequestId>,
 }
 pub enum PartitioningBlobUrlInfo {
     BlockedCrossPartitionFetching,
