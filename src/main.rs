@@ -20,6 +20,7 @@ pub struct BrowserProtocol {
 struct ProtocolData {
     common_type_ids: Vec<Str>,
     common_types: Vec<(Str, Type)>,
+    common_type_name_map: HashMap<Str, Str>,
 }
 
 impl ProtocolData {
@@ -29,12 +30,19 @@ impl ProtocolData {
             .find(|x| x.as_ref() == typ)
             .is_some()
     }
+
+    fn get_common_type(&self, real_type_name: &str) -> Option<&str> {
+        self.common_type_name_map
+            .get(real_type_name)
+            .map(|x| x.as_ref())
+    }
 }
 
 impl BrowserProtocol {
     fn protocol_data(&self) -> ProtocolData {
         let common_type_ids = self.common_type_ids();
         let mut common_types = Vec::with_capacity(common_type_ids.len());
+        let mut common_type_name_map = HashMap::with_capacity(common_type_ids.len());
 
         for domain in self.domains.iter() {
             for typ in domain.types.iter() {
@@ -50,9 +58,14 @@ impl BrowserProtocol {
                         format!("{domain}{id}").to_pascal_case()
                     };
 
-                    typ.id = id.into_boxed_str();
+                    let original = typ.id.as_ref();
+                    let resolved = id.into_boxed_str();
+                    let real_type_name = format!("{domain}.{original}").into_boxed_str();
+
+                    typ.id = resolved.clone();
 
                     common_types.push((domain, typ));
+                    common_type_name_map.insert(real_type_name, resolved);
                 }
             }
         }
@@ -60,6 +73,7 @@ impl BrowserProtocol {
         ProtocolData {
             common_type_ids,
             common_types,
+            common_type_name_map,
         }
     }
 
@@ -230,7 +244,7 @@ fn get_rust_type(typ: &str) -> Option<TokenStream> {
 }
 
 impl Property {
-    fn to_rust(&self) -> TokenStream {
+    fn to_rust(&self, protocol_data: &ProtocolData) -> TokenStream {
         let name = if self.name.as_ref() == "type" {
             "_type".to_owned()
         } else {
@@ -241,10 +255,39 @@ impl Property {
 
         let basic_type = self.r#type.as_ref().and_then(|typ| get_rust_type(typ));
         let ref_typ = self.r#ref.as_ref().map(|ref_typ| {
-            let (_, ref_typ) = ref_typ.split_once('.').unwrap_or(("", ref_typ.as_ref()));
+            if ref_typ.as_ref() == "WindowState" {
+                if self
+                    .description
+                    .as_ref()
+                    .map(|desc| desc.to_lowercase().contains("target"))
+                    .unwrap_or_default()
+                {
+                    return quote! {
+                        TargetWindowState
+                    };
+                } else {
+                    return quote! {
+                        BrowserWindowState
+                    };
+                }
+            }
 
-            let ref_type = ref_typ.to_pascal_case();
-            let ref_type = Ident::new(&ref_type, Span::call_site());
+            if ref_typ.as_ref() == "Page.FrameId" {
+                return quote! {
+                    crate::page::FrameId
+                };
+            }
+
+            let common_type = protocol_data.get_common_type(&ref_typ);
+
+            let ref_type = match common_type {
+                Some(ref_typ) => Ident::new(ref_typ, Span::call_site()),
+                None => {
+                    let (_, ref_typ) = ref_typ.split_once('.').unwrap_or(("", ref_typ.as_ref()));
+                    let ref_type = ref_typ.to_pascal_case();
+                    Ident::new(&ref_type, Span::call_site())
+                }
+            };
 
             quote! { #ref_type }
         });
@@ -293,12 +336,12 @@ impl Type {
         })
     }
 
-    fn properties(&self) -> Option<TokenStream> {
+    fn properties(&self, protocol_data: &ProtocolData) -> Option<TokenStream> {
         self.properties.as_ref().map(|props| {
             // All objects have the type `object`.
             assert_eq!(self.r#type.as_ref(), "object");
 
-            let property_defs = props.into_iter().map(|p| p.to_rust());
+            let property_defs = props.into_iter().map(|p| p.to_rust(protocol_data));
 
             quote! {
                 #(#property_defs),*
@@ -354,10 +397,10 @@ impl Type {
         }
     }
 
-    fn to_rust(&self) -> TokenStream {
+    fn to_rust(&self, protocol_data: &ProtocolData) -> TokenStream {
         let id = self.id_ident();
         let items = self.items();
-        let properties = self.properties();
+        let properties = self.properties(protocol_data);
         let enum_variants = self.enum_variants();
 
         let description = self.description();
@@ -431,7 +474,7 @@ impl Domain {
             .types
             .iter()
             .filter(|x| !protocol.is_common_type(&x.id))
-            .map(|t| t.to_rust());
+            .map(|t| t.to_rust(protocol));
 
         let content = quote! {
             use crate::common::*;
@@ -448,7 +491,7 @@ impl BrowserProtocol {
         let protocol_data = self.protocol_data();
 
         let common_types = protocol_data.common_types.iter().map(|(domain, typ)| {
-            let common_type = typ.to_rust();
+            let common_type = typ.to_rust(&protocol_data);
             let domain = domain.to_snake_case();
             let domain = Ident::new(&domain, Span::call_site());
 
