@@ -1,4 +1,5 @@
 use crate::common::*;
+use crate::page::*;
 /// Unique DOM node identifier.
 pub struct NodeId(i64);
 /** Unique DOM node identifier used to reference a node that may not have been pushed to the

@@ -1,5 +1,7 @@
 use crate::common::*;
 use crate::network::*;
+use crate::page::*;
+use crate::dom::*;
 /// Information about a cookie that is affected by an inspector issue.
 pub struct AffectedCookie {
     pub name: Box<String>,

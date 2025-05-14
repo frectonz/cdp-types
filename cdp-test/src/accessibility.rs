@@ -1,5 +1,6 @@
 use crate::common::*;
 use crate::dom::*;
+use crate::page::*;
 /// Unique accessibility node identifier.
 pub struct AxNodeId(String);
 /// Enum of possible property types.

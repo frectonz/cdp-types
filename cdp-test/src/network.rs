@@ -1,5 +1,6 @@
 use crate::common::*;
 use crate::security::*;
+use crate::io::*;
 /// Resource type as it was perceived by the rendering engine.
 pub enum ResourceType {
     Document,

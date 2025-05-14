@@ -1,4 +1,6 @@
 use crate::common::*;
+use crate::page::*;
+use crate::browser::*;
 pub struct TargetId(String);
 /// Unique identifier of attached debugging session.
 pub struct SessionId(String);

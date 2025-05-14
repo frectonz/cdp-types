@@ -1,4 +1,5 @@
 use crate::common::*;
+use crate::network::*;
 /// An internal certificate ID value.
 pub struct CertificateId(i64);
 /** A description of mixed content (HTTP resources on HTTPS pages), as defined by

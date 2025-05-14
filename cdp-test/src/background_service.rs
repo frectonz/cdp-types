@@ -1,4 +1,6 @@
 use crate::common::*;
+use crate::network::*;
+use crate::service_worker::*;
 /** The Background Service that will be associated with the commands/events.
 Every Background Service operates independently, but they share the same
 API.*/

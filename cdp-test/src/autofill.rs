@@ -1,4 +1,6 @@
 use crate::common::*;
+use crate::page::*;
+use crate::dom::*;
 pub struct CreditCard {
     pub number: Box<String>,
     pub name: Box<String>,

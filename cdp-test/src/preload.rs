@@ -1,4 +1,6 @@
 use crate::common::*;
+use crate::network::*;
+use crate::dom::*;
 /// Unique id
 pub struct RuleSetId(String);
 /// Corresponds to SpeculationRuleSet

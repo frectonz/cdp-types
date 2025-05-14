@@ -1,6 +1,7 @@
 use crate::common::*;
 use crate::dom::*;
 use crate::network::*;
+use crate::page::*;
 /// See https://github.com/WICG/LargestContentfulPaint and largest_contentful_paint.idl
 pub struct LargestContentfulPaint {
     pub render_time: Box<NetworkTimeSinceEpoch>,
