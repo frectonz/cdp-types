@@ -1,33 +1,33 @@
-pub use crate::common::*;
+use crate::common::*;
 use crate::dom::*;
 use crate::network::*;
 /// See https://github.com/WICG/LargestContentfulPaint and largest_contentful_paint.idl
 pub struct LargestContentfulPaint {
-    pub render_time: (),
-    pub load_time: (),
-    pub size: u64,
-    pub element_id: String,
-    pub url: String,
-    pub node_id: (),
+    pub render_time: Box<NetworkTimeSinceEpoch>,
+    pub load_time: Box<NetworkTimeSinceEpoch>,
+    pub size: Box<u64>,
+    pub element_id: Box<String>,
+    pub url: Box<String>,
+    pub node_id: Box<DomBackendNodeId>,
 }
 pub struct LayoutShiftAttribution {
-    pub previous_rect: (),
-    pub current_rect: (),
-    pub node_id: (),
+    pub previous_rect: Box<DomRect>,
+    pub current_rect: Box<DomRect>,
+    pub node_id: Box<DomBackendNodeId>,
 }
 /// See https://wicg.github.io/layout-instability/#sec-layout-shift and layout_shift.idl
 pub struct LayoutShift {
-    pub value: u64,
+    pub value: Box<u64>,
     pub had_recent_input: (),
-    pub last_input_time: (),
+    pub last_input_time: Box<NetworkTimeSinceEpoch>,
     pub sources: (),
 }
 pub struct TimelineEvent {
-    pub frame_id: (),
-    pub _type: String,
-    pub name: String,
-    pub time: (),
-    pub duration: u64,
-    pub lcp_details: (),
-    pub layout_shift_details: (),
+    pub frame_id: Box<PageFrameId>,
+    pub _type: Box<String>,
+    pub name: Box<String>,
+    pub time: Box<NetworkTimeSinceEpoch>,
+    pub duration: Box<u64>,
+    pub lcp_details: Box<LargestContentfulPaint>,
+    pub layout_shift_details: Box<LayoutShift>,
 }

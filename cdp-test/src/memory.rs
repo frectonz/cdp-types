@@ -1,4 +1,4 @@
-pub use crate::common::*;
+use crate::common::*;
 /// Memory pressure level.
 pub enum PressureLevel {
     Moderate,
@@ -6,8 +6,8 @@ pub enum PressureLevel {
 }
 /// Heap profile sample.
 pub struct SamplingProfileNode {
-    pub size: u64,
-    pub total: u64,
+    pub size: Box<u64>,
+    pub total: Box<u64>,
     pub stack: (),
 }
 /// Array of heap profile samples.
@@ -17,13 +17,13 @@ pub struct SamplingProfile {
 }
 /// Executable module information
 pub struct Module {
-    pub name: String,
-    pub uuid: String,
-    pub base_address: String,
-    pub size: u64,
+    pub name: Box<String>,
+    pub uuid: Box<String>,
+    pub base_address: Box<String>,
+    pub size: Box<u64>,
 }
 /// DOM object counter data.
 pub struct DomCounter {
-    pub name: String,
-    pub count: i64,
+    pub name: Box<String>,
+    pub count: Box<i64>,
 }

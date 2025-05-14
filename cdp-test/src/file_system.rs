@@ -1,19 +1,19 @@
-pub use crate::common::*;
+use crate::common::*;
 use crate::network::*;
 use crate::storage::*;
 pub struct File {
-    pub name: String,
-    pub last_modified: (),
-    pub size: u64,
-    pub _type: String,
+    pub name: Box<String>,
+    pub last_modified: Box<NetworkTimeSinceEpoch>,
+    pub size: Box<u64>,
+    pub _type: Box<String>,
 }
 pub struct Directory {
-    pub name: String,
+    pub name: Box<String>,
     pub nested_directories: (),
     pub nested_files: (),
 }
 pub struct BucketFileSystemLocator {
-    pub storage_key: (),
-    pub bucket_name: String,
+    pub storage_key: Box<StorageSerializedStorageKey>,
+    pub bucket_name: Box<String>,
     pub path_components: (),
 }

@@ -1,4 +1,4 @@
-pub use crate::common::*;
+use crate::common::*;
 pub struct AuthenticatorId(String);
 pub enum AuthenticatorProtocol {
     U2f,
@@ -16,9 +16,9 @@ pub enum AuthenticatorTransport {
     Internal,
 }
 pub struct VirtualAuthenticatorOptions {
-    pub protocol: (),
-    pub ctap2_version: (),
-    pub transport: (),
+    pub protocol: Box<AuthenticatorProtocol>,
+    pub ctap2_version: Box<Ctap2Version>,
+    pub transport: Box<AuthenticatorTransport>,
     pub has_resident_key: (),
     pub has_user_verification: (),
     pub has_large_blob: (),
@@ -31,15 +31,15 @@ pub struct VirtualAuthenticatorOptions {
     pub default_backup_state: (),
 }
 pub struct Credential {
-    pub credential_id: String,
+    pub credential_id: Box<String>,
     pub is_resident_credential: (),
-    pub rp_id: String,
-    pub private_key: String,
-    pub user_handle: String,
-    pub sign_count: i64,
-    pub large_blob: String,
+    pub rp_id: Box<String>,
+    pub private_key: Box<String>,
+    pub user_handle: Box<String>,
+    pub sign_count: Box<i64>,
+    pub large_blob: Box<String>,
     pub backup_eligibility: (),
     pub backup_state: (),
-    pub user_name: String,
-    pub user_display_name: String,
+    pub user_name: Box<String>,
+    pub user_display_name: Box<String>,
 }

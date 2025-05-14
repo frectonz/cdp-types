@@ -1,4 +1,4 @@
-pub use crate::common::*;
+use crate::common::*;
 use crate::security::*;
 /// Resource type as it was perceived by the rendering engine.
 pub enum ResourceType {
@@ -84,27 +84,27 @@ pub enum CookieSourceScheme {
 }
 /// Timing information for the request.
 pub struct ResourceTiming {
-    pub request_time: u64,
-    pub proxy_start: u64,
-    pub proxy_end: u64,
-    pub dns_start: u64,
-    pub dns_end: u64,
-    pub connect_start: u64,
-    pub connect_end: u64,
-    pub ssl_start: u64,
-    pub ssl_end: u64,
-    pub worker_start: u64,
-    pub worker_ready: u64,
-    pub worker_fetch_start: u64,
-    pub worker_respond_with_settled: u64,
-    pub worker_router_evaluation_start: u64,
-    pub worker_cache_lookup_start: u64,
-    pub send_start: u64,
-    pub send_end: u64,
-    pub push_start: u64,
-    pub push_end: u64,
-    pub receive_headers_start: u64,
-    pub receive_headers_end: u64,
+    pub request_time: Box<u64>,
+    pub proxy_start: Box<u64>,
+    pub proxy_end: Box<u64>,
+    pub dns_start: Box<u64>,
+    pub dns_end: Box<u64>,
+    pub connect_start: Box<u64>,
+    pub connect_end: Box<u64>,
+    pub ssl_start: Box<u64>,
+    pub ssl_end: Box<u64>,
+    pub worker_start: Box<u64>,
+    pub worker_ready: Box<u64>,
+    pub worker_fetch_start: Box<u64>,
+    pub worker_respond_with_settled: Box<u64>,
+    pub worker_router_evaluation_start: Box<u64>,
+    pub worker_cache_lookup_start: Box<u64>,
+    pub send_start: Box<u64>,
+    pub send_end: Box<u64>,
+    pub push_start: Box<u64>,
+    pub push_end: Box<u64>,
+    pub receive_headers_start: Box<u64>,
+    pub receive_headers_end: Box<u64>,
 }
 /// Loading priority of a resource request.
 pub enum ResourcePriority {
@@ -116,51 +116,51 @@ pub enum ResourcePriority {
 }
 /// Post data entry for HTTP request
 pub struct PostDataEntry {
-    pub bytes: String,
+    pub bytes: Box<String>,
 }
 /// HTTP request data.
 pub struct Request {
-    pub url: String,
-    pub url_fragment: String,
-    pub method: String,
-    pub headers: (),
-    pub post_data: String,
+    pub url: Box<String>,
+    pub url_fragment: Box<String>,
+    pub method: Box<String>,
+    pub headers: Box<Headers>,
+    pub post_data: Box<String>,
     pub has_post_data: (),
     pub post_data_entries: (),
-    pub mixed_content_type: (),
-    pub initial_priority: (),
-    pub referrer_policy: String,
+    pub mixed_content_type: Box<SecurityMixedContentType>,
+    pub initial_priority: Box<ResourcePriority>,
+    pub referrer_policy: Box<String>,
     pub is_link_preload: (),
-    pub trust_token_params: (),
+    pub trust_token_params: Box<TrustTokenParams>,
     pub is_same_site: (),
 }
 /// Details of a signed certificate timestamp (SCT).
 pub struct SignedCertificateTimestamp {
-    pub status: String,
-    pub origin: String,
-    pub log_description: String,
-    pub log_id: String,
-    pub timestamp: u64,
-    pub hash_algorithm: String,
-    pub signature_algorithm: String,
-    pub signature_data: String,
+    pub status: Box<String>,
+    pub origin: Box<String>,
+    pub log_description: Box<String>,
+    pub log_id: Box<String>,
+    pub timestamp: Box<u64>,
+    pub hash_algorithm: Box<String>,
+    pub signature_algorithm: Box<String>,
+    pub signature_data: Box<String>,
 }
 /// Security details about a request.
 pub struct SecurityDetails {
-    pub protocol: String,
-    pub key_exchange: String,
-    pub key_exchange_group: String,
-    pub cipher: String,
-    pub mac: String,
-    pub certificate_id: (),
-    pub subject_name: String,
+    pub protocol: Box<String>,
+    pub key_exchange: Box<String>,
+    pub key_exchange_group: Box<String>,
+    pub cipher: Box<String>,
+    pub mac: Box<String>,
+    pub certificate_id: Box<SecurityCertificateId>,
+    pub subject_name: Box<String>,
     pub san_list: (),
-    pub issuer: String,
-    pub valid_from: (),
-    pub valid_to: (),
+    pub issuer: Box<String>,
+    pub valid_from: Box<TimeSinceEpoch>,
+    pub valid_to: Box<TimeSinceEpoch>,
     pub signed_certificate_timestamp_list: (),
-    pub certificate_transparency_compliance: (),
-    pub server_signature_algorithm: i64,
+    pub certificate_transparency_compliance: Box<CertificateTransparencyCompliance>,
+    pub server_signature_algorithm: Box<i64>,
     pub encrypted_client_hello: (),
 }
 /// Whether the request complied with Certificate Transparency policy.
@@ -226,8 +226,8 @@ pub enum CorsError {
     LocalNetworkAccessPermissionDenied,
 }
 pub struct CorsErrorStatus {
-    pub cors_error: (),
-    pub failed_parameter: String,
+    pub cors_error: Box<CorsError>,
+    pub failed_parameter: Box<String>,
 }
 /// Source of serviceworker response.
 pub enum ServiceWorkerResponseSource {
@@ -241,8 +241,8 @@ pub enum ServiceWorkerResponseSource {
 depending on the type, some additional parameters. The values
 are specified in third_party/blink/renderer/core/fetch/trust_token.idl.*/
 pub struct TrustTokenParams {
-    pub operation: (),
-    pub refresh_policy: String,
+    pub operation: Box<TrustTokenOperationType>,
+    pub refresh_policy: Box<String>,
     pub issuers: (),
 }
 /// ⚠️ Experimental
@@ -273,99 +273,99 @@ pub enum ServiceWorkerRouterSource {
 }
 /// ⚠️ Experimental
 pub struct ServiceWorkerRouterInfo {
-    pub rule_id_matched: i64,
-    pub matched_source_type: (),
-    pub actual_source_type: (),
+    pub rule_id_matched: Box<i64>,
+    pub matched_source_type: Box<ServiceWorkerRouterSource>,
+    pub actual_source_type: Box<ServiceWorkerRouterSource>,
 }
 /// HTTP response data.
 pub struct Response {
-    pub url: String,
-    pub status: i64,
-    pub status_text: String,
-    pub headers: (),
-    pub headers_text: String,
-    pub mime_type: String,
-    pub charset: String,
-    pub request_headers: (),
-    pub request_headers_text: String,
+    pub url: Box<String>,
+    pub status: Box<i64>,
+    pub status_text: Box<String>,
+    pub headers: Box<Headers>,
+    pub headers_text: Box<String>,
+    pub mime_type: Box<String>,
+    pub charset: Box<String>,
+    pub request_headers: Box<Headers>,
+    pub request_headers_text: Box<String>,
     pub connection_reused: (),
-    pub connection_id: u64,
-    pub remote_ip_address: String,
-    pub remote_port: i64,
+    pub connection_id: Box<u64>,
+    pub remote_ip_address: Box<String>,
+    pub remote_port: Box<i64>,
     pub from_disk_cache: (),
     pub from_service_worker: (),
     pub from_prefetch_cache: (),
     pub from_early_hints: (),
-    pub service_worker_router_info: (),
-    pub encoded_data_length: u64,
-    pub timing: (),
-    pub service_worker_response_source: (),
-    pub response_time: (),
-    pub cache_storage_cache_name: String,
-    pub protocol: String,
-    pub alternate_protocol_usage: (),
-    pub security_state: (),
-    pub security_details: (),
+    pub service_worker_router_info: Box<ServiceWorkerRouterInfo>,
+    pub encoded_data_length: Box<u64>,
+    pub timing: Box<ResourceTiming>,
+    pub service_worker_response_source: Box<ServiceWorkerResponseSource>,
+    pub response_time: Box<TimeSinceEpoch>,
+    pub cache_storage_cache_name: Box<String>,
+    pub protocol: Box<String>,
+    pub alternate_protocol_usage: Box<AlternateProtocolUsage>,
+    pub security_state: Box<SecuritySecurityState>,
+    pub security_details: Box<SecurityDetails>,
 }
 /// WebSocket request data.
 pub struct WebSocketRequest {
-    pub headers: (),
+    pub headers: Box<Headers>,
 }
 /// WebSocket response data.
 pub struct WebSocketResponse {
-    pub status: i64,
-    pub status_text: String,
-    pub headers: (),
-    pub headers_text: String,
-    pub request_headers: (),
-    pub request_headers_text: String,
+    pub status: Box<i64>,
+    pub status_text: Box<String>,
+    pub headers: Box<Headers>,
+    pub headers_text: Box<String>,
+    pub request_headers: Box<Headers>,
+    pub request_headers_text: Box<String>,
 }
 /// WebSocket message data. This represents an entire WebSocket message, not just a fragmented frame as the name suggests.
 pub struct WebSocketFrame {
-    pub opcode: u64,
+    pub opcode: Box<u64>,
     pub mask: (),
-    pub payload_data: String,
+    pub payload_data: Box<String>,
 }
 /// Information about the cached resource.
 pub struct CachedResource {
-    pub url: String,
-    pub _type: (),
-    pub response: (),
-    pub body_size: u64,
+    pub url: Box<String>,
+    pub _type: Box<ResourceType>,
+    pub response: Box<Response>,
+    pub body_size: Box<u64>,
 }
 /// Information about the request initiator.
 pub struct Initiator {
-    pub _type: String,
-    pub stack: (),
-    pub url: String,
-    pub line_number: u64,
-    pub column_number: u64,
-    pub request_id: (),
+    pub _type: Box<String>,
+    pub stack: Box<RuntimeStackTrace>,
+    pub url: Box<String>,
+    pub line_number: Box<u64>,
+    pub column_number: Box<u64>,
+    pub request_id: Box<RequestId>,
 }
 /// ⚠️ Experimental
 /** cookiePartitionKey object
 The representation of the components of the key that are created by the cookiePartitionKey class contained in net/cookies/cookie_partition_key.h.*/
 pub struct CookiePartitionKey {
-    pub top_level_site: String,
+    pub top_level_site: Box<String>,
     pub has_cross_site_ancestor: (),
 }
 /// Cookie object
 pub struct Cookie {
-    pub name: String,
-    pub value: String,
-    pub domain: String,
-    pub path: String,
-    pub expires: u64,
-    pub size: i64,
+    pub name: Box<String>,
+    pub value: Box<String>,
+    pub domain: Box<String>,
+    pub path: Box<String>,
+    pub expires: Box<u64>,
+    pub size: Box<i64>,
     pub http_only: (),
     pub secure: (),
     pub session: (),
-    pub same_site: (),
-    pub priority: (),
+    pub same_site: Box<CookieSameSite>,
+    pub priority: Box<CookiePriority>,
     pub same_party: (),
-    pub source_scheme: (),
-    pub source_port: i64,
-    pub partition_key: (),
+    pub source_scheme: Box<CookieSourceScheme>,
+    pub source_port: Box<i64>,
+    pub partition_key: Box<CookiePartitionKey>,
     pub partition_key_opaque: (),
 }
 /// ⚠️ Experimental
@@ -436,41 +436,41 @@ pub enum CookieExemptionReason {
 /// A cookie which was not stored from a response with the corresponding reason.
 pub struct BlockedSetCookieWithReason {
     pub blocked_reasons: (),
-    pub cookie_line: String,
-    pub cookie: (),
+    pub cookie_line: Box<String>,
+    pub cookie: Box<Cookie>,
 }
 /// ⚠️ Experimental
 /** A cookie should have been blocked by 3PCD but is exempted and stored from a response with the
 corresponding reason. A cookie could only have at most one exemption reason.*/
 pub struct ExemptedSetCookieWithReason {
-    pub exemption_reason: (),
-    pub cookie_line: String,
-    pub cookie: (),
+    pub exemption_reason: Box<CookieExemptionReason>,
+    pub cookie_line: Box<String>,
+    pub cookie: Box<Cookie>,
 }
 /// ⚠️ Experimental
 /** A cookie associated with the request which may or may not be sent with it.
 Includes the cookies itself and reasons for blocking or exemption.*/
 pub struct AssociatedCookie {
-    pub cookie: (),
+    pub cookie: Box<Cookie>,
     pub blocked_reasons: (),
-    pub exemption_reason: (),
+    pub exemption_reason: Box<CookieExemptionReason>,
 }
 /// Cookie parameter object
 pub struct CookieParam {
-    pub name: String,
-    pub value: String,
-    pub url: String,
-    pub domain: String,
-    pub path: String,
+    pub name: Box<String>,
+    pub value: Box<String>,
+    pub url: Box<String>,
+    pub domain: Box<String>,
+    pub path: Box<String>,
     pub secure: (),
     pub http_only: (),
-    pub same_site: (),
-    pub expires: (),
-    pub priority: (),
+    pub same_site: Box<CookieSameSite>,
+    pub expires: Box<TimeSinceEpoch>,
+    pub priority: Box<CookiePriority>,
     pub same_party: (),
-    pub source_scheme: (),
-    pub source_port: i64,
-    pub partition_key: (),
+    pub source_scheme: Box<CookieSourceScheme>,
+    pub source_port: Box<i64>,
+    pub partition_key: Box<CookiePartitionKey>,
 }
 /// ⚠️ Experimental
 /** Stages of the interception to begin intercepting. Request will intercept before the request is
@@ -483,25 +483,25 @@ pub enum InterceptionStage {
 /** Information about a signed exchange signature.
 https://wicg.github.io/webpackage/draft-yasskin-httpbis-origin-signed-exchanges-impl.html#rfc.section.3.1*/
 pub struct SignedExchangeSignature {
-    pub label: String,
-    pub signature: String,
-    pub integrity: String,
-    pub cert_url: String,
-    pub cert_sha256: String,
-    pub validity_url: String,
-    pub date: i64,
-    pub expires: i64,
+    pub label: Box<String>,
+    pub signature: Box<String>,
+    pub integrity: Box<String>,
+    pub cert_url: Box<String>,
+    pub cert_sha256: Box<String>,
+    pub validity_url: Box<String>,
+    pub date: Box<i64>,
+    pub expires: Box<i64>,
     pub certificates: (),
 }
 /// ⚠️ Experimental
 /** Information about a signed exchange header.
 https://wicg.github.io/webpackage/draft-yasskin-httpbis-origin-signed-exchanges-impl.html#cbor-representation*/
 pub struct SignedExchangeHeader {
-    pub request_url: String,
-    pub response_code: i64,
-    pub response_headers: (),
+    pub request_url: Box<String>,
+    pub response_code: Box<i64>,
+    pub response_headers: Box<Headers>,
     pub signatures: (),
-    pub header_integrity: String,
+    pub header_integrity: Box<String>,
 }
 /// ⚠️ Experimental
 /// Field type for a signed exchange related error.
@@ -516,16 +516,16 @@ pub enum SignedExchangeErrorField {
 /// ⚠️ Experimental
 /// Information about a signed exchange response.
 pub struct SignedExchangeError {
-    pub message: String,
-    pub signature_index: i64,
-    pub error_field: (),
+    pub message: Box<String>,
+    pub signature_index: Box<i64>,
+    pub error_field: Box<SignedExchangeErrorField>,
 }
 /// ⚠️ Experimental
 /// Information about a signed exchange response.
 pub struct SignedExchangeInfo {
-    pub outer_response: (),
-    pub header: (),
-    pub security_details: (),
+    pub outer_response: Box<Response>,
+    pub header: Box<SignedExchangeHeader>,
+    pub security_details: Box<SecurityDetails>,
     pub errors: (),
 }
 /// ⚠️ Experimental
@@ -544,10 +544,10 @@ pub enum DirectSocketDnsQueryType {
 /// ⚠️ Experimental
 pub struct DirectTcpSocketOptions {
     pub no_delay: (),
-    pub keep_alive_delay: u64,
-    pub send_buffer_size: u64,
-    pub receive_buffer_size: u64,
-    pub dns_query_type: (),
+    pub keep_alive_delay: Box<u64>,
+    pub send_buffer_size: Box<u64>,
+    pub receive_buffer_size: Box<u64>,
+    pub dns_query_type: Box<DirectSocketDnsQueryType>,
 }
 /// ⚠️ Experimental
 pub enum PrivateNetworkRequestPolicy {
@@ -568,13 +568,13 @@ pub enum IpAddressSpace {
 }
 /// ⚠️ Experimental
 pub struct ConnectTiming {
-    pub request_time: u64,
+    pub request_time: Box<u64>,
 }
 /// ⚠️ Experimental
 pub struct ClientSecurityState {
     pub initiator_is_secure_context: (),
-    pub initiator_ip_address_space: (),
-    pub private_network_request_policy: (),
+    pub initiator_ip_address_space: Box<IpAddressSpace>,
+    pub private_network_request_policy: Box<PrivateNetworkRequestPolicy>,
 }
 /// ⚠️ Experimental
 pub enum CrossOriginOpenerPolicyValue {
@@ -588,10 +588,10 @@ pub enum CrossOriginOpenerPolicyValue {
 }
 /// ⚠️ Experimental
 pub struct CrossOriginOpenerPolicyStatus {
-    pub value: (),
-    pub report_only_value: (),
-    pub reporting_endpoint: String,
-    pub report_only_reporting_endpoint: String,
+    pub value: Box<CrossOriginOpenerPolicyValue>,
+    pub report_only_value: Box<CrossOriginOpenerPolicyValue>,
+    pub reporting_endpoint: Box<String>,
+    pub report_only_reporting_endpoint: Box<String>,
 }
 /// ⚠️ Experimental
 pub enum CrossOriginEmbedderPolicyValue {
@@ -601,10 +601,10 @@ pub enum CrossOriginEmbedderPolicyValue {
 }
 /// ⚠️ Experimental
 pub struct CrossOriginEmbedderPolicyStatus {
-    pub value: (),
-    pub report_only_value: (),
-    pub reporting_endpoint: String,
-    pub report_only_reporting_endpoint: String,
+    pub value: Box<CrossOriginEmbedderPolicyValue>,
+    pub report_only_value: Box<CrossOriginEmbedderPolicyValue>,
+    pub reporting_endpoint: Box<String>,
+    pub report_only_reporting_endpoint: Box<String>,
 }
 /// ⚠️ Experimental
 pub enum ContentSecurityPolicySource {
@@ -613,14 +613,14 @@ pub enum ContentSecurityPolicySource {
 }
 /// ⚠️ Experimental
 pub struct ContentSecurityPolicyStatus {
-    pub effective_directives: String,
+    pub effective_directives: Box<String>,
     pub is_enforced: (),
-    pub source: (),
+    pub source: Box<ContentSecurityPolicySource>,
 }
 /// ⚠️ Experimental
 pub struct SecurityIsolationStatus {
-    pub coop: (),
-    pub coep: (),
+    pub coop: Box<CrossOriginOpenerPolicyStatus>,
+    pub coep: Box<CrossOriginEmbedderPolicyStatus>,
     pub csp: (),
 }
 /// ⚠️ Experimental
@@ -636,30 +636,30 @@ pub struct ReportId(String);
 /// ⚠️ Experimental
 /// An object representing a report generated by the Reporting API.
 pub struct ReportingApiReport {
-    pub id: (),
-    pub initiator_url: String,
-    pub destination: String,
-    pub _type: String,
-    pub timestamp: (),
-    pub depth: i64,
-    pub completed_attempts: i64,
-    pub body: serde_json::Map<String, serde_json::Value>,
-    pub status: (),
+    pub id: Box<ReportId>,
+    pub initiator_url: Box<String>,
+    pub destination: Box<String>,
+    pub _type: Box<String>,
+    pub timestamp: Box<NetworkTimeSinceEpoch>,
+    pub depth: Box<i64>,
+    pub completed_attempts: Box<i64>,
+    pub body: Box<serde_json::Map<String, serde_json::Value>>,
+    pub status: Box<ReportStatus>,
 }
 /// ⚠️ Experimental
 pub struct ReportingApiEndpoint {
-    pub url: String,
-    pub group_name: String,
+    pub url: Box<String>,
+    pub group_name: Box<String>,
 }
 /// ⚠️ Experimental
 /// An object providing the result of a network resource load.
 pub struct LoadNetworkResourcePageResult {
     pub success: (),
-    pub net_error: u64,
-    pub net_error_name: String,
-    pub http_status_code: u64,
-    pub stream: (),
-    pub headers: (),
+    pub net_error: Box<u64>,
+    pub net_error_name: Box<String>,
+    pub http_status_code: Box<u64>,
+    pub stream: Box<IoStreamHandle>,
+    pub headers: Box<NetworkHeaders>,
 }
 /// ⚠️ Experimental
 /** An options object that may be extended later to better support CORS,

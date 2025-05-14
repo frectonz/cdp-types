@@ -1,4 +1,4 @@
-pub use crate::common::*;
+use crate::common::*;
 use crate::dom::*;
 /// Unique accessibility node identifier.
 pub struct AxNodeId(String);
@@ -46,28 +46,28 @@ pub enum AxValueNativeSourceType {
 }
 /// A single source for a computed AX property.
 pub struct AxValueSource {
-    pub _type: (),
-    pub value: (),
-    pub attribute: String,
-    pub attribute_value: (),
+    pub _type: Box<AxValueSourceType>,
+    pub value: Box<AxValue>,
+    pub attribute: Box<String>,
+    pub attribute_value: Box<AxValue>,
     pub superseded: (),
-    pub native_source: (),
-    pub native_source_value: (),
+    pub native_source: Box<AxValueNativeSourceType>,
+    pub native_source_value: Box<AxValue>,
     pub invalid: (),
-    pub invalid_reason: String,
+    pub invalid_reason: Box<String>,
 }
 pub struct AxRelatedNode {
-    pub backend_dom_node_id: (),
-    pub idref: String,
-    pub text: String,
+    pub backend_dom_node_id: Box<DomBackendNodeId>,
+    pub idref: Box<String>,
+    pub text: Box<String>,
 }
 pub struct AxProperty {
-    pub name: (),
-    pub value: (),
+    pub name: Box<AxPropertyName>,
+    pub value: Box<AxValue>,
 }
 /// A single computed AX property.
 pub struct AxValue {
-    pub _type: (),
+    pub _type: Box<AxValueType>,
     pub value: (),
     pub related_nodes: (),
     pub sources: (),
@@ -123,17 +123,17 @@ pub enum AxPropertyName {
 }
 /// A node in the accessibility tree.
 pub struct AxNode {
-    pub node_id: (),
+    pub node_id: Box<AxNodeId>,
     pub ignored: (),
     pub ignored_reasons: (),
-    pub role: (),
-    pub chrome_role: (),
-    pub name: (),
-    pub description: (),
-    pub value: (),
+    pub role: Box<AxValue>,
+    pub chrome_role: Box<AxValue>,
+    pub name: Box<AxValue>,
+    pub description: Box<AxValue>,
+    pub value: Box<AxValue>,
     pub properties: (),
-    pub parent_id: (),
+    pub parent_id: Box<AxNodeId>,
     pub child_ids: (),
-    pub backend_dom_node_id: (),
-    pub frame_id: (),
+    pub backend_dom_node_id: Box<DomBackendNodeId>,
+    pub frame_id: Box<PageFrameId>,
 }

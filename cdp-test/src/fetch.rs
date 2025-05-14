@@ -1,4 +1,4 @@
-pub use crate::common::*;
+use crate::common::*;
 use crate::network::*;
 use crate::io::*;
 use crate::page::*;
@@ -11,6 +11,6 @@ pub enum RequestStage {
 }
 /// Response HTTP header entry
 pub struct HeaderEntry {
-    pub name: String,
-    pub value: String,
+    pub name: Box<String>,
+    pub value: Box<String>,
 }

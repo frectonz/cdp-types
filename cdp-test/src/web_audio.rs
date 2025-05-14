@@ -1,4 +1,4 @@
-pub use crate::common::*;
+use crate::common::*;
 /// An unique ID for a graph object (AudioContext, AudioNode, AudioParam) in Web Audio API
 pub struct GraphObjectId(String);
 /// Enum of BaseAudioContext types
@@ -35,45 +35,45 @@ pub enum AutomationRate {
 }
 /// Fields in AudioContext that change in real-time.
 pub struct ContextRealtimeData {
-    pub current_time: u64,
-    pub render_capacity: u64,
-    pub callback_interval_mean: u64,
-    pub callback_interval_variance: u64,
+    pub current_time: Box<u64>,
+    pub render_capacity: Box<u64>,
+    pub callback_interval_mean: Box<u64>,
+    pub callback_interval_variance: Box<u64>,
 }
 /// Protocol object for BaseAudioContext
 pub struct BaseAudioContext {
-    pub context_id: (),
-    pub context_type: (),
-    pub context_state: (),
-    pub realtime_data: (),
-    pub callback_buffer_size: u64,
-    pub max_output_channel_count: u64,
-    pub sample_rate: u64,
+    pub context_id: Box<GraphObjectId>,
+    pub context_type: Box<ContextType>,
+    pub context_state: Box<ContextState>,
+    pub realtime_data: Box<ContextRealtimeData>,
+    pub callback_buffer_size: Box<u64>,
+    pub max_output_channel_count: Box<u64>,
+    pub sample_rate: Box<u64>,
 }
 /// Protocol object for AudioListener
 pub struct AudioListener {
-    pub listener_id: (),
-    pub context_id: (),
+    pub listener_id: Box<GraphObjectId>,
+    pub context_id: Box<GraphObjectId>,
 }
 /// Protocol object for AudioNode
 pub struct AudioNode {
-    pub node_id: (),
-    pub context_id: (),
-    pub node_type: (),
-    pub number_of_inputs: u64,
-    pub number_of_outputs: u64,
-    pub channel_count: u64,
-    pub channel_count_mode: (),
-    pub channel_interpretation: (),
+    pub node_id: Box<GraphObjectId>,
+    pub context_id: Box<GraphObjectId>,
+    pub node_type: Box<NodeType>,
+    pub number_of_inputs: Box<u64>,
+    pub number_of_outputs: Box<u64>,
+    pub channel_count: Box<u64>,
+    pub channel_count_mode: Box<ChannelCountMode>,
+    pub channel_interpretation: Box<ChannelInterpretation>,
 }
 /// Protocol object for AudioParam
 pub struct AudioParam {
-    pub param_id: (),
-    pub node_id: (),
-    pub context_id: (),
-    pub param_type: (),
-    pub rate: (),
-    pub default_value: u64,
-    pub min_value: u64,
-    pub max_value: u64,
+    pub param_id: Box<GraphObjectId>,
+    pub node_id: Box<GraphObjectId>,
+    pub context_id: Box<GraphObjectId>,
+    pub param_type: Box<ParamType>,
+    pub rate: Box<AutomationRate>,
+    pub default_value: Box<u64>,
+    pub min_value: Box<u64>,
+    pub max_value: Box<u64>,
 }

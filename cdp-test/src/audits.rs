@@ -1,19 +1,19 @@
-pub use crate::common::*;
+use crate::common::*;
 use crate::network::*;
 /// Information about a cookie that is affected by an inspector issue.
 pub struct AffectedCookie {
-    pub name: String,
-    pub path: String,
-    pub domain: String,
+    pub name: Box<String>,
+    pub path: Box<String>,
+    pub domain: Box<String>,
 }
 /// Information about a request that is affected by an inspector issue.
 pub struct AffectedRequest {
-    pub request_id: (),
-    pub url: String,
+    pub request_id: Box<NetworkRequestId>,
+    pub url: Box<String>,
 }
 /// Information about the frame affected by an inspector issue.
 pub struct AffectedFrame {
-    pub frame_id: (),
+    pub frame_id: Box<PageFrameId>,
 }
 pub enum CookieExclusionReason {
     ExcludeSameSiteUnspecifiedTreatedAsLax,
@@ -56,22 +56,22 @@ pub enum InsightType {
 }
 /// Information about the suggested solution to a cookie issue.
 pub struct CookieIssueInsight {
-    pub _type: (),
-    pub table_entry_url: String,
+    pub _type: Box<InsightType>,
+    pub table_entry_url: Box<String>,
 }
 /** This information is currently necessary, as the front-end has a difficult
 time finding a specific cookie. With this, we can convey specific error
 information without the cookie.*/
 pub struct CookieIssueDetails {
-    pub cookie: (),
-    pub raw_cookie_line: String,
+    pub cookie: Box<AffectedCookie>,
+    pub raw_cookie_line: Box<String>,
     pub cookie_warning_reasons: (),
     pub cookie_exclusion_reasons: (),
-    pub operation: (),
-    pub site_for_cookies: String,
-    pub cookie_url: String,
-    pub request: (),
-    pub insight: (),
+    pub operation: Box<CookieOperation>,
+    pub site_for_cookies: Box<String>,
+    pub cookie_url: Box<String>,
+    pub request: Box<AffectedRequest>,
+    pub insight: Box<CookieIssueInsight>,
 }
 pub enum MixedContentResolutionStatus {
     MixedContentBlocked,
@@ -110,12 +110,12 @@ pub enum MixedContentResourceType {
     Xslt,
 }
 pub struct MixedContentIssueDetails {
-    pub resource_type: (),
-    pub resolution_status: (),
-    pub insecure_url: String,
-    pub main_resource_url: String,
-    pub request: (),
-    pub frame: (),
+    pub resource_type: Box<MixedContentResourceType>,
+    pub resolution_status: Box<MixedContentResolutionStatus>,
+    pub insecure_url: Box<String>,
+    pub main_resource_url: Box<String>,
+    pub request: Box<AffectedRequest>,
+    pub frame: Box<AffectedFrame>,
 }
 /** Enum indicating the reason a response has been blocked. These reasons are
 refinements of the net error BLOCKED_BY_RESPONSE.*/
@@ -133,10 +133,10 @@ pub enum BlockedByResponseReason {
 code. Currently only used for COEP/COOP, but may be extended to include
 some CSP errors in the future.*/
 pub struct BlockedByResponseIssueDetails {
-    pub request: (),
-    pub parent_frame: (),
-    pub blocked_frame: (),
-    pub reason: (),
+    pub request: Box<AffectedRequest>,
+    pub parent_frame: Box<AffectedFrame>,
+    pub blocked_frame: Box<AffectedFrame>,
+    pub reason: Box<BlockedByResponseReason>,
 }
 pub enum HeavyAdResolutionStatus {
     HeavyAdBlocked,
@@ -148,9 +148,9 @@ pub enum HeavyAdReason {
     CpuPeakLimit,
 }
 pub struct HeavyAdIssueDetails {
-    pub resolution: (),
-    pub reason: (),
-    pub frame: (),
+    pub resolution: Box<HeavyAdResolutionStatus>,
+    pub reason: Box<HeavyAdReason>,
+    pub frame: Box<AffectedFrame>,
 }
 pub enum ContentSecurityPolicyViolationType {
     KInlineViolation,
@@ -162,19 +162,19 @@ pub enum ContentSecurityPolicyViolationType {
     KWasmEvalViolation,
 }
 pub struct SourceCodeLocation {
-    pub script_id: (),
-    pub url: String,
-    pub line_number: i64,
-    pub column_number: i64,
+    pub script_id: Box<RuntimeScriptId>,
+    pub url: Box<String>,
+    pub line_number: Box<i64>,
+    pub column_number: Box<i64>,
 }
 pub struct ContentSecurityPolicyIssueDetails {
-    pub blocked_url: String,
-    pub violated_directive: String,
+    pub blocked_url: Box<String>,
+    pub violated_directive: Box<String>,
     pub is_report_only: (),
-    pub content_security_policy_violation_type: (),
-    pub frame_ancestor: (),
-    pub source_code_location: (),
-    pub violating_node_id: (),
+    pub content_security_policy_violation_type: Box<ContentSecurityPolicyViolationType>,
+    pub frame_ancestor: Box<AffectedFrame>,
+    pub source_code_location: Box<SourceCodeLocation>,
+    pub violating_node_id: Box<DomBackendNodeId>,
 }
 pub enum SharedArrayBufferIssueType {
     TransferIssue,
@@ -183,29 +183,29 @@ pub enum SharedArrayBufferIssueType {
 /** Details for a issue arising from an SAB being instantiated in, or
 transferred to a context that is not cross-origin isolated.*/
 pub struct SharedArrayBufferIssueDetails {
-    pub source_code_location: (),
+    pub source_code_location: Box<SourceCodeLocation>,
     pub is_warning: (),
-    pub _type: (),
+    pub _type: Box<SharedArrayBufferIssueType>,
 }
 pub struct LowTextContrastIssueDetails {
-    pub violating_node_id: (),
-    pub violating_node_selector: String,
-    pub contrast_ratio: u64,
-    pub threshold_aa: u64,
-    pub threshold_aaa: u64,
-    pub font_size: String,
-    pub font_weight: String,
+    pub violating_node_id: Box<DomBackendNodeId>,
+    pub violating_node_selector: Box<String>,
+    pub contrast_ratio: Box<u64>,
+    pub threshold_aa: Box<u64>,
+    pub threshold_aaa: Box<u64>,
+    pub font_size: Box<String>,
+    pub font_weight: Box<String>,
 }
 /** Details for a CORS related issue, e.g. a warning or error related to
 CORS RFC1918 enforcement.*/
 pub struct CorsIssueDetails {
-    pub cors_error_status: (),
+    pub cors_error_status: Box<NetworkCorsErrorStatus>,
     pub is_warning: (),
-    pub request: (),
-    pub location: (),
-    pub initiator_origin: String,
-    pub resource_ip_address_space: (),
-    pub client_security_state: (),
+    pub request: Box<AffectedRequest>,
+    pub location: Box<SourceCodeLocation>,
+    pub initiator_origin: Box<String>,
+    pub resource_ip_address_space: Box<NetworkIpAddressSpace>,
+    pub client_security_state: Box<NetworkClientSecurityState>,
 }
 pub enum AttributionReportingIssueType {
     PermissionPolicyDisabled,
@@ -281,34 +281,34 @@ pub enum SriMessageSignatureError {
 /** Details for issues around "Attribution Reporting API" usage.
 Explainer: https://github.com/WICG/attribution-reporting-api*/
 pub struct AttributionReportingIssueDetails {
-    pub violation_type: (),
-    pub request: (),
-    pub violating_node_id: (),
-    pub invalid_parameter: String,
+    pub violation_type: Box<AttributionReportingIssueType>,
+    pub request: Box<AffectedRequest>,
+    pub violating_node_id: Box<DomBackendNodeId>,
+    pub invalid_parameter: Box<String>,
 }
 /** Details for issues about documents in Quirks Mode
 or Limited Quirks Mode that affects page layouting.*/
 pub struct QuirksModeIssueDetails {
     pub is_limited_quirks_mode: (),
-    pub document_node_id: (),
-    pub url: String,
-    pub frame_id: (),
-    pub loader_id: (),
+    pub document_node_id: Box<DomBackendNodeId>,
+    pub url: Box<String>,
+    pub frame_id: Box<PageFrameId>,
+    pub loader_id: Box<NetworkLoaderId>,
 }
 #[deprecated]
 pub struct NavigatorUserAgentIssueDetails {
-    pub url: String,
-    pub location: (),
+    pub url: Box<String>,
+    pub location: Box<SourceCodeLocation>,
 }
 pub struct SharedDictionaryIssueDetails {
-    pub shared_dictionary_error: (),
-    pub request: (),
+    pub shared_dictionary_error: Box<SharedDictionaryError>,
+    pub request: Box<AffectedRequest>,
 }
 pub struct SriMessageSignatureIssueDetails {
-    pub error: (),
-    pub signature_base: String,
+    pub error: Box<SriMessageSignatureError>,
+    pub signature_base: Box<String>,
     pub integrity_assertions: (),
-    pub request: (),
+    pub request: Box<AffectedRequest>,
 }
 pub enum GenericIssueErrorType {
     FormLabelForNameError,
@@ -325,18 +325,18 @@ pub enum GenericIssueErrorType {
 }
 /// Depending on the concrete errorType, different properties are set.
 pub struct GenericIssueDetails {
-    pub error_type: (),
-    pub frame_id: (),
-    pub violating_node_id: (),
-    pub violating_node_attribute: String,
-    pub request: (),
+    pub error_type: Box<GenericIssueErrorType>,
+    pub frame_id: Box<PageFrameId>,
+    pub violating_node_id: Box<DomBackendNodeId>,
+    pub violating_node_attribute: Box<String>,
+    pub request: Box<AffectedRequest>,
 }
 /** This issue tracks information needed to print a deprecation message.
 https://source.chromium.org/chromium/chromium/src/+/main:third_party/blink/renderer/core/frame/third_party/blink/renderer/core/frame/deprecation/README.md*/
 pub struct DeprecationIssueDetails {
-    pub affected_frame: (),
-    pub source_code_location: (),
-    pub _type: String,
+    pub affected_frame: Box<AffectedFrame>,
+    pub source_code_location: Box<SourceCodeLocation>,
+    pub _type: Box<String>,
 }
 /** This issue warns about sites in the redirect chain of a finished navigation
 that may be flagged as trackers and have their state cleared if they don't
@@ -353,16 +353,16 @@ Note that in this context 'site' means eTLD+1. For example, if the URL
 would be `example.test`.*/
 pub struct CookieDeprecationMetadataIssueDetails {
     pub allowed_sites: (),
-    pub opt_out_percentage: u64,
+    pub opt_out_percentage: Box<u64>,
     pub is_opt_out_top_level: (),
-    pub operation: (),
+    pub operation: Box<CookieOperation>,
 }
 pub enum ClientHintIssueReason {
     MetaTagAllowListInvalidOrigin,
     MetaTagModifiedHtml,
 }
 pub struct FederatedAuthRequestIssueDetails {
-    pub federated_auth_request_issue_reason: (),
+    pub federated_auth_request_issue_reason: Box<FederatedAuthRequestIssueReason>,
 }
 /** Represents the failure reason when a federated authentication reason fails.
 Should be updated alongside RequestIdTokenStatus in
@@ -419,7 +419,9 @@ pub enum FederatedAuthRequestIssueReason {
     SuppressedBySegmentationPlatform,
 }
 pub struct FederatedAuthUserInfoRequestIssueDetails {
-    pub federated_auth_user_info_request_issue_reason: (),
+    pub federated_auth_user_info_request_issue_reason: Box<
+        FederatedAuthUserInfoRequestIssueReason,
+    >,
 }
 /** Represents the failure reason when a getUserInfo() call fails.
 Should be updated alongside FederatedAuthUserInfoRequestResult in
@@ -438,21 +440,21 @@ pub enum FederatedAuthUserInfoRequestIssueReason {
 /** This issue tracks client hints related issues. It's used to deprecate old
 features, encourage the use of new ones, and provide general guidance.*/
 pub struct ClientHintIssueDetails {
-    pub source_code_location: (),
-    pub client_hint_issue_reason: (),
+    pub source_code_location: Box<SourceCodeLocation>,
+    pub client_hint_issue_reason: Box<ClientHintIssueReason>,
 }
 pub struct FailedRequestInfo {
-    pub url: String,
-    pub failure_message: String,
-    pub request_id: (),
+    pub url: Box<String>,
+    pub failure_message: Box<String>,
+    pub request_id: Box<NetworkRequestId>,
 }
 pub enum PartitioningBlobUrlInfo {
     BlockedCrossPartitionFetching,
     EnforceNoopenerForNavigation,
 }
 pub struct PartitioningBlobUrlIssueDetails {
-    pub url: String,
-    pub partitioning_blob_url_info: (),
+    pub url: Box<String>,
+    pub partitioning_blob_url_info: Box<PartitioningBlobUrlInfo>,
 }
 pub enum SelectElementAccessibilityIssueReason {
     DisallowedSelectChild,
@@ -463,8 +465,10 @@ pub enum SelectElementAccessibilityIssueReason {
 }
 /// This issue warns about errors in the select element content model.
 pub struct SelectElementAccessibilityIssueDetails {
-    pub node_id: (),
-    pub select_element_accessibility_issue_reason: (),
+    pub node_id: Box<DomBackendNodeId>,
+    pub select_element_accessibility_issue_reason: Box<
+        SelectElementAccessibilityIssueReason,
+    >,
     pub has_disallowed_attributes: (),
 }
 pub enum StyleSheetLoadingIssueReason {
@@ -473,9 +477,9 @@ pub enum StyleSheetLoadingIssueReason {
 }
 /// This issue warns when a referenced stylesheet couldn't be loaded.
 pub struct StylesheetLoadingIssueDetails {
-    pub source_code_location: (),
-    pub style_sheet_loading_issue_reason: (),
-    pub failed_request_info: (),
+    pub source_code_location: Box<SourceCodeLocation>,
+    pub style_sheet_loading_issue_reason: Box<StyleSheetLoadingIssueReason>,
+    pub failed_request_info: Box<FailedRequestInfo>,
 }
 pub enum PropertyRuleIssueReason {
     InvalidSyntax,
@@ -486,9 +490,9 @@ pub enum PropertyRuleIssueReason {
 /** This issue warns about errors in property rules that lead to property
 registrations being ignored.*/
 pub struct PropertyRuleIssueDetails {
-    pub source_code_location: (),
-    pub property_rule_issue_reason: (),
-    pub property_value: String,
+    pub source_code_location: Box<SourceCodeLocation>,
+    pub property_rule_issue_reason: Box<PropertyRuleIssueReason>,
+    pub property_value: Box<String>,
 }
 pub enum UserReidentificationIssueType {
     BlockedFrameNavigation,
@@ -497,8 +501,8 @@ pub enum UserReidentificationIssueType {
 /** This issue warns about uses of APIs that may be considered misuse to
 re-identify users.*/
 pub struct UserReidentificationIssueDetails {
-    pub _type: (),
-    pub request: (),
+    pub _type: Box<UserReidentificationIssueType>,
+    pub request: Box<AffectedRequest>,
 }
 /** A unique identifier for the type of issue. Each type may use one of the
 optional fields in InspectorIssueDetails to convey more specific
@@ -534,38 +538,44 @@ pub enum InspectorIssueCode {
 specific to the kind of issue. When adding a new issue code, please also
 add a new optional field to this type.*/
 pub struct InspectorIssueDetails {
-    pub cookie_issue_details: (),
-    pub mixed_content_issue_details: (),
-    pub blocked_by_response_issue_details: (),
-    pub heavy_ad_issue_details: (),
-    pub content_security_policy_issue_details: (),
-    pub shared_array_buffer_issue_details: (),
-    pub low_text_contrast_issue_details: (),
-    pub cors_issue_details: (),
-    pub attribution_reporting_issue_details: (),
-    pub quirks_mode_issue_details: (),
-    pub partitioning_blob_url_issue_details: (),
-    pub navigator_user_agent_issue_details: (),
-    pub generic_issue_details: (),
-    pub deprecation_issue_details: (),
-    pub client_hint_issue_details: (),
-    pub federated_auth_request_issue_details: (),
-    pub bounce_tracking_issue_details: (),
-    pub cookie_deprecation_metadata_issue_details: (),
-    pub stylesheet_loading_issue_details: (),
-    pub property_rule_issue_details: (),
-    pub federated_auth_user_info_request_issue_details: (),
-    pub shared_dictionary_issue_details: (),
-    pub select_element_accessibility_issue_details: (),
-    pub sri_message_signature_issue_details: (),
-    pub user_reidentification_issue_details: (),
+    pub cookie_issue_details: Box<CookieIssueDetails>,
+    pub mixed_content_issue_details: Box<MixedContentIssueDetails>,
+    pub blocked_by_response_issue_details: Box<BlockedByResponseIssueDetails>,
+    pub heavy_ad_issue_details: Box<HeavyAdIssueDetails>,
+    pub content_security_policy_issue_details: Box<ContentSecurityPolicyIssueDetails>,
+    pub shared_array_buffer_issue_details: Box<SharedArrayBufferIssueDetails>,
+    pub low_text_contrast_issue_details: Box<LowTextContrastIssueDetails>,
+    pub cors_issue_details: Box<CorsIssueDetails>,
+    pub attribution_reporting_issue_details: Box<AttributionReportingIssueDetails>,
+    pub quirks_mode_issue_details: Box<QuirksModeIssueDetails>,
+    pub partitioning_blob_url_issue_details: Box<PartitioningBlobUrlIssueDetails>,
+    pub navigator_user_agent_issue_details: Box<NavigatorUserAgentIssueDetails>,
+    pub generic_issue_details: Box<GenericIssueDetails>,
+    pub deprecation_issue_details: Box<DeprecationIssueDetails>,
+    pub client_hint_issue_details: Box<ClientHintIssueDetails>,
+    pub federated_auth_request_issue_details: Box<FederatedAuthRequestIssueDetails>,
+    pub bounce_tracking_issue_details: Box<BounceTrackingIssueDetails>,
+    pub cookie_deprecation_metadata_issue_details: Box<
+        CookieDeprecationMetadataIssueDetails,
+    >,
+    pub stylesheet_loading_issue_details: Box<StylesheetLoadingIssueDetails>,
+    pub property_rule_issue_details: Box<PropertyRuleIssueDetails>,
+    pub federated_auth_user_info_request_issue_details: Box<
+        FederatedAuthUserInfoRequestIssueDetails,
+    >,
+    pub shared_dictionary_issue_details: Box<SharedDictionaryIssueDetails>,
+    pub select_element_accessibility_issue_details: Box<
+        SelectElementAccessibilityIssueDetails,
+    >,
+    pub sri_message_signature_issue_details: Box<SriMessageSignatureIssueDetails>,
+    pub user_reidentification_issue_details: Box<UserReidentificationIssueDetails>,
 }
 /** A unique id for a DevTools inspector issue. Allows other entities (e.g.
 exceptions, CDP message, console messages, etc.) to reference an issue.*/
 pub struct IssueId(String);
 /// An inspector issue reported from the back-end.
 pub struct InspectorIssue {
-    pub code: (),
-    pub details: (),
-    pub issue_id: (),
+    pub code: Box<InspectorIssueCode>,
+    pub details: Box<InspectorIssueDetails>,
+    pub issue_id: Box<IssueId>,
 }

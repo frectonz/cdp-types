@@ -1,24 +1,24 @@
-pub use crate::common::*;
+use crate::common::*;
 pub struct TargetId(String);
 /// Unique identifier of attached debugging session.
 pub struct SessionId(String);
 pub struct TargetInfo {
-    pub target_id: (),
-    pub _type: String,
-    pub title: String,
-    pub url: String,
+    pub target_id: Box<TargetId>,
+    pub _type: Box<String>,
+    pub title: Box<String>,
+    pub url: Box<String>,
     pub attached: (),
-    pub opener_id: (),
+    pub opener_id: Box<TargetId>,
     pub can_access_opener: (),
-    pub opener_frame_id: (),
-    pub browser_context_id: (),
-    pub subtype: String,
+    pub opener_frame_id: Box<PageFrameId>,
+    pub browser_context_id: Box<BrowserBrowserContextId>,
+    pub subtype: Box<String>,
 }
 /// ⚠️ Experimental
 /// A filter used by target query/discovery/auto-attach operations.
 pub struct FilterEntry {
     pub exclude: (),
-    pub _type: String,
+    pub _type: Box<String>,
 }
 /// ⚠️ Experimental
 /** The entries in TargetFilter are matched sequentially against targets and
@@ -30,6 +30,6 @@ If filter is not specified, the one assumed is
 pub struct TargetFilter(Vec<FilterEntry>);
 /// ⚠️ Experimental
 pub struct RemoteLocation {
-    pub host: String,
-    pub port: i64,
+    pub host: Box<String>,
+    pub port: Box<i64>,
 }

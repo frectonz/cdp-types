@@ -1,6 +1,6 @@
-pub use crate::common::*;
+use crate::common::*;
 pub struct Sink {
-    pub name: String,
-    pub id: String,
-    pub session: String,
+    pub name: Box<String>,
+    pub id: Box<String>,
+    pub session: Box<String>,
 }

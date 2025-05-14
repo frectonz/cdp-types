@@ -1,4 +1,4 @@
-pub use crate::common::*;
+use crate::common::*;
 /** The Background Service that will be associated with the commands/events.
 Every Background Service operates independently, but they share the same
 API.*/
@@ -12,16 +12,16 @@ pub enum ServiceName {
 }
 /// A key-value pair for additional event information to pass along.
 pub struct EventMetadata {
-    pub key: String,
-    pub value: String,
+    pub key: Box<String>,
+    pub value: Box<String>,
 }
 pub struct BackgroundServiceEvent {
-    pub timestamp: (),
-    pub origin: String,
-    pub service_worker_registration_id: (),
-    pub service: (),
-    pub event_name: String,
-    pub instance_id: String,
+    pub timestamp: Box<NetworkTimeSinceEpoch>,
+    pub origin: Box<String>,
+    pub service_worker_registration_id: Box<ServiceWorkerRegistrationId>,
+    pub service: Box<ServiceName>,
+    pub event_name: Box<String>,
+    pub instance_id: Box<String>,
     pub event_metadata: (),
-    pub storage_key: String,
+    pub storage_key: Box<String>,
 }

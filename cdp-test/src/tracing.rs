@@ -1,18 +1,18 @@
-pub use crate::common::*;
+use crate::common::*;
 use crate::io::*;
 /// ⚠️ Experimental
 /// Configuration for memory dump. Used only when "memory-infra" category is enabled.
 pub struct MemoryDumpConfig(serde_json::Map<String, serde_json::Value>);
 pub struct TraceConfig {
-    pub record_mode: String,
-    pub trace_buffer_size_in_kb: u64,
+    pub record_mode: Box<String>,
+    pub trace_buffer_size_in_kb: Box<u64>,
     pub enable_sampling: (),
     pub enable_systrace: (),
     pub enable_argument_filter: (),
     pub included_categories: (),
     pub excluded_categories: (),
     pub synthetic_delays: (),
-    pub memory_dump_config: (),
+    pub memory_dump_config: Box<MemoryDumpConfig>,
 }
 /// ⚠️ Experimental
 /** Data format of a trace. Can be either the legacy JSON format or the

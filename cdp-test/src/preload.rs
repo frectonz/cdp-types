@@ -1,16 +1,16 @@
-pub use crate::common::*;
+use crate::common::*;
 /// Unique id
 pub struct RuleSetId(String);
 /// Corresponds to SpeculationRuleSet
 pub struct RuleSet {
-    pub id: (),
-    pub loader_id: (),
-    pub source_text: String,
-    pub backend_node_id: (),
-    pub url: String,
-    pub request_id: (),
-    pub error_type: (),
-    pub error_message: String,
+    pub id: Box<RuleSetId>,
+    pub loader_id: Box<NetworkLoaderId>,
+    pub source_text: Box<String>,
+    pub backend_node_id: Box<DomBackendNodeId>,
+    pub url: Box<String>,
+    pub request_id: Box<NetworkRequestId>,
+    pub error_type: Box<RuleSetErrorType>,
+    pub error_message: Box<String>,
 }
 pub enum RuleSetErrorType {
     SourceIsNotJsonObject,
@@ -36,10 +36,10 @@ not the final url that is navigated to. For example, prerendering allows
 same-origin main frame navigations during the attempt, but the attempt is
 still keyed with the initial URL.*/
 pub struct PreloadingAttemptKey {
-    pub loader_id: (),
-    pub action: (),
-    pub url: String,
-    pub target_hint: (),
+    pub loader_id: Box<NetworkLoaderId>,
+    pub action: Box<SpeculationAction>,
+    pub url: Box<String>,
+    pub target_hint: Box<SpeculationTargetHint>,
 }
 /** Lists sources for a preloading attempt, specifically the ids of rule sets
 that had a speculation rule that triggered the attempt, and the
@@ -47,7 +47,7 @@ BackendNodeIds of <a href> or <area href> elements that triggered the
 attempt (in the case of attempts triggered by a document rule). It is
 possible for multiple rule sets and links to trigger a single attempt.*/
 pub struct PreloadingAttemptSource {
-    pub key: (),
+    pub key: Box<PreloadingAttemptKey>,
     pub rule_set_ids: (),
     pub node_ids: (),
 }
@@ -186,7 +186,7 @@ pub enum PrefetchStatus {
 }
 /// Information of headers to be displayed when the header mismatch occurred.
 pub struct PrerenderMismatchedHeaders {
-    pub header_name: String,
-    pub initial_value: String,
-    pub activation_value: String,
+    pub header_name: Box<String>,
+    pub initial_value: Box<String>,
+    pub activation_value: Box<String>,
 }

@@ -1,4 +1,4 @@
-pub use crate::common::*;
+use crate::common::*;
 use crate::storage::*;
 /// Unique identifier of the Cache object.
 pub struct CacheId(String);
@@ -13,17 +13,17 @@ pub enum CachedResponseType {
 }
 /// Cache identifier.
 pub struct Cache {
-    pub cache_id: (),
-    pub security_origin: String,
-    pub storage_key: String,
-    pub storage_bucket: (),
-    pub cache_name: String,
+    pub cache_id: Box<CacheId>,
+    pub security_origin: Box<String>,
+    pub storage_key: Box<String>,
+    pub storage_bucket: Box<StorageStorageBucket>,
+    pub cache_name: Box<String>,
 }
 pub struct Header {
-    pub name: String,
-    pub value: String,
+    pub name: Box<String>,
+    pub value: Box<String>,
 }
 /// Cached response
 pub struct CachedResponse {
-    pub body: String,
+    pub body: Box<String>,
 }

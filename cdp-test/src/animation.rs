@@ -1,47 +1,47 @@
-pub use crate::common::*;
+use crate::common::*;
 use crate::dom::*;
 /// Animation instance.
 pub struct Animation {
-    pub id: String,
-    pub name: String,
+    pub id: Box<String>,
+    pub name: Box<String>,
     pub paused_state: (),
-    pub play_state: String,
-    pub playback_rate: u64,
-    pub start_time: u64,
-    pub current_time: u64,
-    pub _type: String,
-    pub source: (),
-    pub css_id: String,
-    pub view_or_scroll_timeline: (),
+    pub play_state: Box<String>,
+    pub playback_rate: Box<u64>,
+    pub start_time: Box<u64>,
+    pub current_time: Box<u64>,
+    pub _type: Box<String>,
+    pub source: Box<AnimationEffect>,
+    pub css_id: Box<String>,
+    pub view_or_scroll_timeline: Box<ViewOrScrollTimeline>,
 }
 /// Timeline instance
 pub struct ViewOrScrollTimeline {
-    pub source_node_id: (),
-    pub start_offset: u64,
-    pub end_offset: u64,
-    pub subject_node_id: (),
-    pub axis: (),
+    pub source_node_id: Box<DomBackendNodeId>,
+    pub start_offset: Box<u64>,
+    pub end_offset: Box<u64>,
+    pub subject_node_id: Box<DomBackendNodeId>,
+    pub axis: Box<DomScrollOrientation>,
 }
 /// AnimationEffect instance
 pub struct AnimationEffect {
-    pub delay: u64,
-    pub end_delay: u64,
-    pub iteration_start: u64,
-    pub iterations: u64,
-    pub duration: u64,
-    pub direction: String,
-    pub fill: String,
-    pub backend_node_id: (),
-    pub keyframes_rule: (),
-    pub easing: String,
+    pub delay: Box<u64>,
+    pub end_delay: Box<u64>,
+    pub iteration_start: Box<u64>,
+    pub iterations: Box<u64>,
+    pub duration: Box<u64>,
+    pub direction: Box<String>,
+    pub fill: Box<String>,
+    pub backend_node_id: Box<DomBackendNodeId>,
+    pub keyframes_rule: Box<KeyframesRule>,
+    pub easing: Box<String>,
 }
 /// Keyframes Rule
 pub struct KeyframesRule {
-    pub name: String,
+    pub name: Box<String>,
     pub keyframes: (),
 }
 /// Keyframe Style
 pub struct KeyframeStyle {
-    pub offset: String,
-    pub easing: String,
+    pub offset: Box<String>,
+    pub easing: Box<String>,
 }

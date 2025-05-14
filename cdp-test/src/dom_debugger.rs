@@ -1,4 +1,4 @@
-pub use crate::common::*;
+use crate::common::*;
 use crate::dom::*;
 /// DOM breakpoint type.
 pub enum DomBreakpointType {
@@ -14,14 +14,14 @@ pub enum CspViolationType {
 }
 /// Object event listener.
 pub struct EventListener {
-    pub _type: String,
+    pub _type: Box<String>,
     pub use_capture: (),
     pub passive: (),
     pub once: (),
-    pub script_id: (),
-    pub line_number: i64,
-    pub column_number: i64,
-    pub handler: (),
-    pub original_handler: (),
-    pub backend_node_id: (),
+    pub script_id: Box<RuntimeScriptId>,
+    pub line_number: Box<i64>,
+    pub column_number: Box<i64>,
+    pub handler: Box<RuntimeRemoteObject>,
+    pub original_handler: Box<RuntimeRemoteObject>,
+    pub backend_node_id: Box<DomBackendNodeId>,
 }

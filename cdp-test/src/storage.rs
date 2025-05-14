@@ -1,4 +1,4 @@
-pub use crate::common::*;
+use crate::common::*;
 use crate::browser::*;
 use crate::network::*;
 /// Enum of possible storage types.
@@ -19,15 +19,15 @@ pub enum StorageType {
 }
 /// Usage for a storage type.
 pub struct UsageForType {
-    pub storage_type: (),
-    pub usage: u64,
+    pub storage_type: Box<StorageType>,
+    pub usage: Box<u64>,
 }
 /// ⚠️ Experimental
 /** Pair of issuer origin and number of available (signed, but not used) Trust
 Tokens from that issuer.*/
 pub struct TrustTokens {
-    pub issuer_origin: String,
-    pub count: u64,
+    pub issuer_origin: Box<String>,
+    pub count: Box<u64>,
 }
 /// Protected audience interest group auction identifier.
 pub struct InterestGroupAuctionId(String);
@@ -85,68 +85,68 @@ pub enum SharedStorageAccessMethod {
 }
 /// Struct for a single key-value pair in an origin's shared storage.
 pub struct SharedStorageEntry {
-    pub key: String,
-    pub value: String,
+    pub key: Box<String>,
+    pub value: Box<String>,
 }
 /// Details for an origin's shared storage.
 pub struct SharedStorageMetadata {
-    pub creation_time: (),
-    pub length: i64,
-    pub remaining_budget: u64,
-    pub bytes_used: i64,
+    pub creation_time: Box<NetworkTimeSinceEpoch>,
+    pub length: Box<i64>,
+    pub remaining_budget: Box<u64>,
+    pub bytes_used: Box<i64>,
 }
 /** Represents a dictionary object passed in as privateAggregationConfig to
 run or selectURL.*/
 pub struct SharedStoragePrivateAggregationConfig {
-    pub aggregation_coordinator_origin: String,
-    pub context_id: String,
-    pub filtering_id_max_bytes: i64,
-    pub max_contributions: i64,
+    pub aggregation_coordinator_origin: Box<String>,
+    pub context_id: Box<String>,
+    pub filtering_id_max_bytes: Box<i64>,
+    pub max_contributions: Box<i64>,
 }
 /// Pair of reporting metadata details for a candidate URL for `selectURL()`.
 pub struct SharedStorageReportingMetadata {
-    pub event_type: String,
-    pub reporting_url: String,
+    pub event_type: Box<String>,
+    pub reporting_url: Box<String>,
 }
 /// Bundles a candidate URL with its reporting metadata.
 pub struct SharedStorageUrlWithMetadata {
-    pub url: String,
+    pub url: Box<String>,
     pub reporting_metadata: (),
 }
 /** Bundles the parameters for shared storage access events whose
 presence/absence can vary according to SharedStorageAccessType.*/
 pub struct SharedStorageAccessParams {
-    pub script_source_url: String,
-    pub data_origin: String,
-    pub operation_name: String,
+    pub script_source_url: Box<String>,
+    pub data_origin: Box<String>,
+    pub operation_name: Box<String>,
     pub keep_alive: (),
-    pub private_aggregation_config: (),
-    pub serialized_data: String,
+    pub private_aggregation_config: Box<SharedStoragePrivateAggregationConfig>,
+    pub serialized_data: Box<String>,
     pub urls_with_metadata: (),
-    pub urn_uuid: String,
-    pub key: String,
-    pub value: String,
+    pub urn_uuid: Box<String>,
+    pub key: Box<String>,
+    pub value: Box<String>,
     pub ignore_if_present: (),
-    pub worklet_id: String,
-    pub with_lock: String,
-    pub batch_update_id: String,
-    pub batch_size: i64,
+    pub worklet_id: Box<String>,
+    pub with_lock: Box<String>,
+    pub batch_update_id: Box<String>,
+    pub batch_size: Box<i64>,
 }
 pub enum StorageBucketsDurability {
     Relaxed,
     Strict,
 }
 pub struct StorageBucket {
-    pub storage_key: (),
-    pub name: String,
+    pub storage_key: Box<SerializedStorageKey>,
+    pub name: Box<String>,
 }
 pub struct StorageBucketInfo {
-    pub bucket: (),
-    pub id: String,
-    pub expiration: (),
-    pub quota: u64,
+    pub bucket: Box<StorageBucket>,
+    pub id: Box<String>,
+    pub expiration: Box<NetworkTimeSinceEpoch>,
+    pub quota: Box<u64>,
     pub persistent: (),
-    pub durability: (),
+    pub durability: Box<StorageBucketsDurability>,
 }
 /// ⚠️ Experimental
 pub enum AttributionReportingSourceType {
@@ -161,13 +161,13 @@ pub struct UnsignedInt128AsBase16(String);
 pub struct SignedInt64AsBase10(String);
 /// ⚠️ Experimental
 pub struct AttributionReportingFilterDataEntry {
-    pub key: String,
+    pub key: Box<String>,
     pub values: (),
 }
 /// ⚠️ Experimental
 pub struct AttributionReportingFilterConfig {
     pub filter_values: (),
-    pub lookback_window: i64,
+    pub lookback_window: Box<i64>,
 }
 /// ⚠️ Experimental
 pub struct AttributionReportingFilterPair {
@@ -176,18 +176,18 @@ pub struct AttributionReportingFilterPair {
 }
 /// ⚠️ Experimental
 pub struct AttributionReportingAggregationKeysEntry {
-    pub key: String,
-    pub value: (),
+    pub key: Box<String>,
+    pub value: Box<UnsignedInt128AsBase16>,
 }
 /// ⚠️ Experimental
 pub struct AttributionReportingEventReportWindows {
-    pub start: i64,
+    pub start: Box<i64>,
     pub ends: (),
 }
 /// ⚠️ Experimental
 pub struct AttributionReportingTriggerSpec {
     pub trigger_data: (),
-    pub event_report_windows: (),
+    pub event_report_windows: Box<AttributionReportingEventReportWindows>,
 }
 /// ⚠️ Experimental
 pub enum AttributionReportingTriggerDataMatching {
@@ -196,51 +196,53 @@ pub enum AttributionReportingTriggerDataMatching {
 }
 /// ⚠️ Experimental
 pub struct AttributionReportingAggregatableDebugReportingData {
-    pub key_piece: (),
-    pub value: u64,
+    pub key_piece: Box<UnsignedInt128AsBase16>,
+    pub value: Box<u64>,
     pub types: (),
 }
 /// ⚠️ Experimental
 pub struct AttributionReportingAggregatableDebugReportingConfig {
-    pub budget: u64,
-    pub key_piece: (),
+    pub budget: Box<u64>,
+    pub key_piece: Box<UnsignedInt128AsBase16>,
     pub debug_data: (),
-    pub aggregation_coordinator_origin: String,
+    pub aggregation_coordinator_origin: Box<String>,
 }
 /// ⚠️ Experimental
 pub struct AttributionScopesData {
     pub values: (),
-    pub limit: u64,
-    pub max_event_states: u64,
+    pub limit: Box<u64>,
+    pub max_event_states: Box<u64>,
 }
 /// ⚠️ Experimental
 pub struct AttributionReportingNamedBudgetDef {
-    pub name: String,
-    pub budget: i64,
+    pub name: Box<String>,
+    pub budget: Box<i64>,
 }
 /// ⚠️ Experimental
 pub struct AttributionReportingSourceRegistration {
-    pub time: (),
-    pub expiry: i64,
+    pub time: Box<NetworkTimeSinceEpoch>,
+    pub expiry: Box<i64>,
     pub trigger_specs: (),
-    pub aggregatable_report_window: i64,
-    pub _type: (),
-    pub source_origin: String,
-    pub reporting_origin: String,
+    pub aggregatable_report_window: Box<i64>,
+    pub _type: Box<AttributionReportingSourceType>,
+    pub source_origin: Box<String>,
+    pub reporting_origin: Box<String>,
     pub destination_sites: (),
-    pub event_id: (),
-    pub priority: (),
+    pub event_id: Box<UnsignedInt64AsBase10>,
+    pub priority: Box<SignedInt64AsBase10>,
     pub filter_data: (),
     pub aggregation_keys: (),
-    pub debug_key: (),
-    pub trigger_data_matching: (),
-    pub destination_limit_priority: (),
-    pub aggregatable_debug_reporting_config: (),
-    pub scopes_data: (),
-    pub max_event_level_reports: i64,
+    pub debug_key: Box<UnsignedInt64AsBase10>,
+    pub trigger_data_matching: Box<AttributionReportingTriggerDataMatching>,
+    pub destination_limit_priority: Box<SignedInt64AsBase10>,
+    pub aggregatable_debug_reporting_config: Box<
+        AttributionReportingAggregatableDebugReportingConfig,
+    >,
+    pub scopes_data: Box<AttributionScopesData>,
+    pub max_event_level_reports: Box<i64>,
     pub named_budgets: (),
     pub debug_reporting: (),
-    pub event_level_epsilon: u64,
+    pub event_level_epsilon: Box<u64>,
 }
 /// ⚠️ Experimental
 pub enum AttributionReportingSourceRegistrationResult {
@@ -268,52 +270,56 @@ pub enum AttributionReportingSourceRegistrationTimeConfig {
 }
 /// ⚠️ Experimental
 pub struct AttributionReportingAggregatableValueDictEntry {
-    pub key: String,
-    pub value: u64,
-    pub filtering_id: (),
+    pub key: Box<String>,
+    pub value: Box<u64>,
+    pub filtering_id: Box<UnsignedInt64AsBase10>,
 }
 /// ⚠️ Experimental
 pub struct AttributionReportingAggregatableValueEntry {
     pub values: (),
-    pub filters: (),
+    pub filters: Box<AttributionReportingFilterPair>,
 }
 /// ⚠️ Experimental
 pub struct AttributionReportingEventTriggerData {
-    pub data: (),
-    pub priority: (),
-    pub dedup_key: (),
-    pub filters: (),
+    pub data: Box<UnsignedInt64AsBase10>,
+    pub priority: Box<SignedInt64AsBase10>,
+    pub dedup_key: Box<UnsignedInt64AsBase10>,
+    pub filters: Box<AttributionReportingFilterPair>,
 }
 /// ⚠️ Experimental
 pub struct AttributionReportingAggregatableTriggerData {
-    pub key_piece: (),
+    pub key_piece: Box<UnsignedInt128AsBase16>,
     pub source_keys: (),
-    pub filters: (),
+    pub filters: Box<AttributionReportingFilterPair>,
 }
 /// ⚠️ Experimental
 pub struct AttributionReportingAggregatableDedupKey {
-    pub dedup_key: (),
-    pub filters: (),
+    pub dedup_key: Box<UnsignedInt64AsBase10>,
+    pub filters: Box<AttributionReportingFilterPair>,
 }
 /// ⚠️ Experimental
 pub struct AttributionReportingNamedBudgetCandidate {
-    pub name: String,
-    pub filters: (),
+    pub name: Box<String>,
+    pub filters: Box<AttributionReportingFilterPair>,
 }
 /// ⚠️ Experimental
 pub struct AttributionReportingTriggerRegistration {
-    pub filters: (),
-    pub debug_key: (),
+    pub filters: Box<AttributionReportingFilterPair>,
+    pub debug_key: Box<UnsignedInt64AsBase10>,
     pub aggregatable_dedup_keys: (),
     pub event_trigger_data: (),
     pub aggregatable_trigger_data: (),
     pub aggregatable_values: (),
-    pub aggregatable_filtering_id_max_bytes: i64,
+    pub aggregatable_filtering_id_max_bytes: Box<i64>,
     pub debug_reporting: (),
-    pub aggregation_coordinator_origin: String,
-    pub source_registration_time_config: (),
-    pub trigger_context_id: String,
-    pub aggregatable_debug_reporting_config: (),
+    pub aggregation_coordinator_origin: Box<String>,
+    pub source_registration_time_config: Box<
+        AttributionReportingSourceRegistrationTimeConfig,
+    >,
+    pub trigger_context_id: Box<String>,
+    pub aggregatable_debug_reporting_config: Box<
+        AttributionReportingAggregatableDebugReportingConfig,
+    >,
     pub scopes: (),
     pub named_budgets: (),
 }

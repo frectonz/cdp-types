@@ -1,4 +1,4 @@
-pub use crate::common::*;
+use crate::common::*;
 /// ⚠️ Experimental
 pub struct BrowserContextId(String);
 /// ⚠️ Experimental
@@ -6,11 +6,11 @@ pub struct WindowId(i64);
 /// ⚠️ Experimental
 /// Browser window bounds information
 pub struct Bounds {
-    pub left: i64,
-    pub top: i64,
-    pub width: i64,
-    pub height: i64,
-    pub window_state: (),
+    pub left: Box<i64>,
+    pub top: Box<i64>,
+    pub width: Box<i64>,
+    pub height: Box<i64>,
+    pub window_state: Box<WindowState>,
 }
 /// ⚠️ Experimental
 pub enum PermissionType {
@@ -62,7 +62,7 @@ pub enum PermissionSetting {
 /** Definition of PermissionDescriptor defined in the Permissions API:
 https://w3c.github.io/permissions/#dom-permissiondescriptor.*/
 pub struct PermissionDescriptor {
-    pub name: String,
+    pub name: Box<String>,
     pub sysex: (),
     pub user_visible_only: (),
     pub allow_without_sanitization: (),
@@ -79,16 +79,16 @@ pub enum BrowserCommandId {
 /// ⚠️ Experimental
 /// Chrome histogram bucket.
 pub struct Bucket {
-    pub low: i64,
-    pub high: i64,
-    pub count: i64,
+    pub low: Box<i64>,
+    pub high: Box<i64>,
+    pub count: Box<i64>,
 }
 /// ⚠️ Experimental
 /// Chrome histogram.
 pub struct Histogram {
-    pub name: String,
-    pub sum: i64,
-    pub count: i64,
+    pub name: Box<String>,
+    pub sum: Box<i64>,
+    pub count: Box<i64>,
     pub buckets: (),
 }
 /// ⚠️ Experimental

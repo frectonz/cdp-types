@@ -1,14 +1,14 @@
-pub use crate::common::*;
+use crate::common::*;
 pub struct CreditCard {
-    pub number: String,
-    pub name: String,
-    pub expiry_month: String,
-    pub expiry_year: String,
-    pub cvc: String,
+    pub number: Box<String>,
+    pub name: Box<String>,
+    pub expiry_month: Box<String>,
+    pub expiry_year: Box<String>,
+    pub cvc: Box<String>,
 }
 pub struct AddressField {
-    pub name: String,
-    pub value: String,
+    pub name: Box<String>,
+    pub value: Box<String>,
 }
 /// A list of address fields.
 pub struct AddressFields {
@@ -33,12 +33,12 @@ pub enum FillingStrategy {
     AutofillInferred,
 }
 pub struct FilledField {
-    pub html_type: String,
-    pub id: String,
-    pub name: String,
-    pub value: String,
-    pub autofill_type: String,
-    pub filling_strategy: (),
-    pub frame_id: (),
-    pub field_id: (),
+    pub html_type: Box<String>,
+    pub id: Box<String>,
+    pub name: Box<String>,
+    pub value: Box<String>,
+    pub autofill_type: Box<String>,
+    pub filling_strategy: Box<FillingStrategy>,
+    pub frame_id: Box<PageFrameId>,
+    pub field_id: Box<DomBackendNodeId>,
 }
