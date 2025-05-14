@@ -39,8 +39,18 @@ impl BrowserProtocol {
         for domain in self.domains.iter() {
             for typ in domain.types.iter() {
                 if common_type_ids.contains(&typ.id) {
-                    let typ = typ.to_owned();
+                    let mut typ = typ.to_owned();
                     let domain = domain.domain.to_owned();
+
+                    let id = typ.id.as_ref();
+                    let id = if id.starts_with(domain.as_ref()) {
+                        id.to_pascal_case()
+                    } else {
+                        let domain = domain.to_pascal_case();
+                        format!("{domain}{id}").to_pascal_case()
+                    };
+
+                    typ.id = id.into_boxed_str();
 
                     common_types.push((domain, typ));
                 }
@@ -230,12 +240,18 @@ impl Property {
         let name = Ident::new(&name, Span::call_site());
 
         let basic_type = self.r#type.as_ref().and_then(|typ| get_rust_type(typ));
+        let ref_typ = self.r#ref.as_ref().map(|ref_typ| {
+            let ref_type = ref_typ.to_pascal_case();
+            let ref_type = Ident::new(&ref_type, Span::call_site());
 
-        let property_type = basic_type;
+            quote! { #ref_type }
+        });
+
+        let property_type = basic_type.or(ref_typ);
 
         if let Some(typ) = property_type {
             return quote! {
-                pub #name: #typ
+                pub #name: Box<#typ>
             };
         }
 
@@ -246,18 +262,9 @@ impl Property {
 }
 
 impl Type {
-    fn id_ident(&self, domain: Option<&str>) -> Ident {
-        match domain {
-            Some(domain) => {
-                let id = self.id.as_ref();
-                let id = format!("{domain}{id}").to_pascal_case();
-                Ident::new(&id, Span::call_site())
-            }
-            None => {
-                let id = self.id.to_pascal_case();
-                Ident::new(&id, Span::call_site())
-            }
-        }
+    fn id_ident(&self) -> Ident {
+        let id = self.id.to_pascal_case();
+        Ident::new(&id, Span::call_site())
     }
 
     fn enum_variants(&self) -> Option<TokenStream> {
@@ -345,8 +352,8 @@ impl Type {
         }
     }
 
-    fn to_rust(&self, domain: Option<&str>) -> TokenStream {
-        let id = self.id_ident(domain);
+    fn to_rust(&self) -> TokenStream {
+        let id = self.id_ident();
         let items = self.items();
         let properties = self.properties();
         let enum_variants = self.enum_variants();
@@ -422,10 +429,10 @@ impl Domain {
             .types
             .iter()
             .filter(|x| !protocol.is_common_type(&x.id))
-            .map(|t| t.to_rust(None));
+            .map(|t| t.to_rust());
 
         let content = quote! {
-            pub use crate::common::*;
+            use crate::common::*;
             #(#dependecies)*
             #(#types)*
         };
@@ -438,10 +445,17 @@ impl BrowserProtocol {
     fn generate(self) -> Result<()> {
         let protocol_data = self.protocol_data();
 
-        let common_types = protocol_data
-            .common_types
-            .iter()
-            .map(|(domain, typ)| typ.to_rust(Some(domain)));
+        let common_types = protocol_data.common_types.iter().map(|(domain, typ)| {
+            let common_type = typ.to_rust();
+            let domain = domain.to_snake_case();
+            let domain = Ident::new(&domain, Span::call_site());
+
+            quote! {
+                use crate::#domain::*;
+
+                #common_type
+            }
+        });
 
         let common_rs = RustFile {
             name: "common".to_owned(),
