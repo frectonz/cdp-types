@@ -95,6 +95,37 @@ impl BrowserProtocol {
             .map(|(t, _)| t)
             .collect()
     }
+
+    fn normalize_dependencies(&mut self) {
+        for domain in self.domains.iter_mut() {
+            for typ in domain.types.iter() {
+                if let Some(properties) = typ.properties.as_ref() {
+                    for propery in properties.iter() {
+                        let type_domain = propery
+                            .r#ref
+                            .as_ref()
+                            .and_then(|x| x.as_ref().split_once('.'))
+                            .map(|(domain, _)| domain);
+
+                        if let Some(new_domain) = type_domain {
+                            if domain.domain.as_ref() == new_domain {
+                                continue;
+                            }
+
+                            if domain
+                                .dependencies
+                                .iter()
+                                .find(|x| x.as_ref() == new_domain)
+                                .is_none()
+                            {
+                                domain.dependencies.push(new_domain.into())
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 
 #[derive(Debug, Deserialize)]
@@ -109,7 +140,7 @@ pub struct Domain {
     pub description: Option<Str>,
 
     #[serde(default)]
-    pub dependencies: List<Str>,
+    pub dependencies: Vec<Str>,
 
     #[serde(default)]
     pub types: List<Type>,
@@ -458,7 +489,6 @@ impl Domain {
 
     fn dependency_names(&self) -> impl Iterator<Item = TokenStream> {
         self.dependencies
-            .as_ref()
             .iter()
             .filter(|x| x.as_ref() != "Runtime")
             .filter(|x| x.as_ref() != "Debugger")
@@ -564,13 +594,14 @@ fn main() -> Result<()> {
     color_eyre::install()?;
 
     let data = std::fs::read_to_string("data/browser_protocol.json")?;
-    let protocol: BrowserProtocol = serde_json::from_str(&data)?;
+    let mut protocol: BrowserProtocol = serde_json::from_str(&data)?;
 
     println!(
         "Generating types for CDP version {}.{}",
         protocol.version.major, protocol.version.minor
     );
 
+    protocol.normalize_dependencies();
     protocol.generate()?;
 
     Ok(())
