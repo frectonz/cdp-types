@@ -162,7 +162,7 @@ pub enum ContentSecurityPolicyViolationType {
     KWasmEvalViolation,
 }
 pub struct SourceCodeLocation {
-    pub script_id: Box<ScriptId>,
+    pub script_id: Box<()>,
     pub url: Box<String>,
     pub line_number: Box<i64>,
     pub column_number: Box<i64>,

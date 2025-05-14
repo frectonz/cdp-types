@@ -336,7 +336,7 @@ pub struct CachedResource {
 /// Information about the request initiator.
 pub struct Initiator {
     pub _type: Box<String>,
-    pub stack: Box<StackTrace>,
+    pub stack: Box<()>,
     pub url: Box<String>,
     pub line_number: Box<u64>,
     pub column_number: Box<u64>,

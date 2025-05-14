@@ -27,8 +27,8 @@ pub struct AdFrameStatus {
 /** Identifies the bottom-most script which caused the frame to be labelled
 as an ad.*/
 pub struct AdScriptId {
-    pub script_id: Box<ScriptId>,
-    pub debugger_id: Box<UniqueDebuggerId>,
+    pub script_id: Box<()>,
+    pub debugger_id: Box<()>,
 }
 /// ⚠️ Experimental
 /// Indicates whether the frame is a secure context and why it is the case.

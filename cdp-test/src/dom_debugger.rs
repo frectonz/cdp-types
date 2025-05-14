@@ -18,10 +18,10 @@ pub struct EventListener {
     pub use_capture: (),
     pub passive: (),
     pub once: (),
-    pub script_id: Box<ScriptId>,
+    pub script_id: Box<()>,
     pub line_number: Box<i64>,
     pub column_number: Box<i64>,
-    pub handler: Box<RemoteObject>,
-    pub original_handler: Box<RemoteObject>,
+    pub handler: Box<()>,
+    pub original_handler: Box<()>,
     pub backend_node_id: Box<BackendNodeId>,
 }

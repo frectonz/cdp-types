@@ -34,9 +34,9 @@ pub struct DomStorageSerializedStorageKey(String);
 use crate::indexed_db::*;
 /// Data entry.
 pub struct IndexedDbDataEntry {
-    pub key: Box<RemoteObject>,
-    pub primary_key: Box<RemoteObject>,
-    pub value: Box<RemoteObject>,
+    pub key: Box<()>,
+    pub primary_key: Box<()>,
+    pub value: Box<()>,
 }
 use crate::input::*;
 /// UTC time in seconds, counted from January 1, 1970.
