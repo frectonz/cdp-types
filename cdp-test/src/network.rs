@@ -157,8 +157,8 @@ pub struct SecurityDetails {
     pub subject_name: Box<String>,
     pub san_list: (),
     pub issuer: Box<String>,
-    pub valid_from: Box<TimeSinceEpoch>,
-    pub valid_to: Box<TimeSinceEpoch>,
+    pub valid_from: Box<NetworkTimeSinceEpoch>,
+    pub valid_to: Box<NetworkTimeSinceEpoch>,
     pub signed_certificate_timestamp_list: (),
     pub certificate_transparency_compliance: Box<CertificateTransparencyCompliance>,
     pub server_signature_algorithm: Box<i64>,
@@ -301,7 +301,7 @@ pub struct Response {
     pub encoded_data_length: Box<u64>,
     pub timing: Box<ResourceTiming>,
     pub service_worker_response_source: Box<ServiceWorkerResponseSource>,
-    pub response_time: Box<TimeSinceEpoch>,
+    pub response_time: Box<NetworkTimeSinceEpoch>,
     pub cache_storage_cache_name: Box<String>,
     pub protocol: Box<String>,
     pub alternate_protocol_usage: Box<AlternateProtocolUsage>,
@@ -341,7 +341,7 @@ pub struct Initiator {
     pub url: Box<String>,
     pub line_number: Box<u64>,
     pub column_number: Box<u64>,
-    pub request_id: Box<RequestId>,
+    pub request_id: Box<NetworkRequestId>,
 }
 /// ⚠️ Experimental
 /** cookiePartitionKey object
@@ -466,7 +466,7 @@ pub struct CookieParam {
     pub secure: (),
     pub http_only: (),
     pub same_site: Box<CookieSameSite>,
-    pub expires: Box<TimeSinceEpoch>,
+    pub expires: Box<NetworkTimeSinceEpoch>,
     pub priority: Box<CookiePriority>,
     pub same_party: (),
     pub source_scheme: Box<CookieSourceScheme>,

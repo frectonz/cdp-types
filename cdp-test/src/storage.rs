@@ -137,7 +137,7 @@ pub enum StorageBucketsDurability {
     Strict,
 }
 pub struct StorageBucket {
-    pub storage_key: Box<SerializedStorageKey>,
+    pub storage_key: Box<StorageSerializedStorageKey>,
     pub name: Box<String>,
 }
 pub struct StorageBucketInfo {
