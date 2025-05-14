@@ -309,6 +309,24 @@ impl Property {
                 };
             }
 
+            if ref_typ.as_ref() == "SerializedStorageKey" {
+                return quote! {
+                    StorageSerializedStorageKey
+                };
+            }
+
+            if ref_typ.as_ref() == "TimeSinceEpoch" {
+                return quote! {
+                    NetworkTimeSinceEpoch
+                };
+            }
+
+            if ref_typ.as_ref() == "RequestId" {
+                return quote! {
+                    NetworkRequestId
+                };
+            }
+
             if ref_typ.as_ref().starts_with("Runtime.") {
                 return quote! {
                     ()
