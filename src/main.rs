@@ -241,6 +241,8 @@ impl Property {
 
         let basic_type = self.r#type.as_ref().and_then(|typ| get_rust_type(typ));
         let ref_typ = self.r#ref.as_ref().map(|ref_typ| {
+            let (_, ref_typ) = ref_typ.split_once('.').unwrap_or(("", ref_typ.as_ref()));
+
             let ref_type = ref_typ.to_pascal_case();
             let ref_type = Ident::new(&ref_type, Span::call_site());
 
