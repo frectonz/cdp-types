@@ -12,7 +12,7 @@ pub struct DomNode {
     pub input_value: Box<String>,
     pub input_checked: (),
     pub option_selected: (),
-    pub backend_node_id: Box<DomBackendNodeId>,
+    pub backend_node_id: Box<BackendNodeId>,
     pub child_node_indexes: (),
     pub attributes: (),
     pub pseudo_element_indexes: (),
@@ -23,10 +23,10 @@ pub struct DomNode {
     pub document_encoding: Box<String>,
     pub public_id: Box<String>,
     pub system_id: Box<String>,
-    pub frame_id: Box<PageFrameId>,
+    pub frame_id: Box<FrameId>,
     pub content_document_index: Box<i64>,
-    pub pseudo_type: Box<DomPseudoType>,
-    pub shadow_root_type: Box<DomShadowRootType>,
+    pub pseudo_type: Box<PseudoType>,
+    pub shadow_root_type: Box<ShadowRootType>,
     pub is_clickable: (),
     pub event_listeners: (),
     pub current_source_url: Box<String>,
@@ -37,14 +37,14 @@ pub struct DomNode {
 /** Details of post layout rendered text positions. The exact layout should not be regarded as
 stable and may change between versions.*/
 pub struct InlineTextBox {
-    pub bounding_box: Box<DomRect>,
+    pub bounding_box: Box<Rect>,
     pub start_character_index: Box<i64>,
     pub num_characters: Box<i64>,
 }
 /// Details of an element in the DOM tree with a LayoutObject.
 pub struct LayoutTreeNode {
     pub dom_node_index: Box<i64>,
-    pub bounding_box: Box<DomRect>,
+    pub bounding_box: Box<Rect>,
     pub layout_text: Box<String>,
     pub inline_text_nodes: (),
     pub style_index: Box<i64>,

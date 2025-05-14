@@ -39,6 +39,6 @@ pub struct FilledField {
     pub value: Box<String>,
     pub autofill_type: Box<String>,
     pub filling_strategy: Box<FillingStrategy>,
-    pub frame_id: Box<PageFrameId>,
-    pub field_id: Box<DomBackendNodeId>,
+    pub frame_id: Box<FrameId>,
+    pub field_id: Box<BackendNodeId>,
 }

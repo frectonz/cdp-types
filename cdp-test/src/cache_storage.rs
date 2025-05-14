@@ -16,7 +16,7 @@ pub struct Cache {
     pub cache_id: Box<CacheId>,
     pub security_origin: Box<String>,
     pub storage_key: Box<String>,
-    pub storage_bucket: Box<StorageStorageBucket>,
+    pub storage_bucket: Box<StorageBucket>,
     pub cache_name: Box<String>,
 }
 pub struct Header {

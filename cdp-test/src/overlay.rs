@@ -3,8 +3,8 @@ use crate::dom::*;
 use crate::page::*;
 /// Configuration data for drawing the source order of an elements children.
 pub struct SourceOrderConfig {
-    pub parent_outline_color: Box<DomRgba>,
-    pub child_outline_color: Box<DomRgba>,
+    pub parent_outline_color: Box<Rgba>,
+    pub child_outline_color: Box<Rgba>,
 }
 /// Configuration data for the highlighting of Grid elements.
 pub struct GridHighlightConfig {
@@ -14,20 +14,20 @@ pub struct GridHighlightConfig {
     pub show_area_names: (),
     pub show_line_names: (),
     pub show_track_sizes: (),
-    pub grid_border_color: Box<DomRgba>,
-    pub cell_border_color: Box<DomRgba>,
-    pub row_line_color: Box<DomRgba>,
-    pub column_line_color: Box<DomRgba>,
+    pub grid_border_color: Box<Rgba>,
+    pub cell_border_color: Box<Rgba>,
+    pub row_line_color: Box<Rgba>,
+    pub column_line_color: Box<Rgba>,
     pub grid_border_dash: (),
     pub cell_border_dash: (),
     pub row_line_dash: (),
     pub column_line_dash: (),
-    pub row_gap_color: Box<DomRgba>,
-    pub row_hatch_color: Box<DomRgba>,
-    pub column_gap_color: Box<DomRgba>,
-    pub column_hatch_color: Box<DomRgba>,
-    pub area_border_color: Box<DomRgba>,
-    pub grid_background_color: Box<DomRgba>,
+    pub row_gap_color: Box<Rgba>,
+    pub row_hatch_color: Box<Rgba>,
+    pub column_gap_color: Box<Rgba>,
+    pub column_hatch_color: Box<Rgba>,
+    pub area_border_color: Box<Rgba>,
+    pub grid_background_color: Box<Rgba>,
 }
 /// Configuration data for the highlighting of Flex container elements.
 pub struct FlexContainerHighlightConfig {
@@ -48,13 +48,13 @@ pub struct FlexItemHighlightConfig {
 }
 /// Style information for drawing a line.
 pub struct LineStyle {
-    pub color: Box<DomRgba>,
+    pub color: Box<Rgba>,
     pub pattern: Box<String>,
 }
 /// Style information for drawing a box.
 pub struct BoxStyle {
-    pub fill_color: Box<DomRgba>,
-    pub hatch_color: Box<DomRgba>,
+    pub fill_color: Box<Rgba>,
+    pub hatch_color: Box<Rgba>,
 }
 pub enum ContrastAlgorithm {
     Aa,
@@ -68,14 +68,14 @@ pub struct HighlightConfig {
     pub show_rulers: (),
     pub show_accessibility_info: (),
     pub show_extension_lines: (),
-    pub content_color: Box<DomRgba>,
-    pub padding_color: Box<DomRgba>,
-    pub border_color: Box<DomRgba>,
-    pub margin_color: Box<DomRgba>,
-    pub event_target_color: Box<DomRgba>,
-    pub shape_color: Box<DomRgba>,
-    pub shape_margin_color: Box<DomRgba>,
-    pub css_grid_color: Box<DomRgba>,
+    pub content_color: Box<Rgba>,
+    pub padding_color: Box<Rgba>,
+    pub border_color: Box<Rgba>,
+    pub margin_color: Box<Rgba>,
+    pub event_target_color: Box<Rgba>,
+    pub shape_color: Box<Rgba>,
+    pub shape_margin_color: Box<Rgba>,
+    pub css_grid_color: Box<Rgba>,
     pub color_format: Box<ColorFormat>,
     pub grid_highlight_config: Box<GridHighlightConfig>,
     pub flex_container_highlight_config: Box<FlexContainerHighlightConfig>,
@@ -94,27 +94,27 @@ pub enum ColorFormat {
 /// Configurations for Persistent Grid Highlight
 pub struct GridNodeHighlightConfig {
     pub grid_highlight_config: Box<GridHighlightConfig>,
-    pub node_id: Box<DomNodeId>,
+    pub node_id: Box<NodeId>,
 }
 pub struct FlexNodeHighlightConfig {
     pub flex_container_highlight_config: Box<FlexContainerHighlightConfig>,
-    pub node_id: Box<DomNodeId>,
+    pub node_id: Box<NodeId>,
 }
 pub struct ScrollSnapContainerHighlightConfig {
     pub snapport_border: Box<LineStyle>,
     pub snap_area_border: Box<LineStyle>,
-    pub scroll_margin_color: Box<DomRgba>,
-    pub scroll_padding_color: Box<DomRgba>,
+    pub scroll_margin_color: Box<Rgba>,
+    pub scroll_padding_color: Box<Rgba>,
 }
 pub struct ScrollSnapHighlightConfig {
     pub scroll_snap_container_highlight_config: Box<ScrollSnapContainerHighlightConfig>,
-    pub node_id: Box<DomNodeId>,
+    pub node_id: Box<NodeId>,
 }
 /// Configuration for dual screen hinge
 pub struct HingeConfig {
-    pub rect: Box<DomRect>,
-    pub content_color: Box<DomRgba>,
-    pub outline_color: Box<DomRgba>,
+    pub rect: Box<Rect>,
+    pub content_color: Box<Rgba>,
+    pub outline_color: Box<Rgba>,
 }
 /// Configuration for Window Controls Overlay
 pub struct WindowControlsOverlayConfig {
@@ -126,7 +126,7 @@ pub struct ContainerQueryHighlightConfig {
     pub container_query_container_highlight_config: Box<
         ContainerQueryContainerHighlightConfig,
     >,
-    pub node_id: Box<DomNodeId>,
+    pub node_id: Box<NodeId>,
 }
 pub struct ContainerQueryContainerHighlightConfig {
     pub container_border: Box<LineStyle>,
@@ -134,12 +134,12 @@ pub struct ContainerQueryContainerHighlightConfig {
 }
 pub struct IsolatedElementHighlightConfig {
     pub isolation_mode_highlight_config: Box<IsolationModeHighlightConfig>,
-    pub node_id: Box<DomNodeId>,
+    pub node_id: Box<NodeId>,
 }
 pub struct IsolationModeHighlightConfig {
-    pub resizer_color: Box<DomRgba>,
-    pub resizer_handle_color: Box<DomRgba>,
-    pub mask_color: Box<DomRgba>,
+    pub resizer_color: Box<Rgba>,
+    pub resizer_handle_color: Box<Rgba>,
+    pub mask_color: Box<Rgba>,
 }
 pub enum InspectMode {
     SearchForNode,

@@ -57,7 +57,7 @@ pub struct AxValueSource {
     pub invalid_reason: Box<String>,
 }
 pub struct AxRelatedNode {
-    pub backend_dom_node_id: Box<DomBackendNodeId>,
+    pub backend_dom_node_id: Box<BackendNodeId>,
     pub idref: Box<String>,
     pub text: Box<String>,
 }
@@ -134,6 +134,6 @@ pub struct AxNode {
     pub properties: (),
     pub parent_id: Box<AxNodeId>,
     pub child_ids: (),
-    pub backend_dom_node_id: Box<DomBackendNodeId>,
-    pub frame_id: Box<PageFrameId>,
+    pub backend_dom_node_id: Box<BackendNodeId>,
+    pub frame_id: Box<FrameId>,
 }

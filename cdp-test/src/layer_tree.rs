@@ -6,13 +6,13 @@ pub struct LayerId(String);
 pub struct SnapshotId(String);
 /// Rectangle where scrolling happens on the main thread.
 pub struct ScrollRect {
-    pub rect: Box<DomRect>,
+    pub rect: Box<Rect>,
     pub _type: Box<String>,
 }
 /// Sticky position constraints.
 pub struct StickyPositionConstraint {
-    pub sticky_box_rect: Box<DomRect>,
-    pub containing_block_rect: Box<DomRect>,
+    pub sticky_box_rect: Box<Rect>,
+    pub containing_block_rect: Box<Rect>,
     pub nearest_layer_shifting_sticky_box: Box<LayerId>,
     pub nearest_layer_shifting_containing_block: Box<LayerId>,
 }
@@ -26,7 +26,7 @@ pub struct PictureTile {
 pub struct Layer {
     pub layer_id: Box<LayerId>,
     pub parent_layer_id: Box<LayerId>,
-    pub backend_node_id: Box<DomBackendNodeId>,
+    pub backend_node_id: Box<BackendNodeId>,
     pub offset_x: Box<u64>,
     pub offset_y: Box<u64>,
     pub width: Box<u64>,

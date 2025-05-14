@@ -8,12 +8,12 @@ pub struct AffectedCookie {
 }
 /// Information about a request that is affected by an inspector issue.
 pub struct AffectedRequest {
-    pub request_id: Box<NetworkRequestId>,
+    pub request_id: Box<RequestId>,
     pub url: Box<String>,
 }
 /// Information about the frame affected by an inspector issue.
 pub struct AffectedFrame {
-    pub frame_id: Box<PageFrameId>,
+    pub frame_id: Box<FrameId>,
 }
 pub enum CookieExclusionReason {
     ExcludeSameSiteUnspecifiedTreatedAsLax,
@@ -162,7 +162,7 @@ pub enum ContentSecurityPolicyViolationType {
     KWasmEvalViolation,
 }
 pub struct SourceCodeLocation {
-    pub script_id: Box<RuntimeScriptId>,
+    pub script_id: Box<ScriptId>,
     pub url: Box<String>,
     pub line_number: Box<i64>,
     pub column_number: Box<i64>,
@@ -174,7 +174,7 @@ pub struct ContentSecurityPolicyIssueDetails {
     pub content_security_policy_violation_type: Box<ContentSecurityPolicyViolationType>,
     pub frame_ancestor: Box<AffectedFrame>,
     pub source_code_location: Box<SourceCodeLocation>,
-    pub violating_node_id: Box<DomBackendNodeId>,
+    pub violating_node_id: Box<BackendNodeId>,
 }
 pub enum SharedArrayBufferIssueType {
     TransferIssue,
@@ -188,7 +188,7 @@ pub struct SharedArrayBufferIssueDetails {
     pub _type: Box<SharedArrayBufferIssueType>,
 }
 pub struct LowTextContrastIssueDetails {
-    pub violating_node_id: Box<DomBackendNodeId>,
+    pub violating_node_id: Box<BackendNodeId>,
     pub violating_node_selector: Box<String>,
     pub contrast_ratio: Box<u64>,
     pub threshold_aa: Box<u64>,
@@ -199,13 +199,13 @@ pub struct LowTextContrastIssueDetails {
 /** Details for a CORS related issue, e.g. a warning or error related to
 CORS RFC1918 enforcement.*/
 pub struct CorsIssueDetails {
-    pub cors_error_status: Box<NetworkCorsErrorStatus>,
+    pub cors_error_status: Box<CorsErrorStatus>,
     pub is_warning: (),
     pub request: Box<AffectedRequest>,
     pub location: Box<SourceCodeLocation>,
     pub initiator_origin: Box<String>,
-    pub resource_ip_address_space: Box<NetworkIpAddressSpace>,
-    pub client_security_state: Box<NetworkClientSecurityState>,
+    pub resource_ip_address_space: Box<IpAddressSpace>,
+    pub client_security_state: Box<ClientSecurityState>,
 }
 pub enum AttributionReportingIssueType {
     PermissionPolicyDisabled,
@@ -283,17 +283,17 @@ Explainer: https://github.com/WICG/attribution-reporting-api*/
 pub struct AttributionReportingIssueDetails {
     pub violation_type: Box<AttributionReportingIssueType>,
     pub request: Box<AffectedRequest>,
-    pub violating_node_id: Box<DomBackendNodeId>,
+    pub violating_node_id: Box<BackendNodeId>,
     pub invalid_parameter: Box<String>,
 }
 /** Details for issues about documents in Quirks Mode
 or Limited Quirks Mode that affects page layouting.*/
 pub struct QuirksModeIssueDetails {
     pub is_limited_quirks_mode: (),
-    pub document_node_id: Box<DomBackendNodeId>,
+    pub document_node_id: Box<BackendNodeId>,
     pub url: Box<String>,
-    pub frame_id: Box<PageFrameId>,
-    pub loader_id: Box<NetworkLoaderId>,
+    pub frame_id: Box<FrameId>,
+    pub loader_id: Box<LoaderId>,
 }
 #[deprecated]
 pub struct NavigatorUserAgentIssueDetails {
@@ -326,8 +326,8 @@ pub enum GenericIssueErrorType {
 /// Depending on the concrete errorType, different properties are set.
 pub struct GenericIssueDetails {
     pub error_type: Box<GenericIssueErrorType>,
-    pub frame_id: Box<PageFrameId>,
-    pub violating_node_id: Box<DomBackendNodeId>,
+    pub frame_id: Box<FrameId>,
+    pub violating_node_id: Box<BackendNodeId>,
     pub violating_node_attribute: Box<String>,
     pub request: Box<AffectedRequest>,
 }
@@ -446,7 +446,7 @@ pub struct ClientHintIssueDetails {
 pub struct FailedRequestInfo {
     pub url: Box<String>,
     pub failure_message: Box<String>,
-    pub request_id: Box<NetworkRequestId>,
+    pub request_id: Box<RequestId>,
 }
 pub enum PartitioningBlobUrlInfo {
     BlockedCrossPartitionFetching,
@@ -465,7 +465,7 @@ pub enum SelectElementAccessibilityIssueReason {
 }
 /// This issue warns about errors in the select element content model.
 pub struct SelectElementAccessibilityIssueDetails {
-    pub node_id: Box<DomBackendNodeId>,
+    pub node_id: Box<BackendNodeId>,
     pub select_element_accessibility_issue_reason: Box<
         SelectElementAccessibilityIssueReason,
     >,

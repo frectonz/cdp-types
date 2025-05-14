@@ -16,11 +16,11 @@ pub struct Animation {
 }
 /// Timeline instance
 pub struct ViewOrScrollTimeline {
-    pub source_node_id: Box<DomBackendNodeId>,
+    pub source_node_id: Box<BackendNodeId>,
     pub start_offset: Box<u64>,
     pub end_offset: Box<u64>,
-    pub subject_node_id: Box<DomBackendNodeId>,
-    pub axis: Box<DomScrollOrientation>,
+    pub subject_node_id: Box<BackendNodeId>,
+    pub axis: Box<ScrollOrientation>,
 }
 /// AnimationEffect instance
 pub struct AnimationEffect {
@@ -31,7 +31,7 @@ pub struct AnimationEffect {
     pub duration: Box<u64>,
     pub direction: Box<String>,
     pub fill: Box<String>,
-    pub backend_node_id: Box<DomBackendNodeId>,
+    pub backend_node_id: Box<BackendNodeId>,
     pub keyframes_rule: Box<KeyframesRule>,
     pub easing: Box<String>,
 }

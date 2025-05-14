@@ -10,8 +10,8 @@ pub struct TargetInfo {
     pub attached: (),
     pub opener_id: Box<TargetId>,
     pub can_access_opener: (),
-    pub opener_frame_id: Box<PageFrameId>,
-    pub browser_context_id: Box<BrowserBrowserContextId>,
+    pub opener_frame_id: Box<FrameId>,
+    pub browser_context_id: Box<BrowserContextId>,
     pub subtype: Box<String>,
 }
 /// ⚠️ Experimental

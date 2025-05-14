@@ -27,8 +27,8 @@ pub struct AdFrameStatus {
 /** Identifies the bottom-most script which caused the frame to be labelled
 as an ad.*/
 pub struct AdScriptId {
-    pub script_id: Box<RuntimeScriptId>,
-    pub debugger_id: Box<RuntimeUniqueDebuggerId>,
+    pub script_id: Box<ScriptId>,
+    pub debugger_id: Box<UniqueDebuggerId>,
 }
 /// ⚠️ Experimental
 /// Indicates whether the frame is a secure context and why it is the case.
@@ -215,7 +215,7 @@ pub struct OriginTrialToken {
     pub origin: Box<String>,
     pub match_sub_domains: (),
     pub trial_name: Box<String>,
-    pub expiry_time: Box<NetworkTimeSinceEpoch>,
+    pub expiry_time: Box<TimeSinceEpoch>,
     pub is_third_party: (),
     pub usage_restriction: Box<OriginTrialUsageRestriction>,
 }
@@ -240,7 +240,7 @@ pub struct SecurityOriginDetails {
 pub struct Frame {
     pub id: Box<FrameId>,
     pub parent_id: Box<FrameId>,
-    pub loader_id: Box<NetworkLoaderId>,
+    pub loader_id: Box<LoaderId>,
     pub name: Box<String>,
     pub url: Box<String>,
     pub url_fragment: Box<String>,
@@ -258,9 +258,9 @@ pub struct Frame {
 /// Information about the Resource on the page.
 pub struct FrameResource {
     pub url: Box<String>,
-    pub _type: Box<NetworkResourceType>,
+    pub _type: Box<ResourceType>,
     pub mime_type: Box<String>,
-    pub last_modified: Box<NetworkTimeSinceEpoch>,
+    pub last_modified: Box<TimeSinceEpoch>,
     pub content_size: Box<u64>,
     pub failed: (),
     pub canceled: (),
@@ -312,7 +312,7 @@ pub struct ScreencastFrameMetadata {
     pub device_height: Box<u64>,
     pub scroll_offset_x: Box<u64>,
     pub scroll_offset_y: Box<u64>,
-    pub timestamp: Box<NetworkTimeSinceEpoch>,
+    pub timestamp: Box<TimeSinceEpoch>,
 }
 /// Error while paring app manifest.
 pub struct AppManifestError {

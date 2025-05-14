@@ -13,7 +13,7 @@ pub enum StyleSheetOrigin {
 }
 /// CSS rule collection for a single pseudo style.
 pub struct PseudoElementMatches {
-    pub pseudo_type: Box<DomPseudoType>,
+    pub pseudo_type: Box<PseudoType>,
     pub pseudo_identifier: Box<String>,
     pub matches: (),
 }
@@ -63,12 +63,12 @@ pub struct SelectorList {
 /// CSS stylesheet metainformation.
 pub struct CssStyleSheetHeader {
     pub style_sheet_id: Box<StyleSheetId>,
-    pub frame_id: Box<PageFrameId>,
+    pub frame_id: Box<FrameId>,
     pub source_url: Box<String>,
     pub source_map_url: Box<String>,
     pub origin: Box<StyleSheetOrigin>,
     pub title: Box<String>,
-    pub owner_node: Box<DomBackendNodeId>,
+    pub owner_node: Box<BackendNodeId>,
     pub disabled: (),
     pub has_source_url: (),
     pub is_inline: (),
@@ -176,8 +176,8 @@ pub struct CssContainerQuery {
     pub range: Box<SourceRange>,
     pub style_sheet_id: Box<StyleSheetId>,
     pub name: Box<String>,
-    pub physical_axes: Box<DomPhysicalAxes>,
-    pub logical_axes: Box<DomLogicalAxes>,
+    pub physical_axes: Box<PhysicalAxes>,
+    pub logical_axes: Box<LogicalAxes>,
     pub queries_scroll_state: (),
 }
 /// ⚠️ Experimental

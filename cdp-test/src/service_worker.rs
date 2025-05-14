@@ -31,7 +31,7 @@ pub struct ServiceWorkerVersion {
     pub script_last_modified: Box<u64>,
     pub script_response_time: Box<u64>,
     pub controlled_clients: (),
-    pub target_id: Box<TargetTargetId>,
+    pub target_id: Box<TargetId>,
     pub router_rules: Box<String>,
 }
 /// ServiceWorker error message.

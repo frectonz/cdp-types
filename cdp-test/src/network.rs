@@ -127,7 +127,7 @@ pub struct Request {
     pub post_data: Box<String>,
     pub has_post_data: (),
     pub post_data_entries: (),
-    pub mixed_content_type: Box<SecurityMixedContentType>,
+    pub mixed_content_type: Box<MixedContentType>,
     pub initial_priority: Box<ResourcePriority>,
     pub referrer_policy: Box<String>,
     pub is_link_preload: (),
@@ -152,7 +152,7 @@ pub struct SecurityDetails {
     pub key_exchange_group: Box<String>,
     pub cipher: Box<String>,
     pub mac: Box<String>,
-    pub certificate_id: Box<SecurityCertificateId>,
+    pub certificate_id: Box<CertificateId>,
     pub subject_name: Box<String>,
     pub san_list: (),
     pub issuer: Box<String>,
@@ -304,7 +304,7 @@ pub struct Response {
     pub cache_storage_cache_name: Box<String>,
     pub protocol: Box<String>,
     pub alternate_protocol_usage: Box<AlternateProtocolUsage>,
-    pub security_state: Box<SecuritySecurityState>,
+    pub security_state: Box<SecurityState>,
     pub security_details: Box<SecurityDetails>,
 }
 /// WebSocket request data.
@@ -336,7 +336,7 @@ pub struct CachedResource {
 /// Information about the request initiator.
 pub struct Initiator {
     pub _type: Box<String>,
-    pub stack: Box<RuntimeStackTrace>,
+    pub stack: Box<StackTrace>,
     pub url: Box<String>,
     pub line_number: Box<u64>,
     pub column_number: Box<u64>,
@@ -640,7 +640,7 @@ pub struct ReportingApiReport {
     pub initiator_url: Box<String>,
     pub destination: Box<String>,
     pub _type: Box<String>,
-    pub timestamp: Box<NetworkTimeSinceEpoch>,
+    pub timestamp: Box<TimeSinceEpoch>,
     pub depth: Box<i64>,
     pub completed_attempts: Box<i64>,
     pub body: Box<serde_json::Map<String, serde_json::Value>>,
@@ -658,8 +658,8 @@ pub struct LoadNetworkResourcePageResult {
     pub net_error: Box<u64>,
     pub net_error_name: Box<String>,
     pub http_status_code: Box<u64>,
-    pub stream: Box<IoStreamHandle>,
-    pub headers: Box<NetworkHeaders>,
+    pub stream: Box<StreamHandle>,
+    pub headers: Box<Headers>,
 }
 /// ⚠️ Experimental
 /** An options object that may be extended later to better support CORS,

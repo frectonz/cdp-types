@@ -3,7 +3,7 @@ use crate::network::*;
 use crate::storage::*;
 pub struct File {
     pub name: Box<String>,
-    pub last_modified: Box<NetworkTimeSinceEpoch>,
+    pub last_modified: Box<TimeSinceEpoch>,
     pub size: Box<u64>,
     pub _type: Box<String>,
 }
@@ -13,7 +13,7 @@ pub struct Directory {
     pub nested_files: (),
 }
 pub struct BucketFileSystemLocator {
-    pub storage_key: Box<StorageSerializedStorageKey>,
+    pub storage_key: Box<SerializedStorageKey>,
     pub bucket_name: Box<String>,
     pub path_components: (),
 }

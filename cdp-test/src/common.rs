@@ -1,4 +1,3 @@
-use crate::*;
 use crate::browser::*;
 /// ⚠️ Experimental
 /// The state of the browser window.
@@ -35,9 +34,9 @@ pub struct DomStorageSerializedStorageKey(String);
 use crate::indexed_db::*;
 /// Data entry.
 pub struct IndexedDbDataEntry {
-    pub key: Box<RuntimeRemoteObject>,
-    pub primary_key: Box<RuntimeRemoteObject>,
-    pub value: Box<RuntimeRemoteObject>,
+    pub key: Box<RemoteObject>,
+    pub primary_key: Box<RemoteObject>,
+    pub value: Box<RemoteObject>,
 }
 use crate::input::*;
 /// UTC time in seconds, counted from January 1, 1970.
@@ -111,7 +110,7 @@ pub struct FetchRequestId(String);
 use crate::fetch::*;
 pub struct FetchRequestPattern {
     pub url_pattern: Box<String>,
-    pub resource_type: Box<NetworkResourceType>,
+    pub resource_type: Box<ResourceType>,
     pub request_stage: Box<RequestStage>,
 }
 use crate::fetch::*;

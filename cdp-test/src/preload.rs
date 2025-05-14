@@ -4,11 +4,11 @@ pub struct RuleSetId(String);
 /// Corresponds to SpeculationRuleSet
 pub struct RuleSet {
     pub id: Box<RuleSetId>,
-    pub loader_id: Box<NetworkLoaderId>,
+    pub loader_id: Box<LoaderId>,
     pub source_text: Box<String>,
-    pub backend_node_id: Box<DomBackendNodeId>,
+    pub backend_node_id: Box<BackendNodeId>,
     pub url: Box<String>,
-    pub request_id: Box<NetworkRequestId>,
+    pub request_id: Box<RequestId>,
     pub error_type: Box<RuleSetErrorType>,
     pub error_message: Box<String>,
 }
@@ -36,7 +36,7 @@ not the final url that is navigated to. For example, prerendering allows
 same-origin main frame navigations during the attempt, but the attempt is
 still keyed with the initial URL.*/
 pub struct PreloadingAttemptKey {
-    pub loader_id: Box<NetworkLoaderId>,
+    pub loader_id: Box<LoaderId>,
     pub action: Box<SpeculationAction>,
     pub url: Box<String>,
     pub target_hint: Box<SpeculationTargetHint>,
