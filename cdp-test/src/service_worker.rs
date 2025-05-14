@@ -4,8 +4,8 @@ pub struct RegistrationId(String);
 /// ServiceWorker registration.
 pub struct ServiceWorkerRegistration {
     pub registration_id: Box<RegistrationId>,
-    pub scope_url: Box<String>,
-    pub is_deleted: (),
+    pub scope_url: String,
+    pub is_deleted: bool,
 }
 pub enum ServiceWorkerVersionRunningStatus {
     Stopped,
@@ -23,23 +23,23 @@ pub enum ServiceWorkerVersionStatus {
 }
 /// ServiceWorker version.
 pub struct ServiceWorkerVersion {
-    pub version_id: Box<String>,
+    pub version_id: String,
     pub registration_id: Box<RegistrationId>,
-    pub script_url: Box<String>,
+    pub script_url: String,
     pub running_status: Box<ServiceWorkerVersionRunningStatus>,
     pub status: Box<ServiceWorkerVersionStatus>,
-    pub script_last_modified: Box<u64>,
-    pub script_response_time: Box<u64>,
-    pub controlled_clients: (),
+    pub script_last_modified: u64,
+    pub script_response_time: u64,
+    pub controlled_clients: Vec<TargetId>,
     pub target_id: Box<TargetId>,
-    pub router_rules: Box<String>,
+    pub router_rules: String,
 }
 /// ServiceWorker error message.
 pub struct ServiceWorkerErrorMessage {
-    pub error_message: Box<String>,
+    pub error_message: String,
     pub registration_id: Box<RegistrationId>,
-    pub version_id: Box<String>,
-    pub source_url: Box<String>,
-    pub line_number: Box<i64>,
-    pub column_number: Box<i64>,
+    pub version_id: String,
+    pub source_url: String,
+    pub line_number: i64,
+    pub column_number: i64,
 }

@@ -7,12 +7,12 @@ pub struct RuleSetId(String);
 pub struct RuleSet {
     pub id: Box<RuleSetId>,
     pub loader_id: Box<LoaderId>,
-    pub source_text: Box<String>,
+    pub source_text: String,
     pub backend_node_id: Box<BackendNodeId>,
-    pub url: Box<String>,
+    pub url: String,
     pub request_id: Box<NetworkRequestId>,
     pub error_type: Box<RuleSetErrorType>,
-    pub error_message: Box<String>,
+    pub error_message: String,
 }
 pub enum RuleSetErrorType {
     SourceIsNotJsonObject,
@@ -40,7 +40,7 @@ still keyed with the initial URL.*/
 pub struct PreloadingAttemptKey {
     pub loader_id: Box<LoaderId>,
     pub action: Box<SpeculationAction>,
-    pub url: Box<String>,
+    pub url: String,
     pub target_hint: Box<SpeculationTargetHint>,
 }
 /** Lists sources for a preloading attempt, specifically the ids of rule sets
@@ -50,8 +50,8 @@ attempt (in the case of attempts triggered by a document rule). It is
 possible for multiple rule sets and links to trigger a single attempt.*/
 pub struct PreloadingAttemptSource {
     pub key: Box<PreloadingAttemptKey>,
-    pub rule_set_ids: (),
-    pub node_ids: (),
+    pub rule_set_ids: Vec<RuleSetId>,
+    pub node_ids: Vec<BackendNodeId>,
 }
 /** Chrome manages different types of preloads together using a
 concept of preloading pipeline. For example, if a site uses a
@@ -188,7 +188,7 @@ pub enum PrefetchStatus {
 }
 /// Information of headers to be displayed when the header mismatch occurred.
 pub struct PrerenderMismatchedHeaders {
-    pub header_name: Box<String>,
-    pub initial_value: Box<String>,
-    pub activation_value: Box<String>,
+    pub header_name: String,
+    pub initial_value: String,
+    pub activation_value: String,
 }

@@ -14,13 +14,13 @@ pub enum CspViolationType {
 }
 /// Object event listener.
 pub struct EventListener {
-    pub _type: Box<String>,
-    pub use_capture: (),
-    pub passive: (),
-    pub once: (),
+    pub _type: String,
+    pub use_capture: bool,
+    pub passive: bool,
+    pub once: bool,
     pub script_id: Box<()>,
-    pub line_number: Box<i64>,
-    pub column_number: Box<i64>,
+    pub line_number: i64,
+    pub column_number: i64,
     pub handler: Box<()>,
     pub original_handler: Box<()>,
     pub backend_node_id: Box<BackendNodeId>,

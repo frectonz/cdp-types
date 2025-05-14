@@ -8,20 +8,20 @@ pub struct SourceOrderConfig {
 }
 /// Configuration data for the highlighting of Grid elements.
 pub struct GridHighlightConfig {
-    pub show_grid_extension_lines: (),
-    pub show_positive_line_numbers: (),
-    pub show_negative_line_numbers: (),
-    pub show_area_names: (),
-    pub show_line_names: (),
-    pub show_track_sizes: (),
+    pub show_grid_extension_lines: bool,
+    pub show_positive_line_numbers: bool,
+    pub show_negative_line_numbers: bool,
+    pub show_area_names: bool,
+    pub show_line_names: bool,
+    pub show_track_sizes: bool,
     pub grid_border_color: Box<Rgba>,
     pub cell_border_color: Box<Rgba>,
     pub row_line_color: Box<Rgba>,
     pub column_line_color: Box<Rgba>,
-    pub grid_border_dash: (),
-    pub cell_border_dash: (),
-    pub row_line_dash: (),
-    pub column_line_dash: (),
+    pub grid_border_dash: bool,
+    pub cell_border_dash: bool,
+    pub row_line_dash: bool,
+    pub column_line_dash: bool,
     pub row_gap_color: Box<Rgba>,
     pub row_hatch_color: Box<Rgba>,
     pub column_gap_color: Box<Rgba>,
@@ -49,7 +49,7 @@ pub struct FlexItemHighlightConfig {
 /// Style information for drawing a line.
 pub struct LineStyle {
     pub color: Box<Rgba>,
-    pub pattern: Box<String>,
+    pub pattern: String,
 }
 /// Style information for drawing a box.
 pub struct BoxStyle {
@@ -63,11 +63,11 @@ pub enum ContrastAlgorithm {
 }
 /// Configuration data for the highlighting of page elements.
 pub struct HighlightConfig {
-    pub show_info: (),
-    pub show_styles: (),
-    pub show_rulers: (),
-    pub show_accessibility_info: (),
-    pub show_extension_lines: (),
+    pub show_info: bool,
+    pub show_styles: bool,
+    pub show_rulers: bool,
+    pub show_accessibility_info: bool,
+    pub show_extension_lines: bool,
     pub content_color: Box<Rgba>,
     pub padding_color: Box<Rgba>,
     pub border_color: Box<Rgba>,
@@ -118,9 +118,9 @@ pub struct HingeConfig {
 }
 /// Configuration for Window Controls Overlay
 pub struct WindowControlsOverlayConfig {
-    pub show_css: (),
-    pub selected_platform: Box<String>,
-    pub theme_color: Box<String>,
+    pub show_css: bool,
+    pub selected_platform: String,
+    pub theme_color: String,
 }
 pub struct ContainerQueryHighlightConfig {
     pub container_query_container_highlight_config: Box<

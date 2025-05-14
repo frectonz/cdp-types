@@ -49,18 +49,18 @@ pub enum AxValueNativeSourceType {
 pub struct AxValueSource {
     pub _type: Box<AxValueSourceType>,
     pub value: Box<AxValue>,
-    pub attribute: Box<String>,
+    pub attribute: String,
     pub attribute_value: Box<AxValue>,
-    pub superseded: (),
+    pub superseded: bool,
     pub native_source: Box<AxValueNativeSourceType>,
     pub native_source_value: Box<AxValue>,
-    pub invalid: (),
-    pub invalid_reason: Box<String>,
+    pub invalid: bool,
+    pub invalid_reason: String,
 }
 pub struct AxRelatedNode {
     pub backend_dom_node_id: Box<BackendNodeId>,
-    pub idref: Box<String>,
-    pub text: Box<String>,
+    pub idref: String,
+    pub text: String,
 }
 pub struct AxProperty {
     pub name: Box<AxPropertyName>,
@@ -69,9 +69,9 @@ pub struct AxProperty {
 /// A single computed AX property.
 pub struct AxValue {
     pub _type: Box<AxValueType>,
-    pub value: (),
-    pub related_nodes: (),
-    pub sources: (),
+    pub value: serde_json::Value,
+    pub related_nodes: Vec<AxRelatedNode>,
+    pub sources: Vec<AxValueSource>,
 }
 /** Values of AXProperty name:
 - from 'busy' to 'roledescription': states which apply to every AX node
@@ -125,16 +125,16 @@ pub enum AxPropertyName {
 /// A node in the accessibility tree.
 pub struct AxNode {
     pub node_id: Box<AxNodeId>,
-    pub ignored: (),
-    pub ignored_reasons: (),
+    pub ignored: bool,
+    pub ignored_reasons: Vec<AxProperty>,
     pub role: Box<AxValue>,
     pub chrome_role: Box<AxValue>,
     pub name: Box<AxValue>,
     pub description: Box<AxValue>,
     pub value: Box<AxValue>,
-    pub properties: (),
+    pub properties: Vec<AxProperty>,
     pub parent_id: Box<AxNodeId>,
-    pub child_ids: (),
+    pub child_ids: Vec<AxNodeId>,
     pub backend_dom_node_id: Box<BackendNodeId>,
     pub frame_id: Box<crate::page::FrameId>,
 }

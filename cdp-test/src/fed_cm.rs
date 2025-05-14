@@ -18,14 +18,14 @@ pub enum AccountUrlType {
 }
 /// Corresponds to IdentityRequestAccount
 pub struct Account {
-    pub account_id: Box<String>,
-    pub email: Box<String>,
-    pub name: Box<String>,
-    pub given_name: Box<String>,
-    pub picture_url: Box<String>,
-    pub idp_config_url: Box<String>,
-    pub idp_login_url: Box<String>,
+    pub account_id: String,
+    pub email: String,
+    pub name: String,
+    pub given_name: String,
+    pub picture_url: String,
+    pub idp_config_url: String,
+    pub idp_login_url: String,
     pub login_state: Box<LoginState>,
-    pub terms_of_service_url: Box<String>,
-    pub privacy_policy_url: Box<String>,
+    pub terms_of_service_url: String,
+    pub privacy_policy_url: String,
 }

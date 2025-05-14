@@ -14,16 +14,16 @@ pub enum ServiceName {
 }
 /// A key-value pair for additional event information to pass along.
 pub struct EventMetadata {
-    pub key: Box<String>,
-    pub value: Box<String>,
+    pub key: String,
+    pub value: String,
 }
 pub struct BackgroundServiceEvent {
     pub timestamp: Box<NetworkTimeSinceEpoch>,
-    pub origin: Box<String>,
+    pub origin: String,
     pub service_worker_registration_id: Box<RegistrationId>,
     pub service: Box<ServiceName>,
-    pub event_name: Box<String>,
-    pub instance_id: Box<String>,
-    pub event_metadata: (),
-    pub storage_key: Box<String>,
+    pub event_name: String,
+    pub instance_id: String,
+    pub event_metadata: Vec<EventMetadata>,
+    pub storage_key: String,
 }

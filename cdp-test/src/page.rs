@@ -21,7 +21,7 @@ pub enum AdFrameExplanation {
 /// Indicates whether a frame has been identified as an ad and why.
 pub struct AdFrameStatus {
     pub ad_frame_type: Box<AdFrameType>,
-    pub explanations: (),
+    pub explanations: Vec<AdFrameExplanation>,
 }
 /// ⚠️ Experimental
 /** Identifies the bottom-most script which caused the frame to be labelled
@@ -177,7 +177,7 @@ pub struct PermissionsPolicyBlockLocator {
 /// ⚠️ Experimental
 pub struct PermissionsPolicyFeatureState {
     pub feature: Box<PermissionsPolicyFeature>,
-    pub allowed: (),
+    pub allowed: bool,
     pub locator: Box<PermissionsPolicyBlockLocator>,
 }
 /// ⚠️ Experimental
@@ -212,70 +212,70 @@ pub enum OriginTrialUsageRestriction {
 }
 /// ⚠️ Experimental
 pub struct OriginTrialToken {
-    pub origin: Box<String>,
-    pub match_sub_domains: (),
-    pub trial_name: Box<String>,
+    pub origin: String,
+    pub match_sub_domains: bool,
+    pub trial_name: String,
     pub expiry_time: Box<NetworkTimeSinceEpoch>,
-    pub is_third_party: (),
+    pub is_third_party: bool,
     pub usage_restriction: Box<OriginTrialUsageRestriction>,
 }
 /// ⚠️ Experimental
 pub struct OriginTrialTokenWithStatus {
-    pub raw_token_text: Box<String>,
+    pub raw_token_text: String,
     pub parsed_token: Box<OriginTrialToken>,
     pub status: Box<OriginTrialTokenStatus>,
 }
 /// ⚠️ Experimental
 pub struct OriginTrial {
-    pub trial_name: Box<String>,
+    pub trial_name: String,
     pub status: Box<OriginTrialStatus>,
-    pub tokens_with_status: (),
+    pub tokens_with_status: Vec<OriginTrialTokenWithStatus>,
 }
 /// ⚠️ Experimental
 /// Additional information about the frame document's security origin.
 pub struct SecurityOriginDetails {
-    pub is_localhost: (),
+    pub is_localhost: bool,
 }
 /// Information about the Frame on the page.
 pub struct Frame {
     pub id: Box<FrameId>,
     pub parent_id: Box<FrameId>,
     pub loader_id: Box<LoaderId>,
-    pub name: Box<String>,
-    pub url: Box<String>,
-    pub url_fragment: Box<String>,
-    pub domain_and_registry: Box<String>,
-    pub security_origin: Box<String>,
+    pub name: String,
+    pub url: String,
+    pub url_fragment: String,
+    pub domain_and_registry: String,
+    pub security_origin: String,
     pub security_origin_details: Box<SecurityOriginDetails>,
-    pub mime_type: Box<String>,
-    pub unreachable_url: Box<String>,
+    pub mime_type: String,
+    pub unreachable_url: String,
     pub ad_frame_status: Box<AdFrameStatus>,
     pub secure_context_type: Box<SecureContextType>,
     pub cross_origin_isolated_context_type: Box<CrossOriginIsolatedContextType>,
-    pub gated_api_features: (),
+    pub gated_api_features: Vec<GatedApiFeatures>,
 }
 /// ⚠️ Experimental
 /// Information about the Resource on the page.
 pub struct FrameResource {
-    pub url: Box<String>,
+    pub url: String,
     pub _type: Box<ResourceType>,
-    pub mime_type: Box<String>,
+    pub mime_type: String,
     pub last_modified: Box<NetworkTimeSinceEpoch>,
-    pub content_size: Box<u64>,
-    pub failed: (),
-    pub canceled: (),
+    pub content_size: u64,
+    pub failed: bool,
+    pub canceled: bool,
 }
 /// ⚠️ Experimental
 /// Information about the Frame hierarchy along with their cached resources.
 pub struct FrameResourceTree {
     pub frame: Box<Frame>,
-    pub child_frames: (),
-    pub resources: (),
+    pub child_frames: Vec<FrameResourceTree>,
+    pub resources: Vec<FrameResource>,
 }
 /// Information about the Frame hierarchy.
 pub struct FrameTree {
     pub frame: Box<Frame>,
-    pub child_frames: (),
+    pub child_frames: Vec<FrameTree>,
 }
 /// Unique script identifier.
 pub struct ScriptIdentifier(String);
@@ -297,83 +297,83 @@ pub enum TransitionType {
 }
 /// Navigation history entry.
 pub struct NavigationEntry {
-    pub id: Box<i64>,
-    pub url: Box<String>,
-    pub user_typed_url: Box<String>,
-    pub title: Box<String>,
+    pub id: i64,
+    pub url: String,
+    pub user_typed_url: String,
+    pub title: String,
     pub transition_type: Box<TransitionType>,
 }
 /// ⚠️ Experimental
 /// Screencast frame metadata.
 pub struct ScreencastFrameMetadata {
-    pub offset_top: Box<u64>,
-    pub page_scale_factor: Box<u64>,
-    pub device_width: Box<u64>,
-    pub device_height: Box<u64>,
-    pub scroll_offset_x: Box<u64>,
-    pub scroll_offset_y: Box<u64>,
+    pub offset_top: u64,
+    pub page_scale_factor: u64,
+    pub device_width: u64,
+    pub device_height: u64,
+    pub scroll_offset_x: u64,
+    pub scroll_offset_y: u64,
     pub timestamp: Box<NetworkTimeSinceEpoch>,
 }
 /// Error while paring app manifest.
 pub struct AppManifestError {
-    pub message: Box<String>,
-    pub critical: Box<i64>,
-    pub line: Box<i64>,
-    pub column: Box<i64>,
+    pub message: String,
+    pub critical: i64,
+    pub line: i64,
+    pub column: i64,
 }
 /// ⚠️ Experimental
 /// Parsed app manifest properties.
 pub struct AppManifestParsedProperties {
-    pub scope: Box<String>,
+    pub scope: String,
 }
 /// Layout viewport position and dimensions.
 pub struct LayoutViewport {
-    pub page_x: Box<i64>,
-    pub page_y: Box<i64>,
-    pub client_width: Box<i64>,
-    pub client_height: Box<i64>,
+    pub page_x: i64,
+    pub page_y: i64,
+    pub client_width: i64,
+    pub client_height: i64,
 }
 /// Visual viewport position, dimensions, and scale.
 pub struct VisualViewport {
-    pub offset_x: Box<u64>,
-    pub offset_y: Box<u64>,
-    pub page_x: Box<u64>,
-    pub page_y: Box<u64>,
-    pub client_width: Box<u64>,
-    pub client_height: Box<u64>,
-    pub scale: Box<u64>,
-    pub zoom: Box<u64>,
+    pub offset_x: u64,
+    pub offset_y: u64,
+    pub page_x: u64,
+    pub page_y: u64,
+    pub client_width: u64,
+    pub client_height: u64,
+    pub scale: u64,
+    pub zoom: u64,
 }
 /// Viewport for capturing screenshot.
 pub struct Viewport {
-    pub x: Box<u64>,
-    pub y: Box<u64>,
-    pub width: Box<u64>,
-    pub height: Box<u64>,
-    pub scale: Box<u64>,
+    pub x: u64,
+    pub y: u64,
+    pub width: u64,
+    pub height: u64,
+    pub scale: u64,
 }
 /// ⚠️ Experimental
 /// Generic font families collection.
 pub struct FontFamilies {
-    pub standard: Box<String>,
-    pub fixed: Box<String>,
-    pub serif: Box<String>,
-    pub sans_serif: Box<String>,
-    pub cursive: Box<String>,
-    pub fantasy: Box<String>,
-    pub math: Box<String>,
+    pub standard: String,
+    pub fixed: String,
+    pub serif: String,
+    pub sans_serif: String,
+    pub cursive: String,
+    pub fantasy: String,
+    pub math: String,
 }
 /// ⚠️ Experimental
 /// Font families collection for a script.
 pub struct ScriptFontFamilies {
-    pub script: Box<String>,
+    pub script: String,
     pub font_families: Box<FontFamilies>,
 }
 /// ⚠️ Experimental
 /// Default font sizes.
 pub struct FontSizes {
-    pub standard: Box<i64>,
-    pub fixed: Box<i64>,
+    pub standard: i64,
+    pub fixed: i64,
 }
 /// ⚠️ Experimental
 pub enum ClientNavigationReason {
@@ -397,14 +397,14 @@ pub enum ClientNavigationDisposition {
 }
 /// ⚠️ Experimental
 pub struct InstallabilityErrorArgument {
-    pub name: Box<String>,
-    pub value: Box<String>,
+    pub name: String,
+    pub value: String,
 }
 /// ⚠️ Experimental
 /// The installability error
 pub struct InstallabilityError {
-    pub error_id: Box<String>,
-    pub error_arguments: (),
+    pub error_id: String,
+    pub error_arguments: Vec<InstallabilityErrorArgument>,
 }
 /// ⚠️ Experimental
 /// The referring-policy used for the navigation.
@@ -421,86 +421,86 @@ pub enum ReferrerPolicy {
 /// ⚠️ Experimental
 /// Per-script compilation cache parameters for `Page.produceCompilationCache`
 pub struct CompilationCacheParams {
-    pub url: Box<String>,
-    pub eager: (),
+    pub url: String,
+    pub eager: bool,
 }
 /// ⚠️ Experimental
 pub struct FileFilter {
-    pub name: Box<String>,
-    pub accepts: (),
+    pub name: String,
+    pub accepts: Vec<String>,
 }
 /// ⚠️ Experimental
 /// The image definition used in both icon and screenshot.
 pub struct ImageResource {
-    pub url: Box<String>,
-    pub sizes: Box<String>,
-    pub _type: Box<String>,
+    pub url: String,
+    pub sizes: String,
+    pub _type: String,
 }
 /// ⚠️ Experimental
 pub struct LaunchHandler {
-    pub client_mode: Box<String>,
+    pub client_mode: String,
 }
 /// ⚠️ Experimental
 pub struct ProtocolHandler {
-    pub protocol: Box<String>,
-    pub url: Box<String>,
+    pub protocol: String,
+    pub url: String,
 }
 /// ⚠️ Experimental
 pub struct RelatedApplication {
-    pub id: Box<String>,
-    pub url: Box<String>,
+    pub id: String,
+    pub url: String,
 }
 /// ⚠️ Experimental
 pub struct ScopeExtension {
-    pub origin: Box<String>,
-    pub has_origin_wildcard: (),
+    pub origin: String,
+    pub has_origin_wildcard: bool,
 }
 /// ⚠️ Experimental
 pub struct Screenshot {
     pub image: Box<ImageResource>,
-    pub form_factor: Box<String>,
-    pub label: Box<String>,
+    pub form_factor: String,
+    pub label: String,
 }
 /// ⚠️ Experimental
 pub struct ShareTarget {
-    pub action: Box<String>,
-    pub method: Box<String>,
-    pub enctype: Box<String>,
-    pub title: Box<String>,
-    pub text: Box<String>,
-    pub url: Box<String>,
-    pub files: (),
+    pub action: String,
+    pub method: String,
+    pub enctype: String,
+    pub title: String,
+    pub text: String,
+    pub url: String,
+    pub files: Vec<FileFilter>,
 }
 /// ⚠️ Experimental
 pub struct Shortcut {
-    pub name: Box<String>,
-    pub url: Box<String>,
+    pub name: String,
+    pub url: String,
 }
 /// ⚠️ Experimental
 pub struct WebAppManifest {
-    pub background_color: Box<String>,
-    pub description: Box<String>,
-    pub dir: Box<String>,
-    pub display: Box<String>,
-    pub display_overrides: (),
-    pub file_handlers: (),
-    pub icons: (),
-    pub id: Box<String>,
-    pub lang: Box<String>,
+    pub background_color: String,
+    pub description: String,
+    pub dir: String,
+    pub display: String,
+    pub display_overrides: Vec<String>,
+    pub file_handlers: Vec<PageFileHandler>,
+    pub icons: Vec<ImageResource>,
+    pub id: String,
+    pub lang: String,
     pub launch_handler: Box<LaunchHandler>,
-    pub name: Box<String>,
-    pub orientation: Box<String>,
-    pub prefer_related_applications: (),
-    pub protocol_handlers: (),
-    pub related_applications: (),
-    pub scope: Box<String>,
-    pub scope_extensions: (),
-    pub screenshots: (),
+    pub name: String,
+    pub orientation: String,
+    pub prefer_related_applications: bool,
+    pub protocol_handlers: Vec<ProtocolHandler>,
+    pub related_applications: Vec<RelatedApplication>,
+    pub scope: String,
+    pub scope_extensions: Vec<ScopeExtension>,
+    pub screenshots: Vec<Screenshot>,
     pub share_target: Box<ShareTarget>,
-    pub short_name: Box<String>,
-    pub shortcuts: (),
-    pub start_url: Box<String>,
-    pub theme_color: Box<String>,
+    pub short_name: String,
+    pub shortcuts: Vec<Shortcut>,
+    pub start_url: String,
+    pub theme_color: String,
 }
 /// ⚠️ Experimental
 /// Enum of possible auto-response for permission / prompt dialogs.
@@ -671,21 +671,21 @@ pub enum BackForwardCacheNotRestoredReasonType {
 }
 /// ⚠️ Experimental
 pub struct BackForwardCacheBlockingDetails {
-    pub url: Box<String>,
-    pub function: Box<String>,
-    pub line_number: Box<i64>,
-    pub column_number: Box<i64>,
+    pub url: String,
+    pub function: String,
+    pub line_number: i64,
+    pub column_number: i64,
 }
 /// ⚠️ Experimental
 pub struct BackForwardCacheNotRestoredExplanation {
     pub _type: Box<BackForwardCacheNotRestoredReasonType>,
     pub reason: Box<BackForwardCacheNotRestoredReason>,
-    pub context: Box<String>,
-    pub details: (),
+    pub context: String,
+    pub details: Vec<BackForwardCacheBlockingDetails>,
 }
 /// ⚠️ Experimental
 pub struct BackForwardCacheNotRestoredExplanationTree {
-    pub url: Box<String>,
-    pub explanations: (),
-    pub children: (),
+    pub url: String,
+    pub explanations: Vec<BackForwardCacheNotRestoredExplanation>,
+    pub children: Vec<BackForwardCacheNotRestoredExplanationTree>,
 }

@@ -14,16 +14,16 @@ pub enum CachedResponseType {
 /// Cache identifier.
 pub struct Cache {
     pub cache_id: Box<CacheId>,
-    pub security_origin: Box<String>,
-    pub storage_key: Box<String>,
+    pub security_origin: String,
+    pub storage_key: String,
     pub storage_bucket: Box<StorageBucket>,
-    pub cache_name: Box<String>,
+    pub cache_name: String,
 }
 pub struct Header {
-    pub name: Box<String>,
-    pub value: Box<String>,
+    pub name: String,
+    pub value: String,
 }
 /// Cached response
 pub struct CachedResponse {
-    pub body: Box<String>,
+    pub body: String,
 }

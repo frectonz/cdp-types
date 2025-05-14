@@ -4,14 +4,14 @@ use crate::page::*;
 use crate::dom::*;
 /// Information about a cookie that is affected by an inspector issue.
 pub struct AffectedCookie {
-    pub name: Box<String>,
-    pub path: Box<String>,
-    pub domain: Box<String>,
+    pub name: String,
+    pub path: String,
+    pub domain: String,
 }
 /// Information about a request that is affected by an inspector issue.
 pub struct AffectedRequest {
     pub request_id: Box<NetworkRequestId>,
-    pub url: Box<String>,
+    pub url: String,
 }
 /// Information about the frame affected by an inspector issue.
 pub struct AffectedFrame {
@@ -59,19 +59,19 @@ pub enum InsightType {
 /// Information about the suggested solution to a cookie issue.
 pub struct CookieIssueInsight {
     pub _type: Box<InsightType>,
-    pub table_entry_url: Box<String>,
+    pub table_entry_url: String,
 }
 /** This information is currently necessary, as the front-end has a difficult
 time finding a specific cookie. With this, we can convey specific error
 information without the cookie.*/
 pub struct CookieIssueDetails {
     pub cookie: Box<AffectedCookie>,
-    pub raw_cookie_line: Box<String>,
-    pub cookie_warning_reasons: (),
-    pub cookie_exclusion_reasons: (),
+    pub raw_cookie_line: String,
+    pub cookie_warning_reasons: Vec<CookieWarningReason>,
+    pub cookie_exclusion_reasons: Vec<CookieExclusionReason>,
     pub operation: Box<CookieOperation>,
-    pub site_for_cookies: Box<String>,
-    pub cookie_url: Box<String>,
+    pub site_for_cookies: String,
+    pub cookie_url: String,
     pub request: Box<AffectedRequest>,
     pub insight: Box<CookieIssueInsight>,
 }
@@ -114,8 +114,8 @@ pub enum MixedContentResourceType {
 pub struct MixedContentIssueDetails {
     pub resource_type: Box<MixedContentResourceType>,
     pub resolution_status: Box<MixedContentResolutionStatus>,
-    pub insecure_url: Box<String>,
-    pub main_resource_url: Box<String>,
+    pub insecure_url: String,
+    pub main_resource_url: String,
     pub request: Box<AffectedRequest>,
     pub frame: Box<AffectedFrame>,
 }
@@ -165,14 +165,14 @@ pub enum ContentSecurityPolicyViolationType {
 }
 pub struct SourceCodeLocation {
     pub script_id: Box<()>,
-    pub url: Box<String>,
-    pub line_number: Box<i64>,
-    pub column_number: Box<i64>,
+    pub url: String,
+    pub line_number: i64,
+    pub column_number: i64,
 }
 pub struct ContentSecurityPolicyIssueDetails {
-    pub blocked_url: Box<String>,
-    pub violated_directive: Box<String>,
-    pub is_report_only: (),
+    pub blocked_url: String,
+    pub violated_directive: String,
+    pub is_report_only: bool,
     pub content_security_policy_violation_type: Box<ContentSecurityPolicyViolationType>,
     pub frame_ancestor: Box<AffectedFrame>,
     pub source_code_location: Box<SourceCodeLocation>,
@@ -186,26 +186,26 @@ pub enum SharedArrayBufferIssueType {
 transferred to a context that is not cross-origin isolated.*/
 pub struct SharedArrayBufferIssueDetails {
     pub source_code_location: Box<SourceCodeLocation>,
-    pub is_warning: (),
+    pub is_warning: bool,
     pub _type: Box<SharedArrayBufferIssueType>,
 }
 pub struct LowTextContrastIssueDetails {
     pub violating_node_id: Box<BackendNodeId>,
-    pub violating_node_selector: Box<String>,
-    pub contrast_ratio: Box<u64>,
-    pub threshold_aa: Box<u64>,
-    pub threshold_aaa: Box<u64>,
-    pub font_size: Box<String>,
-    pub font_weight: Box<String>,
+    pub violating_node_selector: String,
+    pub contrast_ratio: u64,
+    pub threshold_aa: u64,
+    pub threshold_aaa: u64,
+    pub font_size: String,
+    pub font_weight: String,
 }
 /** Details for a CORS related issue, e.g. a warning or error related to
 CORS RFC1918 enforcement.*/
 pub struct CorsIssueDetails {
     pub cors_error_status: Box<CorsErrorStatus>,
-    pub is_warning: (),
+    pub is_warning: bool,
     pub request: Box<AffectedRequest>,
     pub location: Box<SourceCodeLocation>,
-    pub initiator_origin: Box<String>,
+    pub initiator_origin: String,
     pub resource_ip_address_space: Box<IpAddressSpace>,
     pub client_security_state: Box<ClientSecurityState>,
 }
@@ -286,20 +286,20 @@ pub struct AttributionReportingIssueDetails {
     pub violation_type: Box<AttributionReportingIssueType>,
     pub request: Box<AffectedRequest>,
     pub violating_node_id: Box<BackendNodeId>,
-    pub invalid_parameter: Box<String>,
+    pub invalid_parameter: String,
 }
 /** Details for issues about documents in Quirks Mode
 or Limited Quirks Mode that affects page layouting.*/
 pub struct QuirksModeIssueDetails {
-    pub is_limited_quirks_mode: (),
+    pub is_limited_quirks_mode: bool,
     pub document_node_id: Box<BackendNodeId>,
-    pub url: Box<String>,
+    pub url: String,
     pub frame_id: Box<crate::page::FrameId>,
     pub loader_id: Box<LoaderId>,
 }
 #[deprecated]
 pub struct NavigatorUserAgentIssueDetails {
-    pub url: Box<String>,
+    pub url: String,
     pub location: Box<SourceCodeLocation>,
 }
 pub struct SharedDictionaryIssueDetails {
@@ -308,8 +308,8 @@ pub struct SharedDictionaryIssueDetails {
 }
 pub struct SriMessageSignatureIssueDetails {
     pub error: Box<SriMessageSignatureError>,
-    pub signature_base: Box<String>,
-    pub integrity_assertions: (),
+    pub signature_base: String,
+    pub integrity_assertions: Vec<String>,
     pub request: Box<AffectedRequest>,
 }
 pub enum GenericIssueErrorType {
@@ -330,7 +330,7 @@ pub struct GenericIssueDetails {
     pub error_type: Box<GenericIssueErrorType>,
     pub frame_id: Box<crate::page::FrameId>,
     pub violating_node_id: Box<BackendNodeId>,
-    pub violating_node_attribute: Box<String>,
+    pub violating_node_attribute: String,
     pub request: Box<AffectedRequest>,
 }
 /** This issue tracks information needed to print a deprecation message.
@@ -338,7 +338,7 @@ https://source.chromium.org/chromium/chromium/src/+/main:third_party/blink/rende
 pub struct DeprecationIssueDetails {
     pub affected_frame: Box<AffectedFrame>,
     pub source_code_location: Box<SourceCodeLocation>,
-    pub _type: Box<String>,
+    pub _type: String,
 }
 /** This issue warns about sites in the redirect chain of a finished navigation
 that may be flagged as trackers and have their state cleared if they don't
@@ -346,7 +346,7 @@ receive a user interaction. Note that in this context 'site' means eTLD+1.
 For example, if the URL `https://example.test:80/bounce` was in the
 redirect chain, the site reported would be `example.test`.*/
 pub struct BounceTrackingIssueDetails {
-    pub tracking_sites: (),
+    pub tracking_sites: Vec<String>,
 }
 /** This issue warns about third-party sites that are accessing cookies on the
 current page, and have been permitted due to having a global metadata grant.
@@ -354,9 +354,9 @@ Note that in this context 'site' means eTLD+1. For example, if the URL
 `https://example.test:80/web_page` was accessing cookies, the site reported
 would be `example.test`.*/
 pub struct CookieDeprecationMetadataIssueDetails {
-    pub allowed_sites: (),
-    pub opt_out_percentage: Box<u64>,
-    pub is_opt_out_top_level: (),
+    pub allowed_sites: Vec<String>,
+    pub opt_out_percentage: u64,
+    pub is_opt_out_top_level: bool,
     pub operation: Box<CookieOperation>,
 }
 pub enum ClientHintIssueReason {
@@ -446,8 +446,8 @@ pub struct ClientHintIssueDetails {
     pub client_hint_issue_reason: Box<ClientHintIssueReason>,
 }
 pub struct FailedRequestInfo {
-    pub url: Box<String>,
-    pub failure_message: Box<String>,
+    pub url: String,
+    pub failure_message: String,
     pub request_id: Box<NetworkRequestId>,
 }
 pub enum PartitioningBlobUrlInfo {
@@ -455,7 +455,7 @@ pub enum PartitioningBlobUrlInfo {
     EnforceNoopenerForNavigation,
 }
 pub struct PartitioningBlobUrlIssueDetails {
-    pub url: Box<String>,
+    pub url: String,
     pub partitioning_blob_url_info: Box<PartitioningBlobUrlInfo>,
 }
 pub enum SelectElementAccessibilityIssueReason {
@@ -471,7 +471,7 @@ pub struct SelectElementAccessibilityIssueDetails {
     pub select_element_accessibility_issue_reason: Box<
         SelectElementAccessibilityIssueReason,
     >,
-    pub has_disallowed_attributes: (),
+    pub has_disallowed_attributes: bool,
 }
 pub enum StyleSheetLoadingIssueReason {
     LateImportRule,
@@ -494,7 +494,7 @@ registrations being ignored.*/
 pub struct PropertyRuleIssueDetails {
     pub source_code_location: Box<SourceCodeLocation>,
     pub property_rule_issue_reason: Box<PropertyRuleIssueReason>,
-    pub property_value: Box<String>,
+    pub property_value: String,
 }
 pub enum UserReidentificationIssueType {
     BlockedFrameNavigation,

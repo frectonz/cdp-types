@@ -11,6 +11,6 @@ pub enum RequestStage {
 }
 /// Response HTTP header entry
 pub struct HeaderEntry {
-    pub name: Box<String>,
-    pub value: Box<String>,
+    pub name: String,
+    pub value: String,
 }

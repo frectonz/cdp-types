@@ -6,21 +6,21 @@ pub struct TargetId(String);
 pub struct SessionId(String);
 pub struct TargetInfo {
     pub target_id: Box<TargetId>,
-    pub _type: Box<String>,
-    pub title: Box<String>,
-    pub url: Box<String>,
-    pub attached: (),
+    pub _type: String,
+    pub title: String,
+    pub url: String,
+    pub attached: bool,
     pub opener_id: Box<TargetId>,
-    pub can_access_opener: (),
+    pub can_access_opener: bool,
     pub opener_frame_id: Box<crate::page::FrameId>,
     pub browser_context_id: Box<BrowserContextId>,
-    pub subtype: Box<String>,
+    pub subtype: String,
 }
 /// ⚠️ Experimental
 /// A filter used by target query/discovery/auto-attach operations.
 pub struct FilterEntry {
-    pub exclude: (),
-    pub _type: Box<String>,
+    pub exclude: bool,
+    pub _type: String,
 }
 /// ⚠️ Experimental
 /** The entries in TargetFilter are matched sequentially against targets and
@@ -32,6 +32,6 @@ If filter is not specified, the one assumed is
 pub struct TargetFilter(Vec<FilterEntry>);
 /// ⚠️ Experimental
 pub struct RemoteLocation {
-    pub host: Box<String>,
-    pub port: Box<i64>,
+    pub host: String,
+    pub port: i64,
 }

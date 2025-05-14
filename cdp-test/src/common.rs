@@ -9,25 +9,25 @@ pub enum BrowserWindowState {
 }
 use crate::css::*;
 pub struct CssComputedStyleProperty {
-    pub name: Box<String>,
-    pub value: Box<String>,
+    pub name: String,
+    pub value: String,
 }
 use crate::cache_storage::*;
 /// Data entry.
 pub struct CacheStorageDataEntry {
-    pub request_url: Box<String>,
-    pub request_method: Box<String>,
-    pub request_headers: (),
-    pub response_time: Box<u64>,
-    pub response_status: Box<i64>,
-    pub response_status_text: Box<String>,
+    pub request_url: String,
+    pub request_method: String,
+    pub request_headers: Vec<Header>,
+    pub response_time: u64,
+    pub response_status: i64,
+    pub response_status_text: String,
     pub response_type: Box<CachedResponseType>,
-    pub response_headers: (),
+    pub response_headers: Vec<Header>,
 }
 use crate::dom::*;
 pub struct DomCssComputedStyleProperty {
-    pub name: Box<String>,
-    pub value: Box<String>,
+    pub name: String,
+    pub value: String,
 }
 use crate::dom_storage::*;
 pub struct DomStorageSerializedStorageKey(String);
@@ -53,24 +53,24 @@ use crate::network::*;
 /// ⚠️ Experimental
 /// Authorization challenge for HTTP status code 401 or 407.
 pub struct NetworkAuthChallenge {
-    pub source: Box<String>,
-    pub origin: Box<String>,
-    pub scheme: Box<String>,
-    pub realm: Box<String>,
+    pub source: String,
+    pub origin: String,
+    pub scheme: String,
+    pub realm: String,
 }
 use crate::network::*;
 /// ⚠️ Experimental
 /// Response to an AuthChallenge.
 pub struct NetworkAuthChallengeResponse {
-    pub response: Box<String>,
-    pub username: Box<String>,
-    pub password: Box<String>,
+    pub response: String,
+    pub username: String,
+    pub password: String,
 }
 use crate::network::*;
 /// ⚠️ Experimental
 /// Request pattern for interception.
 pub struct NetworkRequestPattern {
-    pub url_pattern: Box<String>,
+    pub url_pattern: String,
     pub resource_type: Box<ResourceType>,
     pub interception_stage: Box<InterceptionStage>,
 }
@@ -85,11 +85,11 @@ pub enum PageDialogType {
 use crate::page::*;
 /// ⚠️ Experimental
 pub struct PageFileHandler {
-    pub action: Box<String>,
-    pub name: Box<String>,
-    pub icons: (),
-    pub accepts: (),
-    pub launch_type: Box<String>,
+    pub action: String,
+    pub name: String,
+    pub icons: Vec<ImageResource>,
+    pub accepts: Vec<FileFilter>,
+    pub launch_type: String,
 }
 use crate::storage::*;
 pub struct StorageSerializedStorageKey(String);
@@ -109,24 +109,24 @@ a network request.*/
 pub struct FetchRequestId(String);
 use crate::fetch::*;
 pub struct FetchRequestPattern {
-    pub url_pattern: Box<String>,
+    pub url_pattern: String,
     pub resource_type: Box<ResourceType>,
     pub request_stage: Box<RequestStage>,
 }
 use crate::fetch::*;
 /// Authorization challenge for HTTP status code 401 or 407.
 pub struct FetchAuthChallenge {
-    pub source: Box<String>,
-    pub origin: Box<String>,
-    pub scheme: Box<String>,
-    pub realm: Box<String>,
+    pub source: String,
+    pub origin: String,
+    pub scheme: String,
+    pub realm: String,
 }
 use crate::fetch::*;
 /// Response to an AuthChallenge.
 pub struct FetchAuthChallengeResponse {
-    pub response: Box<String>,
-    pub username: Box<String>,
-    pub password: Box<String>,
+    pub response: String,
+    pub username: String,
+    pub password: String,
 }
 use crate::device_access::*;
 /// Device request id.
@@ -141,7 +141,7 @@ pub enum FedCmDialogType {
 }
 use crate::pwa::*;
 pub struct PwaFileHandler {
-    pub action: Box<String>,
-    pub accepts: (),
-    pub display_name: Box<String>,
+    pub action: String,
+    pub accepts: Vec<FileHandlerAccept>,
+    pub display_name: String,
 }

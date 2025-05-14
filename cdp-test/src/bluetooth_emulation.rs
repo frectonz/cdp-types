@@ -30,32 +30,32 @@ pub enum DescriptorOperationType {
 }
 /// Stores the manufacturer data
 pub struct ManufacturerData {
-    pub key: Box<i64>,
-    pub data: Box<String>,
+    pub key: i64,
+    pub data: String,
 }
 /// Stores the byte data of the advertisement packet sent by a Bluetooth device.
 pub struct ScanRecord {
-    pub name: Box<String>,
-    pub uuids: (),
-    pub appearance: Box<i64>,
-    pub tx_power: Box<i64>,
-    pub manufacturer_data: (),
+    pub name: String,
+    pub uuids: Vec<String>,
+    pub appearance: i64,
+    pub tx_power: i64,
+    pub manufacturer_data: Vec<ManufacturerData>,
 }
 /// Stores the advertisement packet information that is sent by a Bluetooth device.
 pub struct ScanEntry {
-    pub device_address: Box<String>,
-    pub rssi: Box<i64>,
+    pub device_address: String,
+    pub rssi: i64,
     pub scan_record: Box<ScanRecord>,
 }
 /** Describes the properties of a characteristic. This follows Bluetooth Core
 Specification BT 4.2 Vol 3 Part G 3.3.1. Characteristic Properties.*/
 pub struct CharacteristicProperties {
-    pub broadcast: (),
-    pub read: (),
-    pub write_without_response: (),
-    pub write: (),
-    pub notify: (),
-    pub indicate: (),
-    pub authenticated_signed_writes: (),
-    pub extended_properties: (),
+    pub broadcast: bool,
+    pub read: bool,
+    pub write_without_response: bool,
+    pub write: bool,
+    pub notify: bool,
+    pub indicate: bool,
+    pub authenticated_signed_writes: bool,
+    pub extended_properties: bool,
 }
