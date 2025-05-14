@@ -1,9 +1,9 @@
-use std::collections::{HashMap, HashSet};
+use std::collections::HashMap;
 
 use color_eyre::eyre::Result;
 use heck::{ToPascalCase, ToSnakeCase};
 use proc_macro2::{Span, TokenStream};
-use quote::{format_ident, quote};
+use quote::quote;
 use serde::Deserialize;
 use syn::Ident;
 
@@ -19,32 +19,30 @@ pub struct BrowserProtocol {
 #[derive(Debug)]
 struct ProtocolData {
     common_type_ids: Vec<Str>,
-    common_types: HashSet<Type>,
+    common_types: Vec<(Str, Type)>,
+}
+
+impl ProtocolData {
+    fn is_common_type(&self, typ: &str) -> bool {
+        self.common_type_ids
+            .iter()
+            .find(|x| x.as_ref() == typ)
+            .is_some()
+    }
 }
 
 impl BrowserProtocol {
-    fn type_to_domain_map(&self) -> HashMap<Str, Str> {
-        type Type = Str;
-        type Domain = Str;
-        let mut type_to_domain: HashMap<Type, Domain> = HashMap::new();
-
-        for domain in self.domains.iter() {
-            for typ in domain.types.iter() {
-                type_to_domain.insert(typ.id.clone(), domain.domain.clone());
-            }
-        }
-
-        type_to_domain
-    }
-
     fn protocol_data(&self) -> ProtocolData {
         let common_type_ids = self.common_type_ids();
-        let mut common_types = HashSet::with_capacity(common_type_ids.len());
+        let mut common_types = Vec::with_capacity(common_type_ids.len());
 
         for domain in self.domains.iter() {
             for typ in domain.types.iter() {
                 if common_type_ids.contains(&typ.id) {
-                    common_types.insert(typ.to_owned());
+                    let typ = typ.to_owned();
+                    let domain = domain.domain.to_owned();
+
+                    common_types.push((domain, typ));
                 }
             }
         }
@@ -248,15 +246,17 @@ impl Property {
 }
 
 impl Type {
-    fn id_ident(&self, domain: &str) -> Ident {
-        if self.id.starts_with(domain) {
-            let id = self.id.to_pascal_case();
-            Ident::new(&id, Span::call_site())
-        } else {
-            let id = self.id.as_ref();
-            let id = format!("{domain}{id}");
-            let id = id.to_pascal_case();
-            Ident::new(&id, Span::call_site())
+    fn id_ident(&self, domain: Option<&str>) -> Ident {
+        match domain {
+            Some(domain) => {
+                let id = self.id.as_ref();
+                let id = format!("{domain}{id}").to_pascal_case();
+                Ident::new(&id, Span::call_site())
+            }
+            None => {
+                let id = self.id.to_pascal_case();
+                Ident::new(&id, Span::call_site())
+            }
         }
     }
 
@@ -297,15 +297,15 @@ impl Type {
         })
     }
 
-    fn items(&self, type_to_domain: &HashMap<Str, Str>) -> Option<TokenStream> {
+    fn items(&self) -> Option<TokenStream> {
         self.items.as_ref().and_then(|items| {
             // All arrays have the type `array`.
             assert_eq!(self.r#type.as_ref(), "array");
 
             let items_typ = items.r#type.as_ref().and_then(|typ| get_rust_type(typ));
             let items_ref = items.r#ref.as_ref().and_then(|typ| {
-                let domain = type_to_domain.get(typ)?.to_pascal_case();
-                let typ_ident = format_ident!("{domain}{typ}");
+                let typ_ident = typ.to_pascal_case();
+                let typ_ident = Ident::new(&typ_ident, Span::call_site());
 
                 Some(quote! { #typ_ident })
             });
@@ -330,12 +330,7 @@ impl Type {
         }
     }
 
-    fn description(&self, domain: &str) -> TokenStream {
-        let typ = self.id.as_ref();
-        let desc = format!(
-            " <https://chromedevtools.github.io/devtools-protocol/tot/{domain}/#type-{typ}>"
-        );
-
+    fn description(&self) -> TokenStream {
         let description = self
             .description
             .as_ref()
@@ -347,17 +342,16 @@ impl Type {
 
         quote! {
             #description
-            #[doc = #desc]
         }
     }
 
-    fn to_rust(&self, domain: &str, type_to_domain: &HashMap<Str, Str>) -> TokenStream {
+    fn to_rust(&self, domain: Option<&str>) -> TokenStream {
         let id = self.id_ident(domain);
-        let items = self.items(type_to_domain);
+        let items = self.items();
         let properties = self.properties();
         let enum_variants = self.enum_variants();
 
-        let description = self.description(domain);
+        let description = self.description();
         let deprecated = self.deprecated_flag();
         let experimental = self.experimental_flag();
 
@@ -420,16 +414,18 @@ impl Domain {
             })
     }
 
-    fn to_rust(&self, type_to_domain: &HashMap<Str, Str>) -> RustFile {
+    fn to_rust(&self, protocol: &ProtocolData) -> RustFile {
         let name = self.module_name();
 
         let dependecies = self.dependency_names();
         let types = self
             .types
             .iter()
-            .map(|t| t.to_rust(&self.domain, type_to_domain));
+            .filter(|x| !protocol.is_common_type(&x.id))
+            .map(|t| t.to_rust(None));
 
         let content = quote! {
+            pub use crate::common::*;
             #(#dependecies)*
             #(#types)*
         };
@@ -440,14 +436,25 @@ impl Domain {
 
 impl BrowserProtocol {
     fn generate(self) -> Result<()> {
-        let type_to_domain = self.type_to_domain_map();
-
         let protocol_data = self.protocol_data();
-        dbg!(protocol_data);
+
+        let common_types = protocol_data
+            .common_types
+            .iter()
+            .map(|(domain, typ)| typ.to_rust(Some(domain)));
+
+        let common_rs = RustFile {
+            name: "common".to_owned(),
+            content: quote! {
+                #(#common_types)*
+            },
+        };
+
+        common_rs.write()?;
 
         let mut modules = Vec::with_capacity(self.domains.len());
         for domain in self.domains {
-            let ident = domain.to_rust(&type_to_domain).write()?;
+            let ident = domain.to_rust(&protocol_data).write()?;
             modules.push(ident);
         }
 
@@ -460,6 +467,7 @@ impl BrowserProtocol {
         let lib_rs = RustFile {
             name: "lib".to_owned(),
             content: quote! {
+                pub mod common;
                 #(#modules)*
             },
         };
