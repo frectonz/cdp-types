@@ -1,34 +1,29 @@
+pub use crate::common::*;
 use crate::dom::*;
 /// Unique Layer identifier.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/LayerTree/#type-LayerId>
-pub struct LayerTreeLayerId(String);
+pub struct LayerId(String);
 /// Unique snapshot identifier.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/LayerTree/#type-SnapshotId>
-pub struct LayerTreeSnapshotId(String);
+pub struct SnapshotId(String);
 /// Rectangle where scrolling happens on the main thread.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/LayerTree/#type-ScrollRect>
-pub struct LayerTreeScrollRect {
+pub struct ScrollRect {
     pub rect: (),
     pub _type: String,
 }
 /// Sticky position constraints.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/LayerTree/#type-StickyPositionConstraint>
-pub struct LayerTreeStickyPositionConstraint {
+pub struct StickyPositionConstraint {
     pub sticky_box_rect: (),
     pub containing_block_rect: (),
     pub nearest_layer_shifting_sticky_box: (),
     pub nearest_layer_shifting_containing_block: (),
 }
 /// Serialized fragment of layer picture along with its offset within the layer.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/LayerTree/#type-PictureTile>
-pub struct LayerTreePictureTile {
+pub struct PictureTile {
     pub x: u64,
     pub y: u64,
     pub picture: String,
 }
 /// Information about a compositing layer.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/LayerTree/#type-Layer>
-pub struct LayerTreeLayer {
+pub struct Layer {
     pub layer_id: (),
     pub parent_layer_id: (),
     pub backend_node_id: (),
@@ -47,5 +42,4 @@ pub struct LayerTreeLayer {
     pub sticky_position_constraint: (),
 }
 /// Array of timings, one per paint step.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/LayerTree/#type-PaintProfile>
-pub struct LayerTreePaintProfile(Vec<u64>);
+pub struct PaintProfile(Vec<u64>);

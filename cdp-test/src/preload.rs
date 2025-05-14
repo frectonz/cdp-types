@@ -1,9 +1,8 @@
+pub use crate::common::*;
 /// Unique id
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Preload/#type-RuleSetId>
-pub struct PreloadRuleSetId(String);
+pub struct RuleSetId(String);
 /// Corresponds to SpeculationRuleSet
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Preload/#type-RuleSet>
-pub struct PreloadRuleSet {
+pub struct RuleSet {
     pub id: (),
     pub loader_id: (),
     pub source_text: String,
@@ -13,23 +12,20 @@ pub struct PreloadRuleSet {
     pub error_type: (),
     pub error_message: String,
 }
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Preload/#type-RuleSetErrorType>
-pub enum PreloadRuleSetErrorType {
+pub enum RuleSetErrorType {
     SourceIsNotJsonObject,
     InvalidRulesSkipped,
 }
 /** The type of preloading attempted. It corresponds to
 mojom::SpeculationAction (although PrefetchWithSubresources is omitted as it
 isn't being used by clients).*/
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Preload/#type-SpeculationAction>
-pub enum PreloadSpeculationAction {
+pub enum SpeculationAction {
     Prefetch,
     Prerender,
 }
 /** Corresponds to mojom::SpeculationTargetHint.
 See https://github.com/WICG/nav-speculation/blob/main/triggers.md#window-name-targeting-hints*/
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Preload/#type-SpeculationTargetHint>
-pub enum PreloadSpeculationTargetHint {
+pub enum SpeculationTargetHint {
     Blank,
     SELF,
 }
@@ -39,7 +35,6 @@ The url used is the url specified by the trigger (i.e. the initial URL), and
 not the final url that is navigated to. For example, prerendering allows
 same-origin main frame navigations during the attempt, but the attempt is
 still keyed with the initial URL.*/
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Preload/#type-PreloadingAttemptKey>
 pub struct PreloadingAttemptKey {
     pub loader_id: (),
     pub action: (),
@@ -51,7 +46,6 @@ that had a speculation rule that triggered the attempt, and the
 BackendNodeIds of <a href> or <area href> elements that triggered the
 attempt (in the case of attempts triggered by a document rule). It is
 possible for multiple rule sets and links to trigger a single attempt.*/
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Preload/#type-PreloadingAttemptSource>
 pub struct PreloadingAttemptSource {
     pub key: (),
     pub rule_set_ids: (),
@@ -64,11 +58,9 @@ then upgrades it to prerender.
 
 CDP events for them are emitted separately but they share
 `PreloadPipelineId`.*/
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Preload/#type-PreloadPipelineId>
 pub struct PreloadPipelineId(String);
 /// List of FinalStatus reasons for Prerender2.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Preload/#type-PrerenderFinalStatus>
-pub enum PreloadPrerenderFinalStatus {
+pub enum PrerenderFinalStatus {
     Activated,
     Destroyed,
     LowEndDevice,
@@ -146,7 +138,6 @@ pub enum PreloadPrerenderFinalStatus {
 }
 /** Preloading status values, see also PreloadingTriggeringOutcome. This
 status is shared by prefetchStatusUpdated and prerenderStatusUpdated.*/
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Preload/#type-PreloadingStatus>
 pub enum PreloadingStatus {
     Pending,
     Running,
@@ -157,8 +148,7 @@ pub enum PreloadingStatus {
 }
 /** TODO(https://crbug.com/1384419): revisit the list of PrefetchStatus and
 filter out the ones that aren't necessary to the developers.*/
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Preload/#type-PrefetchStatus>
-pub enum PreloadPrefetchStatus {
+pub enum PrefetchStatus {
     PrefetchAllowed,
     PrefetchFailedIneligibleRedirect,
     PrefetchFailedInvalidRedirect,
@@ -195,8 +185,7 @@ pub enum PreloadPrefetchStatus {
     PrefetchNotUsedProbeFailed,
 }
 /// Information of headers to be displayed when the header mismatch occurred.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Preload/#type-PrerenderMismatchedHeaders>
-pub struct PreloadPrerenderMismatchedHeaders {
+pub struct PrerenderMismatchedHeaders {
     pub header_name: String,
     pub initial_value: String,
     pub activation_value: String,

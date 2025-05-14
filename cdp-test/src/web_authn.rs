@@ -1,25 +1,21 @@
-/// <https://chromedevtools.github.io/devtools-protocol/tot/WebAuthn/#type-AuthenticatorId>
-pub struct WebAuthnAuthenticatorId(String);
-/// <https://chromedevtools.github.io/devtools-protocol/tot/WebAuthn/#type-AuthenticatorProtocol>
-pub enum WebAuthnAuthenticatorProtocol {
+pub use crate::common::*;
+pub struct AuthenticatorId(String);
+pub enum AuthenticatorProtocol {
     U2f,
     Ctap2,
 }
-/// <https://chromedevtools.github.io/devtools-protocol/tot/WebAuthn/#type-Ctap2Version>
-pub enum WebAuthnCtap2Version {
+pub enum Ctap2Version {
     Ctap20,
     Ctap21,
 }
-/// <https://chromedevtools.github.io/devtools-protocol/tot/WebAuthn/#type-AuthenticatorTransport>
-pub enum WebAuthnAuthenticatorTransport {
+pub enum AuthenticatorTransport {
     Usb,
     Nfc,
     Ble,
     Cable,
     Internal,
 }
-/// <https://chromedevtools.github.io/devtools-protocol/tot/WebAuthn/#type-VirtualAuthenticatorOptions>
-pub struct WebAuthnVirtualAuthenticatorOptions {
+pub struct VirtualAuthenticatorOptions {
     pub protocol: (),
     pub ctap2_version: (),
     pub transport: (),
@@ -34,8 +30,7 @@ pub struct WebAuthnVirtualAuthenticatorOptions {
     pub default_backup_eligibility: (),
     pub default_backup_state: (),
 }
-/// <https://chromedevtools.github.io/devtools-protocol/tot/WebAuthn/#type-Credential>
-pub struct WebAuthnCredential {
+pub struct Credential {
     pub credential_id: String,
     pub is_resident_credential: (),
     pub rp_id: String,

@@ -1,21 +1,18 @@
+pub use crate::common::*;
 use crate::target::*;
-/// <https://chromedevtools.github.io/devtools-protocol/tot/ServiceWorker/#type-RegistrationID>
-pub struct ServiceWorkerRegistrationId(String);
+pub struct RegistrationId(String);
 /// ServiceWorker registration.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/ServiceWorker/#type-ServiceWorkerRegistration>
 pub struct ServiceWorkerRegistration {
     pub registration_id: (),
     pub scope_url: String,
     pub is_deleted: (),
 }
-/// <https://chromedevtools.github.io/devtools-protocol/tot/ServiceWorker/#type-ServiceWorkerVersionRunningStatus>
 pub enum ServiceWorkerVersionRunningStatus {
     Stopped,
     Starting,
     Running,
     Stopping,
 }
-/// <https://chromedevtools.github.io/devtools-protocol/tot/ServiceWorker/#type-ServiceWorkerVersionStatus>
 pub enum ServiceWorkerVersionStatus {
     New,
     Installing,
@@ -25,7 +22,6 @@ pub enum ServiceWorkerVersionStatus {
     Redundant,
 }
 /// ServiceWorker version.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/ServiceWorker/#type-ServiceWorkerVersion>
 pub struct ServiceWorkerVersion {
     pub version_id: String,
     pub registration_id: (),
@@ -39,7 +35,6 @@ pub struct ServiceWorkerVersion {
     pub router_rules: String,
 }
 /// ServiceWorker error message.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/ServiceWorker/#type-ServiceWorkerErrorMessage>
 pub struct ServiceWorkerErrorMessage {
     pub error_message: String,
     pub registration_id: (),

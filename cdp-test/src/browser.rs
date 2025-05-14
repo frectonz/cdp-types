@@ -1,22 +1,11 @@
+pub use crate::common::*;
 /// ⚠️ Experimental
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Browser/#type-BrowserContextID>
 pub struct BrowserContextId(String);
 /// ⚠️ Experimental
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Browser/#type-WindowID>
-pub struct BrowserWindowId(i64);
-/// ⚠️ Experimental
-/// The state of the browser window.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Browser/#type-WindowState>
-pub enum BrowserWindowState {
-    Normal,
-    Minimized,
-    Maximized,
-    Fullscreen,
-}
+pub struct WindowId(i64);
 /// ⚠️ Experimental
 /// Browser window bounds information
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Browser/#type-Bounds>
-pub struct BrowserBounds {
+pub struct Bounds {
     pub left: i64,
     pub top: i64,
     pub width: i64,
@@ -24,8 +13,7 @@ pub struct BrowserBounds {
     pub window_state: (),
 }
 /// ⚠️ Experimental
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Browser/#type-PermissionType>
-pub enum BrowserPermissionType {
+pub enum PermissionType {
     Ar,
     AudioCapture,
     AutomaticFullscreen,
@@ -65,8 +53,7 @@ pub enum BrowserPermissionType {
     WindowManagement,
 }
 /// ⚠️ Experimental
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Browser/#type-PermissionSetting>
-pub enum BrowserPermissionSetting {
+pub enum PermissionSetting {
     Granted,
     Denied,
     Prompt,
@@ -74,8 +61,7 @@ pub enum BrowserPermissionSetting {
 /// ⚠️ Experimental
 /** Definition of PermissionDescriptor defined in the Permissions API:
 https://w3c.github.io/permissions/#dom-permissiondescriptor.*/
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Browser/#type-PermissionDescriptor>
-pub struct BrowserPermissionDescriptor {
+pub struct PermissionDescriptor {
     pub name: String,
     pub sysex: (),
     pub user_visible_only: (),
@@ -85,7 +71,6 @@ pub struct BrowserPermissionDescriptor {
 }
 /// ⚠️ Experimental
 /// Browser command ids used by executeBrowserCommand.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Browser/#type-BrowserCommandId>
 pub enum BrowserCommandId {
     OpenTabSearch,
     CloseTabSearch,
@@ -93,24 +78,21 @@ pub enum BrowserCommandId {
 }
 /// ⚠️ Experimental
 /// Chrome histogram bucket.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Browser/#type-Bucket>
-pub struct BrowserBucket {
+pub struct Bucket {
     pub low: i64,
     pub high: i64,
     pub count: i64,
 }
 /// ⚠️ Experimental
 /// Chrome histogram.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Browser/#type-Histogram>
-pub struct BrowserHistogram {
+pub struct Histogram {
     pub name: String,
     pub sum: i64,
     pub count: i64,
     pub buckets: (),
 }
 /// ⚠️ Experimental
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Browser/#type-PrivacySandboxAPI>
-pub enum BrowserPrivacySandboxApi {
+pub enum PrivacySandboxApi {
     BiddingAndAuctionServices,
     TrustedKeyValue,
 }

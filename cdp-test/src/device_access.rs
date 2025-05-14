@@ -1,12 +1,8 @@
-/// Device request id.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/DeviceAccess/#type-RequestId>
-pub struct DeviceAccessRequestId(String);
+pub use crate::common::*;
 /// A device id.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/DeviceAccess/#type-DeviceId>
-pub struct DeviceAccessDeviceId(String);
+pub struct DeviceId(String);
 /// Device information displayed in a user prompt to select a device.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/DeviceAccess/#type-PromptDevice>
-pub struct DeviceAccessPromptDevice {
+pub struct PromptDevice {
     pub id: (),
     pub name: String,
 }

@@ -1,43 +1,38 @@
+pub use crate::common::*;
 use crate::dom::*;
 use crate::io::*;
 use crate::network::*;
 /// Unique frame identifier.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-FrameId>
-pub struct PageFrameId(String);
+pub struct FrameId(String);
 /// ⚠️ Experimental
 /// Indicates whether a frame has been identified as an ad.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-AdFrameType>
-pub enum PageAdFrameType {
+pub enum AdFrameType {
     None,
     Child,
     Root,
 }
 /// ⚠️ Experimental
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-AdFrameExplanation>
-pub enum PageAdFrameExplanation {
+pub enum AdFrameExplanation {
     ParentIsAd,
     CreatedByAdScript,
     MatchedBlockingRule,
 }
 /// ⚠️ Experimental
 /// Indicates whether a frame has been identified as an ad and why.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-AdFrameStatus>
-pub struct PageAdFrameStatus {
+pub struct AdFrameStatus {
     pub ad_frame_type: (),
     pub explanations: (),
 }
 /// ⚠️ Experimental
 /** Identifies the bottom-most script which caused the frame to be labelled
 as an ad.*/
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-AdScriptId>
-pub struct PageAdScriptId {
+pub struct AdScriptId {
     pub script_id: (),
     pub debugger_id: (),
 }
 /// ⚠️ Experimental
 /// Indicates whether the frame is a secure context and why it is the case.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-SecureContextType>
-pub enum PageSecureContextType {
+pub enum SecureContextType {
     Secure,
     SecureLocalhost,
     InsecureScheme,
@@ -45,15 +40,13 @@ pub enum PageSecureContextType {
 }
 /// ⚠️ Experimental
 /// Indicates whether the frame is cross-origin isolated and why it is the case.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-CrossOriginIsolatedContextType>
-pub enum PageCrossOriginIsolatedContextType {
+pub enum CrossOriginIsolatedContextType {
     Isolated,
     NotIsolated,
     NotIsolatedFeatureDisabled,
 }
 /// ⚠️ Experimental
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-GatedAPIFeatures>
-pub enum PageGatedApiFeatures {
+pub enum GatedApiFeatures {
     SharedArrayBuffers,
     SharedArrayBuffersTransferAllowed,
     PerformanceMeasureMemory,
@@ -63,8 +56,7 @@ pub enum PageGatedApiFeatures {
 /** All Permissions Policy features. This enum should match the one defined
 in services/network/public/cpp/permissions_policy/permissions_policy_features.json5.
 LINT.IfChange(PermissionsPolicyFeature)*/
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-PermissionsPolicyFeature>
-pub enum PagePermissionsPolicyFeature {
+pub enum PermissionsPolicyFeature {
     Accelerometer,
     AllScreensCapture,
     AmbientLightSensor,
@@ -171,22 +163,19 @@ pub enum PagePermissionsPolicyFeature {
 }
 /// ⚠️ Experimental
 /// Reason for a permissions policy feature to be disabled.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-PermissionsPolicyBlockReason>
-pub enum PagePermissionsPolicyBlockReason {
+pub enum PermissionsPolicyBlockReason {
     Header,
     IframeAttribute,
     InFencedFrameTree,
     InIsolatedApp,
 }
 /// ⚠️ Experimental
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-PermissionsPolicyBlockLocator>
-pub struct PagePermissionsPolicyBlockLocator {
+pub struct PermissionsPolicyBlockLocator {
     pub frame_id: (),
     pub block_reason: (),
 }
 /// ⚠️ Experimental
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-PermissionsPolicyFeatureState>
-pub struct PagePermissionsPolicyFeatureState {
+pub struct PermissionsPolicyFeatureState {
     pub feature: (),
     pub allowed: (),
     pub locator: (),
@@ -194,8 +183,7 @@ pub struct PagePermissionsPolicyFeatureState {
 /// ⚠️ Experimental
 /** Origin Trial(https://www.chromium.org/blink/origin-trials) support.
 Status for an Origin Trial token.*/
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-OriginTrialTokenStatus>
-pub enum PageOriginTrialTokenStatus {
+pub enum OriginTrialTokenStatus {
     Success,
     NotSupported,
     Insecure,
@@ -211,22 +199,19 @@ pub enum PageOriginTrialTokenStatus {
 }
 /// ⚠️ Experimental
 /// Status for an Origin Trial.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-OriginTrialStatus>
-pub enum PageOriginTrialStatus {
+pub enum OriginTrialStatus {
     Enabled,
     ValidTokenNotProvided,
     OsNotSupported,
     TrialNotAllowed,
 }
 /// ⚠️ Experimental
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-OriginTrialUsageRestriction>
-pub enum PageOriginTrialUsageRestriction {
+pub enum OriginTrialUsageRestriction {
     None,
     Subset,
 }
 /// ⚠️ Experimental
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-OriginTrialToken>
-pub struct PageOriginTrialToken {
+pub struct OriginTrialToken {
     pub origin: String,
     pub match_sub_domains: (),
     pub trial_name: String,
@@ -235,28 +220,24 @@ pub struct PageOriginTrialToken {
     pub usage_restriction: (),
 }
 /// ⚠️ Experimental
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-OriginTrialTokenWithStatus>
-pub struct PageOriginTrialTokenWithStatus {
+pub struct OriginTrialTokenWithStatus {
     pub raw_token_text: String,
     pub parsed_token: (),
     pub status: (),
 }
 /// ⚠️ Experimental
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-OriginTrial>
-pub struct PageOriginTrial {
+pub struct OriginTrial {
     pub trial_name: String,
     pub status: (),
     pub tokens_with_status: (),
 }
 /// ⚠️ Experimental
 /// Additional information about the frame document's security origin.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-SecurityOriginDetails>
-pub struct PageSecurityOriginDetails {
+pub struct SecurityOriginDetails {
     pub is_localhost: (),
 }
 /// Information about the Frame on the page.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-Frame>
-pub struct PageFrame {
+pub struct Frame {
     pub id: (),
     pub parent_id: (),
     pub loader_id: (),
@@ -275,8 +256,7 @@ pub struct PageFrame {
 }
 /// ⚠️ Experimental
 /// Information about the Resource on the page.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-FrameResource>
-pub struct PageFrameResource {
+pub struct FrameResource {
     pub url: String,
     pub _type: (),
     pub mime_type: String,
@@ -287,24 +267,20 @@ pub struct PageFrameResource {
 }
 /// ⚠️ Experimental
 /// Information about the Frame hierarchy along with their cached resources.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-FrameResourceTree>
-pub struct PageFrameResourceTree {
+pub struct FrameResourceTree {
     pub frame: (),
     pub child_frames: (),
     pub resources: (),
 }
 /// Information about the Frame hierarchy.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-FrameTree>
-pub struct PageFrameTree {
+pub struct FrameTree {
     pub frame: (),
     pub child_frames: (),
 }
 /// Unique script identifier.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-ScriptIdentifier>
-pub struct PageScriptIdentifier(String);
+pub struct ScriptIdentifier(String);
 /// Transition type.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-TransitionType>
-pub enum PageTransitionType {
+pub enum TransitionType {
     Link,
     Typed,
     AddressBar,
@@ -320,8 +296,7 @@ pub enum PageTransitionType {
     Other,
 }
 /// Navigation history entry.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-NavigationEntry>
-pub struct PageNavigationEntry {
+pub struct NavigationEntry {
     pub id: i64,
     pub url: String,
     pub user_typed_url: String,
@@ -330,8 +305,7 @@ pub struct PageNavigationEntry {
 }
 /// ⚠️ Experimental
 /// Screencast frame metadata.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-ScreencastFrameMetadata>
-pub struct PageScreencastFrameMetadata {
+pub struct ScreencastFrameMetadata {
     pub offset_top: u64,
     pub page_scale_factor: u64,
     pub device_width: u64,
@@ -340,17 +314,8 @@ pub struct PageScreencastFrameMetadata {
     pub scroll_offset_y: u64,
     pub timestamp: (),
 }
-/// Javascript dialog type.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-DialogType>
-pub enum PageDialogType {
-    Alert,
-    Confirm,
-    Prompt,
-    Beforeunload,
-}
 /// Error while paring app manifest.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-AppManifestError>
-pub struct PageAppManifestError {
+pub struct AppManifestError {
     pub message: String,
     pub critical: i64,
     pub line: i64,
@@ -358,21 +323,18 @@ pub struct PageAppManifestError {
 }
 /// ⚠️ Experimental
 /// Parsed app manifest properties.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-AppManifestParsedProperties>
-pub struct PageAppManifestParsedProperties {
+pub struct AppManifestParsedProperties {
     pub scope: String,
 }
 /// Layout viewport position and dimensions.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-LayoutViewport>
-pub struct PageLayoutViewport {
+pub struct LayoutViewport {
     pub page_x: i64,
     pub page_y: i64,
     pub client_width: i64,
     pub client_height: i64,
 }
 /// Visual viewport position, dimensions, and scale.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-VisualViewport>
-pub struct PageVisualViewport {
+pub struct VisualViewport {
     pub offset_x: u64,
     pub offset_y: u64,
     pub page_x: u64,
@@ -383,8 +345,7 @@ pub struct PageVisualViewport {
     pub zoom: u64,
 }
 /// Viewport for capturing screenshot.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-Viewport>
-pub struct PageViewport {
+pub struct Viewport {
     pub x: u64,
     pub y: u64,
     pub width: u64,
@@ -393,8 +354,7 @@ pub struct PageViewport {
 }
 /// ⚠️ Experimental
 /// Generic font families collection.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-FontFamilies>
-pub struct PageFontFamilies {
+pub struct FontFamilies {
     pub standard: String,
     pub fixed: String,
     pub serif: String,
@@ -405,21 +365,18 @@ pub struct PageFontFamilies {
 }
 /// ⚠️ Experimental
 /// Font families collection for a script.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-ScriptFontFamilies>
-pub struct PageScriptFontFamilies {
+pub struct ScriptFontFamilies {
     pub script: String,
     pub font_families: (),
 }
 /// ⚠️ Experimental
 /// Default font sizes.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-FontSizes>
-pub struct PageFontSizes {
+pub struct FontSizes {
     pub standard: i64,
     pub fixed: i64,
 }
 /// ⚠️ Experimental
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-ClientNavigationReason>
-pub enum PageClientNavigationReason {
+pub enum ClientNavigationReason {
     AnchorClick,
     FormSubmissionGet,
     FormSubmissionPost,
@@ -432,30 +389,26 @@ pub enum PageClientNavigationReason {
     ScriptInitiated,
 }
 /// ⚠️ Experimental
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-ClientNavigationDisposition>
-pub enum PageClientNavigationDisposition {
+pub enum ClientNavigationDisposition {
     CurrentTab,
     NewTab,
     NewWindow,
     Download,
 }
 /// ⚠️ Experimental
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-InstallabilityErrorArgument>
-pub struct PageInstallabilityErrorArgument {
+pub struct InstallabilityErrorArgument {
     pub name: String,
     pub value: String,
 }
 /// ⚠️ Experimental
 /// The installability error
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-InstallabilityError>
-pub struct PageInstallabilityError {
+pub struct InstallabilityError {
     pub error_id: String,
     pub error_arguments: (),
 }
 /// ⚠️ Experimental
 /// The referring-policy used for the navigation.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-ReferrerPolicy>
-pub enum PageReferrerPolicy {
+pub enum ReferrerPolicy {
     NoReferrer,
     NoReferrerWhenDowngrade,
     Origin,
@@ -467,67 +420,49 @@ pub enum PageReferrerPolicy {
 }
 /// ⚠️ Experimental
 /// Per-script compilation cache parameters for `Page.produceCompilationCache`
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-CompilationCacheParams>
-pub struct PageCompilationCacheParams {
+pub struct CompilationCacheParams {
     pub url: String,
     pub eager: (),
 }
 /// ⚠️ Experimental
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-FileFilter>
-pub struct PageFileFilter {
+pub struct FileFilter {
     pub name: String,
     pub accepts: (),
-}
-/// ⚠️ Experimental
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-FileHandler>
-pub struct PageFileHandler {
-    pub action: String,
-    pub name: String,
-    pub icons: (),
-    pub accepts: (),
-    pub launch_type: String,
 }
 /// ⚠️ Experimental
 /// The image definition used in both icon and screenshot.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-ImageResource>
-pub struct PageImageResource {
+pub struct ImageResource {
     pub url: String,
     pub sizes: String,
     pub _type: String,
 }
 /// ⚠️ Experimental
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-LaunchHandler>
-pub struct PageLaunchHandler {
+pub struct LaunchHandler {
     pub client_mode: String,
 }
 /// ⚠️ Experimental
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-ProtocolHandler>
-pub struct PageProtocolHandler {
+pub struct ProtocolHandler {
     pub protocol: String,
     pub url: String,
 }
 /// ⚠️ Experimental
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-RelatedApplication>
-pub struct PageRelatedApplication {
+pub struct RelatedApplication {
     pub id: String,
     pub url: String,
 }
 /// ⚠️ Experimental
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-ScopeExtension>
-pub struct PageScopeExtension {
+pub struct ScopeExtension {
     pub origin: String,
     pub has_origin_wildcard: (),
 }
 /// ⚠️ Experimental
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-Screenshot>
-pub struct PageScreenshot {
+pub struct Screenshot {
     pub image: (),
     pub form_factor: String,
     pub label: String,
 }
 /// ⚠️ Experimental
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-ShareTarget>
-pub struct PageShareTarget {
+pub struct ShareTarget {
     pub action: String,
     pub method: String,
     pub enctype: String,
@@ -537,14 +472,12 @@ pub struct PageShareTarget {
     pub files: (),
 }
 /// ⚠️ Experimental
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-Shortcut>
-pub struct PageShortcut {
+pub struct Shortcut {
     pub name: String,
     pub url: String,
 }
 /// ⚠️ Experimental
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-WebAppManifest>
-pub struct PageWebAppManifest {
+pub struct WebAppManifest {
     pub background_color: String,
     pub description: String,
     pub dir: String,
@@ -571,8 +504,7 @@ pub struct PageWebAppManifest {
 }
 /// ⚠️ Experimental
 /// Enum of possible auto-response for permission / prompt dialogs.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-AutoResponseMode>
-pub enum PageAutoResponseMode {
+pub enum AutoResponseMode {
     None,
     AutoAccept,
     AutoReject,
@@ -580,15 +512,13 @@ pub enum PageAutoResponseMode {
 }
 /// ⚠️ Experimental
 /// The type of a frameNavigated event.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-NavigationType>
-pub enum PageNavigationType {
+pub enum NavigationType {
     Navigation,
     BackForwardCacheRestore,
 }
 /// ⚠️ Experimental
 /// List of not restored reasons for back-forward cache.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-BackForwardCacheNotRestoredReason>
-pub enum PageBackForwardCacheNotRestoredReason {
+pub enum BackForwardCacheNotRestoredReason {
     NotPrimaryMainFrame,
     BackForwardCacheDisabled,
     RelatedActiveContentsExist,
@@ -734,31 +664,27 @@ pub enum PageBackForwardCacheNotRestoredReason {
 }
 /// ⚠️ Experimental
 /// Types of not restored reasons for back-forward cache.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-BackForwardCacheNotRestoredReasonType>
-pub enum PageBackForwardCacheNotRestoredReasonType {
+pub enum BackForwardCacheNotRestoredReasonType {
     SupportPending,
     PageSupportNeeded,
     Circumstantial,
 }
 /// ⚠️ Experimental
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-BackForwardCacheBlockingDetails>
-pub struct PageBackForwardCacheBlockingDetails {
+pub struct BackForwardCacheBlockingDetails {
     pub url: String,
     pub function: String,
     pub line_number: i64,
     pub column_number: i64,
 }
 /// ⚠️ Experimental
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-BackForwardCacheNotRestoredExplanation>
-pub struct PageBackForwardCacheNotRestoredExplanation {
+pub struct BackForwardCacheNotRestoredExplanation {
     pub _type: (),
     pub reason: (),
     pub context: String,
     pub details: (),
 }
 /// ⚠️ Experimental
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Page/#type-BackForwardCacheNotRestoredExplanationTree>
-pub struct PageBackForwardCacheNotRestoredExplanationTree {
+pub struct BackForwardCacheNotRestoredExplanationTree {
     pub url: String,
     pub explanations: (),
     pub children: (),

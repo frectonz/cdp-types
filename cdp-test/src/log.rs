@@ -1,6 +1,6 @@
+pub use crate::common::*;
 use crate::network::*;
 /// Log entry.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Log/#type-LogEntry>
 pub struct LogEntry {
     pub source: String,
     pub level: String,
@@ -15,8 +15,7 @@ pub struct LogEntry {
     pub args: (),
 }
 /// Violation configuration setting.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Log/#type-ViolationSetting>
-pub struct LogViolationSetting {
+pub struct ViolationSetting {
     pub name: String,
     pub threshold: u64,
 }

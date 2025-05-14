@@ -1,8 +1,8 @@
+pub use crate::common::*;
 /** The Background Service that will be associated with the commands/events.
 Every Background Service operates independently, but they share the same
 API.*/
-/// <https://chromedevtools.github.io/devtools-protocol/tot/BackgroundService/#type-ServiceName>
-pub enum BackgroundServiceServiceName {
+pub enum ServiceName {
     BackgroundFetch,
     BackgroundSync,
     PushMessaging,
@@ -11,12 +11,10 @@ pub enum BackgroundServiceServiceName {
     PeriodicBackgroundSync,
 }
 /// A key-value pair for additional event information to pass along.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/BackgroundService/#type-EventMetadata>
-pub struct BackgroundServiceEventMetadata {
+pub struct EventMetadata {
     pub key: String,
     pub value: String,
 }
-/// <https://chromedevtools.github.io/devtools-protocol/tot/BackgroundService/#type-BackgroundServiceEvent>
 pub struct BackgroundServiceEvent {
     pub timestamp: (),
     pub origin: String,

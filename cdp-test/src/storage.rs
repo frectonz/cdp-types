@@ -1,9 +1,7 @@
+pub use crate::common::*;
 use crate::browser::*;
 use crate::network::*;
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Storage/#type-SerializedStorageKey>
-pub struct StorageSerializedStorageKey(String);
 /// Enum of possible storage types.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Storage/#type-StorageType>
 pub enum StorageType {
     Cookies,
     FileSystems,
@@ -20,25 +18,21 @@ pub enum StorageType {
     Other,
 }
 /// Usage for a storage type.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Storage/#type-UsageForType>
-pub struct StorageUsageForType {
+pub struct UsageForType {
     pub storage_type: (),
     pub usage: u64,
 }
 /// ⚠️ Experimental
 /** Pair of issuer origin and number of available (signed, but not used) Trust
 Tokens from that issuer.*/
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Storage/#type-TrustTokens>
-pub struct StorageTrustTokens {
+pub struct TrustTokens {
     pub issuer_origin: String,
     pub count: u64,
 }
 /// Protected audience interest group auction identifier.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Storage/#type-InterestGroupAuctionId>
-pub struct StorageInterestGroupAuctionId(String);
+pub struct InterestGroupAuctionId(String);
 /// Enum of interest group access types.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Storage/#type-InterestGroupAccessType>
-pub enum StorageInterestGroupAccessType {
+pub enum InterestGroupAccessType {
     Join,
     Leave,
     Update,
@@ -52,14 +46,12 @@ pub enum StorageInterestGroupAccessType {
     Clear,
 }
 /// Enum of auction events.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Storage/#type-InterestGroupAuctionEventType>
-pub enum StorageInterestGroupAuctionEventType {
+pub enum InterestGroupAuctionEventType {
     Started,
     ConfigResolved,
 }
 /// Enum of network fetches auctions can do.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Storage/#type-InterestGroupAuctionFetchType>
-pub enum StorageInterestGroupAuctionFetchType {
+pub enum InterestGroupAuctionFetchType {
     BidderJs,
     BidderWasm,
     SellerJs,
@@ -67,16 +59,14 @@ pub enum StorageInterestGroupAuctionFetchType {
     SellerTrustedSignals,
 }
 /// Enum of shared storage access scopes.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Storage/#type-SharedStorageAccessScope>
-pub enum StorageSharedStorageAccessScope {
+pub enum SharedStorageAccessScope {
     Window,
     SharedStorageWorklet,
     ProtectedAudienceWorklet,
     Header,
 }
 /// Enum of shared storage access methods.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Storage/#type-SharedStorageAccessMethod>
-pub enum StorageSharedStorageAccessMethod {
+pub enum SharedStorageAccessMethod {
     AddModule,
     CreateWorklet,
     SelectUrl,
@@ -94,14 +84,12 @@ pub enum StorageSharedStorageAccessMethod {
     RemainingBudget,
 }
 /// Struct for a single key-value pair in an origin's shared storage.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Storage/#type-SharedStorageEntry>
-pub struct StorageSharedStorageEntry {
+pub struct SharedStorageEntry {
     pub key: String,
     pub value: String,
 }
 /// Details for an origin's shared storage.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Storage/#type-SharedStorageMetadata>
-pub struct StorageSharedStorageMetadata {
+pub struct SharedStorageMetadata {
     pub creation_time: (),
     pub length: i64,
     pub remaining_budget: u64,
@@ -109,29 +97,25 @@ pub struct StorageSharedStorageMetadata {
 }
 /** Represents a dictionary object passed in as privateAggregationConfig to
 run or selectURL.*/
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Storage/#type-SharedStoragePrivateAggregationConfig>
-pub struct StorageSharedStoragePrivateAggregationConfig {
+pub struct SharedStoragePrivateAggregationConfig {
     pub aggregation_coordinator_origin: String,
     pub context_id: String,
     pub filtering_id_max_bytes: i64,
     pub max_contributions: i64,
 }
 /// Pair of reporting metadata details for a candidate URL for `selectURL()`.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Storage/#type-SharedStorageReportingMetadata>
-pub struct StorageSharedStorageReportingMetadata {
+pub struct SharedStorageReportingMetadata {
     pub event_type: String,
     pub reporting_url: String,
 }
 /// Bundles a candidate URL with its reporting metadata.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Storage/#type-SharedStorageUrlWithMetadata>
-pub struct StorageSharedStorageUrlWithMetadata {
+pub struct SharedStorageUrlWithMetadata {
     pub url: String,
     pub reporting_metadata: (),
 }
 /** Bundles the parameters for shared storage access events whose
 presence/absence can vary according to SharedStorageAccessType.*/
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Storage/#type-SharedStorageAccessParams>
-pub struct StorageSharedStorageAccessParams {
+pub struct SharedStorageAccessParams {
     pub script_source_url: String,
     pub data_origin: String,
     pub operation_name: String,
@@ -148,17 +132,14 @@ pub struct StorageSharedStorageAccessParams {
     pub batch_update_id: String,
     pub batch_size: i64,
 }
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Storage/#type-StorageBucketsDurability>
 pub enum StorageBucketsDurability {
     Relaxed,
     Strict,
 }
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Storage/#type-StorageBucket>
 pub struct StorageBucket {
     pub storage_key: (),
     pub name: String,
 }
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Storage/#type-StorageBucketInfo>
 pub struct StorageBucketInfo {
     pub bucket: (),
     pub id: String,
@@ -168,93 +149,77 @@ pub struct StorageBucketInfo {
     pub durability: (),
 }
 /// ⚠️ Experimental
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Storage/#type-AttributionReportingSourceType>
-pub enum StorageAttributionReportingSourceType {
+pub enum AttributionReportingSourceType {
     Navigation,
     Event,
 }
 /// ⚠️ Experimental
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Storage/#type-UnsignedInt64AsBase10>
-pub struct StorageUnsignedInt64AsBase10(String);
+pub struct UnsignedInt64AsBase10(String);
 /// ⚠️ Experimental
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Storage/#type-UnsignedInt128AsBase16>
-pub struct StorageUnsignedInt128AsBase16(String);
+pub struct UnsignedInt128AsBase16(String);
 /// ⚠️ Experimental
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Storage/#type-SignedInt64AsBase10>
-pub struct StorageSignedInt64AsBase10(String);
+pub struct SignedInt64AsBase10(String);
 /// ⚠️ Experimental
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Storage/#type-AttributionReportingFilterDataEntry>
-pub struct StorageAttributionReportingFilterDataEntry {
+pub struct AttributionReportingFilterDataEntry {
     pub key: String,
     pub values: (),
 }
 /// ⚠️ Experimental
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Storage/#type-AttributionReportingFilterConfig>
-pub struct StorageAttributionReportingFilterConfig {
+pub struct AttributionReportingFilterConfig {
     pub filter_values: (),
     pub lookback_window: i64,
 }
 /// ⚠️ Experimental
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Storage/#type-AttributionReportingFilterPair>
-pub struct StorageAttributionReportingFilterPair {
+pub struct AttributionReportingFilterPair {
     pub filters: (),
     pub not_filters: (),
 }
 /// ⚠️ Experimental
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Storage/#type-AttributionReportingAggregationKeysEntry>
-pub struct StorageAttributionReportingAggregationKeysEntry {
+pub struct AttributionReportingAggregationKeysEntry {
     pub key: String,
     pub value: (),
 }
 /// ⚠️ Experimental
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Storage/#type-AttributionReportingEventReportWindows>
-pub struct StorageAttributionReportingEventReportWindows {
+pub struct AttributionReportingEventReportWindows {
     pub start: i64,
     pub ends: (),
 }
 /// ⚠️ Experimental
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Storage/#type-AttributionReportingTriggerSpec>
-pub struct StorageAttributionReportingTriggerSpec {
+pub struct AttributionReportingTriggerSpec {
     pub trigger_data: (),
     pub event_report_windows: (),
 }
 /// ⚠️ Experimental
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Storage/#type-AttributionReportingTriggerDataMatching>
-pub enum StorageAttributionReportingTriggerDataMatching {
+pub enum AttributionReportingTriggerDataMatching {
     Exact,
     Modulus,
 }
 /// ⚠️ Experimental
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Storage/#type-AttributionReportingAggregatableDebugReportingData>
-pub struct StorageAttributionReportingAggregatableDebugReportingData {
+pub struct AttributionReportingAggregatableDebugReportingData {
     pub key_piece: (),
     pub value: u64,
     pub types: (),
 }
 /// ⚠️ Experimental
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Storage/#type-AttributionReportingAggregatableDebugReportingConfig>
-pub struct StorageAttributionReportingAggregatableDebugReportingConfig {
+pub struct AttributionReportingAggregatableDebugReportingConfig {
     pub budget: u64,
     pub key_piece: (),
     pub debug_data: (),
     pub aggregation_coordinator_origin: String,
 }
 /// ⚠️ Experimental
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Storage/#type-AttributionScopesData>
-pub struct StorageAttributionScopesData {
+pub struct AttributionScopesData {
     pub values: (),
     pub limit: u64,
     pub max_event_states: u64,
 }
 /// ⚠️ Experimental
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Storage/#type-AttributionReportingNamedBudgetDef>
-pub struct StorageAttributionReportingNamedBudgetDef {
+pub struct AttributionReportingNamedBudgetDef {
     pub name: String,
     pub budget: i64,
 }
 /// ⚠️ Experimental
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Storage/#type-AttributionReportingSourceRegistration>
-pub struct StorageAttributionReportingSourceRegistration {
+pub struct AttributionReportingSourceRegistration {
     pub time: (),
     pub expiry: i64,
     pub trigger_specs: (),
@@ -278,8 +243,7 @@ pub struct StorageAttributionReportingSourceRegistration {
     pub event_level_epsilon: u64,
 }
 /// ⚠️ Experimental
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Storage/#type-AttributionReportingSourceRegistrationResult>
-pub enum StorageAttributionReportingSourceRegistrationResult {
+pub enum AttributionReportingSourceRegistrationResult {
     Success,
     InternalError,
     InsufficientSourceCapacity,
@@ -298,54 +262,46 @@ pub enum StorageAttributionReportingSourceRegistrationResult {
     DestinationPerDayReportingLimitReached,
 }
 /// ⚠️ Experimental
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Storage/#type-AttributionReportingSourceRegistrationTimeConfig>
-pub enum StorageAttributionReportingSourceRegistrationTimeConfig {
+pub enum AttributionReportingSourceRegistrationTimeConfig {
     Include,
     Exclude,
 }
 /// ⚠️ Experimental
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Storage/#type-AttributionReportingAggregatableValueDictEntry>
-pub struct StorageAttributionReportingAggregatableValueDictEntry {
+pub struct AttributionReportingAggregatableValueDictEntry {
     pub key: String,
     pub value: u64,
     pub filtering_id: (),
 }
 /// ⚠️ Experimental
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Storage/#type-AttributionReportingAggregatableValueEntry>
-pub struct StorageAttributionReportingAggregatableValueEntry {
+pub struct AttributionReportingAggregatableValueEntry {
     pub values: (),
     pub filters: (),
 }
 /// ⚠️ Experimental
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Storage/#type-AttributionReportingEventTriggerData>
-pub struct StorageAttributionReportingEventTriggerData {
+pub struct AttributionReportingEventTriggerData {
     pub data: (),
     pub priority: (),
     pub dedup_key: (),
     pub filters: (),
 }
 /// ⚠️ Experimental
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Storage/#type-AttributionReportingAggregatableTriggerData>
-pub struct StorageAttributionReportingAggregatableTriggerData {
+pub struct AttributionReportingAggregatableTriggerData {
     pub key_piece: (),
     pub source_keys: (),
     pub filters: (),
 }
 /// ⚠️ Experimental
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Storage/#type-AttributionReportingAggregatableDedupKey>
-pub struct StorageAttributionReportingAggregatableDedupKey {
+pub struct AttributionReportingAggregatableDedupKey {
     pub dedup_key: (),
     pub filters: (),
 }
 /// ⚠️ Experimental
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Storage/#type-AttributionReportingNamedBudgetCandidate>
-pub struct StorageAttributionReportingNamedBudgetCandidate {
+pub struct AttributionReportingNamedBudgetCandidate {
     pub name: String,
     pub filters: (),
 }
 /// ⚠️ Experimental
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Storage/#type-AttributionReportingTriggerRegistration>
-pub struct StorageAttributionReportingTriggerRegistration {
+pub struct AttributionReportingTriggerRegistration {
     pub filters: (),
     pub debug_key: (),
     pub aggregatable_dedup_keys: (),
@@ -362,8 +318,7 @@ pub struct StorageAttributionReportingTriggerRegistration {
     pub named_budgets: (),
 }
 /// ⚠️ Experimental
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Storage/#type-AttributionReportingEventLevelResult>
-pub enum StorageAttributionReportingEventLevelResult {
+pub enum AttributionReportingEventLevelResult {
     Success,
     SuccessDroppedLowerPriority,
     InternalError,
@@ -385,8 +340,7 @@ pub enum StorageAttributionReportingEventLevelResult {
     NoMatchingTriggerData,
 }
 /// ⚠️ Experimental
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Storage/#type-AttributionReportingAggregatableResult>
-pub enum StorageAttributionReportingAggregatableResult {
+pub enum AttributionReportingAggregatableResult {
     Success,
     InternalError,
     NoCapacityForAttributionDestination,
@@ -404,8 +358,7 @@ pub enum StorageAttributionReportingAggregatableResult {
     ExcessiveReports,
 }
 /// ⚠️ Experimental
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Storage/#type-AttributionReportingReportResult>
-pub enum StorageAttributionReportingReportResult {
+pub enum AttributionReportingReportResult {
     Sent,
     Prohibited,
     FailedToAssemble,
@@ -413,8 +366,7 @@ pub enum StorageAttributionReportingReportResult {
 }
 /// ⚠️ Experimental
 /// A single Related Website Set object.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Storage/#type-RelatedWebsiteSet>
-pub struct StorageRelatedWebsiteSet {
+pub struct RelatedWebsiteSet {
     pub primary_sites: (),
     pub associated_sites: (),
     pub service_sites: (),

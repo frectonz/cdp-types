@@ -1,6 +1,6 @@
+pub use crate::common::*;
 /// Storage areas.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Extensions/#type-StorageArea>
-pub enum ExtensionsStorageArea {
+pub enum StorageArea {
     Session,
     Local,
     Sync,

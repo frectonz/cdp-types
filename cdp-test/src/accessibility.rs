@@ -1,10 +1,9 @@
+pub use crate::common::*;
 use crate::dom::*;
 /// Unique accessibility node identifier.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Accessibility/#type-AXNodeId>
-pub struct AccessibilityAxNodeId(String);
+pub struct AxNodeId(String);
 /// Enum of possible property types.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Accessibility/#type-AXValueType>
-pub enum AccessibilityAxValueType {
+pub enum AxValueType {
     Boolean,
     Tristate,
     BooleanOrUndefined,
@@ -24,8 +23,7 @@ pub enum AccessibilityAxValueType {
     ValueUndefined,
 }
 /// Enum of possible property sources.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Accessibility/#type-AXValueSourceType>
-pub enum AccessibilityAxValueSourceType {
+pub enum AxValueSourceType {
     Attribute,
     Implicit,
     Style,
@@ -34,8 +32,7 @@ pub enum AccessibilityAxValueSourceType {
     RelatedElement,
 }
 /// Enum of possible native property sources (as a subtype of a particular AXValueSourceType).
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Accessibility/#type-AXValueNativeSourceType>
-pub enum AccessibilityAxValueNativeSourceType {
+pub enum AxValueNativeSourceType {
     Description,
     Figcaption,
     Label,
@@ -48,8 +45,7 @@ pub enum AccessibilityAxValueNativeSourceType {
     Other,
 }
 /// A single source for a computed AX property.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Accessibility/#type-AXValueSource>
-pub struct AccessibilityAxValueSource {
+pub struct AxValueSource {
     pub _type: (),
     pub value: (),
     pub attribute: String,
@@ -60,20 +56,17 @@ pub struct AccessibilityAxValueSource {
     pub invalid: (),
     pub invalid_reason: String,
 }
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Accessibility/#type-AXRelatedNode>
-pub struct AccessibilityAxRelatedNode {
+pub struct AxRelatedNode {
     pub backend_dom_node_id: (),
     pub idref: String,
     pub text: String,
 }
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Accessibility/#type-AXProperty>
-pub struct AccessibilityAxProperty {
+pub struct AxProperty {
     pub name: (),
     pub value: (),
 }
 /// A single computed AX property.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Accessibility/#type-AXValue>
-pub struct AccessibilityAxValue {
+pub struct AxValue {
     pub _type: (),
     pub value: (),
     pub related_nodes: (),
@@ -85,8 +78,7 @@ pub struct AccessibilityAxValue {
 - from 'autocomplete' to 'valuetext': attributes which apply to widgets
 - from 'checked' to 'selected': states which apply to widgets
 - from 'activedescendant' to 'owns' - relationships between elements other than parent/child/sibling.*/
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Accessibility/#type-AXPropertyName>
-pub enum AccessibilityAxPropertyName {
+pub enum AxPropertyName {
     Actions,
     Busy,
     Disabled,
@@ -130,8 +122,7 @@ pub enum AccessibilityAxPropertyName {
     Url,
 }
 /// A node in the accessibility tree.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Accessibility/#type-AXNode>
-pub struct AccessibilityAxNode {
+pub struct AxNode {
     pub node_id: (),
     pub ignored: (),
     pub ignored_reasons: (),

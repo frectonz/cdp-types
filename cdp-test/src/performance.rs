@@ -1,6 +1,6 @@
+pub use crate::common::*;
 /// Run-time execution metric.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Performance/#type-Metric>
-pub struct PerformanceMetric {
+pub struct Metric {
     pub name: String,
     pub value: u64,
 }

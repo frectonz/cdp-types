@@ -1,6 +1,6 @@
+pub use crate::common::*;
 use crate::dom::*;
 /// Animation instance.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Animation/#type-Animation>
 pub struct Animation {
     pub id: String,
     pub name: String,
@@ -15,8 +15,7 @@ pub struct Animation {
     pub view_or_scroll_timeline: (),
 }
 /// Timeline instance
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Animation/#type-ViewOrScrollTimeline>
-pub struct AnimationViewOrScrollTimeline {
+pub struct ViewOrScrollTimeline {
     pub source_node_id: (),
     pub start_offset: u64,
     pub end_offset: u64,
@@ -24,7 +23,6 @@ pub struct AnimationViewOrScrollTimeline {
     pub axis: (),
 }
 /// AnimationEffect instance
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Animation/#type-AnimationEffect>
 pub struct AnimationEffect {
     pub delay: u64,
     pub end_delay: u64,
@@ -38,14 +36,12 @@ pub struct AnimationEffect {
     pub easing: String,
 }
 /// Keyframes Rule
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Animation/#type-KeyframesRule>
-pub struct AnimationKeyframesRule {
+pub struct KeyframesRule {
     pub name: String,
     pub keyframes: (),
 }
 /// Keyframe Style
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Animation/#type-KeyframeStyle>
-pub struct AnimationKeyframeStyle {
+pub struct KeyframeStyle {
     pub offset: String,
     pub easing: String,
 }

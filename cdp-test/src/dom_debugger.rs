@@ -1,21 +1,19 @@
+pub use crate::common::*;
 use crate::dom::*;
 /// DOM breakpoint type.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/DOMDebugger/#type-DOMBreakpointType>
-pub enum DomDebuggerDomBreakpointType {
+pub enum DomBreakpointType {
     SubtreeModified,
     AttributeModified,
     NodeRemoved,
 }
 /// ⚠️ Experimental
 /// CSP Violation type.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/DOMDebugger/#type-CSPViolationType>
-pub enum DomDebuggerCspViolationType {
+pub enum CspViolationType {
     TrustedtypeSinkViolation,
     TrustedtypePolicyViolation,
 }
 /// Object event listener.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/DOMDebugger/#type-EventListener>
-pub struct DomDebuggerEventListener {
+pub struct EventListener {
     pub _type: String,
     pub use_capture: (),
     pub passive: (),

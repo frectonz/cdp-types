@@ -1,5 +1,5 @@
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Input/#type-TouchPoint>
-pub struct InputTouchPoint {
+pub use crate::common::*;
+pub struct TouchPoint {
     pub x: u64,
     pub y: u64,
     pub radius_x: u64,
@@ -13,14 +13,12 @@ pub struct InputTouchPoint {
     pub id: u64,
 }
 /// ⚠️ Experimental
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Input/#type-GestureSourceType>
-pub enum InputGestureSourceType {
+pub enum GestureSourceType {
     Default,
     Touch,
     Mouse,
 }
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Input/#type-MouseButton>
-pub enum InputMouseButton {
+pub enum MouseButton {
     None,
     Left,
     Middle,
@@ -28,20 +26,15 @@ pub enum InputMouseButton {
     Back,
     Forward,
 }
-/// UTC time in seconds, counted from January 1, 1970.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Input/#type-TimeSinceEpoch>
-pub struct InputTimeSinceEpoch(u64);
 /// ⚠️ Experimental
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Input/#type-DragDataItem>
-pub struct InputDragDataItem {
+pub struct DragDataItem {
     pub mime_type: String,
     pub data: String,
     pub title: String,
     pub base_url: String,
 }
 /// ⚠️ Experimental
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Input/#type-DragData>
-pub struct InputDragData {
+pub struct DragData {
     pub items: (),
     pub files: (),
     pub drag_operations_mask: i64,

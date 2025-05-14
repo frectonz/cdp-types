@@ -1,7 +1,7 @@
+pub use crate::common::*;
 use crate::page::*;
 /// Encoding options for a screenshot.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/HeadlessExperimental/#type-ScreenshotParams>
-pub struct HeadlessExperimentalScreenshotParams {
+pub struct ScreenshotParams {
     pub format: String,
     pub quality: i64,
     pub optimize_for_speed: (),

@@ -1,3 +1,4 @@
+pub mod common;
 pub mod accessibility;
 pub mod animation;
 pub mod audits;

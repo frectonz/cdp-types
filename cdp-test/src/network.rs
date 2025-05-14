@@ -1,7 +1,7 @@
+pub use crate::common::*;
 use crate::security::*;
 /// Resource type as it was perceived by the rendering engine.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-ResourceType>
-pub enum NetworkResourceType {
+pub enum ResourceType {
     Document,
     Stylesheet,
     Image,
@@ -22,19 +22,11 @@ pub enum NetworkResourceType {
     Other,
 }
 /// Unique loader identifier.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-LoaderId>
-pub struct NetworkLoaderId(String);
-/** Unique network request identifier.
-Note that this does not identify individual HTTP requests that are part of
-a network request.*/
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-RequestId>
-pub struct NetworkRequestId(String);
+pub struct LoaderId(String);
 /// Unique intercepted request identifier.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-InterceptionId>
-pub struct NetworkInterceptionId(String);
+pub struct InterceptionId(String);
 /// Network level fetch failure reason.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-ErrorReason>
-pub enum NetworkErrorReason {
+pub enum ErrorReason {
     Failed,
     Aborted,
     TimedOut,
@@ -50,18 +42,12 @@ pub enum NetworkErrorReason {
     BlockedByClient,
     BlockedByResponse,
 }
-/// UTC time in seconds, counted from January 1, 1970.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-TimeSinceEpoch>
-pub struct NetworkTimeSinceEpoch(u64);
 /// Monotonically increasing time in seconds since an arbitrary point in the past.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-MonotonicTime>
-pub struct NetworkMonotonicTime(u64);
+pub struct MonotonicTime(u64);
 /// Request / response headers as keys / values of JSON object.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-Headers>
-pub struct NetworkHeaders(serde_json::Map<String, serde_json::Value>);
+pub struct Headers(serde_json::Map<String, serde_json::Value>);
 /// The underlying connection technology that the browser is supposedly using.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-ConnectionType>
-pub enum NetworkConnectionType {
+pub enum ConnectionType {
     None,
     Cellular2g,
     Cellular3g,
@@ -74,8 +60,7 @@ pub enum NetworkConnectionType {
 }
 /** Represents the cookie's 'SameSite' status:
 https://tools.ietf.org/html/draft-west-first-party-cookies*/
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-CookieSameSite>
-pub enum NetworkCookieSameSite {
+pub enum CookieSameSite {
     Strict,
     Lax,
     None,
@@ -83,8 +68,7 @@ pub enum NetworkCookieSameSite {
 /// ⚠️ Experimental
 /** Represents the cookie's 'Priority' status:
 https://tools.ietf.org/html/draft-west-cookie-priority-00*/
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-CookiePriority>
-pub enum NetworkCookiePriority {
+pub enum CookiePriority {
     Low,
     Medium,
     High,
@@ -93,15 +77,13 @@ pub enum NetworkCookiePriority {
 /** Represents the source scheme of the origin that originally set the cookie.
 A value of "Unset" allows protocol clients to emulate legacy cookie scope for the scheme.
 This is a temporary ability and it will be removed in the future.*/
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-CookieSourceScheme>
-pub enum NetworkCookieSourceScheme {
+pub enum CookieSourceScheme {
     Unset,
     NonSecure,
     Secure,
 }
 /// Timing information for the request.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-ResourceTiming>
-pub struct NetworkResourceTiming {
+pub struct ResourceTiming {
     pub request_time: u64,
     pub proxy_start: u64,
     pub proxy_end: u64,
@@ -125,8 +107,7 @@ pub struct NetworkResourceTiming {
     pub receive_headers_end: u64,
 }
 /// Loading priority of a resource request.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-ResourcePriority>
-pub enum NetworkResourcePriority {
+pub enum ResourcePriority {
     VeryLow,
     Low,
     Medium,
@@ -134,13 +115,11 @@ pub enum NetworkResourcePriority {
     VeryHigh,
 }
 /// Post data entry for HTTP request
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-PostDataEntry>
-pub struct NetworkPostDataEntry {
+pub struct PostDataEntry {
     pub bytes: String,
 }
 /// HTTP request data.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-Request>
-pub struct NetworkRequest {
+pub struct Request {
     pub url: String,
     pub url_fragment: String,
     pub method: String,
@@ -156,8 +135,7 @@ pub struct NetworkRequest {
     pub is_same_site: (),
 }
 /// Details of a signed certificate timestamp (SCT).
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-SignedCertificateTimestamp>
-pub struct NetworkSignedCertificateTimestamp {
+pub struct SignedCertificateTimestamp {
     pub status: String,
     pub origin: String,
     pub log_description: String,
@@ -168,8 +146,7 @@ pub struct NetworkSignedCertificateTimestamp {
     pub signature_data: String,
 }
 /// Security details about a request.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-SecurityDetails>
-pub struct NetworkSecurityDetails {
+pub struct SecurityDetails {
     pub protocol: String,
     pub key_exchange: String,
     pub key_exchange_group: String,
@@ -187,15 +164,13 @@ pub struct NetworkSecurityDetails {
     pub encrypted_client_hello: (),
 }
 /// Whether the request complied with Certificate Transparency policy.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-CertificateTransparencyCompliance>
-pub enum NetworkCertificateTransparencyCompliance {
+pub enum CertificateTransparencyCompliance {
     Unknown,
     NotCompliant,
     Compliant,
 }
 /// The reason why request was blocked.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-BlockedReason>
-pub enum NetworkBlockedReason {
+pub enum BlockedReason {
     Other,
     Csp,
     MixedContent,
@@ -213,8 +188,7 @@ pub enum NetworkBlockedReason {
     SriMessageSignatureMismatch,
 }
 /// The reason why request was blocked.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-CorsError>
-pub enum NetworkCorsError {
+pub enum CorsError {
     DisallowedByMode,
     InvalidResponse,
     WildcardOriginNotAllowed,
@@ -251,14 +225,12 @@ pub enum NetworkCorsError {
     PrivateNetworkAccessPermissionDenied,
     LocalNetworkAccessPermissionDenied,
 }
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-CorsErrorStatus>
-pub struct NetworkCorsErrorStatus {
+pub struct CorsErrorStatus {
     pub cors_error: (),
     pub failed_parameter: String,
 }
 /// Source of serviceworker response.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-ServiceWorkerResponseSource>
-pub enum NetworkServiceWorkerResponseSource {
+pub enum ServiceWorkerResponseSource {
     CacheStorage,
     HttpCache,
     FallbackCode,
@@ -268,23 +240,20 @@ pub enum NetworkServiceWorkerResponseSource {
 /** Determines what type of Trust Token operation is executed and
 depending on the type, some additional parameters. The values
 are specified in third_party/blink/renderer/core/fetch/trust_token.idl.*/
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-TrustTokenParams>
-pub struct NetworkTrustTokenParams {
+pub struct TrustTokenParams {
     pub operation: (),
     pub refresh_policy: String,
     pub issuers: (),
 }
 /// ⚠️ Experimental
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-TrustTokenOperationType>
-pub enum NetworkTrustTokenOperationType {
+pub enum TrustTokenOperationType {
     Issuance,
     Redemption,
     Signing,
 }
 /// ⚠️ Experimental
 /// The reason why Chrome uses a specific transport protocol for HTTP semantics.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-AlternateProtocolUsage>
-pub enum NetworkAlternateProtocolUsage {
+pub enum AlternateProtocolUsage {
     AlternativeJobWonWithoutRace,
     AlternativeJobWonRace,
     MainJobWonRace,
@@ -295,8 +264,7 @@ pub enum NetworkAlternateProtocolUsage {
     UnspecifiedReason,
 }
 /// Source of service worker router.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-ServiceWorkerRouterSource>
-pub enum NetworkServiceWorkerRouterSource {
+pub enum ServiceWorkerRouterSource {
     Network,
     Cache,
     FetchEvent,
@@ -304,15 +272,13 @@ pub enum NetworkServiceWorkerRouterSource {
     RaceNetworkAndCache,
 }
 /// ⚠️ Experimental
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-ServiceWorkerRouterInfo>
-pub struct NetworkServiceWorkerRouterInfo {
+pub struct ServiceWorkerRouterInfo {
     pub rule_id_matched: i64,
     pub matched_source_type: (),
     pub actual_source_type: (),
 }
 /// HTTP response data.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-Response>
-pub struct NetworkResponse {
+pub struct Response {
     pub url: String,
     pub status: i64,
     pub status_text: String,
@@ -342,13 +308,11 @@ pub struct NetworkResponse {
     pub security_details: (),
 }
 /// WebSocket request data.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-WebSocketRequest>
-pub struct NetworkWebSocketRequest {
+pub struct WebSocketRequest {
     pub headers: (),
 }
 /// WebSocket response data.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-WebSocketResponse>
-pub struct NetworkWebSocketResponse {
+pub struct WebSocketResponse {
     pub status: i64,
     pub status_text: String,
     pub headers: (),
@@ -357,23 +321,20 @@ pub struct NetworkWebSocketResponse {
     pub request_headers_text: String,
 }
 /// WebSocket message data. This represents an entire WebSocket message, not just a fragmented frame as the name suggests.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-WebSocketFrame>
-pub struct NetworkWebSocketFrame {
+pub struct WebSocketFrame {
     pub opcode: u64,
     pub mask: (),
     pub payload_data: String,
 }
 /// Information about the cached resource.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-CachedResource>
-pub struct NetworkCachedResource {
+pub struct CachedResource {
     pub url: String,
     pub _type: (),
     pub response: (),
     pub body_size: u64,
 }
 /// Information about the request initiator.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-Initiator>
-pub struct NetworkInitiator {
+pub struct Initiator {
     pub _type: String,
     pub stack: (),
     pub url: String,
@@ -384,14 +345,12 @@ pub struct NetworkInitiator {
 /// ⚠️ Experimental
 /** cookiePartitionKey object
 The representation of the components of the key that are created by the cookiePartitionKey class contained in net/cookies/cookie_partition_key.h.*/
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-CookiePartitionKey>
-pub struct NetworkCookiePartitionKey {
+pub struct CookiePartitionKey {
     pub top_level_site: String,
     pub has_cross_site_ancestor: (),
 }
 /// Cookie object
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-Cookie>
-pub struct NetworkCookie {
+pub struct Cookie {
     pub name: String,
     pub value: String,
     pub domain: String,
@@ -411,8 +370,7 @@ pub struct NetworkCookie {
 }
 /// ⚠️ Experimental
 /// Types of reasons why a cookie may not be stored from a response.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-SetCookieBlockedReason>
-pub enum NetworkSetCookieBlockedReason {
+pub enum SetCookieBlockedReason {
     SecureOnly,
     SameSiteStrict,
     SameSiteLax,
@@ -438,8 +396,7 @@ pub enum NetworkSetCookieBlockedReason {
 }
 /// ⚠️ Experimental
 /// Types of reasons why a cookie may not be sent with a request.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-CookieBlockedReason>
-pub enum NetworkCookieBlockedReason {
+pub enum CookieBlockedReason {
     SecureOnly,
     NotOnPath,
     DomainMismatch,
@@ -462,8 +419,7 @@ pub enum NetworkCookieBlockedReason {
 }
 /// ⚠️ Experimental
 /// Types of reasons why a cookie should have been blocked by 3PCD but is exempted for the request.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-CookieExemptionReason>
-pub enum NetworkCookieExemptionReason {
+pub enum CookieExemptionReason {
     None,
     UserSetting,
     TpcdMetadata,
@@ -478,8 +434,7 @@ pub enum NetworkCookieExemptionReason {
 }
 /// ⚠️ Experimental
 /// A cookie which was not stored from a response with the corresponding reason.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-BlockedSetCookieWithReason>
-pub struct NetworkBlockedSetCookieWithReason {
+pub struct BlockedSetCookieWithReason {
     pub blocked_reasons: (),
     pub cookie_line: String,
     pub cookie: (),
@@ -487,8 +442,7 @@ pub struct NetworkBlockedSetCookieWithReason {
 /// ⚠️ Experimental
 /** A cookie should have been blocked by 3PCD but is exempted and stored from a response with the
 corresponding reason. A cookie could only have at most one exemption reason.*/
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-ExemptedSetCookieWithReason>
-pub struct NetworkExemptedSetCookieWithReason {
+pub struct ExemptedSetCookieWithReason {
     pub exemption_reason: (),
     pub cookie_line: String,
     pub cookie: (),
@@ -496,15 +450,13 @@ pub struct NetworkExemptedSetCookieWithReason {
 /// ⚠️ Experimental
 /** A cookie associated with the request which may or may not be sent with it.
 Includes the cookies itself and reasons for blocking or exemption.*/
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-AssociatedCookie>
-pub struct NetworkAssociatedCookie {
+pub struct AssociatedCookie {
     pub cookie: (),
     pub blocked_reasons: (),
     pub exemption_reason: (),
 }
 /// Cookie parameter object
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-CookieParam>
-pub struct NetworkCookieParam {
+pub struct CookieParam {
     pub name: String,
     pub value: String,
     pub url: String,
@@ -521,43 +473,16 @@ pub struct NetworkCookieParam {
     pub partition_key: (),
 }
 /// ⚠️ Experimental
-/// Authorization challenge for HTTP status code 401 or 407.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-AuthChallenge>
-pub struct NetworkAuthChallenge {
-    pub source: String,
-    pub origin: String,
-    pub scheme: String,
-    pub realm: String,
-}
-/// ⚠️ Experimental
-/// Response to an AuthChallenge.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-AuthChallengeResponse>
-pub struct NetworkAuthChallengeResponse {
-    pub response: String,
-    pub username: String,
-    pub password: String,
-}
-/// ⚠️ Experimental
 /** Stages of the interception to begin intercepting. Request will intercept before the request is
 sent. Response will intercept after the response is received.*/
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-InterceptionStage>
-pub enum NetworkInterceptionStage {
+pub enum InterceptionStage {
     Request,
     HeadersReceived,
 }
 /// ⚠️ Experimental
-/// Request pattern for interception.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-RequestPattern>
-pub struct NetworkRequestPattern {
-    pub url_pattern: String,
-    pub resource_type: (),
-    pub interception_stage: (),
-}
-/// ⚠️ Experimental
 /** Information about a signed exchange signature.
 https://wicg.github.io/webpackage/draft-yasskin-httpbis-origin-signed-exchanges-impl.html#rfc.section.3.1*/
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-SignedExchangeSignature>
-pub struct NetworkSignedExchangeSignature {
+pub struct SignedExchangeSignature {
     pub label: String,
     pub signature: String,
     pub integrity: String,
@@ -571,8 +496,7 @@ pub struct NetworkSignedExchangeSignature {
 /// ⚠️ Experimental
 /** Information about a signed exchange header.
 https://wicg.github.io/webpackage/draft-yasskin-httpbis-origin-signed-exchanges-impl.html#cbor-representation*/
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-SignedExchangeHeader>
-pub struct NetworkSignedExchangeHeader {
+pub struct SignedExchangeHeader {
     pub request_url: String,
     pub response_code: i64,
     pub response_headers: (),
@@ -581,8 +505,7 @@ pub struct NetworkSignedExchangeHeader {
 }
 /// ⚠️ Experimental
 /// Field type for a signed exchange related error.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-SignedExchangeErrorField>
-pub enum NetworkSignedExchangeErrorField {
+pub enum SignedExchangeErrorField {
     SignatureSig,
     SignatureIntegrity,
     SignatureCertUrl,
@@ -592,16 +515,14 @@ pub enum NetworkSignedExchangeErrorField {
 }
 /// ⚠️ Experimental
 /// Information about a signed exchange response.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-SignedExchangeError>
-pub struct NetworkSignedExchangeError {
+pub struct SignedExchangeError {
     pub message: String,
     pub signature_index: i64,
     pub error_field: (),
 }
 /// ⚠️ Experimental
 /// Information about a signed exchange response.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-SignedExchangeInfo>
-pub struct NetworkSignedExchangeInfo {
+pub struct SignedExchangeInfo {
     pub outer_response: (),
     pub header: (),
     pub security_details: (),
@@ -609,22 +530,19 @@ pub struct NetworkSignedExchangeInfo {
 }
 /// ⚠️ Experimental
 /// List of content encodings supported by the backend.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-ContentEncoding>
-pub enum NetworkContentEncoding {
+pub enum ContentEncoding {
     Deflate,
     Gzip,
     Br,
     Zstd,
 }
 /// ⚠️ Experimental
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-DirectSocketDnsQueryType>
-pub enum NetworkDirectSocketDnsQueryType {
+pub enum DirectSocketDnsQueryType {
     Ipv4,
     Ipv6,
 }
 /// ⚠️ Experimental
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-DirectTCPSocketOptions>
-pub struct NetworkDirectTcpSocketOptions {
+pub struct DirectTcpSocketOptions {
     pub no_delay: (),
     pub keep_alive_delay: u64,
     pub send_buffer_size: u64,
@@ -632,8 +550,7 @@ pub struct NetworkDirectTcpSocketOptions {
     pub dns_query_type: (),
 }
 /// ⚠️ Experimental
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-PrivateNetworkRequestPolicy>
-pub enum NetworkPrivateNetworkRequestPolicy {
+pub enum PrivateNetworkRequestPolicy {
     Allow,
     BlockFromInsecureToMorePrivate,
     WarnFromInsecureToMorePrivate,
@@ -643,28 +560,24 @@ pub enum NetworkPrivateNetworkRequestPolicy {
     PermissionWarn,
 }
 /// ⚠️ Experimental
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-IPAddressSpace>
-pub enum NetworkIpAddressSpace {
+pub enum IpAddressSpace {
     Local,
     Private,
     Public,
     Unknown,
 }
 /// ⚠️ Experimental
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-ConnectTiming>
-pub struct NetworkConnectTiming {
+pub struct ConnectTiming {
     pub request_time: u64,
 }
 /// ⚠️ Experimental
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-ClientSecurityState>
-pub struct NetworkClientSecurityState {
+pub struct ClientSecurityState {
     pub initiator_is_secure_context: (),
     pub initiator_ip_address_space: (),
     pub private_network_request_policy: (),
 }
 /// ⚠️ Experimental
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-CrossOriginOpenerPolicyValue>
-pub enum NetworkCrossOriginOpenerPolicyValue {
+pub enum CrossOriginOpenerPolicyValue {
     SameOrigin,
     SameOriginAllowPopups,
     RestrictProperties,
@@ -674,64 +587,55 @@ pub enum NetworkCrossOriginOpenerPolicyValue {
     NoopenerAllowPopups,
 }
 /// ⚠️ Experimental
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-CrossOriginOpenerPolicyStatus>
-pub struct NetworkCrossOriginOpenerPolicyStatus {
+pub struct CrossOriginOpenerPolicyStatus {
     pub value: (),
     pub report_only_value: (),
     pub reporting_endpoint: String,
     pub report_only_reporting_endpoint: String,
 }
 /// ⚠️ Experimental
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-CrossOriginEmbedderPolicyValue>
-pub enum NetworkCrossOriginEmbedderPolicyValue {
+pub enum CrossOriginEmbedderPolicyValue {
     None,
     Credentialless,
     RequireCorp,
 }
 /// ⚠️ Experimental
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-CrossOriginEmbedderPolicyStatus>
-pub struct NetworkCrossOriginEmbedderPolicyStatus {
+pub struct CrossOriginEmbedderPolicyStatus {
     pub value: (),
     pub report_only_value: (),
     pub reporting_endpoint: String,
     pub report_only_reporting_endpoint: String,
 }
 /// ⚠️ Experimental
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-ContentSecurityPolicySource>
-pub enum NetworkContentSecurityPolicySource {
+pub enum ContentSecurityPolicySource {
     Http,
     Meta,
 }
 /// ⚠️ Experimental
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-ContentSecurityPolicyStatus>
-pub struct NetworkContentSecurityPolicyStatus {
+pub struct ContentSecurityPolicyStatus {
     pub effective_directives: String,
     pub is_enforced: (),
     pub source: (),
 }
 /// ⚠️ Experimental
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-SecurityIsolationStatus>
-pub struct NetworkSecurityIsolationStatus {
+pub struct SecurityIsolationStatus {
     pub coop: (),
     pub coep: (),
     pub csp: (),
 }
 /// ⚠️ Experimental
 /// The status of a Reporting API report.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-ReportStatus>
-pub enum NetworkReportStatus {
+pub enum ReportStatus {
     Queued,
     Pending,
     MarkedForRemoval,
     Success,
 }
 /// ⚠️ Experimental
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-ReportId>
-pub struct NetworkReportId(String);
+pub struct ReportId(String);
 /// ⚠️ Experimental
 /// An object representing a report generated by the Reporting API.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-ReportingApiReport>
-pub struct NetworkReportingApiReport {
+pub struct ReportingApiReport {
     pub id: (),
     pub initiator_url: String,
     pub destination: String,
@@ -743,15 +647,13 @@ pub struct NetworkReportingApiReport {
     pub status: (),
 }
 /// ⚠️ Experimental
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-ReportingApiEndpoint>
-pub struct NetworkReportingApiEndpoint {
+pub struct ReportingApiEndpoint {
     pub url: String,
     pub group_name: String,
 }
 /// ⚠️ Experimental
 /// An object providing the result of a network resource load.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-LoadNetworkResourcePageResult>
-pub struct NetworkLoadNetworkResourcePageResult {
+pub struct LoadNetworkResourcePageResult {
     pub success: (),
     pub net_error: u64,
     pub net_error_name: String,
@@ -762,8 +664,7 @@ pub struct NetworkLoadNetworkResourcePageResult {
 /// ⚠️ Experimental
 /** An options object that may be extended later to better support CORS,
 CORB and streaming.*/
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Network/#type-LoadNetworkResourceOptions>
-pub struct NetworkLoadNetworkResourceOptions {
+pub struct LoadNetworkResourceOptions {
     pub disable_cache: (),
     pub include_credentials: (),
 }

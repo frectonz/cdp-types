@@ -1,56 +1,47 @@
+pub use crate::common::*;
 /// An unique ID for a graph object (AudioContext, AudioNode, AudioParam) in Web Audio API
-/// <https://chromedevtools.github.io/devtools-protocol/tot/WebAudio/#type-GraphObjectId>
-pub struct WebAudioGraphObjectId(String);
+pub struct GraphObjectId(String);
 /// Enum of BaseAudioContext types
-/// <https://chromedevtools.github.io/devtools-protocol/tot/WebAudio/#type-ContextType>
-pub enum WebAudioContextType {
+pub enum ContextType {
     Realtime,
     Offline,
 }
 /// Enum of AudioContextState from the spec
-/// <https://chromedevtools.github.io/devtools-protocol/tot/WebAudio/#type-ContextState>
-pub enum WebAudioContextState {
+pub enum ContextState {
     Suspended,
     Running,
     Closed,
     Interrupted,
 }
 /// Enum of AudioNode types
-/// <https://chromedevtools.github.io/devtools-protocol/tot/WebAudio/#type-NodeType>
-pub struct WebAudioNodeType(String);
+pub struct NodeType(String);
 /// Enum of AudioNode::ChannelCountMode from the spec
-/// <https://chromedevtools.github.io/devtools-protocol/tot/WebAudio/#type-ChannelCountMode>
-pub enum WebAudioChannelCountMode {
+pub enum ChannelCountMode {
     ClampedMax,
     Explicit,
     Max,
 }
 /// Enum of AudioNode::ChannelInterpretation from the spec
-/// <https://chromedevtools.github.io/devtools-protocol/tot/WebAudio/#type-ChannelInterpretation>
-pub enum WebAudioChannelInterpretation {
+pub enum ChannelInterpretation {
     Discrete,
     Speakers,
 }
 /// Enum of AudioParam types
-/// <https://chromedevtools.github.io/devtools-protocol/tot/WebAudio/#type-ParamType>
-pub struct WebAudioParamType(String);
+pub struct ParamType(String);
 /// Enum of AudioParam::AutomationRate from the spec
-/// <https://chromedevtools.github.io/devtools-protocol/tot/WebAudio/#type-AutomationRate>
-pub enum WebAudioAutomationRate {
+pub enum AutomationRate {
     ARate,
     KRate,
 }
 /// Fields in AudioContext that change in real-time.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/WebAudio/#type-ContextRealtimeData>
-pub struct WebAudioContextRealtimeData {
+pub struct ContextRealtimeData {
     pub current_time: u64,
     pub render_capacity: u64,
     pub callback_interval_mean: u64,
     pub callback_interval_variance: u64,
 }
 /// Protocol object for BaseAudioContext
-/// <https://chromedevtools.github.io/devtools-protocol/tot/WebAudio/#type-BaseAudioContext>
-pub struct WebAudioBaseAudioContext {
+pub struct BaseAudioContext {
     pub context_id: (),
     pub context_type: (),
     pub context_state: (),
@@ -60,14 +51,12 @@ pub struct WebAudioBaseAudioContext {
     pub sample_rate: u64,
 }
 /// Protocol object for AudioListener
-/// <https://chromedevtools.github.io/devtools-protocol/tot/WebAudio/#type-AudioListener>
-pub struct WebAudioAudioListener {
+pub struct AudioListener {
     pub listener_id: (),
     pub context_id: (),
 }
 /// Protocol object for AudioNode
-/// <https://chromedevtools.github.io/devtools-protocol/tot/WebAudio/#type-AudioNode>
-pub struct WebAudioAudioNode {
+pub struct AudioNode {
     pub node_id: (),
     pub context_id: (),
     pub node_type: (),
@@ -78,8 +67,7 @@ pub struct WebAudioAudioNode {
     pub channel_interpretation: (),
 }
 /// Protocol object for AudioParam
-/// <https://chromedevtools.github.io/devtools-protocol/tot/WebAudio/#type-AudioParam>
-pub struct WebAudioAudioParam {
+pub struct AudioParam {
     pub param_id: (),
     pub node_id: (),
     pub context_id: (),

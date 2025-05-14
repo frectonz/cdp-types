@@ -1,10 +1,9 @@
+pub use crate::common::*;
 use crate::storage::*;
 /// Unique identifier of the Cache object.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/CacheStorage/#type-CacheId>
-pub struct CacheStorageCacheId(String);
+pub struct CacheId(String);
 /// type of HTTP response cached
-/// <https://chromedevtools.github.io/devtools-protocol/tot/CacheStorage/#type-CachedResponseType>
-pub enum CacheStorageCachedResponseType {
+pub enum CachedResponseType {
     Basic,
     Cors,
     Default,
@@ -12,34 +11,19 @@ pub enum CacheStorageCachedResponseType {
     OpaqueResponse,
     OpaqueRedirect,
 }
-/// Data entry.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/CacheStorage/#type-DataEntry>
-pub struct CacheStorageDataEntry {
-    pub request_url: String,
-    pub request_method: String,
-    pub request_headers: (),
-    pub response_time: u64,
-    pub response_status: i64,
-    pub response_status_text: String,
-    pub response_type: (),
-    pub response_headers: (),
-}
 /// Cache identifier.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/CacheStorage/#type-Cache>
-pub struct CacheStorageCache {
+pub struct Cache {
     pub cache_id: (),
     pub security_origin: String,
     pub storage_key: String,
     pub storage_bucket: (),
     pub cache_name: String,
 }
-/// <https://chromedevtools.github.io/devtools-protocol/tot/CacheStorage/#type-Header>
-pub struct CacheStorageHeader {
+pub struct Header {
     pub name: String,
     pub value: String,
 }
 /// Cached response
-/// <https://chromedevtools.github.io/devtools-protocol/tot/CacheStorage/#type-CachedResponse>
-pub struct CacheStorageCachedResponse {
+pub struct CachedResponse {
     pub body: String,
 }

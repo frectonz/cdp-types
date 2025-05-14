@@ -1,10 +1,10 @@
+pub use crate::common::*;
 use crate::css::*;
 use crate::dom::*;
 use crate::dom_debugger::*;
 use crate::page::*;
 /// A Node in the DOM tree.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/DOMSnapshot/#type-DOMNode>
-pub struct DomSnapshotDomNode {
+pub struct DomNode {
     pub node_type: i64,
     pub node_name: String,
     pub node_value: String,
@@ -36,15 +36,13 @@ pub struct DomSnapshotDomNode {
 }
 /** Details of post layout rendered text positions. The exact layout should not be regarded as
 stable and may change between versions.*/
-/// <https://chromedevtools.github.io/devtools-protocol/tot/DOMSnapshot/#type-InlineTextBox>
-pub struct DomSnapshotInlineTextBox {
+pub struct InlineTextBox {
     pub bounding_box: (),
     pub start_character_index: i64,
     pub num_characters: i64,
 }
 /// Details of an element in the DOM tree with a LayoutObject.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/DOMSnapshot/#type-LayoutTreeNode>
-pub struct DomSnapshotLayoutTreeNode {
+pub struct LayoutTreeNode {
     pub dom_node_index: i64,
     pub bounding_box: (),
     pub layout_text: String,
@@ -54,42 +52,33 @@ pub struct DomSnapshotLayoutTreeNode {
     pub is_stacking_context: (),
 }
 /// A subset of the full ComputedStyle as defined by the request whitelist.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/DOMSnapshot/#type-ComputedStyle>
-pub struct DomSnapshotComputedStyle {
+pub struct ComputedStyle {
     pub properties: (),
 }
 /// A name/value pair.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/DOMSnapshot/#type-NameValue>
-pub struct DomSnapshotNameValue {
+pub struct NameValue {
     pub name: String,
     pub value: String,
 }
 /// Index of the string in the strings table.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/DOMSnapshot/#type-StringIndex>
-pub struct DomSnapshotStringIndex(i64);
+pub struct StringIndex(i64);
 /// Index of the string in the strings table.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/DOMSnapshot/#type-ArrayOfStrings>
-pub struct DomSnapshotArrayOfStrings(Vec<DomSnapshotStringIndex>);
+pub struct ArrayOfStrings(Vec<StringIndex>);
 /// Data that is only present on rare nodes.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/DOMSnapshot/#type-RareStringData>
-pub struct DomSnapshotRareStringData {
+pub struct RareStringData {
     pub index: (),
     pub value: (),
 }
-/// <https://chromedevtools.github.io/devtools-protocol/tot/DOMSnapshot/#type-RareBooleanData>
-pub struct DomSnapshotRareBooleanData {
+pub struct RareBooleanData {
     pub index: (),
 }
-/// <https://chromedevtools.github.io/devtools-protocol/tot/DOMSnapshot/#type-RareIntegerData>
-pub struct DomSnapshotRareIntegerData {
+pub struct RareIntegerData {
     pub index: (),
     pub value: (),
 }
-/// <https://chromedevtools.github.io/devtools-protocol/tot/DOMSnapshot/#type-Rectangle>
-pub struct DomSnapshotRectangle(Vec<u64>);
+pub struct Rectangle(Vec<u64>);
 /// Document snapshot.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/DOMSnapshot/#type-DocumentSnapshot>
-pub struct DomSnapshotDocumentSnapshot {
+pub struct DocumentSnapshot {
     pub document_url: (),
     pub title: (),
     pub base_url: (),
@@ -107,8 +96,7 @@ pub struct DomSnapshotDocumentSnapshot {
     pub content_height: u64,
 }
 /// Table containing nodes.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/DOMSnapshot/#type-NodeTreeSnapshot>
-pub struct DomSnapshotNodeTreeSnapshot {
+pub struct NodeTreeSnapshot {
     pub parent_index: (),
     pub node_type: (),
     pub shadow_root_type: (),
@@ -128,8 +116,7 @@ pub struct DomSnapshotNodeTreeSnapshot {
     pub origin_url: (),
 }
 /// Table of details of an element in the DOM tree with a LayoutObject.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/DOMSnapshot/#type-LayoutTreeSnapshot>
-pub struct DomSnapshotLayoutTreeSnapshot {
+pub struct LayoutTreeSnapshot {
     pub node_index: (),
     pub styles: (),
     pub bounds: (),
@@ -144,8 +131,7 @@ pub struct DomSnapshotLayoutTreeSnapshot {
 }
 /** Table of details of the post layout rendered text positions. The exact layout should not be regarded as
 stable and may change between versions.*/
-/// <https://chromedevtools.github.io/devtools-protocol/tot/DOMSnapshot/#type-TextBoxSnapshot>
-pub struct DomSnapshotTextBoxSnapshot {
+pub struct TextBoxSnapshot {
     pub layout_index: (),
     pub bounds: (),
     pub start: (),

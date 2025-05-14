@@ -1,5 +1,5 @@
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Cast/#type-Sink>
-pub struct CastSink {
+pub use crate::common::*;
+pub struct Sink {
     pub name: String,
     pub id: String,
     pub session: String,

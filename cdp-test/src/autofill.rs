@@ -1,23 +1,20 @@
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Autofill/#type-CreditCard>
-pub struct AutofillCreditCard {
+pub use crate::common::*;
+pub struct CreditCard {
     pub number: String,
     pub name: String,
     pub expiry_month: String,
     pub expiry_year: String,
     pub cvc: String,
 }
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Autofill/#type-AddressField>
-pub struct AutofillAddressField {
+pub struct AddressField {
     pub name: String,
     pub value: String,
 }
 /// A list of address fields.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Autofill/#type-AddressFields>
-pub struct AutofillAddressFields {
+pub struct AddressFields {
     pub fields: (),
 }
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Autofill/#type-Address>
-pub struct AutofillAddress {
+pub struct Address {
     pub fields: (),
 }
 /** Defines how an address can be displayed like in chrome://settings/addresses.
@@ -27,18 +24,15 @@ The following address UI for instance:
 should allow the receiver to render:
 Jon Doe
 Munich 81456*/
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Autofill/#type-AddressUI>
-pub struct AutofillAddressUi {
+pub struct AddressUi {
     pub address_fields: (),
 }
 /// Specified whether a filled field was done so by using the html autocomplete attribute or autofill heuristics.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Autofill/#type-FillingStrategy>
-pub enum AutofillFillingStrategy {
+pub enum FillingStrategy {
     AutocompleteAttribute,
     AutofillInferred,
 }
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Autofill/#type-FilledField>
-pub struct AutofillFilledField {
+pub struct FilledField {
     pub html_type: String,
     pub id: String,
     pub name: String,

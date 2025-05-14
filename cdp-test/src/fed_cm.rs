@@ -1,34 +1,23 @@
+pub use crate::common::*;
 /** Whether this is a sign-up or sign-in action for this account, i.e.
 whether this account has ever been used to sign in to this RP before.*/
-/// <https://chromedevtools.github.io/devtools-protocol/tot/FedCm/#type-LoginState>
-pub enum FedCmLoginState {
+pub enum LoginState {
     SignIn,
     SignUp,
 }
-/// The types of FedCM dialogs.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/FedCm/#type-DialogType>
-pub enum FedCmDialogType {
-    AccountChooser,
-    AutoReauthn,
-    ConfirmIdpLogin,
-    Error,
-}
 /// The buttons on the FedCM dialog.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/FedCm/#type-DialogButton>
-pub enum FedCmDialogButton {
+pub enum DialogButton {
     ConfirmIdpLoginContinue,
     ErrorGotIt,
     ErrorMoreDetails,
 }
 /// The URLs that each account has
-/// <https://chromedevtools.github.io/devtools-protocol/tot/FedCm/#type-AccountUrlType>
-pub enum FedCmAccountUrlType {
+pub enum AccountUrlType {
     TermsOfService,
     PrivacyPolicy,
 }
 /// Corresponds to IdentityRequestAccount
-/// <https://chromedevtools.github.io/devtools-protocol/tot/FedCm/#type-Account>
-pub struct FedCmAccount {
+pub struct Account {
     pub account_id: String,
     pub email: String,
     pub name: String,

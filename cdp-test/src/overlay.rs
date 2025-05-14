@@ -1,14 +1,13 @@
+pub use crate::common::*;
 use crate::dom::*;
 use crate::page::*;
 /// Configuration data for drawing the source order of an elements children.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#type-SourceOrderConfig>
-pub struct OverlaySourceOrderConfig {
+pub struct SourceOrderConfig {
     pub parent_outline_color: (),
     pub child_outline_color: (),
 }
 /// Configuration data for the highlighting of Grid elements.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#type-GridHighlightConfig>
-pub struct OverlayGridHighlightConfig {
+pub struct GridHighlightConfig {
     pub show_grid_extension_lines: (),
     pub show_positive_line_numbers: (),
     pub show_negative_line_numbers: (),
@@ -31,8 +30,7 @@ pub struct OverlayGridHighlightConfig {
     pub grid_background_color: (),
 }
 /// Configuration data for the highlighting of Flex container elements.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#type-FlexContainerHighlightConfig>
-pub struct OverlayFlexContainerHighlightConfig {
+pub struct FlexContainerHighlightConfig {
     pub container_border: (),
     pub line_separator: (),
     pub item_separator: (),
@@ -43,33 +41,28 @@ pub struct OverlayFlexContainerHighlightConfig {
     pub cross_alignment: (),
 }
 /// Configuration data for the highlighting of Flex item elements.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#type-FlexItemHighlightConfig>
-pub struct OverlayFlexItemHighlightConfig {
+pub struct FlexItemHighlightConfig {
     pub base_size_box: (),
     pub base_size_border: (),
     pub flexibility_arrow: (),
 }
 /// Style information for drawing a line.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#type-LineStyle>
-pub struct OverlayLineStyle {
+pub struct LineStyle {
     pub color: (),
     pub pattern: String,
 }
 /// Style information for drawing a box.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#type-BoxStyle>
-pub struct OverlayBoxStyle {
+pub struct BoxStyle {
     pub fill_color: (),
     pub hatch_color: (),
 }
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#type-ContrastAlgorithm>
-pub enum OverlayContrastAlgorithm {
+pub enum ContrastAlgorithm {
     Aa,
     Aaa,
     Apca,
 }
 /// Configuration data for the highlighting of page elements.
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#type-HighlightConfig>
-pub struct OverlayHighlightConfig {
+pub struct HighlightConfig {
     pub show_info: (),
     pub show_styles: (),
     pub show_rulers: (),
@@ -90,73 +83,61 @@ pub struct OverlayHighlightConfig {
     pub contrast_algorithm: (),
     pub container_query_container_highlight_config: (),
 }
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#type-ColorFormat>
-pub enum OverlayColorFormat {
+pub enum ColorFormat {
     Rgb,
     Hsl,
     Hwb,
     Hex,
 }
 /// Configurations for Persistent Grid Highlight
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#type-GridNodeHighlightConfig>
-pub struct OverlayGridNodeHighlightConfig {
+pub struct GridNodeHighlightConfig {
     pub grid_highlight_config: (),
     pub node_id: (),
 }
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#type-FlexNodeHighlightConfig>
-pub struct OverlayFlexNodeHighlightConfig {
+pub struct FlexNodeHighlightConfig {
     pub flex_container_highlight_config: (),
     pub node_id: (),
 }
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#type-ScrollSnapContainerHighlightConfig>
-pub struct OverlayScrollSnapContainerHighlightConfig {
+pub struct ScrollSnapContainerHighlightConfig {
     pub snapport_border: (),
     pub snap_area_border: (),
     pub scroll_margin_color: (),
     pub scroll_padding_color: (),
 }
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#type-ScrollSnapHighlightConfig>
-pub struct OverlayScrollSnapHighlightConfig {
+pub struct ScrollSnapHighlightConfig {
     pub scroll_snap_container_highlight_config: (),
     pub node_id: (),
 }
 /// Configuration for dual screen hinge
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#type-HingeConfig>
-pub struct OverlayHingeConfig {
+pub struct HingeConfig {
     pub rect: (),
     pub content_color: (),
     pub outline_color: (),
 }
 /// Configuration for Window Controls Overlay
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#type-WindowControlsOverlayConfig>
-pub struct OverlayWindowControlsOverlayConfig {
+pub struct WindowControlsOverlayConfig {
     pub show_css: (),
     pub selected_platform: String,
     pub theme_color: String,
 }
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#type-ContainerQueryHighlightConfig>
-pub struct OverlayContainerQueryHighlightConfig {
+pub struct ContainerQueryHighlightConfig {
     pub container_query_container_highlight_config: (),
     pub node_id: (),
 }
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#type-ContainerQueryContainerHighlightConfig>
-pub struct OverlayContainerQueryContainerHighlightConfig {
+pub struct ContainerQueryContainerHighlightConfig {
     pub container_border: (),
     pub descendant_border: (),
 }
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#type-IsolatedElementHighlightConfig>
-pub struct OverlayIsolatedElementHighlightConfig {
+pub struct IsolatedElementHighlightConfig {
     pub isolation_mode_highlight_config: (),
     pub node_id: (),
 }
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#type-IsolationModeHighlightConfig>
-pub struct OverlayIsolationModeHighlightConfig {
+pub struct IsolationModeHighlightConfig {
     pub resizer_color: (),
     pub resizer_handle_color: (),
     pub mask_color: (),
 }
-/// <https://chromedevtools.github.io/devtools-protocol/tot/Overlay/#type-InspectMode>
-pub enum OverlayInspectMode {
+pub enum InspectMode {
     SearchForNode,
     SearchForUaShadowDom,
     CaptureAreaScreenshot,
