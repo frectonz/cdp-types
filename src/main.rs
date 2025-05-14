@@ -278,6 +278,12 @@ impl Property {
                 };
             }
 
+            if ref_typ.as_ref().starts_with("Runtime.") {
+                return quote! {
+                    ()
+                };
+            }
+
             let common_type = protocol_data.get_common_type(&ref_typ);
 
             let ref_type = match common_type {
@@ -526,6 +532,7 @@ impl BrowserProtocol {
         let lib_rs = RustFile {
             name: "lib".to_owned(),
             content: quote! {
+                #![allow(unused_imports)]
                 pub mod common;
                 #(#modules)*
             },
