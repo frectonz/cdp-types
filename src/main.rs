@@ -285,67 +285,10 @@ impl Property {
         let name = Ident::new(&name, Span::call_site());
 
         let basic_type = self.r#type.as_ref().and_then(|typ| get_rust_type(typ));
-        let ref_typ = self.r#ref.as_ref().map(|ref_typ| {
-            if ref_typ.as_ref() == "WindowState" {
-                if self
-                    .description
-                    .as_ref()
-                    .map(|desc| desc.to_lowercase().contains("target"))
-                    .unwrap_or_default()
-                {
-                    return quote! {
-                        TargetWindowState
-                    };
-                } else {
-                    return quote! {
-                        BrowserWindowState
-                    };
-                }
-            }
-
-            if ref_typ.as_ref() == "Page.FrameId" {
-                return quote! {
-                    crate::page::FrameId
-                };
-            }
-
-            if ref_typ.as_ref() == "SerializedStorageKey" {
-                return quote! {
-                    StorageSerializedStorageKey
-                };
-            }
-
-            if ref_typ.as_ref() == "TimeSinceEpoch" {
-                return quote! {
-                    NetworkTimeSinceEpoch
-                };
-            }
-
-            if ref_typ.as_ref() == "RequestId" {
-                return quote! {
-                    NetworkRequestId
-                };
-            }
-
-            if ref_typ.as_ref().starts_with("Runtime.") {
-                return quote! {
-                    ()
-                };
-            }
-
-            let common_type = protocol_data.get_common_type(&ref_typ);
-
-            let ref_type = match common_type {
-                Some(ref_typ) => Ident::new(ref_typ, Span::call_site()),
-                None => {
-                    let (_, ref_typ) = ref_typ.split_once('.').unwrap_or(("", ref_typ.as_ref()));
-                    let ref_type = ref_typ.to_pascal_case();
-                    Ident::new(&ref_type, Span::call_site())
-                }
-            };
-
-            quote! { #ref_type }
-        });
+        let ref_typ = self
+            .r#ref
+            .as_ref()
+            .map(|ref_typ| self.resolve_type(protocol_data, ref_typ));
 
         let property_type = basic_type.or(ref_typ);
 
@@ -358,6 +301,68 @@ impl Property {
         quote! {
             pub #name: ()
         }
+    }
+
+    fn resolve_type(&self, protocol_data: &ProtocolData, ref_typ: &Box<str>) -> TokenStream {
+        if ref_typ.as_ref() == "WindowState" {
+            if self
+                .description
+                .as_ref()
+                .map(|desc| desc.to_lowercase().contains("target"))
+                .unwrap_or_default()
+            {
+                return quote! {
+                    TargetWindowState
+                };
+            } else {
+                return quote! {
+                    BrowserWindowState
+                };
+            }
+        }
+
+        if ref_typ.as_ref() == "Page.FrameId" {
+            return quote! {
+                crate::page::FrameId
+            };
+        }
+
+        if ref_typ.as_ref() == "SerializedStorageKey" {
+            return quote! {
+                StorageSerializedStorageKey
+            };
+        }
+
+        if ref_typ.as_ref() == "TimeSinceEpoch" {
+            return quote! {
+                NetworkTimeSinceEpoch
+            };
+        }
+
+        if ref_typ.as_ref() == "RequestId" {
+            return quote! {
+                NetworkRequestId
+            };
+        }
+
+        if ref_typ.as_ref().starts_with("Runtime.") {
+            return quote! {
+                ()
+            };
+        }
+
+        let common_type = protocol_data.get_common_type(&ref_typ);
+
+        let ref_type = match common_type {
+            Some(ref_typ) => Ident::new(ref_typ, Span::call_site()),
+            None => {
+                let (_, ref_typ) = ref_typ.split_once('.').unwrap_or(("", ref_typ.as_ref()));
+                let ref_type = ref_typ.to_pascal_case();
+                Ident::new(&ref_type, Span::call_site())
+            }
+        };
+
+        quote! { #ref_type }
     }
 }
 
