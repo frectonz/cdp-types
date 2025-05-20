@@ -27,3 +27,14 @@ pub struct DomCounter {
     pub name: String,
     pub count: i64,
 }
+pub type MemoryGetDomCounters = ();
+pub type MemoryGetDomCountersForLeakDetection = ();
+pub type MemoryPrepareForLeakDetection = ();
+pub type MemoryForciblyPurgeJavaScriptMemory = ();
+pub type MemorySetPressureNotificationsSuppressed = ();
+pub type MemorySimulatePressureNotification = ();
+pub type MemoryStartSampling = ();
+pub type MemoryStopSampling = ();
+pub type MemoryGetAllTimeSamplingProfile = ();
+pub type MemoryGetBrowserSamplingProfile = ();
+pub type MemoryGetSamplingProfile = ();

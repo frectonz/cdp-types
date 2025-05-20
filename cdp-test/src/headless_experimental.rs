@@ -6,3 +6,6 @@ pub struct ScreenshotParams {
     pub quality: i64,
     pub optimize_for_speed: bool,
 }
+pub type HeadlessExperimentalBeginFrame = ();
+pub type HeadlessExperimentalDisable = ();
+pub type HeadlessExperimentalEnable = ();

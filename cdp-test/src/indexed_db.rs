@@ -41,3 +41,12 @@ pub struct KeyPath {
     pub string: String,
     pub array: Vec<String>,
 }
+pub type IndexedDbClearObjectStore = ();
+pub type IndexedDbDeleteDatabase = ();
+pub type IndexedDbDeleteObjectStoreEntries = ();
+pub type IndexedDbDisable = ();
+pub type IndexedDbEnable = ();
+pub type IndexedDbRequestData = ();
+pub type IndexedDbGetMetadata = ();
+pub type IndexedDbRequestDatabase = ();
+pub type IndexedDbRequestDatabaseNames = ();

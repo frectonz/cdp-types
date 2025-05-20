@@ -138,3 +138,11 @@ pub struct AxNode {
     pub backend_dom_node_id: Box<BackendNodeId>,
     pub frame_id: Box<crate::page::FrameId>,
 }
+pub type AccessibilityDisable = ();
+pub type AccessibilityEnable = ();
+pub type AccessibilityGetPartialAxTree = ();
+pub type AccessibilityGetFullAxTree = ();
+pub type AccessibilityGetRootAxNode = ();
+pub type AccessibilityGetAxNodeAndAncestors = ();
+pub type AccessibilityGetChildAxNodes = ();
+pub type AccessibilityQueryAxTree = ();

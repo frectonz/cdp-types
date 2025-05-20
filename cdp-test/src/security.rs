@@ -85,3 +85,8 @@ pub enum CertificateErrorAction {
     Continue,
     Cancel,
 }
+pub type SecurityDisable = ();
+pub type SecurityEnable = ();
+pub type SecuritySetIgnoreCertificateErrors = ();
+pub type SecurityHandleCertificateError = ();
+pub type SecuritySetOverrideCertificateErrors = ();

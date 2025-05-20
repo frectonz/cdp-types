@@ -669,3 +669,38 @@ pub struct LoadNetworkResourceOptions {
     pub disable_cache: bool,
     pub include_credentials: bool,
 }
+pub type NetworkSetAcceptedEncodings = ();
+pub type NetworkClearAcceptedEncodingsOverride = ();
+pub type NetworkCanClearBrowserCache = ();
+pub type NetworkCanClearBrowserCookies = ();
+pub type NetworkCanEmulateNetworkConditions = ();
+pub type NetworkClearBrowserCache = ();
+pub type NetworkClearBrowserCookies = ();
+pub type NetworkContinueInterceptedRequest = ();
+pub type NetworkDeleteCookies = ();
+pub type NetworkDisable = ();
+pub type NetworkEmulateNetworkConditions = ();
+pub type NetworkEnable = ();
+pub type NetworkGetAllCookies = ();
+pub type NetworkGetCertificate = ();
+pub type NetworkGetCookies = ();
+pub type NetworkGetResponseBody = ();
+pub type NetworkGetRequestPostData = ();
+pub type NetworkGetResponseBodyForInterception = ();
+pub type NetworkTakeResponseBodyForInterceptionAsStream = ();
+pub type NetworkReplayXhr = ();
+pub type NetworkSearchInResponseBody = ();
+pub type NetworkSetBlockedUrLs = ();
+pub type NetworkSetBypassServiceWorker = ();
+pub type NetworkSetCacheDisabled = ();
+pub type NetworkSetCookie = ();
+pub type NetworkSetCookies = ();
+pub type NetworkSetExtraHttpHeaders = ();
+pub type NetworkSetAttachDebugStack = ();
+pub type NetworkSetRequestInterception = ();
+pub type NetworkSetUserAgentOverride = ();
+pub type NetworkStreamResourceContent = ();
+pub type NetworkGetSecurityIsolationStatus = ();
+pub type NetworkEnableReportingApi = ();
+pub type NetworkLoadNetworkResource = ();
+pub type NetworkSetCookieControls = ();

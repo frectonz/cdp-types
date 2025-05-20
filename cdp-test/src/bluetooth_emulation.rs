@@ -59,3 +59,18 @@ pub struct CharacteristicProperties {
     pub authenticated_signed_writes: bool,
     pub extended_properties: bool,
 }
+pub type BluetoothEmulationEnable = ();
+pub type BluetoothEmulationSetSimulatedCentralState = ();
+pub type BluetoothEmulationDisable = ();
+pub type BluetoothEmulationSimulatePreconnectedPeripheral = ();
+pub type BluetoothEmulationSimulateAdvertisement = ();
+pub type BluetoothEmulationSimulateGattOperationResponse = ();
+pub type BluetoothEmulationSimulateCharacteristicOperationResponse = ();
+pub type BluetoothEmulationSimulateDescriptorOperationResponse = ();
+pub type BluetoothEmulationAddService = ();
+pub type BluetoothEmulationRemoveService = ();
+pub type BluetoothEmulationAddCharacteristic = ();
+pub type BluetoothEmulationRemoveCharacteristic = ();
+pub type BluetoothEmulationAddDescriptor = ();
+pub type BluetoothEmulationRemoveDescriptor = ();
+pub type BluetoothEmulationSimulateGattDisconnection = ();

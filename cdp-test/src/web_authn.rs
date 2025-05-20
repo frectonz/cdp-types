@@ -43,3 +43,16 @@ pub struct Credential {
     pub user_name: String,
     pub user_display_name: String,
 }
+pub type WebAuthnEnable = ();
+pub type WebAuthnDisable = ();
+pub type WebAuthnAddVirtualAuthenticator = ();
+pub type WebAuthnSetResponseOverrideBits = ();
+pub type WebAuthnRemoveVirtualAuthenticator = ();
+pub type WebAuthnAddCredential = ();
+pub type WebAuthnGetCredential = ();
+pub type WebAuthnGetCredentials = ();
+pub type WebAuthnRemoveCredential = ();
+pub type WebAuthnClearCredentials = ();
+pub type WebAuthnSetUserVerified = ();
+pub type WebAuthnSetAutomaticPresenceSimulation = ();
+pub type WebAuthnSetCredentialProperties = ();

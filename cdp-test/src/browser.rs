@@ -96,3 +96,22 @@ pub enum PrivacySandboxApi {
     BiddingAndAuctionServices,
     TrustedKeyValue,
 }
+pub type BrowserSetPermission = ();
+pub type BrowserGrantPermissions = ();
+pub type BrowserResetPermissions = ();
+pub type BrowserSetDownloadBehavior = ();
+pub type BrowserCancelDownload = ();
+pub type BrowserClose = ();
+pub type BrowserCrash = ();
+pub type BrowserCrashGpuProcess = ();
+pub type BrowserGetVersion = ();
+pub type BrowserGetBrowserCommandLine = ();
+pub type BrowserGetHistograms = ();
+pub type BrowserGetHistogram = ();
+pub type BrowserGetWindowBounds = ();
+pub type BrowserGetWindowForTarget = ();
+pub type BrowserSetWindowBounds = ();
+pub type BrowserSetDockTile = ();
+pub type BrowserExecuteBrowserCommand = ();
+pub type BrowserAddPrivacySandboxEnrollmentOverride = ();
+pub type BrowserAddPrivacySandboxCoordinatorKeyConfig = ();

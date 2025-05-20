@@ -323,3 +323,39 @@ pub struct StyleDeclarationEdit {
     pub range: Box<SourceRange>,
     pub text: String,
 }
+pub type CssAddRule = ();
+pub type CssCollectClassNames = ();
+pub type CssCreateStyleSheet = ();
+pub type CssDisable = ();
+pub type CssEnable = ();
+pub type CssForcePseudoState = ();
+pub type CssForceStartingStyle = ();
+pub type CssGetBackgroundColors = ();
+pub type CssGetComputedStyleForNode = ();
+pub type CssResolveValues = ();
+pub type CssGetLonghandProperties = ();
+pub type CssGetInlineStylesForNode = ();
+pub type CssGetAnimatedStylesForNode = ();
+pub type CssGetMatchedStylesForNode = ();
+pub type CssGetMediaQueries = ();
+pub type CssGetPlatformFontsForNode = ();
+pub type CssGetStyleSheetText = ();
+pub type CssGetLayersForNode = ();
+pub type CssGetLocationForSelector = ();
+pub type CssTrackComputedStyleUpdatesForNode = ();
+pub type CssTrackComputedStyleUpdates = ();
+pub type CssTakeComputedStyleUpdates = ();
+pub type CssSetEffectivePropertyValueForNode = ();
+pub type CssSetPropertyRulePropertyName = ();
+pub type CssSetKeyframeKey = ();
+pub type CssSetMediaText = ();
+pub type CssSetContainerQueryText = ();
+pub type CssSetSupportsText = ();
+pub type CssSetScopeText = ();
+pub type CssSetRuleSelector = ();
+pub type CssSetStyleSheetText = ();
+pub type CssSetStyleTexts = ();
+pub type CssStartRuleUsageTracking = ();
+pub type CssStopRuleUsageTracking = ();
+pub type CssTakeCoverageDelta = ();
+pub type CssSetLocalFontsEnabled = ();

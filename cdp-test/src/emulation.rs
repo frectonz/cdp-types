@@ -123,3 +123,43 @@ pub enum DisabledImageType {
     Avif,
     Webp,
 }
+pub type EmulationCanEmulate = ();
+pub type EmulationClearDeviceMetricsOverride = ();
+pub type EmulationClearGeolocationOverride = ();
+pub type EmulationResetPageScaleFactor = ();
+pub type EmulationSetFocusEmulationEnabled = ();
+pub type EmulationSetAutoDarkModeOverride = ();
+pub type EmulationSetCpuThrottlingRate = ();
+pub type EmulationSetDefaultBackgroundColorOverride = ();
+pub type EmulationSetSafeAreaInsetsOverride = ();
+pub type EmulationSetDeviceMetricsOverride = ();
+pub type EmulationSetDevicePostureOverride = ();
+pub type EmulationClearDevicePostureOverride = ();
+pub type EmulationSetDisplayFeaturesOverride = ();
+pub type EmulationClearDisplayFeaturesOverride = ();
+pub type EmulationSetScrollbarsHidden = ();
+pub type EmulationSetDocumentCookieDisabled = ();
+pub type EmulationSetEmitTouchEventsForMouse = ();
+pub type EmulationSetEmulatedMedia = ();
+pub type EmulationSetEmulatedVisionDeficiency = ();
+pub type EmulationSetGeolocationOverride = ();
+pub type EmulationGetOverriddenSensorInformation = ();
+pub type EmulationSetSensorOverrideEnabled = ();
+pub type EmulationSetSensorOverrideReadings = ();
+pub type EmulationSetPressureSourceOverrideEnabled = ();
+pub type EmulationSetPressureStateOverride = ();
+pub type EmulationSetIdleOverride = ();
+pub type EmulationClearIdleOverride = ();
+pub type EmulationSetNavigatorOverrides = ();
+pub type EmulationSetPageScaleFactor = ();
+pub type EmulationSetScriptExecutionDisabled = ();
+pub type EmulationSetTouchEmulationEnabled = ();
+pub type EmulationSetVirtualTimePolicy = ();
+pub type EmulationSetLocaleOverride = ();
+pub type EmulationSetTimezoneOverride = ();
+pub type EmulationSetVisibleSize = ();
+pub type EmulationSetDisabledImageTypes = ();
+pub type EmulationSetHardwareConcurrencyOverride = ();
+pub type EmulationSetUserAgentOverride = ();
+pub type EmulationSetAutomationOverride = ();
+pub type EmulationSetSmallViewportHeightDifferenceOverride = ();

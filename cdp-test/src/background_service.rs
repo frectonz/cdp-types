@@ -27,3 +27,7 @@ pub struct BackgroundServiceEvent {
     pub event_metadata: Vec<EventMetadata>,
     pub storage_key: String,
 }
+pub type BackgroundServiceStartObserving = ();
+pub type BackgroundServiceStopObserving = ();
+pub type BackgroundServiceSetRecording = ();
+pub type BackgroundServiceClearEvents = ();

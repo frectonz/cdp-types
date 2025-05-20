@@ -77,3 +77,6 @@ pub struct AudioParam {
     pub min_value: u64,
     pub max_value: u64,
 }
+pub type WebAudioEnable = ();
+pub type WebAudioDisable = ();
+pub type WebAudioGetRealtimeData = ();

@@ -137,3 +137,7 @@ pub struct TextBoxSnapshot {
     pub start: Vec<i64>,
     pub length: Vec<i64>,
 }
+pub type DomSnapshotDisable = ();
+pub type DomSnapshotEnable = ();
+pub type DomSnapshotGetSnapshot = ();
+pub type DomSnapshotCaptureSnapshot = ();

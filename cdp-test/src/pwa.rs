@@ -10,3 +10,10 @@ pub enum DisplayMode {
     Standalone,
     Browser,
 }
+pub type PwaGetOsAppState = ();
+pub type PwaInstall = ();
+pub type PwaUninstall = ();
+pub type PwaLaunch = ();
+pub type PwaLaunchFilesInApp = ();
+pub type PwaOpenCurrentPageInApp = ();
+pub type PwaChangeAppUserSettings = ();

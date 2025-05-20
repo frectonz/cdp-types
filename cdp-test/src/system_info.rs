@@ -66,3 +66,6 @@ pub struct ProcessInfo {
     pub id: i64,
     pub cpu_time: u64,
 }
+pub type SystemInfoGetInfo = ();
+pub type SystemInfoGetFeatureState = ();
+pub type SystemInfoGetProcessInfo = ();

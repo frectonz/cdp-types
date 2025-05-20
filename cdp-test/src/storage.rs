@@ -377,3 +377,40 @@ pub struct RelatedWebsiteSet {
     pub associated_sites: Vec<String>,
     pub service_sites: Vec<String>,
 }
+pub type StorageGetStorageKeyForFrame = ();
+pub type StorageClearDataForOrigin = ();
+pub type StorageClearDataForStorageKey = ();
+pub type StorageGetCookies = ();
+pub type StorageSetCookies = ();
+pub type StorageClearCookies = ();
+pub type StorageGetUsageAndQuota = ();
+pub type StorageOverrideQuotaForOrigin = ();
+pub type StorageTrackCacheStorageForOrigin = ();
+pub type StorageTrackCacheStorageForStorageKey = ();
+pub type StorageTrackIndexedDbForOrigin = ();
+pub type StorageTrackIndexedDbForStorageKey = ();
+pub type StorageUntrackCacheStorageForOrigin = ();
+pub type StorageUntrackCacheStorageForStorageKey = ();
+pub type StorageUntrackIndexedDbForOrigin = ();
+pub type StorageUntrackIndexedDbForStorageKey = ();
+pub type StorageGetTrustTokens = ();
+pub type StorageClearTrustTokens = ();
+pub type StorageGetInterestGroupDetails = ();
+pub type StorageSetInterestGroupTracking = ();
+pub type StorageSetInterestGroupAuctionTracking = ();
+pub type StorageGetSharedStorageMetadata = ();
+pub type StorageGetSharedStorageEntries = ();
+pub type StorageSetSharedStorageEntry = ();
+pub type StorageDeleteSharedStorageEntry = ();
+pub type StorageClearSharedStorageEntries = ();
+pub type StorageResetSharedStorageBudget = ();
+pub type StorageSetSharedStorageTracking = ();
+pub type StorageSetStorageBucketTracking = ();
+pub type StorageDeleteStorageBucket = ();
+pub type StorageRunBounceTrackingMitigations = ();
+pub type StorageSetAttributionReportingLocalTestingMode = ();
+pub type StorageSetAttributionReportingTracking = ();
+pub type StorageSendPendingAttributionReports = ();
+pub type StorageGetRelatedWebsiteSets = ();
+pub type StorageGetAffectedUrlsForThirdPartyCookieMetadata = ();
+pub type StorageSetProtectedAudienceKAnonymity = ();

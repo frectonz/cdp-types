@@ -39,3 +39,16 @@ pub struct DragData {
     pub files: Vec<String>,
     pub drag_operations_mask: i64,
 }
+pub type InputDispatchDragEvent = ();
+pub type InputDispatchKeyEvent = ();
+pub type InputInsertText = ();
+pub type InputImeSetComposition = ();
+pub type InputDispatchMouseEvent = ();
+pub type InputDispatchTouchEvent = ();
+pub type InputCancelDragging = ();
+pub type InputEmulateTouchFromMouseEvent = ();
+pub type InputSetIgnoreInputEvents = ();
+pub type InputSetInterceptDrags = ();
+pub type InputSynthesizePinchGesture = ();
+pub type InputSynthesizeScrollGesture = ();
+pub type InputSynthesizeTapGesture = ();

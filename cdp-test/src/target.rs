@@ -35,3 +35,20 @@ pub struct RemoteLocation {
     pub host: String,
     pub port: i64,
 }
+pub type TargetActivateTarget = ();
+pub type TargetAttachToTarget = ();
+pub type TargetAttachToBrowserTarget = ();
+pub type TargetCloseTarget = ();
+pub type TargetExposeDevToolsProtocol = ();
+pub type TargetCreateBrowserContext = ();
+pub type TargetGetBrowserContexts = ();
+pub type TargetCreateTarget = ();
+pub type TargetDetachFromTarget = ();
+pub type TargetDisposeBrowserContext = ();
+pub type TargetGetTargetInfo = ();
+pub type TargetGetTargets = ();
+pub type TargetSendMessageToTarget = ();
+pub type TargetSetAutoAttach = ();
+pub type TargetAutoAttachRelated = ();
+pub type TargetSetDiscoverTargets = ();
+pub type TargetSetRemoteLocations = ();

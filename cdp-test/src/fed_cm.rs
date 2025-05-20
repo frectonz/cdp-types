@@ -29,3 +29,10 @@ pub struct Account {
     pub terms_of_service_url: String,
     pub privacy_policy_url: String,
 }
+pub type FedCmEnable = ();
+pub type FedCmDisable = ();
+pub type FedCmSelectAccount = ();
+pub type FedCmClickDialogButton = ();
+pub type FedCmOpenUrl = ();
+pub type FedCmDismissDialog = ();
+pub type FedCmResetCooldown = ();

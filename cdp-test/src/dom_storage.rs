@@ -7,3 +7,9 @@ pub struct StorageId {
 }
 /// DOM Storage item.
 pub struct Item(Vec<String>);
+pub type DomStorageClear = ();
+pub type DomStorageDisable = ();
+pub type DomStorageEnable = ();
+pub type DomStorageGetDomStorageItems = ();
+pub type DomStorageRemoveDomStorageItem = ();
+pub type DomStorageSetDomStorageItem = ();

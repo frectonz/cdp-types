@@ -19,3 +19,8 @@ pub struct ViolationSetting {
     pub name: String,
     pub threshold: u64,
 }
+pub type LogClear = ();
+pub type LogDisable = ();
+pub type LogEnable = ();
+pub type LogStartViolationsReport = ();
+pub type LogStopViolationsReport = ();

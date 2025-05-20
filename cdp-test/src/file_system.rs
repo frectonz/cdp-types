@@ -17,3 +17,4 @@ pub struct BucketFileSystemLocator {
     pub bucket_name: String,
     pub path_components: Vec<String>,
 }
+pub type FileSystemGetDirectory = ();

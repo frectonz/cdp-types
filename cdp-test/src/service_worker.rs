@@ -43,3 +43,16 @@ pub struct ServiceWorkerErrorMessage {
     pub line_number: i64,
     pub column_number: i64,
 }
+pub type ServiceWorkerDeliverPushMessage = ();
+pub type ServiceWorkerDisable = ();
+pub type ServiceWorkerDispatchSyncEvent = ();
+pub type ServiceWorkerDispatchPeriodicSyncEvent = ();
+pub type ServiceWorkerEnable = ();
+pub type ServiceWorkerInspectWorker = ();
+pub type ServiceWorkerSetForceUpdateOnPageLoad = ();
+pub type ServiceWorkerSkipWaiting = ();
+pub type ServiceWorkerStartWorker = ();
+pub type ServiceWorkerStopAllWorkers = ();
+pub type ServiceWorkerStopWorker = ();
+pub type ServiceWorkerUnregister = ();
+pub type ServiceWorkerUpdateRegistration = ();

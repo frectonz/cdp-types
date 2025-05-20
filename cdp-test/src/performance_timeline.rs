@@ -32,3 +32,4 @@ pub struct TimelineEvent {
     pub lcp_details: Box<LargestContentfulPaint>,
     pub layout_shift_details: Box<LayoutShift>,
 }
+pub type PerformanceTimelineEnable = ();

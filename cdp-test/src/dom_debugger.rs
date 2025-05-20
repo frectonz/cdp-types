@@ -25,3 +25,13 @@ pub struct EventListener {
     pub original_handler: Box<()>,
     pub backend_node_id: Box<BackendNodeId>,
 }
+pub type DomDebuggerGetEventListeners = ();
+pub type DomDebuggerRemoveDomBreakpoint = ();
+pub type DomDebuggerRemoveEventListenerBreakpoint = ();
+pub type DomDebuggerRemoveInstrumentationBreakpoint = ();
+pub type DomDebuggerRemoveXhrBreakpoint = ();
+pub type DomDebuggerSetBreakOnCspViolation = ();
+pub type DomDebuggerSetDomBreakpoint = ();
+pub type DomDebuggerSetEventListenerBreakpoint = ();
+pub type DomDebuggerSetInstrumentationBreakpoint = ();
+pub type DomDebuggerSetXhrBreakpoint = ();

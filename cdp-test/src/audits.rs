@@ -581,3 +581,8 @@ pub struct InspectorIssue {
     pub details: Box<InspectorIssueDetails>,
     pub issue_id: Box<IssueId>,
 }
+pub type AuditsGetEncodedResponse = ();
+pub type AuditsDisable = ();
+pub type AuditsEnable = ();
+pub type AuditsCheckContrast = ();
+pub type AuditsCheckFormsIssues = ();

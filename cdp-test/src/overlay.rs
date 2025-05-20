@@ -148,3 +148,32 @@ pub enum InspectMode {
     ShowDistances,
     None,
 }
+pub type OverlayDisable = ();
+pub type OverlayEnable = ();
+pub type OverlayGetHighlightObjectForTest = ();
+pub type OverlayGetGridHighlightObjectsForTest = ();
+pub type OverlayGetSourceOrderHighlightObjectForTest = ();
+pub type OverlayHideHighlight = ();
+pub type OverlayHighlightFrame = ();
+pub type OverlayHighlightNode = ();
+pub type OverlayHighlightQuad = ();
+pub type OverlayHighlightRect = ();
+pub type OverlayHighlightSourceOrder = ();
+pub type OverlaySetInspectMode = ();
+pub type OverlaySetShowAdHighlights = ();
+pub type OverlaySetPausedInDebuggerMessage = ();
+pub type OverlaySetShowDebugBorders = ();
+pub type OverlaySetShowFpsCounter = ();
+pub type OverlaySetShowGridOverlays = ();
+pub type OverlaySetShowFlexOverlays = ();
+pub type OverlaySetShowScrollSnapOverlays = ();
+pub type OverlaySetShowContainerQueryOverlays = ();
+pub type OverlaySetShowPaintRects = ();
+pub type OverlaySetShowLayoutShiftRegions = ();
+pub type OverlaySetShowScrollBottleneckRects = ();
+pub type OverlaySetShowHitTestBorders = ();
+pub type OverlaySetShowWebVitals = ();
+pub type OverlaySetShowViewportSizeOnResize = ();
+pub type OverlaySetShowHinge = ();
+pub type OverlaySetShowIsolatedElements = ();
+pub type OverlaySetShowWindowControlsOverlay = ();

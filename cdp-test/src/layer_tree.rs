@@ -43,3 +43,12 @@ pub struct Layer {
 }
 /// Array of timings, one per paint step.
 pub struct PaintProfile(Vec<u64>);
+pub type LayerTreeCompositingReasons = ();
+pub type LayerTreeDisable = ();
+pub type LayerTreeEnable = ();
+pub type LayerTreeLoadSnapshot = ();
+pub type LayerTreeMakeSnapshot = ();
+pub type LayerTreeProfileSnapshot = ();
+pub type LayerTreeReleaseSnapshot = ();
+pub type LayerTreeReplaySnapshot = ();
+pub type LayerTreeSnapshotCommandLog = ();

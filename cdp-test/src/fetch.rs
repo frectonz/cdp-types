@@ -14,3 +14,12 @@ pub struct HeaderEntry {
     pub name: String,
     pub value: String,
 }
+pub type FetchDisable = ();
+pub type FetchEnable = ();
+pub type FetchFailRequest = ();
+pub type FetchFulfillRequest = ();
+pub type FetchContinueRequest = ();
+pub type FetchContinueWithAuth = ();
+pub type FetchContinueResponse = ();
+pub type FetchGetResponseBody = ();
+pub type FetchTakeResponseBodyAsStream = ();

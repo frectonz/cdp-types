@@ -32,3 +32,5 @@ pub struct PlayerError {
     pub cause: Vec<PlayerError>,
     pub data: serde_json::Map<String, serde_json::Value>,
 }
+pub type MediaEnable = ();
+pub type MediaDisable = ();

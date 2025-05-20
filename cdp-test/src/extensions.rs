@@ -6,3 +6,9 @@ pub enum StorageArea {
     Sync,
     Managed,
 }
+pub type ExtensionsLoadUnpacked = ();
+pub type ExtensionsUninstall = ();
+pub type ExtensionsGetStorageItems = ();
+pub type ExtensionsRemoveStorageItems = ();
+pub type ExtensionsClearStorageItems = ();
+pub type ExtensionsSetStorageItems = ();

@@ -44,3 +44,7 @@ pub struct FilledField {
     pub frame_id: Box<crate::page::FrameId>,
     pub field_id: Box<BackendNodeId>,
 }
+pub type AutofillTrigger = ();
+pub type AutofillSetAddresses = ();
+pub type AutofillDisable = ();
+pub type AutofillEnable = ();

@@ -6,3 +6,7 @@ pub struct PromptDevice {
     pub id: Box<DeviceId>,
     pub name: String,
 }
+pub type DeviceAccessEnable = ();
+pub type DeviceAccessDisable = ();
+pub type DeviceAccessSelectPrompt = ();
+pub type DeviceAccessCancelPrompt = ();

@@ -45,3 +45,13 @@ pub struct KeyframeStyle {
     pub offset: String,
     pub easing: String,
 }
+pub type AnimationDisable = ();
+pub type AnimationEnable = ();
+pub type AnimationGetCurrentTime = ();
+pub type AnimationGetPlaybackRate = ();
+pub type AnimationReleaseAnimations = ();
+pub type AnimationResolveAnimation = ();
+pub type AnimationSeekAnimations = ();
+pub type AnimationSetPaused = ();
+pub type AnimationSetPlaybackRate = ();
+pub type AnimationSetTiming = ();

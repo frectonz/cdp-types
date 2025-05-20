@@ -47,3 +47,8 @@ pub enum TracingBackend {
     Chrome,
     System,
 }
+pub type TracingEnd = ();
+pub type TracingGetCategories = ();
+pub type TracingRecordClockSyncMarker = ();
+pub type TracingRequestMemoryDump = ();
+pub type TracingStart = ();
