@@ -3,7 +3,7 @@ use std::collections::HashMap;
 use color_eyre::eyre::Result;
 use heck::{ToPascalCase, ToSnakeCase};
 use proc_macro2::{Span, TokenStream};
-use quote::quote;
+use quote::{format_ident, quote};
 use serde::Deserialize;
 use syn::Ident;
 
@@ -25,10 +25,7 @@ struct ProtocolData {
 
 impl ProtocolData {
     fn is_common_type(&self, typ: &str) -> bool {
-        self.common_type_ids
-            .iter()
-            .find(|x| x.as_ref() == typ)
-            .is_some()
+        self.common_type_ids.iter().any(|x| x.as_ref() == typ)
     }
 
     fn get_common_type(&self, real_type_name: &str) -> Option<&str> {
@@ -112,12 +109,7 @@ impl BrowserProtocol {
                                 continue;
                             }
 
-                            if domain
-                                .dependencies
-                                .iter()
-                                .find(|x| x.as_ref() == new_domain)
-                                .is_none()
-                            {
+                            if !domain.dependencies.iter().any(|x| x.as_ref() == new_domain) {
                                 domain.dependencies.push(new_domain.into())
                             }
                         }
@@ -276,55 +268,55 @@ fn get_rust_type(typ: &str) -> Option<TokenStream> {
     }
 }
 
-fn resolve_type(protocol_data: &ProtocolData, ref_typ: &Box<str>) -> TokenStream {
-    if ref_typ.as_ref() == "WindowState" {
+fn resolve_type(protocol_data: &ProtocolData, ref_typ: &str) -> TokenStream {
+    if ref_typ == "WindowState" {
         return quote! {
             BrowserWindowState
         };
     }
 
-    if ref_typ.as_ref() == "Page.FrameId" {
+    if ref_typ == "Page.FrameId" {
         return quote! {
             crate::page::FrameId
         };
     }
 
-    if ref_typ.as_ref() == "SerializedStorageKey" {
+    if ref_typ == "SerializedStorageKey" {
         return quote! {
             StorageSerializedStorageKey
         };
     }
 
-    if ref_typ.as_ref() == "TimeSinceEpoch" {
+    if ref_typ == "TimeSinceEpoch" {
         return quote! {
             NetworkTimeSinceEpoch
         };
     }
 
-    if ref_typ.as_ref() == "RequestId" {
+    if ref_typ == "RequestId" {
         return quote! {
             NetworkRequestId
         };
     }
 
-    if ref_typ.as_ref() == "FileHandler" {
+    if ref_typ == "FileHandler" {
         return quote! {
             PageFileHandler
         };
     }
 
-    if ref_typ.as_ref().starts_with("Runtime.") {
+    if ref_typ.starts_with("Runtime.") {
         return quote! {
             ()
         };
     }
 
-    let common_type = protocol_data.get_common_type(&ref_typ);
+    let common_type = protocol_data.get_common_type(ref_typ);
 
     let ref_type = match common_type {
         Some(ref_typ) => Ident::new(ref_typ, Span::call_site()),
         None => {
-            let (_, ref_typ) = ref_typ.split_once('.').unwrap_or(("", ref_typ.as_ref()));
+            let (_, ref_typ) = ref_typ.split_once('.').unwrap_or(("", ref_typ));
             let ref_type = ref_typ.to_pascal_case();
             Ident::new(&ref_type, Span::call_site())
         }
@@ -390,6 +382,22 @@ impl Property {
     }
 }
 
+impl Command {
+    fn name_ident(&self, domain: &str) -> Ident {
+        let domain = domain.to_pascal_case();
+        let name = self.name.to_pascal_case();
+        format_ident!("{domain}{name}")
+    }
+
+    fn to_rust(&self, domain: &str) -> TokenStream {
+        let name = self.name_ident(domain);
+
+        quote! {
+            pub type #name = ();
+        }
+    }
+}
+
 impl Type {
     fn id_ident(&self) -> Ident {
         let id = self.id.to_pascal_case();
@@ -439,11 +447,11 @@ impl Type {
             assert_eq!(self.r#type.as_ref(), "array");
 
             let items_typ = items.r#type.as_ref().and_then(|typ| get_rust_type(typ));
-            let items_ref = items.r#ref.as_ref().and_then(|typ| {
+            let items_ref = items.r#ref.as_ref().map(|typ| {
                 let typ_ident = typ.to_pascal_case();
                 let typ_ident = Ident::new(&typ_ident, Span::call_site());
 
-                Some(quote! { #typ_ident })
+                quote! { #typ_ident }
             });
 
             items_typ.or(items_ref)
@@ -553,16 +561,20 @@ impl Domain {
         let name = self.module_name();
 
         let dependecies = self.dependency_names();
+
         let types = self
             .types
             .iter()
             .filter(|x| !protocol.is_common_type(&x.id))
             .map(|t| t.to_rust(protocol));
 
+        let commands = self.commands.iter().map(|c| c.to_rust(&self.domain));
+
         let content = quote! {
             use crate::common::*;
             #(#dependecies)*
             #(#types)*
+            #(#commands)*
         };
 
         RustFile { name, content }
