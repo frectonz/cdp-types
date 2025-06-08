@@ -382,11 +382,19 @@ impl Property {
     }
 }
 
+struct CommandIdents {
+    params: Ident,
+    results: Ident,
+}
+
 impl Command {
-    fn name_ident(&self, domain: &str) -> Ident {
+    fn name_ident(&self, domain: &str) -> CommandIdents {
         let domain = domain.to_pascal_case();
         let name = self.name.to_pascal_case();
-        format_ident!("{domain}{name}")
+        let params = format_ident!("{domain}{name}Params");
+        let results = format_ident!("{domain}{name}Results");
+
+        CommandIdents { params, results }
     }
 
     fn description(&self) -> TokenStream {
@@ -421,7 +429,7 @@ impl Command {
     }
 
     fn to_rust(&self, domain: &str) -> TokenStream {
-        let name = self.name_ident(domain);
+        let CommandIdents { params, results } = self.name_ident(domain);
 
         let description = self.description();
         let deprecated = self.deprecated_flag();
@@ -435,7 +443,10 @@ impl Command {
 
         quote! {
             #attrs
-            pub type #name = ();
+            pub type #params = ();
+
+            #attrs
+            pub type #results = ();
         }
     }
 }
