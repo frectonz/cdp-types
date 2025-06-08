@@ -148,32 +148,63 @@ pub enum InspectMode {
     ShowDistances,
     None,
 }
+/// Disables domain notifications.
 pub type OverlayDisable = ();
+/// Enables domain notifications.
 pub type OverlayEnable = ();
+/// For testing.
 pub type OverlayGetHighlightObjectForTest = ();
+/// For Persistent Grid testing.
 pub type OverlayGetGridHighlightObjectsForTest = ();
+/// For Source Order Viewer testing.
 pub type OverlayGetSourceOrderHighlightObjectForTest = ();
+/// Hides any highlight.
 pub type OverlayHideHighlight = ();
+/** Highlights owner element of the frame with given id.
+Deprecated: Doesn't work reliably and cannot be fixed due to process
+separation (the owner node might be in a different process). Determine
+the owner node in the client and use highlightNode.*/
 pub type OverlayHighlightFrame = ();
+/** Highlights DOM node with given id or with the given JavaScript object wrapper. Either nodeId or
+objectId must be specified.*/
 pub type OverlayHighlightNode = ();
+/// Highlights given quad. Coordinates are absolute with respect to the main frame viewport.
 pub type OverlayHighlightQuad = ();
+/// Highlights given rectangle. Coordinates are absolute with respect to the main frame viewport.
 pub type OverlayHighlightRect = ();
+/** Highlights the source order of the children of the DOM node with given id or with the given
+JavaScript object wrapper. Either nodeId or objectId must be specified.*/
 pub type OverlayHighlightSourceOrder = ();
+/** Enters the 'inspect' mode. In this mode, elements that user is hovering over are highlighted.
+Backend then generates 'inspectNodeRequested' event upon element selection.*/
 pub type OverlaySetInspectMode = ();
+/// Highlights owner element of all frames detected to be ads.
 pub type OverlaySetShowAdHighlights = ();
 pub type OverlaySetPausedInDebuggerMessage = ();
+/// Requests that backend shows debug borders on layers
 pub type OverlaySetShowDebugBorders = ();
+/// Requests that backend shows the FPS counter
 pub type OverlaySetShowFpsCounter = ();
+/// Highlight multiple elements with the CSS Grid overlay.
 pub type OverlaySetShowGridOverlays = ();
 pub type OverlaySetShowFlexOverlays = ();
 pub type OverlaySetShowScrollSnapOverlays = ();
 pub type OverlaySetShowContainerQueryOverlays = ();
+/// Requests that backend shows paint rectangles
 pub type OverlaySetShowPaintRects = ();
+/// Requests that backend shows layout shift regions
 pub type OverlaySetShowLayoutShiftRegions = ();
+/// Requests that backend shows scroll bottleneck rects
 pub type OverlaySetShowScrollBottleneckRects = ();
+/// Deprecated, no longer has any effect.
 pub type OverlaySetShowHitTestBorders = ();
+/// Deprecated, no longer has any effect.
 pub type OverlaySetShowWebVitals = ();
+/// Paints viewport size upon main frame resize.
 pub type OverlaySetShowViewportSizeOnResize = ();
+/// Add a dual screen device hinge
 pub type OverlaySetShowHinge = ();
+/// Show elements in isolation mode with overlays.
 pub type OverlaySetShowIsolatedElements = ();
+/// Show Window Controls Overlay for PWA
 pub type OverlaySetShowWindowControlsOverlay = ();

@@ -377,40 +377,83 @@ pub struct RelatedWebsiteSet {
     pub associated_sites: Vec<String>,
     pub service_sites: Vec<String>,
 }
+/// Returns a storage key given a frame id.
 pub type StorageGetStorageKeyForFrame = ();
+/// Clears storage for origin.
 pub type StorageClearDataForOrigin = ();
+/// Clears storage for storage key.
 pub type StorageClearDataForStorageKey = ();
+/// Returns all browser cookies.
 pub type StorageGetCookies = ();
+/// Sets given cookies.
 pub type StorageSetCookies = ();
+/// Clears cookies.
 pub type StorageClearCookies = ();
+/// Returns usage and quota in bytes.
 pub type StorageGetUsageAndQuota = ();
+/// Override quota for the specified origin
 pub type StorageOverrideQuotaForOrigin = ();
+/// Registers origin to be notified when an update occurs to its cache storage list.
 pub type StorageTrackCacheStorageForOrigin = ();
+/// Registers storage key to be notified when an update occurs to its cache storage list.
 pub type StorageTrackCacheStorageForStorageKey = ();
+/// Registers origin to be notified when an update occurs to its IndexedDB.
 pub type StorageTrackIndexedDbForOrigin = ();
+/// Registers storage key to be notified when an update occurs to its IndexedDB.
 pub type StorageTrackIndexedDbForStorageKey = ();
+/// Unregisters origin from receiving notifications for cache storage.
 pub type StorageUntrackCacheStorageForOrigin = ();
+/// Unregisters storage key from receiving notifications for cache storage.
 pub type StorageUntrackCacheStorageForStorageKey = ();
+/// Unregisters origin from receiving notifications for IndexedDB.
 pub type StorageUntrackIndexedDbForOrigin = ();
+/// Unregisters storage key from receiving notifications for IndexedDB.
 pub type StorageUntrackIndexedDbForStorageKey = ();
+/** Returns the number of stored Trust Tokens per issuer for the
+current browsing context.*/
 pub type StorageGetTrustTokens = ();
+/** Removes all Trust Tokens issued by the provided issuerOrigin.
+Leaves other stored data, including the issuer's Redemption Records, intact.*/
 pub type StorageClearTrustTokens = ();
+/// Gets details for a named interest group.
 pub type StorageGetInterestGroupDetails = ();
+/// Enables/Disables issuing of interestGroupAccessed events.
 pub type StorageSetInterestGroupTracking = ();
+/** Enables/Disables issuing of interestGroupAuctionEventOccurred and
+interestGroupAuctionNetworkRequestCreated.*/
 pub type StorageSetInterestGroupAuctionTracking = ();
+/// Gets metadata for an origin's shared storage.
 pub type StorageGetSharedStorageMetadata = ();
+/// Gets the entries in an given origin's shared storage.
 pub type StorageGetSharedStorageEntries = ();
+/// Sets entry with `key` and `value` for a given origin's shared storage.
 pub type StorageSetSharedStorageEntry = ();
+/// Deletes entry for `key` (if it exists) for a given origin's shared storage.
 pub type StorageDeleteSharedStorageEntry = ();
+/// Clears all entries for a given origin's shared storage.
 pub type StorageClearSharedStorageEntries = ();
+/// Resets the budget for `ownerOrigin` by clearing all budget withdrawals.
 pub type StorageResetSharedStorageBudget = ();
+/// Enables/disables issuing of sharedStorageAccessed events.
 pub type StorageSetSharedStorageTracking = ();
+/// Set tracking for a storage key's buckets.
 pub type StorageSetStorageBucketTracking = ();
+/// Deletes the Storage Bucket with the given storage key and bucket name.
 pub type StorageDeleteStorageBucket = ();
+/// Deletes state for sites identified as potential bounce trackers, immediately.
 pub type StorageRunBounceTrackingMitigations = ();
+/// https://wicg.github.io/attribution-reporting-api/
 pub type StorageSetAttributionReportingLocalTestingMode = ();
+/// Enables/disables issuing of Attribution Reporting events.
 pub type StorageSetAttributionReportingTracking = ();
+/** Sends all pending Attribution Reports immediately, regardless of their
+scheduled report time.*/
 pub type StorageSendPendingAttributionReports = ();
+/** Returns the effective Related Website Sets in use by this profile for the browser
+session. The effective Related Website Sets will not change during a browser session.*/
 pub type StorageGetRelatedWebsiteSets = ();
+/** Returns the list of URLs from a page and its embedded resources that match
+existing grace period URL pattern rules.
+https://developers.google.com/privacy-sandbox/cookies/temporary-exceptions/grace-period*/
 pub type StorageGetAffectedUrlsForThirdPartyCookieMetadata = ();
 pub type StorageSetProtectedAudienceKAnonymity = ();

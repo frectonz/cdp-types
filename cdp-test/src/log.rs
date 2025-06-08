@@ -19,8 +19,14 @@ pub struct ViolationSetting {
     pub name: String,
     pub threshold: u64,
 }
+/// Clears the log.
 pub type LogClear = ();
+/// Disables log domain, prevents further log entries from being reported to the client.
 pub type LogDisable = ();
+/** Enables log domain, sends the entries collected so far to the client by means of the
+`entryAdded` notification.*/
 pub type LogEnable = ();
+/// start violation reporting.
 pub type LogStartViolationsReport = ();
+/// Stop violation reporting.
 pub type LogStopViolationsReport = ();

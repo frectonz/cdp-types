@@ -581,8 +581,17 @@ pub struct InspectorIssue {
     pub details: Box<InspectorIssueDetails>,
     pub issue_id: Box<IssueId>,
 }
+/** Returns the response body and size if it were re-encoded with the specified settings. Only
+applies to images.*/
 pub type AuditsGetEncodedResponse = ();
+/// Disables issues domain, prevents further issues from being reported to the client.
 pub type AuditsDisable = ();
+/** Enables issues domain, sends the issues collected so far to the client by means of the
+`issueAdded` event.*/
 pub type AuditsEnable = ();
+/** Runs the contrast check for the target page. Found issues are reported
+using Audits.issueAdded event.*/
 pub type AuditsCheckContrast = ();
+/** Runs the form issues check for the target page. Found issues are reported
+using Audits.issueAdded event.*/
 pub type AuditsCheckFormsIssues = ();

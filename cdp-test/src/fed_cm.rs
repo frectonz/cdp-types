@@ -35,4 +35,6 @@ pub type FedCmSelectAccount = ();
 pub type FedCmClickDialogButton = ();
 pub type FedCmOpenUrl = ();
 pub type FedCmDismissDialog = ();
+/** Resets the cooldown time, if any, to allow the next FedCM call to show
+a dialog even if one was recently dismissed by the user.*/
 pub type FedCmResetCooldown = ();

@@ -152,55 +152,134 @@ pub struct Rect {
     pub width: u64,
     pub height: u64,
 }
+/// Collects class names for the node with given id and all of it's child nodes.
 pub type DomCollectClassNamesFromSubtree = ();
+/** Creates a deep copy of the specified node and places it into the target container before the
+given anchor.*/
 pub type DomCopyTo = ();
+/** Describes node given its id, does not require domain to be enabled. Does not start tracking any
+objects, can be used for automation.*/
 pub type DomDescribeNode = ();
+/** Scrolls the specified rect of the given node into view if not already visible.
+Note: exactly one between nodeId, backendNodeId and objectId should be passed
+to identify the node.*/
 pub type DomScrollIntoViewIfNeeded = ();
+/// Disables DOM agent for the given page.
 pub type DomDisable = ();
+/** Discards search results from the session with the given id. `getSearchResults` should no longer
+be called for that search.*/
 pub type DomDiscardSearchResults = ();
+/// Enables DOM agent for the given page.
 pub type DomEnable = ();
+/// Focuses the given element.
 pub type DomFocus = ();
+/// Returns attributes for the specified node.
 pub type DomGetAttributes = ();
+/// Returns boxes for the given node.
 pub type DomGetBoxModel = ();
+/** Returns quads that describe node position on the page. This method
+might return multiple quads for inline nodes.*/
 pub type DomGetContentQuads = ();
+/** Returns the root DOM node (and optionally the subtree) to the caller.
+Implicitly enables the DOM domain events for the current target.*/
 pub type DomGetDocument = ();
+/** Returns the root DOM node (and optionally the subtree) to the caller.
+Deprecated, as it is not designed to work well with the rest of the DOM agent.
+Use DOMSnapshot.captureSnapshot instead.*/
 pub type DomGetFlattenedDocument = ();
+/// Finds nodes with a given computed style in a subtree.
 pub type DomGetNodesForSubtreeByStyle = ();
+/** Returns node id at given location. Depending on whether DOM domain is enabled, nodeId is
+either returned or not.*/
 pub type DomGetNodeForLocation = ();
+/// Returns node's HTML markup.
 pub type DomGetOuterHtml = ();
+/// Returns the id of the nearest ancestor that is a relayout boundary.
 pub type DomGetRelayoutBoundary = ();
+/** Returns search results from given `fromIndex` to given `toIndex` from the search with the given
+identifier.*/
 pub type DomGetSearchResults = ();
+/// Hides any highlight.
 pub type DomHideHighlight = ();
+/// Highlights DOM node.
 pub type DomHighlightNode = ();
+/// Highlights given rectangle.
 pub type DomHighlightRect = ();
+/// Marks last undoable state.
 pub type DomMarkUndoableState = ();
+/// Moves node into the new container, places it before the given anchor.
 pub type DomMoveTo = ();
+/** Searches for a given string in the DOM tree. Use `getSearchResults` to access search results or
+`cancelSearch` to end this search session.*/
 pub type DomPerformSearch = ();
+/// Requests that the node is sent to the caller given its path. // FIXME, use XPath
 pub type DomPushNodeByPathToFrontend = ();
+/// Requests that a batch of nodes is sent to the caller given their backend node ids.
 pub type DomPushNodesByBackendIdsToFrontend = ();
+/// Executes `querySelector` on a given node.
 pub type DomQuerySelector = ();
+/// Executes `querySelectorAll` on a given node.
 pub type DomQuerySelectorAll = ();
+/** Returns NodeIds of current top layer elements.
+Top layer is rendered closest to the user within a viewport, therefore its elements always
+appear on top of all other content.*/
 pub type DomGetTopLayerElements = ();
+/// Returns the NodeId of the matched element according to certain relations.
 pub type DomGetElementByRelation = ();
+/// Re-does the last undone action.
 pub type DomRedo = ();
+/// Removes attribute with given name from an element with given id.
 pub type DomRemoveAttribute = ();
+/// Removes node with given id.
 pub type DomRemoveNode = ();
+/** Requests that children of the node with given id are returned to the caller in form of
+`setChildNodes` events where not only immediate children are retrieved, but all children down to
+the specified depth.*/
 pub type DomRequestChildNodes = ();
+/** Requests that the node is sent to the caller given the JavaScript node object reference. All
+nodes that form the path from the node to the root are also sent to the client as a series of
+`setChildNodes` notifications.*/
 pub type DomRequestNode = ();
+/// Resolves the JavaScript node object for a given NodeId or BackendNodeId.
 pub type DomResolveNode = ();
+/// Sets attribute for an element with given id.
 pub type DomSetAttributeValue = ();
+/** Sets attributes on element with given id. This method is useful when user edits some existing
+attribute value and types in several attribute name/value pairs.*/
 pub type DomSetAttributesAsText = ();
+/// Sets files for the given file input element.
 pub type DomSetFileInputFiles = ();
+/// Sets if stack traces should be captured for Nodes. See `Node.getNodeStackTraces`. Default is disabled.
 pub type DomSetNodeStackTracesEnabled = ();
+/// Gets stack traces associated with a Node. As of now, only provides stack trace for Node creation.
 pub type DomGetNodeStackTraces = ();
+/** Returns file information for the given
+File wrapper.*/
 pub type DomGetFileInfo = ();
+/// Returns list of detached nodes
 pub type DomGetDetachedDomNodes = ();
+/** Enables console to refer to the node with given id via $x (see Command Line API for more details
+$x functions).*/
 pub type DomSetInspectedNode = ();
+/// Sets node name for a node with given id.
 pub type DomSetNodeName = ();
+/// Sets node value for a node with given id.
 pub type DomSetNodeValue = ();
+/// Sets node HTML markup, returns new node id.
 pub type DomSetOuterHtml = ();
+/// Undoes the last performed action.
 pub type DomUndo = ();
+/// Returns iframe node that owns iframe with the given domain.
 pub type DomGetFrameOwner = ();
+/** Returns the query container of the given node based on container query
+conditions: containerName, physical and logical axes, and whether it queries
+scroll-state. If no axes are provided and queriesScrollState is false, the
+style container is returned, which is the direct parent or the closest
+element with a matching container-name.*/
 pub type DomGetContainerForNode = ();
+/** Returns the descendants of a container query container that have
+container queries against this container.*/
 pub type DomGetQueryingDescendantsForContainer = ();
+/** Returns the target anchor element of the given anchor query according to
+https://www.w3.org/TR/css-anchor-position-1/#target.*/
 pub type DomGetAnchorElement = ();

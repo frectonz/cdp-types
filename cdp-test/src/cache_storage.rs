@@ -27,8 +27,13 @@ pub struct Header {
 pub struct CachedResponse {
     pub body: String,
 }
+/// Deletes a cache.
 pub type CacheStorageDeleteCache = ();
+/// Deletes a cache entry.
 pub type CacheStorageDeleteEntry = ();
+/// Requests cache names.
 pub type CacheStorageRequestCacheNames = ();
+/// Fetches cache entry.
 pub type CacheStorageRequestCachedResponse = ();
+/// Requests data from cache.
 pub type CacheStorageRequestEntries = ();

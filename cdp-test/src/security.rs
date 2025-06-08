@@ -85,8 +85,14 @@ pub enum CertificateErrorAction {
     Continue,
     Cancel,
 }
+/// Disables tracking security state changes.
 pub type SecurityDisable = ();
+/// Enables tracking security state changes.
 pub type SecurityEnable = ();
+/// Enable/disable whether all certificate errors should be ignored.
 pub type SecuritySetIgnoreCertificateErrors = ();
+/// Handles a certificate error that fired a certificateError event.
 pub type SecurityHandleCertificateError = ();
+/** Enable/disable overriding certificate errors. If enabled, all certificate error events need to
+be handled by the DevTools client and should be answered with `handleCertificateError` commands.*/
 pub type SecuritySetOverrideCertificateErrors = ();

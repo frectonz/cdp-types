@@ -689,63 +689,146 @@ pub struct BackForwardCacheNotRestoredExplanationTree {
     pub explanations: Vec<BackForwardCacheNotRestoredExplanation>,
     pub children: Vec<BackForwardCacheNotRestoredExplanationTree>,
 }
+/// Deprecated, please use addScriptToEvaluateOnNewDocument instead.
 pub type PageAddScriptToEvaluateOnLoad = ();
+/// Evaluates given script in every frame upon creation (before loading frame's scripts).
 pub type PageAddScriptToEvaluateOnNewDocument = ();
+/// Brings page to front (activates tab).
 pub type PageBringToFront = ();
+/// Capture page screenshot.
 pub type PageCaptureScreenshot = ();
+/** Returns a snapshot of the page as a string. For MHTML format, the serialization includes
+iframes, shadow DOM, external resources, and element-inline styles.*/
 pub type PageCaptureSnapshot = ();
+/// Clears the overridden device metrics.
 pub type PageClearDeviceMetricsOverride = ();
+/// Clears the overridden Device Orientation.
 pub type PageClearDeviceOrientationOverride = ();
+/// Clears the overridden Geolocation Position and Error.
 pub type PageClearGeolocationOverride = ();
+/// Creates an isolated world for the given frame.
 pub type PageCreateIsolatedWorld = ();
+/// Deletes browser cookie with given name, domain and path.
 pub type PageDeleteCookie = ();
+/// Disables page domain notifications.
 pub type PageDisable = ();
+/// Enables page domain notifications.
 pub type PageEnable = ();
+/** Gets the processed manifest for this current document.
+  This API always waits for the manifest to be loaded.
+  If manifestId is provided, and it does not match the manifest of the
+    current document, this API errors out.
+  If there is not a loaded page, this API errors out immediately.*/
 pub type PageGetAppManifest = ();
 pub type PageGetInstallabilityErrors = ();
+/// Deprecated because it's not guaranteed that the returned icon is in fact the one used for PWA installation.
 pub type PageGetManifestIcons = ();
+/** Returns the unique (PWA) app id.
+Only returns values if the feature flag 'WebAppEnableManifestId' is enabled*/
 pub type PageGetAppId = ();
 pub type PageGetAdScriptAncestryIds = ();
+/// Returns present frame tree structure.
 pub type PageGetFrameTree = ();
+/// Returns metrics relating to the layouting of the page, such as viewport bounds/scale.
 pub type PageGetLayoutMetrics = ();
+/// Returns navigation history for the current page.
 pub type PageGetNavigationHistory = ();
+/// Resets navigation history for the current page.
 pub type PageResetNavigationHistory = ();
+/// Returns content of the given resource.
 pub type PageGetResourceContent = ();
+/// Returns present frame / resource tree structure.
 pub type PageGetResourceTree = ();
+/// Accepts or dismisses a JavaScript initiated dialog (alert, confirm, prompt, or onbeforeunload).
 pub type PageHandleJavaScriptDialog = ();
+/// Navigates current page to the given URL.
 pub type PageNavigate = ();
+/// Navigates current page to the given history entry.
 pub type PageNavigateToHistoryEntry = ();
+/// Print page as PDF.
 pub type PagePrintToPdf = ();
+/// Reloads given page optionally ignoring the cache.
 pub type PageReload = ();
+/// Deprecated, please use removeScriptToEvaluateOnNewDocument instead.
 pub type PageRemoveScriptToEvaluateOnLoad = ();
+/// Removes given script from the list.
 pub type PageRemoveScriptToEvaluateOnNewDocument = ();
+/// Acknowledges that a screencast frame has been received by the frontend.
 pub type PageScreencastFrameAck = ();
+/// Searches for given string in resource content.
 pub type PageSearchInResource = ();
+/// Enable Chrome's experimental ad filter on all sites.
 pub type PageSetAdBlockingEnabled = ();
+/// Enable page Content Security Policy by-passing.
 pub type PageSetBypassCsp = ();
+/// Get Permissions Policy state on given frame.
 pub type PageGetPermissionsPolicyState = ();
+/// Get Origin Trials on given frame.
 pub type PageGetOriginTrials = ();
+/** Overrides the values of device screen dimensions (window.screen.width, window.screen.height,
+window.innerWidth, window.innerHeight, and "device-width"/"device-height"-related CSS media
+query results).*/
 pub type PageSetDeviceMetricsOverride = ();
+/// Overrides the Device Orientation.
 pub type PageSetDeviceOrientationOverride = ();
+/// Set generic font families.
 pub type PageSetFontFamilies = ();
+/// Set default font sizes.
 pub type PageSetFontSizes = ();
+/// Sets given markup as the document's HTML.
 pub type PageSetDocumentContent = ();
+/// Set the behavior when downloading a file.
 pub type PageSetDownloadBehavior = ();
+/** Overrides the Geolocation Position or Error. Omitting any of the parameters emulates position
+unavailable.*/
 pub type PageSetGeolocationOverride = ();
+/// Controls whether page will emit lifecycle events.
 pub type PageSetLifecycleEventsEnabled = ();
+/// Toggles mouse event-based touch event emulation.
 pub type PageSetTouchEmulationEnabled = ();
+/// Starts sending each frame using the `screencastFrame` event.
 pub type PageStartScreencast = ();
+/// Force the page stop all navigations and pending resource fetches.
 pub type PageStopLoading = ();
+/// Crashes renderer on the IO thread, generates minidumps.
 pub type PageCrash = ();
+/// Tries to close page, running its beforeunload hooks, if any.
 pub type PageClose = ();
+#[doc = " Tries to update the web lifecycle state of the page.\nIt will transition the page to the given state according to:\nhttps://github.com/WICG/web-lifecycle/"]
 pub type PageSetWebLifecycleState = ();
+/// Stops sending each frame in the `screencastFrame`.
 pub type PageStopScreencast = ();
+/** Requests backend to produce compilation cache for the specified scripts.
+`scripts` are appended to the list of scripts for which the cache
+would be produced. The list may be reset during page navigation.
+When script with a matching URL is encountered, the cache is optionally
+produced upon backend discretion, based on internal heuristics.
+See also: `Page.compilationCacheProduced`.*/
 pub type PageProduceCompilationCache = ();
+/** Seeds compilation cache for given url. Compilation cache does not survive
+cross-process navigation.*/
 pub type PageAddCompilationCache = ();
+/// Clears seeded compilation cache.
 pub type PageClearCompilationCache = ();
+/** Sets the Secure Payment Confirmation transaction mode.
+https://w3c.github.io/secure-payment-confirmation/#sctn-automation-set-spc-transaction-mode*/
 pub type PageSetSpcTransactionMode = ();
+/** Extensions for Custom Handlers API:
+https://html.spec.whatwg.org/multipage/system-state.html#rph-automation*/
 pub type PageSetRphRegistrationMode = ();
+/// Generates a report for testing.
 pub type PageGenerateTestReport = ();
+/// Pauses page execution. Can be resumed using generic Runtime.runIfWaitingForDebugger.
 pub type PageWaitForDebugger = ();
+/** Intercept file chooser requests and transfer control to protocol clients.
+When file chooser interception is enabled, native file chooser dialog is not shown.
+Instead, a protocol event `Page.fileChooserOpened` is emitted.*/
 pub type PageSetInterceptFileChooserDialog = ();
+/** Enable/disable prerendering manually.
+
+This command is a short-term solution for https://crbug.com/1440085.
+See https://docs.google.com/document/d/12HVmFxYj5Jc-eJr5OmWsa2bqTJsbgGLKI6ZIyx0_wpA
+for more details.
+
+TODO(https://crbug.com/1440085): Remove this once Puppeteer supports tab targets.*/
 pub type PageSetPrerenderingAllowed = ();

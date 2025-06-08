@@ -43,12 +43,20 @@ pub struct Layer {
 }
 /// Array of timings, one per paint step.
 pub struct PaintProfile(Vec<u64>);
+/// Provides the reasons why the given layer was composited.
 pub type LayerTreeCompositingReasons = ();
+/// Disables compositing tree inspection.
 pub type LayerTreeDisable = ();
+/// Enables compositing tree inspection.
 pub type LayerTreeEnable = ();
+/// Returns the snapshot identifier.
 pub type LayerTreeLoadSnapshot = ();
+/// Returns the layer snapshot identifier.
 pub type LayerTreeMakeSnapshot = ();
 pub type LayerTreeProfileSnapshot = ();
+/// Releases layer snapshot captured by the back-end.
 pub type LayerTreeReleaseSnapshot = ();
+/// Replays the layer snapshot and returns the resulting bitmap.
 pub type LayerTreeReplaySnapshot = ();
+/// Replays the layer snapshot and returns canvas log.
 pub type LayerTreeSnapshotCommandLog = ();

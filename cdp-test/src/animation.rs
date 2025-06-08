@@ -45,13 +45,23 @@ pub struct KeyframeStyle {
     pub offset: String,
     pub easing: String,
 }
+/// Disables animation domain notifications.
 pub type AnimationDisable = ();
+/// Enables animation domain notifications.
 pub type AnimationEnable = ();
+/// Returns the current time of the an animation.
 pub type AnimationGetCurrentTime = ();
+/// Gets the playback rate of the document timeline.
 pub type AnimationGetPlaybackRate = ();
+/// Releases a set of animations to no longer be manipulated.
 pub type AnimationReleaseAnimations = ();
+/// Gets the remote object of the Animation.
 pub type AnimationResolveAnimation = ();
+/// Seek a set of animations to a particular time within each animation.
 pub type AnimationSeekAnimations = ();
+/// Sets the paused state of a set of animations.
 pub type AnimationSetPaused = ();
+/// Sets the playback rate of the document timeline.
 pub type AnimationSetPlaybackRate = ();
+/// Sets the timing of an animation node.
 pub type AnimationSetTiming = ();

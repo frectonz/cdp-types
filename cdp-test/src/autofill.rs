@@ -44,7 +44,12 @@ pub struct FilledField {
     pub frame_id: Box<crate::page::FrameId>,
     pub field_id: Box<BackendNodeId>,
 }
+/** Trigger autofill on a form identified by the fieldId.
+If the field and related form cannot be autofilled, returns an error.*/
 pub type AutofillTrigger = ();
+/// Set addresses so that developers can verify their forms implementation.
 pub type AutofillSetAddresses = ();
+/// Disables autofill domain notifications.
 pub type AutofillDisable = ();
+/// Enables autofill domain notifications.
 pub type AutofillEnable = ();

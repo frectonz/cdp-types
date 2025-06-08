@@ -43,16 +43,34 @@ pub struct Credential {
     pub user_name: String,
     pub user_display_name: String,
 }
+/** Enable the WebAuthn domain and start intercepting credential storage and
+retrieval with a virtual authenticator.*/
 pub type WebAuthnEnable = ();
+/// Disable the WebAuthn domain.
 pub type WebAuthnDisable = ();
+/// Creates and adds a virtual authenticator.
 pub type WebAuthnAddVirtualAuthenticator = ();
+/// Resets parameters isBogusSignature, isBadUV, isBadUP to false if they are not present.
 pub type WebAuthnSetResponseOverrideBits = ();
+/// Removes the given authenticator.
 pub type WebAuthnRemoveVirtualAuthenticator = ();
+/// Adds the credential to the specified authenticator.
 pub type WebAuthnAddCredential = ();
+/** Returns a single credential stored in the given virtual authenticator that
+matches the credential ID.*/
 pub type WebAuthnGetCredential = ();
+/// Returns all the credentials stored in the given virtual authenticator.
 pub type WebAuthnGetCredentials = ();
+/// Removes a credential from the authenticator.
 pub type WebAuthnRemoveCredential = ();
+/// Clears all the credentials from the specified device.
 pub type WebAuthnClearCredentials = ();
+/** Sets whether User Verification succeeds or fails for an authenticator.
+The default is true.*/
 pub type WebAuthnSetUserVerified = ();
+/** Sets whether tests of user presence will succeed immediately (if true) or fail to resolve (if false) for an authenticator.
+The default is true.*/
 pub type WebAuthnSetAutomaticPresenceSimulation = ();
+/** Allows setting credential properties.
+https://w3c.github.io/webauthn/#sctn-automation-set-credential-properties*/
 pub type WebAuthnSetCredentialProperties = ();

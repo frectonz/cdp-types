@@ -47,8 +47,13 @@ pub enum TracingBackend {
     Chrome,
     System,
 }
+/// Stop trace events collection.
 pub type TracingEnd = ();
+/// Gets supported tracing categories.
 pub type TracingGetCategories = ();
+/// Record a clock sync marker in the trace.
 pub type TracingRecordClockSyncMarker = ();
+/// Request a global memory dump.
 pub type TracingRequestMemoryDump = ();
+/// Start trace events collection.
 pub type TracingStart = ();

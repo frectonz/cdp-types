@@ -323,39 +323,104 @@ pub struct StyleDeclarationEdit {
     pub range: Box<SourceRange>,
     pub text: String,
 }
+/** Inserts a new rule with the given `ruleText` in a stylesheet with given `styleSheetId`, at the
+position specified by `location`.*/
 pub type CssAddRule = ();
+/// Returns all class names from specified stylesheet.
 pub type CssCollectClassNames = ();
+/// Creates a new special "via-inspector" stylesheet in the frame with given `frameId`.
 pub type CssCreateStyleSheet = ();
+/// Disables the CSS agent for the given page.
 pub type CssDisable = ();
+/** Enables the CSS agent for the given page. Clients should not assume that the CSS agent has been
+enabled until the result of this command is received.*/
 pub type CssEnable = ();
+/** Ensures that the given node will have specified pseudo-classes whenever its style is computed by
+the browser.*/
 pub type CssForcePseudoState = ();
+/// Ensures that the given node is in its starting-style state.
 pub type CssForceStartingStyle = ();
 pub type CssGetBackgroundColors = ();
+/// Returns the computed style for a DOM node identified by `nodeId`.
 pub type CssGetComputedStyleForNode = ();
+/** Resolve the specified values in the context of the provided element.
+For example, a value of '1em' is evaluated according to the computed
+'font-size' of the element and a value 'calc(1px + 2px)' will be
+resolved to '3px'.
+If the `propertyName` was specified the `values` are resolved as if
+they were property's declaration. If a value cannot be parsed according
+to the provided property syntax, the value is parsed using combined
+syntax as if null `propertyName` was provided. If the value cannot be
+resolved even then, return the provided value without any changes.*/
 pub type CssResolveValues = ();
 pub type CssGetLonghandProperties = ();
+/** Returns the styles defined inline (explicitly in the "style" attribute and implicitly, using DOM
+attributes) for a DOM node identified by `nodeId`.*/
 pub type CssGetInlineStylesForNode = ();
+/** Returns the styles coming from animations & transitions
+including the animation & transition styles coming from inheritance chain.*/
 pub type CssGetAnimatedStylesForNode = ();
+/// Returns requested styles for a DOM node identified by `nodeId`.
 pub type CssGetMatchedStylesForNode = ();
+/// Returns all media queries parsed by the rendering engine.
 pub type CssGetMediaQueries = ();
+/** Requests information about platform fonts which we used to render child TextNodes in the given
+node.*/
 pub type CssGetPlatformFontsForNode = ();
+/// Returns the current textual content for a stylesheet.
 pub type CssGetStyleSheetText = ();
+/** Returns all layers parsed by the rendering engine for the tree scope of a node.
+Given a DOM element identified by nodeId, getLayersForNode returns the root
+layer for the nearest ancestor document or shadow root. The layer root contains
+the full layer tree for the tree scope and their ordering.*/
 pub type CssGetLayersForNode = ();
+/** Given a CSS selector text and a style sheet ID, getLocationForSelector
+returns an array of locations of the CSS selector in the style sheet.*/
 pub type CssGetLocationForSelector = ();
+/** Starts tracking the given node for the computed style updates
+and whenever the computed style is updated for node, it queues
+a `computedStyleUpdated` event with throttling.
+There can only be 1 node tracked for computed style updates
+so passing a new node id removes tracking from the previous node.
+Pass `undefined` to disable tracking.*/
 pub type CssTrackComputedStyleUpdatesForNode = ();
+/** Starts tracking the given computed styles for updates. The specified array of properties
+replaces the one previously specified. Pass empty array to disable tracking.
+Use takeComputedStyleUpdates to retrieve the list of nodes that had properties modified.
+The changes to computed style properties are only tracked for nodes pushed to the front-end
+by the DOM agent. If no changes to the tracked properties occur after the node has been pushed
+to the front-end, no updates will be issued for the node.*/
 pub type CssTrackComputedStyleUpdates = ();
+/// Polls the next batch of computed style updates.
 pub type CssTakeComputedStyleUpdates = ();
+/** Find a rule with the given active property for the given node and set the new value for this
+property*/
 pub type CssSetEffectivePropertyValueForNode = ();
+/// Modifies the property rule property name.
 pub type CssSetPropertyRulePropertyName = ();
+/// Modifies the keyframe rule key text.
 pub type CssSetKeyframeKey = ();
+/// Modifies the rule selector.
 pub type CssSetMediaText = ();
+/// Modifies the expression of a container query.
 pub type CssSetContainerQueryText = ();
+/// Modifies the expression of a supports at-rule.
 pub type CssSetSupportsText = ();
+/// Modifies the expression of a scope at-rule.
 pub type CssSetScopeText = ();
+/// Modifies the rule selector.
 pub type CssSetRuleSelector = ();
+/// Sets the new stylesheet text.
 pub type CssSetStyleSheetText = ();
+/// Applies specified style edits one after another in the given order.
 pub type CssSetStyleTexts = ();
+/// Enables the selector recording.
 pub type CssStartRuleUsageTracking = ();
+/** Stop tracking rule usage and return the list of rules that were used since last call to
+`takeCoverageDelta` (or since start of coverage instrumentation).*/
 pub type CssStopRuleUsageTracking = ();
+/** Obtain list of rules that became used since last call to this method (or since start of coverage
+instrumentation).*/
 pub type CssTakeCoverageDelta = ();
+/// Enables/disables rendering of local CSS fonts (enabled by default).
 pub type CssSetLocalFontsEnabled = ();

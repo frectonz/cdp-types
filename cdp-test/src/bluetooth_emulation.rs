@@ -59,18 +59,48 @@ pub struct CharacteristicProperties {
     pub authenticated_signed_writes: bool,
     pub extended_properties: bool,
 }
+/// Enable the BluetoothEmulation domain.
 pub type BluetoothEmulationEnable = ();
+/// Set the state of the simulated central.
 pub type BluetoothEmulationSetSimulatedCentralState = ();
+/// Disable the BluetoothEmulation domain.
 pub type BluetoothEmulationDisable = ();
+/** Simulates a peripheral with |address|, |name| and |knownServiceUuids|
+that has already been connected to the system.*/
 pub type BluetoothEmulationSimulatePreconnectedPeripheral = ();
+/** Simulates an advertisement packet described in |entry| being received by
+the central.*/
 pub type BluetoothEmulationSimulateAdvertisement = ();
+/** Simulates the response code from the peripheral with |address| for a
+GATT operation of |type|. The |code| value follows the HCI Error Codes from
+Bluetooth Core Specification Vol 2 Part D 1.3 List Of Error Codes.*/
 pub type BluetoothEmulationSimulateGattOperationResponse = ();
+/** Simulates the response from the characteristic with |characteristicId| for a
+characteristic operation of |type|. The |code| value follows the Error
+Codes from Bluetooth Core Specification Vol 3 Part F 3.4.1.1 Error Response.
+The |data| is expected to exist when simulating a successful read operation
+response.*/
 pub type BluetoothEmulationSimulateCharacteristicOperationResponse = ();
+/** Simulates the response from the descriptor with |descriptorId| for a
+descriptor operation of |type|. The |code| value follows the Error
+Codes from Bluetooth Core Specification Vol 3 Part F 3.4.1.1 Error Response.
+The |data| is expected to exist when simulating a successful read operation
+response.*/
 pub type BluetoothEmulationSimulateDescriptorOperationResponse = ();
+/// Adds a service with |serviceUuid| to the peripheral with |address|.
 pub type BluetoothEmulationAddService = ();
+/// Removes the service respresented by |serviceId| from the simulated central.
 pub type BluetoothEmulationRemoveService = ();
+/** Adds a characteristic with |characteristicUuid| and |properties| to the
+service represented by |serviceId|.*/
 pub type BluetoothEmulationAddCharacteristic = ();
+/** Removes the characteristic respresented by |characteristicId| from the
+simulated central.*/
 pub type BluetoothEmulationRemoveCharacteristic = ();
+/** Adds a descriptor with |descriptorUuid| to the characteristic respresented
+by |characteristicId|.*/
 pub type BluetoothEmulationAddDescriptor = ();
+/// Removes the descriptor with |descriptorId| from the simulated central.
 pub type BluetoothEmulationRemoveDescriptor = ();
+/// Simulates a GATT disconnection from the peripheral with |address|.
 pub type BluetoothEmulationSimulateGattDisconnection = ();

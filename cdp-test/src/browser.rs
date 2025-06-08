@@ -96,22 +96,46 @@ pub enum PrivacySandboxApi {
     BiddingAndAuctionServices,
     TrustedKeyValue,
 }
+/// Set permission settings for given origin.
 pub type BrowserSetPermission = ();
+/// Grant specific permissions to the given origin and reject all others.
 pub type BrowserGrantPermissions = ();
+/// Reset all permission management for all origins.
 pub type BrowserResetPermissions = ();
+/// Set the behavior when downloading a file.
 pub type BrowserSetDownloadBehavior = ();
+/// Cancel a download if in progress
 pub type BrowserCancelDownload = ();
+/// Close browser gracefully.
 pub type BrowserClose = ();
+/// Crashes browser on the main thread.
 pub type BrowserCrash = ();
+/// Crashes GPU process.
 pub type BrowserCrashGpuProcess = ();
+/// Returns version information.
 pub type BrowserGetVersion = ();
+/** Returns the command line switches for the browser process if, and only if
+--enable-automation is on the commandline.*/
 pub type BrowserGetBrowserCommandLine = ();
+/// Get Chrome histograms.
 pub type BrowserGetHistograms = ();
+/// Get a Chrome histogram by name.
 pub type BrowserGetHistogram = ();
+/// Get position and size of the browser window.
 pub type BrowserGetWindowBounds = ();
+/// Get the browser window that contains the devtools target.
 pub type BrowserGetWindowForTarget = ();
+/// Set position and/or size of the browser window.
 pub type BrowserSetWindowBounds = ();
+/// Set dock tile details, platform-specific.
 pub type BrowserSetDockTile = ();
+/// Invoke custom browser commands used by telemetry.
 pub type BrowserExecuteBrowserCommand = ();
+/** Allows a site to use privacy sandbox features that require enrollment
+without the site actually being enrolled. Only supported on page targets.*/
 pub type BrowserAddPrivacySandboxEnrollmentOverride = ();
+/** Configures encryption keys used with a given privacy sandbox API to talk
+to a trusted coordinator.  Since this is intended for test automation only,
+coordinatorOrigin must be a .test domain. No existing coordinator
+configuration for the origin may exist.*/
 pub type BrowserAddPrivacySandboxCoordinatorKeyConfig = ();

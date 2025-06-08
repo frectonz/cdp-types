@@ -27,7 +27,11 @@ pub struct BackgroundServiceEvent {
     pub event_metadata: Vec<EventMetadata>,
     pub storage_key: String,
 }
+/// Enables event updates for the service.
 pub type BackgroundServiceStartObserving = ();
+/// Disables event updates for the service.
 pub type BackgroundServiceStopObserving = ();
+/// Set the recording state for the service.
 pub type BackgroundServiceSetRecording = ();
+/// Clears all stored data for the service.
 pub type BackgroundServiceClearEvents = ();

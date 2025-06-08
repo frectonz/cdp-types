@@ -41,12 +41,21 @@ pub struct KeyPath {
     pub string: String,
     pub array: Vec<String>,
 }
+/// Clears all entries from an object store.
 pub type IndexedDbClearObjectStore = ();
+/// Deletes a database.
 pub type IndexedDbDeleteDatabase = ();
+/// Delete a range of entries from an object store
 pub type IndexedDbDeleteObjectStoreEntries = ();
+/// Disables events from backend.
 pub type IndexedDbDisable = ();
+/// Enables events from backend.
 pub type IndexedDbEnable = ();
+/// Requests data from object store or index.
 pub type IndexedDbRequestData = ();
+/// Gets metadata of an object store.
 pub type IndexedDbGetMetadata = ();
+/// Requests database with given name in given frame.
 pub type IndexedDbRequestDatabase = ();
+/// Requests database names for given security origin.
 pub type IndexedDbRequestDatabaseNames = ();

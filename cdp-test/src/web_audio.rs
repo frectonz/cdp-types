@@ -77,6 +77,9 @@ pub struct AudioParam {
     pub min_value: u64,
     pub max_value: u64,
 }
+/// Enables the WebAudio domain and starts sending context lifetime events.
 pub type WebAudioEnable = ();
+/// Disables the WebAudio domain.
 pub type WebAudioDisable = ();
+/// Fetch the realtime data from the registered contexts.
 pub type WebAudioGetRealtimeData = ();
