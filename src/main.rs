@@ -404,12 +404,37 @@ impl Command {
         }
     }
 
+    fn deprecated_flag(&self) -> TokenStream {
+        if self.deprecated {
+            quote! { #[deprecated] }
+        } else {
+            quote! {}
+        }
+    }
+
+    fn experimental_flag(&self) -> TokenStream {
+        if self.experimental {
+            quote! { #[doc = " ⚠️ Experimental"] }
+        } else {
+            quote! {}
+        }
+    }
+
     fn to_rust(&self, domain: &str) -> TokenStream {
         let name = self.name_ident(domain);
+
         let description = self.description();
+        let deprecated = self.deprecated_flag();
+        let experimental = self.experimental_flag();
+
+        let attrs = quote! {
+            #deprecated
+            #experimental
+            #description
+        };
 
         quote! {
-            #description
+            #attrs
             pub type #name = ();
         }
     }
