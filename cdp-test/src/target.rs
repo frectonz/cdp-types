@@ -39,10 +39,12 @@ pub struct RemoteLocation {
 pub type TargetActivateTarget = ();
 /// Attaches to the target with given id.
 pub type TargetAttachToTarget = ();
+/// ⚠️ Experimental
 /// Attaches to the browser target, only uses flat sessionId mode.
 pub type TargetAttachToBrowserTarget = ();
 /// Closes the target. If the target is a page that gets closed too.
 pub type TargetCloseTarget = ();
+/// ⚠️ Experimental
 /** Inject object to the target's main frame that provides a communication
 channel with browser target.
 
@@ -64,10 +66,12 @@ pub type TargetDetachFromTarget = ();
 /** Deletes a BrowserContext. All the belonging pages will be closed without calling their
 beforeunload hooks.*/
 pub type TargetDisposeBrowserContext = ();
+/// ⚠️ Experimental
 /// Returns information about a target.
 pub type TargetGetTargetInfo = ();
 /// Retrieves a list of available targets.
 pub type TargetGetTargets = ();
+#[deprecated]
 /** Sends protocol message over session with given id.
 Consider using flat mode instead; see commands attachToTarget, setAutoAttach,
 and crbug.com/991325.*/
@@ -81,6 +85,7 @@ for creation of related targets.
 You might want to call this recursively for auto-attached targets to attach
 to all available targets.*/
 pub type TargetSetAutoAttach = ();
+/// ⚠️ Experimental
 /** Adds the specified target to the list of targets that will be monitored for any related target
 creation (such as child frames, child workers and new versions of service worker) and reported
 through `attachedToTarget`. The specified target is also auto-attached.
@@ -90,6 +95,7 @@ pub type TargetAutoAttachRelated = ();
 /** Controls whether to discover available targets and notify via
 `targetCreated/targetInfoChanged/targetDestroyed` events.*/
 pub type TargetSetDiscoverTargets = ();
+/// ⚠️ Experimental
 /** Enables target discovery for the specified locations, when `setDiscoverTargets` was set to
 `true`.*/
 pub type TargetSetRemoteLocations = ();

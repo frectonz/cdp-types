@@ -391,6 +391,7 @@ pub type StorageSetCookies = ();
 pub type StorageClearCookies = ();
 /// Returns usage and quota in bytes.
 pub type StorageGetUsageAndQuota = ();
+/// ⚠️ Experimental
 /// Override quota for the specified origin
 pub type StorageOverrideQuotaForOrigin = ();
 /// Registers origin to be notified when an update occurs to its cache storage list.
@@ -409,49 +410,69 @@ pub type StorageUntrackCacheStorageForStorageKey = ();
 pub type StorageUntrackIndexedDbForOrigin = ();
 /// Unregisters storage key from receiving notifications for IndexedDB.
 pub type StorageUntrackIndexedDbForStorageKey = ();
+/// ⚠️ Experimental
 /** Returns the number of stored Trust Tokens per issuer for the
 current browsing context.*/
 pub type StorageGetTrustTokens = ();
+/// ⚠️ Experimental
 /** Removes all Trust Tokens issued by the provided issuerOrigin.
 Leaves other stored data, including the issuer's Redemption Records, intact.*/
 pub type StorageClearTrustTokens = ();
+/// ⚠️ Experimental
 /// Gets details for a named interest group.
 pub type StorageGetInterestGroupDetails = ();
+/// ⚠️ Experimental
 /// Enables/Disables issuing of interestGroupAccessed events.
 pub type StorageSetInterestGroupTracking = ();
+/// ⚠️ Experimental
 /** Enables/Disables issuing of interestGroupAuctionEventOccurred and
 interestGroupAuctionNetworkRequestCreated.*/
 pub type StorageSetInterestGroupAuctionTracking = ();
+/// ⚠️ Experimental
 /// Gets metadata for an origin's shared storage.
 pub type StorageGetSharedStorageMetadata = ();
+/// ⚠️ Experimental
 /// Gets the entries in an given origin's shared storage.
 pub type StorageGetSharedStorageEntries = ();
+/// ⚠️ Experimental
 /// Sets entry with `key` and `value` for a given origin's shared storage.
 pub type StorageSetSharedStorageEntry = ();
+/// ⚠️ Experimental
 /// Deletes entry for `key` (if it exists) for a given origin's shared storage.
 pub type StorageDeleteSharedStorageEntry = ();
+/// ⚠️ Experimental
 /// Clears all entries for a given origin's shared storage.
 pub type StorageClearSharedStorageEntries = ();
+/// ⚠️ Experimental
 /// Resets the budget for `ownerOrigin` by clearing all budget withdrawals.
 pub type StorageResetSharedStorageBudget = ();
+/// ⚠️ Experimental
 /// Enables/disables issuing of sharedStorageAccessed events.
 pub type StorageSetSharedStorageTracking = ();
+/// ⚠️ Experimental
 /// Set tracking for a storage key's buckets.
 pub type StorageSetStorageBucketTracking = ();
+/// ⚠️ Experimental
 /// Deletes the Storage Bucket with the given storage key and bucket name.
 pub type StorageDeleteStorageBucket = ();
+/// ⚠️ Experimental
 /// Deletes state for sites identified as potential bounce trackers, immediately.
 pub type StorageRunBounceTrackingMitigations = ();
+/// ⚠️ Experimental
 /// https://wicg.github.io/attribution-reporting-api/
 pub type StorageSetAttributionReportingLocalTestingMode = ();
+/// ⚠️ Experimental
 /// Enables/disables issuing of Attribution Reporting events.
 pub type StorageSetAttributionReportingTracking = ();
+/// ⚠️ Experimental
 /** Sends all pending Attribution Reports immediately, regardless of their
 scheduled report time.*/
 pub type StorageSendPendingAttributionReports = ();
+/// ⚠️ Experimental
 /** Returns the effective Related Website Sets in use by this profile for the browser
 session. The effective Related Website Sets will not change during a browser session.*/
 pub type StorageGetRelatedWebsiteSets = ();
+/// ⚠️ Experimental
 /** Returns the list of URLs from a page and its embedded resources that match
 existing grace period URL pattern rules.
 https://developers.google.com/privacy-sandbox/cookies/temporary-exceptions/grace-period*/

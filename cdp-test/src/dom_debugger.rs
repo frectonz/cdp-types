@@ -31,16 +31,21 @@ pub type DomDebuggerGetEventListeners = ();
 pub type DomDebuggerRemoveDomBreakpoint = ();
 /// Removes breakpoint on particular DOM event.
 pub type DomDebuggerRemoveEventListenerBreakpoint = ();
+#[deprecated]
+/// ⚠️ Experimental
 /// Removes breakpoint on particular native event.
 pub type DomDebuggerRemoveInstrumentationBreakpoint = ();
 /// Removes breakpoint from XMLHttpRequest.
 pub type DomDebuggerRemoveXhrBreakpoint = ();
+/// ⚠️ Experimental
 /// Sets breakpoint on particular CSP violations.
 pub type DomDebuggerSetBreakOnCspViolation = ();
 /// Sets breakpoint on particular operation with DOM.
 pub type DomDebuggerSetDomBreakpoint = ();
 /// Sets breakpoint on particular DOM event.
 pub type DomDebuggerSetEventListenerBreakpoint = ();
+#[deprecated]
+/// ⚠️ Experimental
 /// Sets breakpoint on particular native event.
 pub type DomDebuggerSetInstrumentationBreakpoint = ();
 /// Sets breakpoint on XMLHttpRequest.

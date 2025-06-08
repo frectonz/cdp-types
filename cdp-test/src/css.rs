@@ -343,6 +343,7 @@ pub type CssForceStartingStyle = ();
 pub type CssGetBackgroundColors = ();
 /// Returns the computed style for a DOM node identified by `nodeId`.
 pub type CssGetComputedStyleForNode = ();
+/// ⚠️ Experimental
 /** Resolve the specified values in the context of the provided element.
 For example, a value of '1em' is evaluated according to the computed
 'font-size' of the element and a value 'calc(1px + 2px)' will be
@@ -353,10 +354,12 @@ to the provided property syntax, the value is parsed using combined
 syntax as if null `propertyName` was provided. If the value cannot be
 resolved even then, return the provided value without any changes.*/
 pub type CssResolveValues = ();
+/// ⚠️ Experimental
 pub type CssGetLonghandProperties = ();
 /** Returns the styles defined inline (explicitly in the "style" attribute and implicitly, using DOM
 attributes) for a DOM node identified by `nodeId`.*/
 pub type CssGetInlineStylesForNode = ();
+/// ⚠️ Experimental
 /** Returns the styles coming from animations & transitions
 including the animation & transition styles coming from inheritance chain.*/
 pub type CssGetAnimatedStylesForNode = ();
@@ -369,14 +372,17 @@ node.*/
 pub type CssGetPlatformFontsForNode = ();
 /// Returns the current textual content for a stylesheet.
 pub type CssGetStyleSheetText = ();
+/// ⚠️ Experimental
 /** Returns all layers parsed by the rendering engine for the tree scope of a node.
 Given a DOM element identified by nodeId, getLayersForNode returns the root
 layer for the nearest ancestor document or shadow root. The layer root contains
 the full layer tree for the tree scope and their ordering.*/
 pub type CssGetLayersForNode = ();
+/// ⚠️ Experimental
 /** Given a CSS selector text and a style sheet ID, getLocationForSelector
 returns an array of locations of the CSS selector in the style sheet.*/
 pub type CssGetLocationForSelector = ();
+/// ⚠️ Experimental
 /** Starts tracking the given node for the computed style updates
 and whenever the computed style is updated for node, it queues
 a `computedStyleUpdated` event with throttling.
@@ -384,6 +390,7 @@ There can only be 1 node tracked for computed style updates
 so passing a new node id removes tracking from the previous node.
 Pass `undefined` to disable tracking.*/
 pub type CssTrackComputedStyleUpdatesForNode = ();
+/// ⚠️ Experimental
 /** Starts tracking the given computed styles for updates. The specified array of properties
 replaces the one previously specified. Pass empty array to disable tracking.
 Use takeComputedStyleUpdates to retrieve the list of nodes that had properties modified.
@@ -391,6 +398,7 @@ The changes to computed style properties are only tracked for nodes pushed to th
 by the DOM agent. If no changes to the tracked properties occur after the node has been pushed
 to the front-end, no updates will be issued for the node.*/
 pub type CssTrackComputedStyleUpdates = ();
+/// ⚠️ Experimental
 /// Polls the next batch of computed style updates.
 pub type CssTakeComputedStyleUpdates = ();
 /** Find a rule with the given active property for the given node and set the new value for this
@@ -402,10 +410,13 @@ pub type CssSetPropertyRulePropertyName = ();
 pub type CssSetKeyframeKey = ();
 /// Modifies the rule selector.
 pub type CssSetMediaText = ();
+/// ⚠️ Experimental
 /// Modifies the expression of a container query.
 pub type CssSetContainerQueryText = ();
+/// ⚠️ Experimental
 /// Modifies the expression of a supports at-rule.
 pub type CssSetSupportsText = ();
+/// ⚠️ Experimental
 /// Modifies the expression of a scope at-rule.
 pub type CssSetScopeText = ();
 /// Modifies the rule selector.
@@ -422,5 +433,6 @@ pub type CssStopRuleUsageTracking = ();
 /** Obtain list of rules that became used since last call to this method (or since start of coverage
 instrumentation).*/
 pub type CssTakeCoverageDelta = ();
+/// ⚠️ Experimental
 /// Enables/disables rendering of local CSS fonts (enabled by default).
 pub type CssSetLocalFontsEnabled = ();

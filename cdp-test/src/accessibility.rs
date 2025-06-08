@@ -143,19 +143,25 @@ pub type AccessibilityDisable = ();
 /** Enables the accessibility domain which causes `AXNodeId`s to remain consistent between method calls.
 This turns on accessibility for the page, which can impact performance until accessibility is disabled.*/
 pub type AccessibilityEnable = ();
+/// ⚠️ Experimental
 /// Fetches the accessibility node and partial accessibility tree for this DOM node, if it exists.
 pub type AccessibilityGetPartialAxTree = ();
+/// ⚠️ Experimental
 /// Fetches the entire accessibility tree for the root Document
 pub type AccessibilityGetFullAxTree = ();
+/// ⚠️ Experimental
 /** Fetches the root node.
 Requires `enable()` to have been called previously.*/
 pub type AccessibilityGetRootAxNode = ();
+/// ⚠️ Experimental
 /** Fetches a node and all ancestors up to and including the root.
 Requires `enable()` to have been called previously.*/
 pub type AccessibilityGetAxNodeAndAncestors = ();
+/// ⚠️ Experimental
 /** Fetches a particular accessibility node by AXNodeId.
 Requires `enable()` to have been called previously.*/
 pub type AccessibilityGetChildAxNodes = ();
+/// ⚠️ Experimental
 /** Query a DOM node's accessibility subtree for accessible name and role.
 This command computes the name and role for all nodes in the subtree, including those that are
 ignored for accessibility, and returns those that match the specified name and role. If no DOM

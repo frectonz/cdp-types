@@ -160,6 +160,7 @@ pub type OverlayGetGridHighlightObjectsForTest = ();
 pub type OverlayGetSourceOrderHighlightObjectForTest = ();
 /// Hides any highlight.
 pub type OverlayHideHighlight = ();
+#[deprecated]
 /** Highlights owner element of the frame with given id.
 Deprecated: Doesn't work reliably and cannot be fixed due to process
 separation (the owner node might be in a different process). Determine
@@ -196,8 +197,10 @@ pub type OverlaySetShowPaintRects = ();
 pub type OverlaySetShowLayoutShiftRegions = ();
 /// Requests that backend shows scroll bottleneck rects
 pub type OverlaySetShowScrollBottleneckRects = ();
+#[deprecated]
 /// Deprecated, no longer has any effect.
 pub type OverlaySetShowHitTestBorders = ();
+#[deprecated]
 /// Deprecated, no longer has any effect.
 pub type OverlaySetShowWebVitals = ();
 /// Paints viewport size upon main frame resize.

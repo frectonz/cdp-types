@@ -96,39 +96,53 @@ pub enum PrivacySandboxApi {
     BiddingAndAuctionServices,
     TrustedKeyValue,
 }
+/// ⚠️ Experimental
 /// Set permission settings for given origin.
 pub type BrowserSetPermission = ();
+/// ⚠️ Experimental
 /// Grant specific permissions to the given origin and reject all others.
 pub type BrowserGrantPermissions = ();
 /// Reset all permission management for all origins.
 pub type BrowserResetPermissions = ();
+/// ⚠️ Experimental
 /// Set the behavior when downloading a file.
 pub type BrowserSetDownloadBehavior = ();
+/// ⚠️ Experimental
 /// Cancel a download if in progress
 pub type BrowserCancelDownload = ();
 /// Close browser gracefully.
 pub type BrowserClose = ();
+/// ⚠️ Experimental
 /// Crashes browser on the main thread.
 pub type BrowserCrash = ();
+/// ⚠️ Experimental
 /// Crashes GPU process.
 pub type BrowserCrashGpuProcess = ();
 /// Returns version information.
 pub type BrowserGetVersion = ();
+/// ⚠️ Experimental
 /** Returns the command line switches for the browser process if, and only if
 --enable-automation is on the commandline.*/
 pub type BrowserGetBrowserCommandLine = ();
+/// ⚠️ Experimental
 /// Get Chrome histograms.
 pub type BrowserGetHistograms = ();
+/// ⚠️ Experimental
 /// Get a Chrome histogram by name.
 pub type BrowserGetHistogram = ();
+/// ⚠️ Experimental
 /// Get position and size of the browser window.
 pub type BrowserGetWindowBounds = ();
+/// ⚠️ Experimental
 /// Get the browser window that contains the devtools target.
 pub type BrowserGetWindowForTarget = ();
+/// ⚠️ Experimental
 /// Set position and/or size of the browser window.
 pub type BrowserSetWindowBounds = ();
+/// ⚠️ Experimental
 /// Set dock tile details, platform-specific.
 pub type BrowserSetDockTile = ();
+/// ⚠️ Experimental
 /// Invoke custom browser commands used by telemetry.
 pub type BrowserExecuteBrowserCommand = ();
 /** Allows a site to use privacy sandbox features that require enrollment

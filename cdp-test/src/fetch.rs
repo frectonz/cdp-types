@@ -27,6 +27,7 @@ pub type FetchFulfillRequest = ();
 pub type FetchContinueRequest = ();
 /// Continues a request supplying authChallengeResponse following authRequired event.
 pub type FetchContinueWithAuth = ();
+/// ⚠️ Experimental
 /** Continues loading of the paused response, optionally modifying the
 response headers. If either responseCode or headers are modified, all of them
 must be present.*/

@@ -8,6 +8,8 @@ pub struct Metric {
 pub type PerformanceDisable = ();
 /// Enable collecting and reporting metrics.
 pub type PerformanceEnable = ();
+#[deprecated]
+/// ⚠️ Experimental
 /** Sets time domain to use for collecting and reporting duration metrics.
 Note that this must be called before enabling metrics collection. Calling
 this method while metrics collection is enabled returns an error.*/

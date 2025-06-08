@@ -11,7 +11,9 @@ screenshot from the resulting frame. Requires that the target was created with e
 BeginFrameControl. Designed for use with --run-all-compositor-stages-before-draw, see also
 https://goo.gle/chrome-headless-rendering for more background.*/
 pub type HeadlessExperimentalBeginFrame = ();
+#[deprecated]
 /// Disables headless events for the target.
 pub type HeadlessExperimentalDisable = ();
+#[deprecated]
 /// Enables headless events for the target.
 pub type HeadlessExperimentalEnable = ();
