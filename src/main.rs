@@ -384,7 +384,12 @@ impl Property {
 
 struct CommandIdents {
     params: Ident,
-    results: Ident,
+    returns: Ident,
+}
+
+struct CommandTypes {
+    params: Option<TokenStream>,
+    returns: Option<TokenStream>,
 }
 
 impl Command {
@@ -392,9 +397,9 @@ impl Command {
         let domain = domain.to_pascal_case();
         let name = self.name.to_pascal_case();
         let params = format_ident!("{domain}{name}Params");
-        let results = format_ident!("{domain}{name}Results");
+        let returns = format_ident!("{domain}{name}Returns");
 
-        CommandIdents { params, results }
+        CommandIdents { params, returns }
     }
 
     fn description(&self) -> TokenStream {
@@ -428,8 +433,44 @@ impl Command {
         }
     }
 
+    fn redirect_types(&self, CommandIdents { params, returns }: &CommandIdents) -> CommandTypes {
+        self.redirect
+            .as_ref()
+            .map(|redirect| {
+                let CommandIdents {
+                    params: params_redirect,
+                    returns: returns_redirect,
+                } = self.name_ident(&redirect);
+
+                let module = redirect.to_snake_case();
+                let module = Ident::new(&module, Span::call_site());
+
+                let params = if self.parameters.is_none() {
+                    Some(quote! {
+                        pub type #params = crate::#module::#params_redirect;
+                    })
+                } else {
+                    None
+                };
+
+                let returns = if self.returns.is_none() && self.name.as_ref() != "deleteCookie" {
+                    Some(quote! {
+                        pub type #returns = crate::#module::#returns_redirect;
+                    })
+                } else {
+                    None
+                };
+
+                CommandTypes { params, returns }
+            })
+            .unwrap_or(CommandTypes {
+                params: None,
+                returns: None,
+            })
+    }
+
     fn to_rust(&self, domain: &str) -> TokenStream {
-        let CommandIdents { params, results } = self.name_ident(domain);
+        let idents = self.name_ident(domain);
 
         let description = self.description();
         let deprecated = self.deprecated_flag();
@@ -441,12 +482,40 @@ impl Command {
             #description
         };
 
-        quote! {
-            #attrs
-            pub type #params = ();
+        let CommandTypes { params, returns } = self.redirect_types(&idents);
 
-            #attrs
-            pub type #results = ();
+        let CommandIdents {
+            params: params_ident,
+            returns: returns_ident,
+        } = idents;
+
+        let params = params
+            .map(|params| {
+                quote! {
+                    #attrs
+                    #params
+                }
+            })
+            .unwrap_or(quote! {
+                #attrs
+                pub type #params_ident = ();
+            });
+
+        let returns = returns
+            .map(|returns| {
+                quote! {
+                    #attrs
+                    #returns
+                }
+            })
+            .unwrap_or(quote! {
+                #attrs
+                pub type #returns_ident = ();
+            });
+
+        quote! {
+            #params
+            #returns
         }
     }
 }
