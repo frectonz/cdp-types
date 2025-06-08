@@ -11,7 +11,9 @@ pub enum DisplayMode {
     Browser,
 }
 /// Returns the following OS state for the given manifest id.
-pub type PwaGetOsAppState = ();
+pub type PwaGetOsAppStateParams = ();
+/// Returns the following OS state for the given manifest id.
+pub type PwaGetOsAppStateResults = ();
 /** Installs the given manifest identity, optionally using the given install_url
 or IWA bundle location.
 
@@ -22,13 +24,30 @@ install_url_or_bundle_url is required, and can be either an http(s) URL or
 file:// URL pointing to a signed web bundle (.swbn). The .swbn file's
 signing key must correspond to manifest_id. If Chrome is not in IWA dev
 mode, the installation will fail, regardless of the state of the allowlist.*/
-pub type PwaInstall = ();
+pub type PwaInstallParams = ();
+/** Installs the given manifest identity, optionally using the given install_url
+or IWA bundle location.
+
+TODO(crbug.com/337872319) Support IWA to meet the following specific
+requirement.
+IWA-specific install description: If the manifest_id is isolated-app://,
+install_url_or_bundle_url is required, and can be either an http(s) URL or
+file:// URL pointing to a signed web bundle (.swbn). The .swbn file's
+signing key must correspond to manifest_id. If Chrome is not in IWA dev
+mode, the installation will fail, regardless of the state of the allowlist.*/
+pub type PwaInstallResults = ();
 /// Uninstalls the given manifest_id and closes any opened app windows.
-pub type PwaUninstall = ();
+pub type PwaUninstallParams = ();
+/// Uninstalls the given manifest_id and closes any opened app windows.
+pub type PwaUninstallResults = ();
 /** Launches the installed web app, or an url in the same web app instead of the
 default start url if it is provided. Returns a page Target.TargetID which
 can be used to attach to via Target.attachToTarget or similar APIs.*/
-pub type PwaLaunch = ();
+pub type PwaLaunchParams = ();
+/** Launches the installed web app, or an url in the same web app instead of the
+default start url if it is provided. Returns a page Target.TargetID which
+can be used to attach to via Target.attachToTarget or similar APIs.*/
+pub type PwaLaunchResults = ();
 /** Opens one or more local files from an installed web app identified by its
 manifestId. The web app needs to have file handlers registered to process
 the files. The API returns one or more page Target.TargetIDs which can be
@@ -42,11 +61,29 @@ Target.TargetID may represent a page handling one or more files. The order
 of the returned Target.TargetIDs is not guaranteed.
 
 TODO(crbug.com/339454034): Check the existences of the input files.*/
-pub type PwaLaunchFilesInApp = ();
+pub type PwaLaunchFilesInAppParams = ();
+/** Opens one or more local files from an installed web app identified by its
+manifestId. The web app needs to have file handlers registered to process
+the files. The API returns one or more page Target.TargetIDs which can be
+used to attach to via Target.attachToTarget or similar APIs.
+If some files in the parameters cannot be handled by the web app, they will
+be ignored. If none of the files can be handled, this API returns an error.
+If no files are provided as the parameter, this API also returns an error.
+
+According to the definition of the file handlers in the manifest file, one
+Target.TargetID may represent a page handling one or more files. The order
+of the returned Target.TargetIDs is not guaranteed.
+
+TODO(crbug.com/339454034): Check the existences of the input files.*/
+pub type PwaLaunchFilesInAppResults = ();
 /** Opens the current page in its web app identified by the manifest id, needs
 to be called on a page target. This function returns immediately without
 waiting for the app to finish loading.*/
-pub type PwaOpenCurrentPageInApp = ();
+pub type PwaOpenCurrentPageInAppParams = ();
+/** Opens the current page in its web app identified by the manifest id, needs
+to be called on a page target. This function returns immediately without
+waiting for the app to finish loading.*/
+pub type PwaOpenCurrentPageInAppResults = ();
 /** Changes user settings of the web app identified by its manifestId. If the
 app was not installed, this command returns an error. Unset parameters will
 be ignored; unrecognized values will cause an error.
@@ -56,4 +93,14 @@ settings are provided by the browser and controlled by the users, they
 impact the way the browser handling the web apps.
 
 See the comment of each parameter.*/
-pub type PwaChangeAppUserSettings = ();
+pub type PwaChangeAppUserSettingsParams = ();
+/** Changes user settings of the web app identified by its manifestId. If the
+app was not installed, this command returns an error. Unset parameters will
+be ignored; unrecognized values will cause an error.
+
+Unlike the ones defined in the manifest files of the web apps, these
+settings are provided by the browser and controlled by the users, they
+impact the way the browser handling the web apps.
+
+See the comment of each parameter.*/
+pub type PwaChangeAppUserSettingsResults = ();

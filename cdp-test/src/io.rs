@@ -3,8 +3,14 @@ use crate::common::*;
 `<uuid>` is an UUID of a Blob.*/
 pub struct StreamHandle(String);
 /// Close the stream, discard any temporary backing storage.
-pub type IoClose = ();
+pub type IoCloseParams = ();
+/// Close the stream, discard any temporary backing storage.
+pub type IoCloseResults = ();
 /// Read a chunk of the stream
-pub type IoRead = ();
+pub type IoReadParams = ();
+/// Read a chunk of the stream
+pub type IoReadResults = ();
 /// Return UUID of Blob object specified by a remote object id.
-pub type IoResolveBlob = ();
+pub type IoResolveBlobParams = ();
+/// Return UUID of Blob object specified by a remote object id.
+pub type IoResolveBlobResults = ();

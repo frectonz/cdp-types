@@ -98,58 +98,115 @@ pub enum PrivacySandboxApi {
 }
 /// ⚠️ Experimental
 /// Set permission settings for given origin.
-pub type BrowserSetPermission = ();
+pub type BrowserSetPermissionParams = ();
+/// ⚠️ Experimental
+/// Set permission settings for given origin.
+pub type BrowserSetPermissionResults = ();
 /// ⚠️ Experimental
 /// Grant specific permissions to the given origin and reject all others.
-pub type BrowserGrantPermissions = ();
+pub type BrowserGrantPermissionsParams = ();
+/// ⚠️ Experimental
+/// Grant specific permissions to the given origin and reject all others.
+pub type BrowserGrantPermissionsResults = ();
 /// Reset all permission management for all origins.
-pub type BrowserResetPermissions = ();
+pub type BrowserResetPermissionsParams = ();
+/// Reset all permission management for all origins.
+pub type BrowserResetPermissionsResults = ();
 /// ⚠️ Experimental
 /// Set the behavior when downloading a file.
-pub type BrowserSetDownloadBehavior = ();
+pub type BrowserSetDownloadBehaviorParams = ();
+/// ⚠️ Experimental
+/// Set the behavior when downloading a file.
+pub type BrowserSetDownloadBehaviorResults = ();
 /// ⚠️ Experimental
 /// Cancel a download if in progress
-pub type BrowserCancelDownload = ();
+pub type BrowserCancelDownloadParams = ();
+/// ⚠️ Experimental
+/// Cancel a download if in progress
+pub type BrowserCancelDownloadResults = ();
 /// Close browser gracefully.
-pub type BrowserClose = ();
+pub type BrowserCloseParams = ();
+/// Close browser gracefully.
+pub type BrowserCloseResults = ();
 /// ⚠️ Experimental
 /// Crashes browser on the main thread.
-pub type BrowserCrash = ();
+pub type BrowserCrashParams = ();
+/// ⚠️ Experimental
+/// Crashes browser on the main thread.
+pub type BrowserCrashResults = ();
 /// ⚠️ Experimental
 /// Crashes GPU process.
-pub type BrowserCrashGpuProcess = ();
+pub type BrowserCrashGpuProcessParams = ();
+/// ⚠️ Experimental
+/// Crashes GPU process.
+pub type BrowserCrashGpuProcessResults = ();
 /// Returns version information.
-pub type BrowserGetVersion = ();
+pub type BrowserGetVersionParams = ();
+/// Returns version information.
+pub type BrowserGetVersionResults = ();
 /// ⚠️ Experimental
 /** Returns the command line switches for the browser process if, and only if
 --enable-automation is on the commandline.*/
-pub type BrowserGetBrowserCommandLine = ();
+pub type BrowserGetBrowserCommandLineParams = ();
+/// ⚠️ Experimental
+/** Returns the command line switches for the browser process if, and only if
+--enable-automation is on the commandline.*/
+pub type BrowserGetBrowserCommandLineResults = ();
 /// ⚠️ Experimental
 /// Get Chrome histograms.
-pub type BrowserGetHistograms = ();
+pub type BrowserGetHistogramsParams = ();
+/// ⚠️ Experimental
+/// Get Chrome histograms.
+pub type BrowserGetHistogramsResults = ();
 /// ⚠️ Experimental
 /// Get a Chrome histogram by name.
-pub type BrowserGetHistogram = ();
+pub type BrowserGetHistogramParams = ();
+/// ⚠️ Experimental
+/// Get a Chrome histogram by name.
+pub type BrowserGetHistogramResults = ();
 /// ⚠️ Experimental
 /// Get position and size of the browser window.
-pub type BrowserGetWindowBounds = ();
+pub type BrowserGetWindowBoundsParams = ();
+/// ⚠️ Experimental
+/// Get position and size of the browser window.
+pub type BrowserGetWindowBoundsResults = ();
 /// ⚠️ Experimental
 /// Get the browser window that contains the devtools target.
-pub type BrowserGetWindowForTarget = ();
+pub type BrowserGetWindowForTargetParams = ();
+/// ⚠️ Experimental
+/// Get the browser window that contains the devtools target.
+pub type BrowserGetWindowForTargetResults = ();
 /// ⚠️ Experimental
 /// Set position and/or size of the browser window.
-pub type BrowserSetWindowBounds = ();
+pub type BrowserSetWindowBoundsParams = ();
+/// ⚠️ Experimental
+/// Set position and/or size of the browser window.
+pub type BrowserSetWindowBoundsResults = ();
 /// ⚠️ Experimental
 /// Set dock tile details, platform-specific.
-pub type BrowserSetDockTile = ();
+pub type BrowserSetDockTileParams = ();
+/// ⚠️ Experimental
+/// Set dock tile details, platform-specific.
+pub type BrowserSetDockTileResults = ();
 /// ⚠️ Experimental
 /// Invoke custom browser commands used by telemetry.
-pub type BrowserExecuteBrowserCommand = ();
+pub type BrowserExecuteBrowserCommandParams = ();
+/// ⚠️ Experimental
+/// Invoke custom browser commands used by telemetry.
+pub type BrowserExecuteBrowserCommandResults = ();
 /** Allows a site to use privacy sandbox features that require enrollment
 without the site actually being enrolled. Only supported on page targets.*/
-pub type BrowserAddPrivacySandboxEnrollmentOverride = ();
+pub type BrowserAddPrivacySandboxEnrollmentOverrideParams = ();
+/** Allows a site to use privacy sandbox features that require enrollment
+without the site actually being enrolled. Only supported on page targets.*/
+pub type BrowserAddPrivacySandboxEnrollmentOverrideResults = ();
 /** Configures encryption keys used with a given privacy sandbox API to talk
 to a trusted coordinator.  Since this is intended for test automation only,
 coordinatorOrigin must be a .test domain. No existing coordinator
 configuration for the origin may exist.*/
-pub type BrowserAddPrivacySandboxCoordinatorKeyConfig = ();
+pub type BrowserAddPrivacySandboxCoordinatorKeyConfigParams = ();
+/** Configures encryption keys used with a given privacy sandbox API to talk
+to a trusted coordinator.  Since this is intended for test automation only,
+coordinatorOrigin must be a .test domain. No existing coordinator
+configuration for the origin may exist.*/
+pub type BrowserAddPrivacySandboxCoordinatorKeyConfigResults = ();

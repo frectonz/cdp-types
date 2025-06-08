@@ -28,12 +28,22 @@ pub struct CachedResponse {
     pub body: String,
 }
 /// Deletes a cache.
-pub type CacheStorageDeleteCache = ();
+pub type CacheStorageDeleteCacheParams = ();
+/// Deletes a cache.
+pub type CacheStorageDeleteCacheResults = ();
 /// Deletes a cache entry.
-pub type CacheStorageDeleteEntry = ();
+pub type CacheStorageDeleteEntryParams = ();
+/// Deletes a cache entry.
+pub type CacheStorageDeleteEntryResults = ();
 /// Requests cache names.
-pub type CacheStorageRequestCacheNames = ();
+pub type CacheStorageRequestCacheNamesParams = ();
+/// Requests cache names.
+pub type CacheStorageRequestCacheNamesResults = ();
 /// Fetches cache entry.
-pub type CacheStorageRequestCachedResponse = ();
+pub type CacheStorageRequestCachedResponseParams = ();
+/// Fetches cache entry.
+pub type CacheStorageRequestCachedResponseResults = ();
 /// Requests data from cache.
-pub type CacheStorageRequestEntries = ();
+pub type CacheStorageRequestEntriesParams = ();
+/// Requests data from cache.
+pub type CacheStorageRequestEntriesResults = ();

@@ -154,157 +154,313 @@ pub struct Rect {
 }
 /// ⚠️ Experimental
 /// Collects class names for the node with given id and all of it's child nodes.
-pub type DomCollectClassNamesFromSubtree = ();
+pub type DomCollectClassNamesFromSubtreeParams = ();
+/// ⚠️ Experimental
+/// Collects class names for the node with given id and all of it's child nodes.
+pub type DomCollectClassNamesFromSubtreeResults = ();
 /// ⚠️ Experimental
 /** Creates a deep copy of the specified node and places it into the target container before the
 given anchor.*/
-pub type DomCopyTo = ();
+pub type DomCopyToParams = ();
+/// ⚠️ Experimental
+/** Creates a deep copy of the specified node and places it into the target container before the
+given anchor.*/
+pub type DomCopyToResults = ();
 /** Describes node given its id, does not require domain to be enabled. Does not start tracking any
 objects, can be used for automation.*/
-pub type DomDescribeNode = ();
+pub type DomDescribeNodeParams = ();
+/** Describes node given its id, does not require domain to be enabled. Does not start tracking any
+objects, can be used for automation.*/
+pub type DomDescribeNodeResults = ();
 /** Scrolls the specified rect of the given node into view if not already visible.
 Note: exactly one between nodeId, backendNodeId and objectId should be passed
 to identify the node.*/
-pub type DomScrollIntoViewIfNeeded = ();
+pub type DomScrollIntoViewIfNeededParams = ();
+/** Scrolls the specified rect of the given node into view if not already visible.
+Note: exactly one between nodeId, backendNodeId and objectId should be passed
+to identify the node.*/
+pub type DomScrollIntoViewIfNeededResults = ();
 /// Disables DOM agent for the given page.
-pub type DomDisable = ();
+pub type DomDisableParams = ();
+/// Disables DOM agent for the given page.
+pub type DomDisableResults = ();
 /// ⚠️ Experimental
 /** Discards search results from the session with the given id. `getSearchResults` should no longer
 be called for that search.*/
-pub type DomDiscardSearchResults = ();
+pub type DomDiscardSearchResultsParams = ();
+/// ⚠️ Experimental
+/** Discards search results from the session with the given id. `getSearchResults` should no longer
+be called for that search.*/
+pub type DomDiscardSearchResultsResults = ();
 /// Enables DOM agent for the given page.
-pub type DomEnable = ();
+pub type DomEnableParams = ();
+/// Enables DOM agent for the given page.
+pub type DomEnableResults = ();
 /// Focuses the given element.
-pub type DomFocus = ();
+pub type DomFocusParams = ();
+/// Focuses the given element.
+pub type DomFocusResults = ();
 /// Returns attributes for the specified node.
-pub type DomGetAttributes = ();
+pub type DomGetAttributesParams = ();
+/// Returns attributes for the specified node.
+pub type DomGetAttributesResults = ();
 /// Returns boxes for the given node.
-pub type DomGetBoxModel = ();
+pub type DomGetBoxModelParams = ();
+/// Returns boxes for the given node.
+pub type DomGetBoxModelResults = ();
 /// ⚠️ Experimental
 /** Returns quads that describe node position on the page. This method
 might return multiple quads for inline nodes.*/
-pub type DomGetContentQuads = ();
+pub type DomGetContentQuadsParams = ();
+/// ⚠️ Experimental
+/** Returns quads that describe node position on the page. This method
+might return multiple quads for inline nodes.*/
+pub type DomGetContentQuadsResults = ();
 /** Returns the root DOM node (and optionally the subtree) to the caller.
 Implicitly enables the DOM domain events for the current target.*/
-pub type DomGetDocument = ();
+pub type DomGetDocumentParams = ();
+/** Returns the root DOM node (and optionally the subtree) to the caller.
+Implicitly enables the DOM domain events for the current target.*/
+pub type DomGetDocumentResults = ();
 #[deprecated]
 /** Returns the root DOM node (and optionally the subtree) to the caller.
 Deprecated, as it is not designed to work well with the rest of the DOM agent.
 Use DOMSnapshot.captureSnapshot instead.*/
-pub type DomGetFlattenedDocument = ();
+pub type DomGetFlattenedDocumentParams = ();
+#[deprecated]
+/** Returns the root DOM node (and optionally the subtree) to the caller.
+Deprecated, as it is not designed to work well with the rest of the DOM agent.
+Use DOMSnapshot.captureSnapshot instead.*/
+pub type DomGetFlattenedDocumentResults = ();
 /// ⚠️ Experimental
 /// Finds nodes with a given computed style in a subtree.
-pub type DomGetNodesForSubtreeByStyle = ();
+pub type DomGetNodesForSubtreeByStyleParams = ();
+/// ⚠️ Experimental
+/// Finds nodes with a given computed style in a subtree.
+pub type DomGetNodesForSubtreeByStyleResults = ();
 /** Returns node id at given location. Depending on whether DOM domain is enabled, nodeId is
 either returned or not.*/
-pub type DomGetNodeForLocation = ();
+pub type DomGetNodeForLocationParams = ();
+/** Returns node id at given location. Depending on whether DOM domain is enabled, nodeId is
+either returned or not.*/
+pub type DomGetNodeForLocationResults = ();
 /// Returns node's HTML markup.
-pub type DomGetOuterHtml = ();
+pub type DomGetOuterHtmlParams = ();
+/// Returns node's HTML markup.
+pub type DomGetOuterHtmlResults = ();
 /// ⚠️ Experimental
 /// Returns the id of the nearest ancestor that is a relayout boundary.
-pub type DomGetRelayoutBoundary = ();
+pub type DomGetRelayoutBoundaryParams = ();
+/// ⚠️ Experimental
+/// Returns the id of the nearest ancestor that is a relayout boundary.
+pub type DomGetRelayoutBoundaryResults = ();
 /// ⚠️ Experimental
 /** Returns search results from given `fromIndex` to given `toIndex` from the search with the given
 identifier.*/
-pub type DomGetSearchResults = ();
+pub type DomGetSearchResultsParams = ();
+/// ⚠️ Experimental
+/** Returns search results from given `fromIndex` to given `toIndex` from the search with the given
+identifier.*/
+pub type DomGetSearchResultsResults = ();
 /// Hides any highlight.
-pub type DomHideHighlight = ();
+pub type DomHideHighlightParams = ();
+/// Hides any highlight.
+pub type DomHideHighlightResults = ();
 /// Highlights DOM node.
-pub type DomHighlightNode = ();
+pub type DomHighlightNodeParams = ();
+/// Highlights DOM node.
+pub type DomHighlightNodeResults = ();
 /// Highlights given rectangle.
-pub type DomHighlightRect = ();
+pub type DomHighlightRectParams = ();
+/// Highlights given rectangle.
+pub type DomHighlightRectResults = ();
 /// ⚠️ Experimental
 /// Marks last undoable state.
-pub type DomMarkUndoableState = ();
+pub type DomMarkUndoableStateParams = ();
+/// ⚠️ Experimental
+/// Marks last undoable state.
+pub type DomMarkUndoableStateResults = ();
 /// Moves node into the new container, places it before the given anchor.
-pub type DomMoveTo = ();
+pub type DomMoveToParams = ();
+/// Moves node into the new container, places it before the given anchor.
+pub type DomMoveToResults = ();
 /// ⚠️ Experimental
 /** Searches for a given string in the DOM tree. Use `getSearchResults` to access search results or
 `cancelSearch` to end this search session.*/
-pub type DomPerformSearch = ();
+pub type DomPerformSearchParams = ();
+/// ⚠️ Experimental
+/** Searches for a given string in the DOM tree. Use `getSearchResults` to access search results or
+`cancelSearch` to end this search session.*/
+pub type DomPerformSearchResults = ();
 /// ⚠️ Experimental
 /// Requests that the node is sent to the caller given its path. // FIXME, use XPath
-pub type DomPushNodeByPathToFrontend = ();
+pub type DomPushNodeByPathToFrontendParams = ();
+/// ⚠️ Experimental
+/// Requests that the node is sent to the caller given its path. // FIXME, use XPath
+pub type DomPushNodeByPathToFrontendResults = ();
 /// ⚠️ Experimental
 /// Requests that a batch of nodes is sent to the caller given their backend node ids.
-pub type DomPushNodesByBackendIdsToFrontend = ();
+pub type DomPushNodesByBackendIdsToFrontendParams = ();
+/// ⚠️ Experimental
+/// Requests that a batch of nodes is sent to the caller given their backend node ids.
+pub type DomPushNodesByBackendIdsToFrontendResults = ();
 /// Executes `querySelector` on a given node.
-pub type DomQuerySelector = ();
+pub type DomQuerySelectorParams = ();
+/// Executes `querySelector` on a given node.
+pub type DomQuerySelectorResults = ();
 /// Executes `querySelectorAll` on a given node.
-pub type DomQuerySelectorAll = ();
+pub type DomQuerySelectorAllParams = ();
+/// Executes `querySelectorAll` on a given node.
+pub type DomQuerySelectorAllResults = ();
 /// ⚠️ Experimental
 /** Returns NodeIds of current top layer elements.
 Top layer is rendered closest to the user within a viewport, therefore its elements always
 appear on top of all other content.*/
-pub type DomGetTopLayerElements = ();
+pub type DomGetTopLayerElementsParams = ();
+/// ⚠️ Experimental
+/** Returns NodeIds of current top layer elements.
+Top layer is rendered closest to the user within a viewport, therefore its elements always
+appear on top of all other content.*/
+pub type DomGetTopLayerElementsResults = ();
 /// ⚠️ Experimental
 /// Returns the NodeId of the matched element according to certain relations.
-pub type DomGetElementByRelation = ();
+pub type DomGetElementByRelationParams = ();
+/// ⚠️ Experimental
+/// Returns the NodeId of the matched element according to certain relations.
+pub type DomGetElementByRelationResults = ();
 /// ⚠️ Experimental
 /// Re-does the last undone action.
-pub type DomRedo = ();
+pub type DomRedoParams = ();
+/// ⚠️ Experimental
+/// Re-does the last undone action.
+pub type DomRedoResults = ();
 /// Removes attribute with given name from an element with given id.
-pub type DomRemoveAttribute = ();
+pub type DomRemoveAttributeParams = ();
+/// Removes attribute with given name from an element with given id.
+pub type DomRemoveAttributeResults = ();
 /// Removes node with given id.
-pub type DomRemoveNode = ();
+pub type DomRemoveNodeParams = ();
+/// Removes node with given id.
+pub type DomRemoveNodeResults = ();
 /** Requests that children of the node with given id are returned to the caller in form of
 `setChildNodes` events where not only immediate children are retrieved, but all children down to
 the specified depth.*/
-pub type DomRequestChildNodes = ();
+pub type DomRequestChildNodesParams = ();
+/** Requests that children of the node with given id are returned to the caller in form of
+`setChildNodes` events where not only immediate children are retrieved, but all children down to
+the specified depth.*/
+pub type DomRequestChildNodesResults = ();
 /** Requests that the node is sent to the caller given the JavaScript node object reference. All
 nodes that form the path from the node to the root are also sent to the client as a series of
 `setChildNodes` notifications.*/
-pub type DomRequestNode = ();
+pub type DomRequestNodeParams = ();
+/** Requests that the node is sent to the caller given the JavaScript node object reference. All
+nodes that form the path from the node to the root are also sent to the client as a series of
+`setChildNodes` notifications.*/
+pub type DomRequestNodeResults = ();
 /// Resolves the JavaScript node object for a given NodeId or BackendNodeId.
-pub type DomResolveNode = ();
+pub type DomResolveNodeParams = ();
+/// Resolves the JavaScript node object for a given NodeId or BackendNodeId.
+pub type DomResolveNodeResults = ();
 /// Sets attribute for an element with given id.
-pub type DomSetAttributeValue = ();
+pub type DomSetAttributeValueParams = ();
+/// Sets attribute for an element with given id.
+pub type DomSetAttributeValueResults = ();
 /** Sets attributes on element with given id. This method is useful when user edits some existing
 attribute value and types in several attribute name/value pairs.*/
-pub type DomSetAttributesAsText = ();
+pub type DomSetAttributesAsTextParams = ();
+/** Sets attributes on element with given id. This method is useful when user edits some existing
+attribute value and types in several attribute name/value pairs.*/
+pub type DomSetAttributesAsTextResults = ();
 /// Sets files for the given file input element.
-pub type DomSetFileInputFiles = ();
+pub type DomSetFileInputFilesParams = ();
+/// Sets files for the given file input element.
+pub type DomSetFileInputFilesResults = ();
 /// ⚠️ Experimental
 /// Sets if stack traces should be captured for Nodes. See `Node.getNodeStackTraces`. Default is disabled.
-pub type DomSetNodeStackTracesEnabled = ();
+pub type DomSetNodeStackTracesEnabledParams = ();
+/// ⚠️ Experimental
+/// Sets if stack traces should be captured for Nodes. See `Node.getNodeStackTraces`. Default is disabled.
+pub type DomSetNodeStackTracesEnabledResults = ();
 /// ⚠️ Experimental
 /// Gets stack traces associated with a Node. As of now, only provides stack trace for Node creation.
-pub type DomGetNodeStackTraces = ();
+pub type DomGetNodeStackTracesParams = ();
+/// ⚠️ Experimental
+/// Gets stack traces associated with a Node. As of now, only provides stack trace for Node creation.
+pub type DomGetNodeStackTracesResults = ();
 /// ⚠️ Experimental
 /** Returns file information for the given
 File wrapper.*/
-pub type DomGetFileInfo = ();
+pub type DomGetFileInfoParams = ();
+/// ⚠️ Experimental
+/** Returns file information for the given
+File wrapper.*/
+pub type DomGetFileInfoResults = ();
 /// ⚠️ Experimental
 /// Returns list of detached nodes
-pub type DomGetDetachedDomNodes = ();
+pub type DomGetDetachedDomNodesParams = ();
+/// ⚠️ Experimental
+/// Returns list of detached nodes
+pub type DomGetDetachedDomNodesResults = ();
 /// ⚠️ Experimental
 /** Enables console to refer to the node with given id via $x (see Command Line API for more details
 $x functions).*/
-pub type DomSetInspectedNode = ();
+pub type DomSetInspectedNodeParams = ();
+/// ⚠️ Experimental
+/** Enables console to refer to the node with given id via $x (see Command Line API for more details
+$x functions).*/
+pub type DomSetInspectedNodeResults = ();
 /// Sets node name for a node with given id.
-pub type DomSetNodeName = ();
+pub type DomSetNodeNameParams = ();
+/// Sets node name for a node with given id.
+pub type DomSetNodeNameResults = ();
 /// Sets node value for a node with given id.
-pub type DomSetNodeValue = ();
+pub type DomSetNodeValueParams = ();
+/// Sets node value for a node with given id.
+pub type DomSetNodeValueResults = ();
 /// Sets node HTML markup, returns new node id.
-pub type DomSetOuterHtml = ();
+pub type DomSetOuterHtmlParams = ();
+/// Sets node HTML markup, returns new node id.
+pub type DomSetOuterHtmlResults = ();
 /// ⚠️ Experimental
 /// Undoes the last performed action.
-pub type DomUndo = ();
+pub type DomUndoParams = ();
+/// ⚠️ Experimental
+/// Undoes the last performed action.
+pub type DomUndoResults = ();
 /// ⚠️ Experimental
 /// Returns iframe node that owns iframe with the given domain.
-pub type DomGetFrameOwner = ();
+pub type DomGetFrameOwnerParams = ();
+/// ⚠️ Experimental
+/// Returns iframe node that owns iframe with the given domain.
+pub type DomGetFrameOwnerResults = ();
 /// ⚠️ Experimental
 /** Returns the query container of the given node based on container query
 conditions: containerName, physical and logical axes, and whether it queries
 scroll-state. If no axes are provided and queriesScrollState is false, the
 style container is returned, which is the direct parent or the closest
 element with a matching container-name.*/
-pub type DomGetContainerForNode = ();
+pub type DomGetContainerForNodeParams = ();
+/// ⚠️ Experimental
+/** Returns the query container of the given node based on container query
+conditions: containerName, physical and logical axes, and whether it queries
+scroll-state. If no axes are provided and queriesScrollState is false, the
+style container is returned, which is the direct parent or the closest
+element with a matching container-name.*/
+pub type DomGetContainerForNodeResults = ();
 /// ⚠️ Experimental
 /** Returns the descendants of a container query container that have
 container queries against this container.*/
-pub type DomGetQueryingDescendantsForContainer = ();
+pub type DomGetQueryingDescendantsForContainerParams = ();
+/// ⚠️ Experimental
+/** Returns the descendants of a container query container that have
+container queries against this container.*/
+pub type DomGetQueryingDescendantsForContainerResults = ();
 /// ⚠️ Experimental
 /** Returns the target anchor element of the given anchor query according to
 https://www.w3.org/TR/css-anchor-position-1/#target.*/
-pub type DomGetAnchorElement = ();
+pub type DomGetAnchorElementParams = ();
+/// ⚠️ Experimental
+/** Returns the target anchor element of the given anchor query according to
+https://www.w3.org/TR/css-anchor-position-1/#target.*/
+pub type DomGetAnchorElementResults = ();

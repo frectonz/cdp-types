@@ -26,27 +26,52 @@ pub struct EventListener {
     pub backend_node_id: Box<BackendNodeId>,
 }
 /// Returns event listeners of the given object.
-pub type DomDebuggerGetEventListeners = ();
+pub type DomDebuggerGetEventListenersParams = ();
+/// Returns event listeners of the given object.
+pub type DomDebuggerGetEventListenersResults = ();
 /// Removes DOM breakpoint that was set using `setDOMBreakpoint`.
-pub type DomDebuggerRemoveDomBreakpoint = ();
+pub type DomDebuggerRemoveDomBreakpointParams = ();
+/// Removes DOM breakpoint that was set using `setDOMBreakpoint`.
+pub type DomDebuggerRemoveDomBreakpointResults = ();
 /// Removes breakpoint on particular DOM event.
-pub type DomDebuggerRemoveEventListenerBreakpoint = ();
+pub type DomDebuggerRemoveEventListenerBreakpointParams = ();
+/// Removes breakpoint on particular DOM event.
+pub type DomDebuggerRemoveEventListenerBreakpointResults = ();
 #[deprecated]
 /// ⚠️ Experimental
 /// Removes breakpoint on particular native event.
-pub type DomDebuggerRemoveInstrumentationBreakpoint = ();
+pub type DomDebuggerRemoveInstrumentationBreakpointParams = ();
+#[deprecated]
+/// ⚠️ Experimental
+/// Removes breakpoint on particular native event.
+pub type DomDebuggerRemoveInstrumentationBreakpointResults = ();
 /// Removes breakpoint from XMLHttpRequest.
-pub type DomDebuggerRemoveXhrBreakpoint = ();
+pub type DomDebuggerRemoveXhrBreakpointParams = ();
+/// Removes breakpoint from XMLHttpRequest.
+pub type DomDebuggerRemoveXhrBreakpointResults = ();
 /// ⚠️ Experimental
 /// Sets breakpoint on particular CSP violations.
-pub type DomDebuggerSetBreakOnCspViolation = ();
+pub type DomDebuggerSetBreakOnCspViolationParams = ();
+/// ⚠️ Experimental
+/// Sets breakpoint on particular CSP violations.
+pub type DomDebuggerSetBreakOnCspViolationResults = ();
 /// Sets breakpoint on particular operation with DOM.
-pub type DomDebuggerSetDomBreakpoint = ();
+pub type DomDebuggerSetDomBreakpointParams = ();
+/// Sets breakpoint on particular operation with DOM.
+pub type DomDebuggerSetDomBreakpointResults = ();
 /// Sets breakpoint on particular DOM event.
-pub type DomDebuggerSetEventListenerBreakpoint = ();
+pub type DomDebuggerSetEventListenerBreakpointParams = ();
+/// Sets breakpoint on particular DOM event.
+pub type DomDebuggerSetEventListenerBreakpointResults = ();
 #[deprecated]
 /// ⚠️ Experimental
 /// Sets breakpoint on particular native event.
-pub type DomDebuggerSetInstrumentationBreakpoint = ();
+pub type DomDebuggerSetInstrumentationBreakpointParams = ();
+#[deprecated]
+/// ⚠️ Experimental
+/// Sets breakpoint on particular native event.
+pub type DomDebuggerSetInstrumentationBreakpointResults = ();
 /// Sets breakpoint on XMLHttpRequest.
-pub type DomDebuggerSetXhrBreakpoint = ();
+pub type DomDebuggerSetXhrBreakpointParams = ();
+/// Sets breakpoint on XMLHttpRequest.
+pub type DomDebuggerSetXhrBreakpointResults = ();

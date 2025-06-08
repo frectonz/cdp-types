@@ -43,16 +43,29 @@ pub struct ServiceWorkerErrorMessage {
     pub line_number: i64,
     pub column_number: i64,
 }
-pub type ServiceWorkerDeliverPushMessage = ();
-pub type ServiceWorkerDisable = ();
-pub type ServiceWorkerDispatchSyncEvent = ();
-pub type ServiceWorkerDispatchPeriodicSyncEvent = ();
-pub type ServiceWorkerEnable = ();
-pub type ServiceWorkerInspectWorker = ();
-pub type ServiceWorkerSetForceUpdateOnPageLoad = ();
-pub type ServiceWorkerSkipWaiting = ();
-pub type ServiceWorkerStartWorker = ();
-pub type ServiceWorkerStopAllWorkers = ();
-pub type ServiceWorkerStopWorker = ();
-pub type ServiceWorkerUnregister = ();
-pub type ServiceWorkerUpdateRegistration = ();
+pub type ServiceWorkerDeliverPushMessageParams = ();
+pub type ServiceWorkerDeliverPushMessageResults = ();
+pub type ServiceWorkerDisableParams = ();
+pub type ServiceWorkerDisableResults = ();
+pub type ServiceWorkerDispatchSyncEventParams = ();
+pub type ServiceWorkerDispatchSyncEventResults = ();
+pub type ServiceWorkerDispatchPeriodicSyncEventParams = ();
+pub type ServiceWorkerDispatchPeriodicSyncEventResults = ();
+pub type ServiceWorkerEnableParams = ();
+pub type ServiceWorkerEnableResults = ();
+pub type ServiceWorkerInspectWorkerParams = ();
+pub type ServiceWorkerInspectWorkerResults = ();
+pub type ServiceWorkerSetForceUpdateOnPageLoadParams = ();
+pub type ServiceWorkerSetForceUpdateOnPageLoadResults = ();
+pub type ServiceWorkerSkipWaitingParams = ();
+pub type ServiceWorkerSkipWaitingResults = ();
+pub type ServiceWorkerStartWorkerParams = ();
+pub type ServiceWorkerStartWorkerResults = ();
+pub type ServiceWorkerStopAllWorkersParams = ();
+pub type ServiceWorkerStopAllWorkersResults = ();
+pub type ServiceWorkerStopWorkerParams = ();
+pub type ServiceWorkerStopWorkerResults = ();
+pub type ServiceWorkerUnregisterParams = ();
+pub type ServiceWorkerUnregisterResults = ();
+pub type ServiceWorkerUpdateRegistrationParams = ();
+pub type ServiceWorkerUpdateRegistrationResults = ();

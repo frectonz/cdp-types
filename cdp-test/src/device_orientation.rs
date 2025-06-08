@@ -1,5 +1,9 @@
 use crate::common::*;
 /// Clears the overridden Device Orientation.
-pub type DeviceOrientationClearDeviceOrientationOverride = ();
+pub type DeviceOrientationClearDeviceOrientationOverrideParams = ();
+/// Clears the overridden Device Orientation.
+pub type DeviceOrientationClearDeviceOrientationOverrideResults = ();
 /// Overrides the Device Orientation.
-pub type DeviceOrientationSetDeviceOrientationOverride = ();
+pub type DeviceOrientationSetDeviceOrientationOverrideParams = ();
+/// Overrides the Device Orientation.
+pub type DeviceOrientationSetDeviceOrientationOverrideResults = ();

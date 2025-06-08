@@ -42,20 +42,38 @@ pub struct KeyPath {
     pub array: Vec<String>,
 }
 /// Clears all entries from an object store.
-pub type IndexedDbClearObjectStore = ();
+pub type IndexedDbClearObjectStoreParams = ();
+/// Clears all entries from an object store.
+pub type IndexedDbClearObjectStoreResults = ();
 /// Deletes a database.
-pub type IndexedDbDeleteDatabase = ();
+pub type IndexedDbDeleteDatabaseParams = ();
+/// Deletes a database.
+pub type IndexedDbDeleteDatabaseResults = ();
 /// Delete a range of entries from an object store
-pub type IndexedDbDeleteObjectStoreEntries = ();
+pub type IndexedDbDeleteObjectStoreEntriesParams = ();
+/// Delete a range of entries from an object store
+pub type IndexedDbDeleteObjectStoreEntriesResults = ();
 /// Disables events from backend.
-pub type IndexedDbDisable = ();
+pub type IndexedDbDisableParams = ();
+/// Disables events from backend.
+pub type IndexedDbDisableResults = ();
 /// Enables events from backend.
-pub type IndexedDbEnable = ();
+pub type IndexedDbEnableParams = ();
+/// Enables events from backend.
+pub type IndexedDbEnableResults = ();
 /// Requests data from object store or index.
-pub type IndexedDbRequestData = ();
+pub type IndexedDbRequestDataParams = ();
+/// Requests data from object store or index.
+pub type IndexedDbRequestDataResults = ();
 /// Gets metadata of an object store.
-pub type IndexedDbGetMetadata = ();
+pub type IndexedDbGetMetadataParams = ();
+/// Gets metadata of an object store.
+pub type IndexedDbGetMetadataResults = ();
 /// Requests database with given name in given frame.
-pub type IndexedDbRequestDatabase = ();
+pub type IndexedDbRequestDatabaseParams = ();
+/// Requests database with given name in given frame.
+pub type IndexedDbRequestDatabaseResults = ();
 /// Requests database names for given security origin.
-pub type IndexedDbRequestDatabaseNames = ();
+pub type IndexedDbRequestDatabaseNamesParams = ();
+/// Requests database names for given security origin.
+pub type IndexedDbRequestDatabaseNamesResults = ();

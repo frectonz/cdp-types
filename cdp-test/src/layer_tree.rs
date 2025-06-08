@@ -44,19 +44,36 @@ pub struct Layer {
 /// Array of timings, one per paint step.
 pub struct PaintProfile(Vec<u64>);
 /// Provides the reasons why the given layer was composited.
-pub type LayerTreeCompositingReasons = ();
+pub type LayerTreeCompositingReasonsParams = ();
+/// Provides the reasons why the given layer was composited.
+pub type LayerTreeCompositingReasonsResults = ();
 /// Disables compositing tree inspection.
-pub type LayerTreeDisable = ();
+pub type LayerTreeDisableParams = ();
+/// Disables compositing tree inspection.
+pub type LayerTreeDisableResults = ();
 /// Enables compositing tree inspection.
-pub type LayerTreeEnable = ();
+pub type LayerTreeEnableParams = ();
+/// Enables compositing tree inspection.
+pub type LayerTreeEnableResults = ();
 /// Returns the snapshot identifier.
-pub type LayerTreeLoadSnapshot = ();
+pub type LayerTreeLoadSnapshotParams = ();
+/// Returns the snapshot identifier.
+pub type LayerTreeLoadSnapshotResults = ();
 /// Returns the layer snapshot identifier.
-pub type LayerTreeMakeSnapshot = ();
-pub type LayerTreeProfileSnapshot = ();
+pub type LayerTreeMakeSnapshotParams = ();
+/// Returns the layer snapshot identifier.
+pub type LayerTreeMakeSnapshotResults = ();
+pub type LayerTreeProfileSnapshotParams = ();
+pub type LayerTreeProfileSnapshotResults = ();
 /// Releases layer snapshot captured by the back-end.
-pub type LayerTreeReleaseSnapshot = ();
+pub type LayerTreeReleaseSnapshotParams = ();
+/// Releases layer snapshot captured by the back-end.
+pub type LayerTreeReleaseSnapshotResults = ();
 /// Replays the layer snapshot and returns the resulting bitmap.
-pub type LayerTreeReplaySnapshot = ();
+pub type LayerTreeReplaySnapshotParams = ();
+/// Replays the layer snapshot and returns the resulting bitmap.
+pub type LayerTreeReplaySnapshotResults = ();
 /// Replays the layer snapshot and returns canvas log.
-pub type LayerTreeSnapshotCommandLog = ();
+pub type LayerTreeSnapshotCommandLogParams = ();
+/// Replays the layer snapshot and returns canvas log.
+pub type LayerTreeSnapshotCommandLogResults = ();

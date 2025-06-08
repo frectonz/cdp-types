@@ -1,5 +1,9 @@
 use crate::common::*;
 /// Disables inspector domain notifications.
-pub type InspectorDisable = ();
+pub type InspectorDisableParams = ();
+/// Disables inspector domain notifications.
+pub type InspectorDisableResults = ();
 /// Enables inspector domain notifications.
-pub type InspectorEnable = ();
+pub type InspectorEnableParams = ();
+/// Enables inspector domain notifications.
+pub type InspectorEnableResults = ();

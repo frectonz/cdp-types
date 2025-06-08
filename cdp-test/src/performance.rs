@@ -5,14 +5,26 @@ pub struct Metric {
     pub value: u64,
 }
 /// Disable collecting and reporting metrics.
-pub type PerformanceDisable = ();
+pub type PerformanceDisableParams = ();
+/// Disable collecting and reporting metrics.
+pub type PerformanceDisableResults = ();
 /// Enable collecting and reporting metrics.
-pub type PerformanceEnable = ();
+pub type PerformanceEnableParams = ();
+/// Enable collecting and reporting metrics.
+pub type PerformanceEnableResults = ();
 #[deprecated]
 /// ⚠️ Experimental
 /** Sets time domain to use for collecting and reporting duration metrics.
 Note that this must be called before enabling metrics collection. Calling
 this method while metrics collection is enabled returns an error.*/
-pub type PerformanceSetTimeDomain = ();
+pub type PerformanceSetTimeDomainParams = ();
+#[deprecated]
+/// ⚠️ Experimental
+/** Sets time domain to use for collecting and reporting duration metrics.
+Note that this must be called before enabling metrics collection. Calling
+this method while metrics collection is enabled returns an error.*/
+pub type PerformanceSetTimeDomainResults = ();
 /// Retrieve current values of run-time metrics.
-pub type PerformanceGetMetrics = ();
+pub type PerformanceGetMetricsParams = ();
+/// Retrieve current values of run-time metrics.
+pub type PerformanceGetMetricsResults = ();

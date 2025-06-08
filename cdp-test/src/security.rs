@@ -86,15 +86,28 @@ pub enum CertificateErrorAction {
     Cancel,
 }
 /// Disables tracking security state changes.
-pub type SecurityDisable = ();
+pub type SecurityDisableParams = ();
+/// Disables tracking security state changes.
+pub type SecurityDisableResults = ();
 /// Enables tracking security state changes.
-pub type SecurityEnable = ();
+pub type SecurityEnableParams = ();
+/// Enables tracking security state changes.
+pub type SecurityEnableResults = ();
 /// Enable/disable whether all certificate errors should be ignored.
-pub type SecuritySetIgnoreCertificateErrors = ();
+pub type SecuritySetIgnoreCertificateErrorsParams = ();
+/// Enable/disable whether all certificate errors should be ignored.
+pub type SecuritySetIgnoreCertificateErrorsResults = ();
 #[deprecated]
 /// Handles a certificate error that fired a certificateError event.
-pub type SecurityHandleCertificateError = ();
+pub type SecurityHandleCertificateErrorParams = ();
+#[deprecated]
+/// Handles a certificate error that fired a certificateError event.
+pub type SecurityHandleCertificateErrorResults = ();
 #[deprecated]
 /** Enable/disable overriding certificate errors. If enabled, all certificate error events need to
 be handled by the DevTools client and should be answered with `handleCertificateError` commands.*/
-pub type SecuritySetOverrideCertificateErrors = ();
+pub type SecuritySetOverrideCertificateErrorsParams = ();
+#[deprecated]
+/** Enable/disable overriding certificate errors. If enabled, all certificate error events need to
+be handled by the DevTools client and should be answered with `handleCertificateError` commands.*/
+pub type SecuritySetOverrideCertificateErrorsResults = ();

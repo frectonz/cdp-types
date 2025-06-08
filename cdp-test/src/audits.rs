@@ -583,15 +583,29 @@ pub struct InspectorIssue {
 }
 /** Returns the response body and size if it were re-encoded with the specified settings. Only
 applies to images.*/
-pub type AuditsGetEncodedResponse = ();
+pub type AuditsGetEncodedResponseParams = ();
+/** Returns the response body and size if it were re-encoded with the specified settings. Only
+applies to images.*/
+pub type AuditsGetEncodedResponseResults = ();
 /// Disables issues domain, prevents further issues from being reported to the client.
-pub type AuditsDisable = ();
+pub type AuditsDisableParams = ();
+/// Disables issues domain, prevents further issues from being reported to the client.
+pub type AuditsDisableResults = ();
 /** Enables issues domain, sends the issues collected so far to the client by means of the
 `issueAdded` event.*/
-pub type AuditsEnable = ();
+pub type AuditsEnableParams = ();
+/** Enables issues domain, sends the issues collected so far to the client by means of the
+`issueAdded` event.*/
+pub type AuditsEnableResults = ();
 /** Runs the contrast check for the target page. Found issues are reported
 using Audits.issueAdded event.*/
-pub type AuditsCheckContrast = ();
+pub type AuditsCheckContrastParams = ();
+/** Runs the contrast check for the target page. Found issues are reported
+using Audits.issueAdded event.*/
+pub type AuditsCheckContrastResults = ();
 /** Runs the form issues check for the target page. Found issues are reported
 using Audits.issueAdded event.*/
-pub type AuditsCheckFormsIssues = ();
+pub type AuditsCheckFormsIssuesParams = ();
+/** Runs the form issues check for the target page. Found issues are reported
+using Audits.issueAdded event.*/
+pub type AuditsCheckFormsIssuesResults = ();

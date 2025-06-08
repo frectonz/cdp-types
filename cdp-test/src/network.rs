@@ -671,23 +671,42 @@ pub struct LoadNetworkResourceOptions {
 }
 /// ⚠️ Experimental
 /// Sets a list of content encodings that will be accepted. Empty list means no encoding is accepted.
-pub type NetworkSetAcceptedEncodings = ();
+pub type NetworkSetAcceptedEncodingsParams = ();
+/// ⚠️ Experimental
+/// Sets a list of content encodings that will be accepted. Empty list means no encoding is accepted.
+pub type NetworkSetAcceptedEncodingsResults = ();
 /// ⚠️ Experimental
 /// Clears accepted encodings set by setAcceptedEncodings
-pub type NetworkClearAcceptedEncodingsOverride = ();
+pub type NetworkClearAcceptedEncodingsOverrideParams = ();
+/// ⚠️ Experimental
+/// Clears accepted encodings set by setAcceptedEncodings
+pub type NetworkClearAcceptedEncodingsOverrideResults = ();
 #[deprecated]
 /// Tells whether clearing browser cache is supported.
-pub type NetworkCanClearBrowserCache = ();
+pub type NetworkCanClearBrowserCacheParams = ();
+#[deprecated]
+/// Tells whether clearing browser cache is supported.
+pub type NetworkCanClearBrowserCacheResults = ();
 #[deprecated]
 /// Tells whether clearing browser cookies is supported.
-pub type NetworkCanClearBrowserCookies = ();
+pub type NetworkCanClearBrowserCookiesParams = ();
+#[deprecated]
+/// Tells whether clearing browser cookies is supported.
+pub type NetworkCanClearBrowserCookiesResults = ();
 #[deprecated]
 /// Tells whether emulation of network conditions is supported.
-pub type NetworkCanEmulateNetworkConditions = ();
+pub type NetworkCanEmulateNetworkConditionsParams = ();
+#[deprecated]
+/// Tells whether emulation of network conditions is supported.
+pub type NetworkCanEmulateNetworkConditionsResults = ();
 /// Clears browser cache.
-pub type NetworkClearBrowserCache = ();
+pub type NetworkClearBrowserCacheParams = ();
+/// Clears browser cache.
+pub type NetworkClearBrowserCacheResults = ();
 /// Clears browser cookies.
-pub type NetworkClearBrowserCookies = ();
+pub type NetworkClearBrowserCookiesParams = ();
+/// Clears browser cookies.
+pub type NetworkClearBrowserCookiesResults = ();
 #[deprecated]
 /// ⚠️ Experimental
 /** Response to Network.requestIntercepted which either modifies the request to continue with any
@@ -695,85 +714,174 @@ modifications, or blocks it, or completes it with the provided response bytes. I
 fetch occurs as a result which encounters a redirect an additional Network.requestIntercepted
 event will be sent with the same InterceptionId.
 Deprecated, use Fetch.continueRequest, Fetch.fulfillRequest and Fetch.failRequest instead.*/
-pub type NetworkContinueInterceptedRequest = ();
+pub type NetworkContinueInterceptedRequestParams = ();
+#[deprecated]
+/// ⚠️ Experimental
+/** Response to Network.requestIntercepted which either modifies the request to continue with any
+modifications, or blocks it, or completes it with the provided response bytes. If a network
+fetch occurs as a result which encounters a redirect an additional Network.requestIntercepted
+event will be sent with the same InterceptionId.
+Deprecated, use Fetch.continueRequest, Fetch.fulfillRequest and Fetch.failRequest instead.*/
+pub type NetworkContinueInterceptedRequestResults = ();
 /// Deletes browser cookies with matching name and url or domain/path/partitionKey pair.
-pub type NetworkDeleteCookies = ();
+pub type NetworkDeleteCookiesParams = ();
+/// Deletes browser cookies with matching name and url or domain/path/partitionKey pair.
+pub type NetworkDeleteCookiesResults = ();
 /// Disables network tracking, prevents network events from being sent to the client.
-pub type NetworkDisable = ();
+pub type NetworkDisableParams = ();
+/// Disables network tracking, prevents network events from being sent to the client.
+pub type NetworkDisableResults = ();
 /// Activates emulation of network conditions.
-pub type NetworkEmulateNetworkConditions = ();
+pub type NetworkEmulateNetworkConditionsParams = ();
+/// Activates emulation of network conditions.
+pub type NetworkEmulateNetworkConditionsResults = ();
 /// Enables network tracking, network events will now be delivered to the client.
-pub type NetworkEnable = ();
+pub type NetworkEnableParams = ();
+/// Enables network tracking, network events will now be delivered to the client.
+pub type NetworkEnableResults = ();
 #[deprecated]
 /** Returns all browser cookies. Depending on the backend support, will return detailed cookie
 information in the `cookies` field.
 Deprecated. Use Storage.getCookies instead.*/
-pub type NetworkGetAllCookies = ();
+pub type NetworkGetAllCookiesParams = ();
+#[deprecated]
+/** Returns all browser cookies. Depending on the backend support, will return detailed cookie
+information in the `cookies` field.
+Deprecated. Use Storage.getCookies instead.*/
+pub type NetworkGetAllCookiesResults = ();
 /// ⚠️ Experimental
 /// Returns the DER-encoded certificate.
-pub type NetworkGetCertificate = ();
+pub type NetworkGetCertificateParams = ();
+/// ⚠️ Experimental
+/// Returns the DER-encoded certificate.
+pub type NetworkGetCertificateResults = ();
 /** Returns all browser cookies for the current URL. Depending on the backend support, will return
 detailed cookie information in the `cookies` field.*/
-pub type NetworkGetCookies = ();
+pub type NetworkGetCookiesParams = ();
+/** Returns all browser cookies for the current URL. Depending on the backend support, will return
+detailed cookie information in the `cookies` field.*/
+pub type NetworkGetCookiesResults = ();
 /// Returns content served for the given request.
-pub type NetworkGetResponseBody = ();
+pub type NetworkGetResponseBodyParams = ();
+/// Returns content served for the given request.
+pub type NetworkGetResponseBodyResults = ();
 /// Returns post data sent with the request. Returns an error when no data was sent with the request.
-pub type NetworkGetRequestPostData = ();
+pub type NetworkGetRequestPostDataParams = ();
+/// Returns post data sent with the request. Returns an error when no data was sent with the request.
+pub type NetworkGetRequestPostDataResults = ();
 /// ⚠️ Experimental
 /// Returns content served for the given currently intercepted request.
-pub type NetworkGetResponseBodyForInterception = ();
+pub type NetworkGetResponseBodyForInterceptionParams = ();
+/// ⚠️ Experimental
+/// Returns content served for the given currently intercepted request.
+pub type NetworkGetResponseBodyForInterceptionResults = ();
 /// ⚠️ Experimental
 /** Returns a handle to the stream representing the response body. Note that after this command,
 the intercepted request can't be continued as is -- you either need to cancel it or to provide
 the response body. The stream only supports sequential read, IO.read will fail if the position
 is specified.*/
-pub type NetworkTakeResponseBodyForInterceptionAsStream = ();
+pub type NetworkTakeResponseBodyForInterceptionAsStreamParams = ();
+/// ⚠️ Experimental
+/** Returns a handle to the stream representing the response body. Note that after this command,
+the intercepted request can't be continued as is -- you either need to cancel it or to provide
+the response body. The stream only supports sequential read, IO.read will fail if the position
+is specified.*/
+pub type NetworkTakeResponseBodyForInterceptionAsStreamResults = ();
 /// ⚠️ Experimental
 /** This method sends a new XMLHttpRequest which is identical to the original one. The following
 parameters should be identical: method, url, async, request body, extra headers, withCredentials
 attribute, user, password.*/
-pub type NetworkReplayXhr = ();
+pub type NetworkReplayXhrParams = ();
+/// ⚠️ Experimental
+/** This method sends a new XMLHttpRequest which is identical to the original one. The following
+parameters should be identical: method, url, async, request body, extra headers, withCredentials
+attribute, user, password.*/
+pub type NetworkReplayXhrResults = ();
 /// ⚠️ Experimental
 /// Searches for given string in response content.
-pub type NetworkSearchInResponseBody = ();
+pub type NetworkSearchInResponseBodyParams = ();
+/// ⚠️ Experimental
+/// Searches for given string in response content.
+pub type NetworkSearchInResponseBodyResults = ();
 /// ⚠️ Experimental
 /// Blocks URLs from loading.
-pub type NetworkSetBlockedUrLs = ();
+pub type NetworkSetBlockedUrLsParams = ();
+/// ⚠️ Experimental
+/// Blocks URLs from loading.
+pub type NetworkSetBlockedUrLsResults = ();
 /// Toggles ignoring of service worker for each request.
-pub type NetworkSetBypassServiceWorker = ();
+pub type NetworkSetBypassServiceWorkerParams = ();
+/// Toggles ignoring of service worker for each request.
+pub type NetworkSetBypassServiceWorkerResults = ();
 /// Toggles ignoring cache for each request. If `true`, cache will not be used.
-pub type NetworkSetCacheDisabled = ();
+pub type NetworkSetCacheDisabledParams = ();
+/// Toggles ignoring cache for each request. If `true`, cache will not be used.
+pub type NetworkSetCacheDisabledResults = ();
 /// Sets a cookie with the given cookie data; may overwrite equivalent cookies if they exist.
-pub type NetworkSetCookie = ();
+pub type NetworkSetCookieParams = ();
+/// Sets a cookie with the given cookie data; may overwrite equivalent cookies if they exist.
+pub type NetworkSetCookieResults = ();
 /// Sets given cookies.
-pub type NetworkSetCookies = ();
+pub type NetworkSetCookiesParams = ();
+/// Sets given cookies.
+pub type NetworkSetCookiesResults = ();
 /// Specifies whether to always send extra HTTP headers with the requests from this page.
-pub type NetworkSetExtraHttpHeaders = ();
+pub type NetworkSetExtraHttpHeadersParams = ();
+/// Specifies whether to always send extra HTTP headers with the requests from this page.
+pub type NetworkSetExtraHttpHeadersResults = ();
 /// ⚠️ Experimental
 /// Specifies whether to attach a page script stack id in requests
-pub type NetworkSetAttachDebugStack = ();
+pub type NetworkSetAttachDebugStackParams = ();
+/// ⚠️ Experimental
+/// Specifies whether to attach a page script stack id in requests
+pub type NetworkSetAttachDebugStackResults = ();
 #[deprecated]
 /// ⚠️ Experimental
 /** Sets the requests to intercept that match the provided patterns and optionally resource types.
 Deprecated, please use Fetch.enable instead.*/
-pub type NetworkSetRequestInterception = ();
+pub type NetworkSetRequestInterceptionParams = ();
+#[deprecated]
+/// ⚠️ Experimental
+/** Sets the requests to intercept that match the provided patterns and optionally resource types.
+Deprecated, please use Fetch.enable instead.*/
+pub type NetworkSetRequestInterceptionResults = ();
 /// Allows overriding user agent with the given string.
-pub type NetworkSetUserAgentOverride = ();
+pub type NetworkSetUserAgentOverrideParams = ();
+/// Allows overriding user agent with the given string.
+pub type NetworkSetUserAgentOverrideResults = ();
 /// ⚠️ Experimental
 /** Enables streaming of the response for the given requestId.
 If enabled, the dataReceived event contains the data that was received during streaming.*/
-pub type NetworkStreamResourceContent = ();
+pub type NetworkStreamResourceContentParams = ();
+/// ⚠️ Experimental
+/** Enables streaming of the response for the given requestId.
+If enabled, the dataReceived event contains the data that was received during streaming.*/
+pub type NetworkStreamResourceContentResults = ();
 /// ⚠️ Experimental
 /// Returns information about the COEP/COOP isolation status.
-pub type NetworkGetSecurityIsolationStatus = ();
+pub type NetworkGetSecurityIsolationStatusParams = ();
+/// ⚠️ Experimental
+/// Returns information about the COEP/COOP isolation status.
+pub type NetworkGetSecurityIsolationStatusResults = ();
 /// ⚠️ Experimental
 /** Enables tracking for the Reporting API, events generated by the Reporting API will now be delivered to the client.
 Enabling triggers 'reportingApiReportAdded' for all existing reports.*/
-pub type NetworkEnableReportingApi = ();
+pub type NetworkEnableReportingApiParams = ();
+/// ⚠️ Experimental
+/** Enables tracking for the Reporting API, events generated by the Reporting API will now be delivered to the client.
+Enabling triggers 'reportingApiReportAdded' for all existing reports.*/
+pub type NetworkEnableReportingApiResults = ();
 /// ⚠️ Experimental
 /// Fetches the resource and returns the content.
-pub type NetworkLoadNetworkResource = ();
+pub type NetworkLoadNetworkResourceParams = ();
+/// ⚠️ Experimental
+/// Fetches the resource and returns the content.
+pub type NetworkLoadNetworkResourceResults = ();
 /// ⚠️ Experimental
 /** Sets Controls for third-party cookie access
 Page reload is required before the new cookie bahavior will be observed*/
-pub type NetworkSetCookieControls = ();
+pub type NetworkSetCookieControlsParams = ();
+/// ⚠️ Experimental
+/** Sets Controls for third-party cookie access
+Page reload is required before the new cookie bahavior will be observed*/
+pub type NetworkSetCookieControlsResults = ();

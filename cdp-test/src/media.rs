@@ -33,6 +33,10 @@ pub struct PlayerError {
     pub data: serde_json::Map<String, serde_json::Value>,
 }
 /// Enables the Media domain
-pub type MediaEnable = ();
+pub type MediaEnableParams = ();
+/// Enables the Media domain
+pub type MediaEnableResults = ();
 /// Disables the Media domain.
-pub type MediaDisable = ();
+pub type MediaDisableParams = ();
+/// Disables the Media domain.
+pub type MediaDisableResults = ();

@@ -149,65 +149,128 @@ pub enum InspectMode {
     None,
 }
 /// Disables domain notifications.
-pub type OverlayDisable = ();
+pub type OverlayDisableParams = ();
+/// Disables domain notifications.
+pub type OverlayDisableResults = ();
 /// Enables domain notifications.
-pub type OverlayEnable = ();
+pub type OverlayEnableParams = ();
+/// Enables domain notifications.
+pub type OverlayEnableResults = ();
 /// For testing.
-pub type OverlayGetHighlightObjectForTest = ();
+pub type OverlayGetHighlightObjectForTestParams = ();
+/// For testing.
+pub type OverlayGetHighlightObjectForTestResults = ();
 /// For Persistent Grid testing.
-pub type OverlayGetGridHighlightObjectsForTest = ();
+pub type OverlayGetGridHighlightObjectsForTestParams = ();
+/// For Persistent Grid testing.
+pub type OverlayGetGridHighlightObjectsForTestResults = ();
 /// For Source Order Viewer testing.
-pub type OverlayGetSourceOrderHighlightObjectForTest = ();
+pub type OverlayGetSourceOrderHighlightObjectForTestParams = ();
+/// For Source Order Viewer testing.
+pub type OverlayGetSourceOrderHighlightObjectForTestResults = ();
 /// Hides any highlight.
-pub type OverlayHideHighlight = ();
+pub type OverlayHideHighlightParams = ();
+/// Hides any highlight.
+pub type OverlayHideHighlightResults = ();
 #[deprecated]
 /** Highlights owner element of the frame with given id.
 Deprecated: Doesn't work reliably and cannot be fixed due to process
 separation (the owner node might be in a different process). Determine
 the owner node in the client and use highlightNode.*/
-pub type OverlayHighlightFrame = ();
+pub type OverlayHighlightFrameParams = ();
+#[deprecated]
+/** Highlights owner element of the frame with given id.
+Deprecated: Doesn't work reliably and cannot be fixed due to process
+separation (the owner node might be in a different process). Determine
+the owner node in the client and use highlightNode.*/
+pub type OverlayHighlightFrameResults = ();
 /** Highlights DOM node with given id or with the given JavaScript object wrapper. Either nodeId or
 objectId must be specified.*/
-pub type OverlayHighlightNode = ();
+pub type OverlayHighlightNodeParams = ();
+/** Highlights DOM node with given id or with the given JavaScript object wrapper. Either nodeId or
+objectId must be specified.*/
+pub type OverlayHighlightNodeResults = ();
 /// Highlights given quad. Coordinates are absolute with respect to the main frame viewport.
-pub type OverlayHighlightQuad = ();
+pub type OverlayHighlightQuadParams = ();
+/// Highlights given quad. Coordinates are absolute with respect to the main frame viewport.
+pub type OverlayHighlightQuadResults = ();
 /// Highlights given rectangle. Coordinates are absolute with respect to the main frame viewport.
-pub type OverlayHighlightRect = ();
+pub type OverlayHighlightRectParams = ();
+/// Highlights given rectangle. Coordinates are absolute with respect to the main frame viewport.
+pub type OverlayHighlightRectResults = ();
 /** Highlights the source order of the children of the DOM node with given id or with the given
 JavaScript object wrapper. Either nodeId or objectId must be specified.*/
-pub type OverlayHighlightSourceOrder = ();
+pub type OverlayHighlightSourceOrderParams = ();
+/** Highlights the source order of the children of the DOM node with given id or with the given
+JavaScript object wrapper. Either nodeId or objectId must be specified.*/
+pub type OverlayHighlightSourceOrderResults = ();
 /** Enters the 'inspect' mode. In this mode, elements that user is hovering over are highlighted.
 Backend then generates 'inspectNodeRequested' event upon element selection.*/
-pub type OverlaySetInspectMode = ();
+pub type OverlaySetInspectModeParams = ();
+/** Enters the 'inspect' mode. In this mode, elements that user is hovering over are highlighted.
+Backend then generates 'inspectNodeRequested' event upon element selection.*/
+pub type OverlaySetInspectModeResults = ();
 /// Highlights owner element of all frames detected to be ads.
-pub type OverlaySetShowAdHighlights = ();
-pub type OverlaySetPausedInDebuggerMessage = ();
+pub type OverlaySetShowAdHighlightsParams = ();
+/// Highlights owner element of all frames detected to be ads.
+pub type OverlaySetShowAdHighlightsResults = ();
+pub type OverlaySetPausedInDebuggerMessageParams = ();
+pub type OverlaySetPausedInDebuggerMessageResults = ();
 /// Requests that backend shows debug borders on layers
-pub type OverlaySetShowDebugBorders = ();
+pub type OverlaySetShowDebugBordersParams = ();
+/// Requests that backend shows debug borders on layers
+pub type OverlaySetShowDebugBordersResults = ();
 /// Requests that backend shows the FPS counter
-pub type OverlaySetShowFpsCounter = ();
+pub type OverlaySetShowFpsCounterParams = ();
+/// Requests that backend shows the FPS counter
+pub type OverlaySetShowFpsCounterResults = ();
 /// Highlight multiple elements with the CSS Grid overlay.
-pub type OverlaySetShowGridOverlays = ();
-pub type OverlaySetShowFlexOverlays = ();
-pub type OverlaySetShowScrollSnapOverlays = ();
-pub type OverlaySetShowContainerQueryOverlays = ();
+pub type OverlaySetShowGridOverlaysParams = ();
+/// Highlight multiple elements with the CSS Grid overlay.
+pub type OverlaySetShowGridOverlaysResults = ();
+pub type OverlaySetShowFlexOverlaysParams = ();
+pub type OverlaySetShowFlexOverlaysResults = ();
+pub type OverlaySetShowScrollSnapOverlaysParams = ();
+pub type OverlaySetShowScrollSnapOverlaysResults = ();
+pub type OverlaySetShowContainerQueryOverlaysParams = ();
+pub type OverlaySetShowContainerQueryOverlaysResults = ();
 /// Requests that backend shows paint rectangles
-pub type OverlaySetShowPaintRects = ();
+pub type OverlaySetShowPaintRectsParams = ();
+/// Requests that backend shows paint rectangles
+pub type OverlaySetShowPaintRectsResults = ();
 /// Requests that backend shows layout shift regions
-pub type OverlaySetShowLayoutShiftRegions = ();
+pub type OverlaySetShowLayoutShiftRegionsParams = ();
+/// Requests that backend shows layout shift regions
+pub type OverlaySetShowLayoutShiftRegionsResults = ();
 /// Requests that backend shows scroll bottleneck rects
-pub type OverlaySetShowScrollBottleneckRects = ();
+pub type OverlaySetShowScrollBottleneckRectsParams = ();
+/// Requests that backend shows scroll bottleneck rects
+pub type OverlaySetShowScrollBottleneckRectsResults = ();
 #[deprecated]
 /// Deprecated, no longer has any effect.
-pub type OverlaySetShowHitTestBorders = ();
+pub type OverlaySetShowHitTestBordersParams = ();
 #[deprecated]
 /// Deprecated, no longer has any effect.
-pub type OverlaySetShowWebVitals = ();
+pub type OverlaySetShowHitTestBordersResults = ();
+#[deprecated]
+/// Deprecated, no longer has any effect.
+pub type OverlaySetShowWebVitalsParams = ();
+#[deprecated]
+/// Deprecated, no longer has any effect.
+pub type OverlaySetShowWebVitalsResults = ();
 /// Paints viewport size upon main frame resize.
-pub type OverlaySetShowViewportSizeOnResize = ();
+pub type OverlaySetShowViewportSizeOnResizeParams = ();
+/// Paints viewport size upon main frame resize.
+pub type OverlaySetShowViewportSizeOnResizeResults = ();
 /// Add a dual screen device hinge
-pub type OverlaySetShowHinge = ();
+pub type OverlaySetShowHingeParams = ();
+/// Add a dual screen device hinge
+pub type OverlaySetShowHingeResults = ();
 /// Show elements in isolation mode with overlays.
-pub type OverlaySetShowIsolatedElements = ();
+pub type OverlaySetShowIsolatedElementsParams = ();
+/// Show elements in isolation mode with overlays.
+pub type OverlaySetShowIsolatedElementsResults = ();
 /// Show Window Controls Overlay for PWA
-pub type OverlaySetShowWindowControlsOverlay = ();
+pub type OverlaySetShowWindowControlsOverlayParams = ();
+/// Show Window Controls Overlay for PWA
+pub type OverlaySetShowWindowControlsOverlayResults = ();

@@ -192,5 +192,7 @@ pub struct PrerenderMismatchedHeaders {
     pub initial_value: String,
     pub activation_value: String,
 }
-pub type PreloadEnable = ();
-pub type PreloadDisable = ();
+pub type PreloadEnableParams = ();
+pub type PreloadEnableResults = ();
+pub type PreloadDisableParams = ();
+pub type PreloadDisableResults = ();

@@ -7,10 +7,18 @@ pub struct PromptDevice {
     pub name: String,
 }
 /// Enable events in this domain.
-pub type DeviceAccessEnable = ();
+pub type DeviceAccessEnableParams = ();
+/// Enable events in this domain.
+pub type DeviceAccessEnableResults = ();
 /// Disable events in this domain.
-pub type DeviceAccessDisable = ();
+pub type DeviceAccessDisableParams = ();
+/// Disable events in this domain.
+pub type DeviceAccessDisableResults = ();
 /// Select a device in response to a DeviceAccess.deviceRequestPrompted event.
-pub type DeviceAccessSelectPrompt = ();
+pub type DeviceAccessSelectPromptParams = ();
+/// Select a device in response to a DeviceAccess.deviceRequestPrompted event.
+pub type DeviceAccessSelectPromptResults = ();
 /// Cancel a prompt in response to a DeviceAccess.deviceRequestPrompted event.
-pub type DeviceAccessCancelPrompt = ();
+pub type DeviceAccessCancelPromptParams = ();
+/// Cancel a prompt in response to a DeviceAccess.deviceRequestPrompted event.
+pub type DeviceAccessCancelPromptResults = ();

@@ -29,12 +29,21 @@ pub struct Account {
     pub terms_of_service_url: String,
     pub privacy_policy_url: String,
 }
-pub type FedCmEnable = ();
-pub type FedCmDisable = ();
-pub type FedCmSelectAccount = ();
-pub type FedCmClickDialogButton = ();
-pub type FedCmOpenUrl = ();
-pub type FedCmDismissDialog = ();
+pub type FedCmEnableParams = ();
+pub type FedCmEnableResults = ();
+pub type FedCmDisableParams = ();
+pub type FedCmDisableResults = ();
+pub type FedCmSelectAccountParams = ();
+pub type FedCmSelectAccountResults = ();
+pub type FedCmClickDialogButtonParams = ();
+pub type FedCmClickDialogButtonResults = ();
+pub type FedCmOpenUrlParams = ();
+pub type FedCmOpenUrlResults = ();
+pub type FedCmDismissDialogParams = ();
+pub type FedCmDismissDialogResults = ();
 /** Resets the cooldown time, if any, to allow the next FedCM call to show
 a dialog even if one was recently dismissed by the user.*/
-pub type FedCmResetCooldown = ();
+pub type FedCmResetCooldownParams = ();
+/** Resets the cooldown time, if any, to allow the next FedCM call to show
+a dialog even if one was recently dismissed by the user.*/
+pub type FedCmResetCooldownResults = ();
