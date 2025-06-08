@@ -389,10 +389,27 @@ impl Command {
         format_ident!("{domain}{name}")
     }
 
-    fn to_rust(&self, domain: &str) -> TokenStream {
-        let name = self.name_ident(domain);
+    fn description(&self) -> TokenStream {
+        let description = self
+            .description
+            .as_ref()
+            .map(|desc| {
+                let desc = format!(" {desc}");
+                quote! { #[doc = #desc] }
+            })
+            .unwrap_or_default();
 
         quote! {
+            #description
+        }
+    }
+
+    fn to_rust(&self, domain: &str) -> TokenStream {
+        let name = self.name_ident(domain);
+        let description = self.description();
+
+        quote! {
+            #description
             pub type #name = ();
         }
     }
