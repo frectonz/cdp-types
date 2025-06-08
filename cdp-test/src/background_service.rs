@@ -30,16 +30,16 @@ pub struct BackgroundServiceEvent {
 /// Enables event updates for the service.
 pub type BackgroundServiceStartObservingParams = ();
 /// Enables event updates for the service.
-pub type BackgroundServiceStartObservingResults = ();
+pub type BackgroundServiceStartObservingReturns = ();
 /// Disables event updates for the service.
 pub type BackgroundServiceStopObservingParams = ();
 /// Disables event updates for the service.
-pub type BackgroundServiceStopObservingResults = ();
+pub type BackgroundServiceStopObservingReturns = ();
 /// Set the recording state for the service.
 pub type BackgroundServiceSetRecordingParams = ();
 /// Set the recording state for the service.
-pub type BackgroundServiceSetRecordingResults = ();
+pub type BackgroundServiceSetRecordingReturns = ();
 /// Clears all stored data for the service.
 pub type BackgroundServiceClearEventsParams = ();
 /// Clears all stored data for the service.
-pub type BackgroundServiceClearEventsResults = ();
+pub type BackgroundServiceClearEventsReturns = ();

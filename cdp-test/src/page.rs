@@ -696,19 +696,19 @@ pub type PageAddScriptToEvaluateOnLoadParams = ();
 #[deprecated]
 /// ⚠️ Experimental
 /// Deprecated, please use addScriptToEvaluateOnNewDocument instead.
-pub type PageAddScriptToEvaluateOnLoadResults = ();
+pub type PageAddScriptToEvaluateOnLoadReturns = ();
 /// Evaluates given script in every frame upon creation (before loading frame's scripts).
 pub type PageAddScriptToEvaluateOnNewDocumentParams = ();
 /// Evaluates given script in every frame upon creation (before loading frame's scripts).
-pub type PageAddScriptToEvaluateOnNewDocumentResults = ();
+pub type PageAddScriptToEvaluateOnNewDocumentReturns = ();
 /// Brings page to front (activates tab).
 pub type PageBringToFrontParams = ();
 /// Brings page to front (activates tab).
-pub type PageBringToFrontResults = ();
+pub type PageBringToFrontReturns = ();
 /// Capture page screenshot.
 pub type PageCaptureScreenshotParams = ();
 /// Capture page screenshot.
-pub type PageCaptureScreenshotResults = ();
+pub type PageCaptureScreenshotReturns = ();
 /// ⚠️ Experimental
 /** Returns a snapshot of the page as a string. For MHTML format, the serialization includes
 iframes, shadow DOM, external resources, and element-inline styles.*/
@@ -716,33 +716,33 @@ pub type PageCaptureSnapshotParams = ();
 /// ⚠️ Experimental
 /** Returns a snapshot of the page as a string. For MHTML format, the serialization includes
 iframes, shadow DOM, external resources, and element-inline styles.*/
-pub type PageCaptureSnapshotResults = ();
+pub type PageCaptureSnapshotReturns = ();
 #[deprecated]
 /// ⚠️ Experimental
 /// Clears the overridden device metrics.
-pub type PageClearDeviceMetricsOverrideParams = ();
+pub type PageClearDeviceMetricsOverrideParams = crate::emulation::EmulationClearDeviceMetricsOverrideParams;
 #[deprecated]
 /// ⚠️ Experimental
 /// Clears the overridden device metrics.
-pub type PageClearDeviceMetricsOverrideResults = ();
+pub type PageClearDeviceMetricsOverrideReturns = crate::emulation::EmulationClearDeviceMetricsOverrideReturns;
 #[deprecated]
 /// ⚠️ Experimental
 /// Clears the overridden Device Orientation.
-pub type PageClearDeviceOrientationOverrideParams = ();
+pub type PageClearDeviceOrientationOverrideParams = crate::device_orientation::DeviceOrientationClearDeviceOrientationOverrideParams;
 #[deprecated]
 /// ⚠️ Experimental
 /// Clears the overridden Device Orientation.
-pub type PageClearDeviceOrientationOverrideResults = ();
+pub type PageClearDeviceOrientationOverrideReturns = crate::device_orientation::DeviceOrientationClearDeviceOrientationOverrideReturns;
 #[deprecated]
 /// Clears the overridden Geolocation Position and Error.
-pub type PageClearGeolocationOverrideParams = ();
+pub type PageClearGeolocationOverrideParams = crate::emulation::EmulationClearGeolocationOverrideParams;
 #[deprecated]
 /// Clears the overridden Geolocation Position and Error.
-pub type PageClearGeolocationOverrideResults = ();
+pub type PageClearGeolocationOverrideReturns = crate::emulation::EmulationClearGeolocationOverrideReturns;
 /// Creates an isolated world for the given frame.
 pub type PageCreateIsolatedWorldParams = ();
 /// Creates an isolated world for the given frame.
-pub type PageCreateIsolatedWorldResults = ();
+pub type PageCreateIsolatedWorldReturns = ();
 #[deprecated]
 /// ⚠️ Experimental
 /// Deletes browser cookie with given name, domain and path.
@@ -750,15 +750,15 @@ pub type PageDeleteCookieParams = ();
 #[deprecated]
 /// ⚠️ Experimental
 /// Deletes browser cookie with given name, domain and path.
-pub type PageDeleteCookieResults = ();
+pub type PageDeleteCookieReturns = ();
 /// Disables page domain notifications.
 pub type PageDisableParams = ();
 /// Disables page domain notifications.
-pub type PageDisableResults = ();
+pub type PageDisableReturns = ();
 /// Enables page domain notifications.
 pub type PageEnableParams = ();
 /// Enables page domain notifications.
-pub type PageEnableResults = ();
+pub type PageEnableReturns = ();
 /** Gets the processed manifest for this current document.
   This API always waits for the manifest to be loaded.
   If manifestId is provided, and it does not match the manifest of the
@@ -770,11 +770,11 @@ pub type PageGetAppManifestParams = ();
   If manifestId is provided, and it does not match the manifest of the
     current document, this API errors out.
   If there is not a loaded page, this API errors out immediately.*/
-pub type PageGetAppManifestResults = ();
+pub type PageGetAppManifestReturns = ();
 /// ⚠️ Experimental
 pub type PageGetInstallabilityErrorsParams = ();
 /// ⚠️ Experimental
-pub type PageGetInstallabilityErrorsResults = ();
+pub type PageGetInstallabilityErrorsReturns = ();
 #[deprecated]
 /// ⚠️ Experimental
 /// Deprecated because it's not guaranteed that the returned icon is in fact the one used for PWA installation.
@@ -782,7 +782,7 @@ pub type PageGetManifestIconsParams = ();
 #[deprecated]
 /// ⚠️ Experimental
 /// Deprecated because it's not guaranteed that the returned icon is in fact the one used for PWA installation.
-pub type PageGetManifestIconsResults = ();
+pub type PageGetManifestIconsReturns = ();
 /// ⚠️ Experimental
 /** Returns the unique (PWA) app id.
 Only returns values if the feature flag 'WebAppEnableManifestId' is enabled*/
@@ -790,59 +790,59 @@ pub type PageGetAppIdParams = ();
 /// ⚠️ Experimental
 /** Returns the unique (PWA) app id.
 Only returns values if the feature flag 'WebAppEnableManifestId' is enabled*/
-pub type PageGetAppIdResults = ();
+pub type PageGetAppIdReturns = ();
 /// ⚠️ Experimental
 pub type PageGetAdScriptAncestryIdsParams = ();
 /// ⚠️ Experimental
-pub type PageGetAdScriptAncestryIdsResults = ();
+pub type PageGetAdScriptAncestryIdsReturns = ();
 /// Returns present frame tree structure.
 pub type PageGetFrameTreeParams = ();
 /// Returns present frame tree structure.
-pub type PageGetFrameTreeResults = ();
+pub type PageGetFrameTreeReturns = ();
 /// Returns metrics relating to the layouting of the page, such as viewport bounds/scale.
 pub type PageGetLayoutMetricsParams = ();
 /// Returns metrics relating to the layouting of the page, such as viewport bounds/scale.
-pub type PageGetLayoutMetricsResults = ();
+pub type PageGetLayoutMetricsReturns = ();
 /// Returns navigation history for the current page.
 pub type PageGetNavigationHistoryParams = ();
 /// Returns navigation history for the current page.
-pub type PageGetNavigationHistoryResults = ();
+pub type PageGetNavigationHistoryReturns = ();
 /// Resets navigation history for the current page.
 pub type PageResetNavigationHistoryParams = ();
 /// Resets navigation history for the current page.
-pub type PageResetNavigationHistoryResults = ();
+pub type PageResetNavigationHistoryReturns = ();
 /// ⚠️ Experimental
 /// Returns content of the given resource.
 pub type PageGetResourceContentParams = ();
 /// ⚠️ Experimental
 /// Returns content of the given resource.
-pub type PageGetResourceContentResults = ();
+pub type PageGetResourceContentReturns = ();
 /// ⚠️ Experimental
 /// Returns present frame / resource tree structure.
 pub type PageGetResourceTreeParams = ();
 /// ⚠️ Experimental
 /// Returns present frame / resource tree structure.
-pub type PageGetResourceTreeResults = ();
+pub type PageGetResourceTreeReturns = ();
 /// Accepts or dismisses a JavaScript initiated dialog (alert, confirm, prompt, or onbeforeunload).
 pub type PageHandleJavaScriptDialogParams = ();
 /// Accepts or dismisses a JavaScript initiated dialog (alert, confirm, prompt, or onbeforeunload).
-pub type PageHandleJavaScriptDialogResults = ();
+pub type PageHandleJavaScriptDialogReturns = ();
 /// Navigates current page to the given URL.
 pub type PageNavigateParams = ();
 /// Navigates current page to the given URL.
-pub type PageNavigateResults = ();
+pub type PageNavigateReturns = ();
 /// Navigates current page to the given history entry.
 pub type PageNavigateToHistoryEntryParams = ();
 /// Navigates current page to the given history entry.
-pub type PageNavigateToHistoryEntryResults = ();
+pub type PageNavigateToHistoryEntryReturns = ();
 /// Print page as PDF.
 pub type PagePrintToPdfParams = ();
 /// Print page as PDF.
-pub type PagePrintToPdfResults = ();
+pub type PagePrintToPdfReturns = ();
 /// Reloads given page optionally ignoring the cache.
 pub type PageReloadParams = ();
 /// Reloads given page optionally ignoring the cache.
-pub type PageReloadResults = ();
+pub type PageReloadReturns = ();
 #[deprecated]
 /// ⚠️ Experimental
 /// Deprecated, please use removeScriptToEvaluateOnNewDocument instead.
@@ -850,45 +850,45 @@ pub type PageRemoveScriptToEvaluateOnLoadParams = ();
 #[deprecated]
 /// ⚠️ Experimental
 /// Deprecated, please use removeScriptToEvaluateOnNewDocument instead.
-pub type PageRemoveScriptToEvaluateOnLoadResults = ();
+pub type PageRemoveScriptToEvaluateOnLoadReturns = ();
 /// Removes given script from the list.
 pub type PageRemoveScriptToEvaluateOnNewDocumentParams = ();
 /// Removes given script from the list.
-pub type PageRemoveScriptToEvaluateOnNewDocumentResults = ();
+pub type PageRemoveScriptToEvaluateOnNewDocumentReturns = ();
 /// ⚠️ Experimental
 /// Acknowledges that a screencast frame has been received by the frontend.
 pub type PageScreencastFrameAckParams = ();
 /// ⚠️ Experimental
 /// Acknowledges that a screencast frame has been received by the frontend.
-pub type PageScreencastFrameAckResults = ();
+pub type PageScreencastFrameAckReturns = ();
 /// ⚠️ Experimental
 /// Searches for given string in resource content.
 pub type PageSearchInResourceParams = ();
 /// ⚠️ Experimental
 /// Searches for given string in resource content.
-pub type PageSearchInResourceResults = ();
+pub type PageSearchInResourceReturns = ();
 /// ⚠️ Experimental
 /// Enable Chrome's experimental ad filter on all sites.
 pub type PageSetAdBlockingEnabledParams = ();
 /// ⚠️ Experimental
 /// Enable Chrome's experimental ad filter on all sites.
-pub type PageSetAdBlockingEnabledResults = ();
+pub type PageSetAdBlockingEnabledReturns = ();
 /// Enable page Content Security Policy by-passing.
 pub type PageSetBypassCspParams = ();
 /// Enable page Content Security Policy by-passing.
-pub type PageSetBypassCspResults = ();
+pub type PageSetBypassCspReturns = ();
 /// ⚠️ Experimental
 /// Get Permissions Policy state on given frame.
 pub type PageGetPermissionsPolicyStateParams = ();
 /// ⚠️ Experimental
 /// Get Permissions Policy state on given frame.
-pub type PageGetPermissionsPolicyStateResults = ();
+pub type PageGetPermissionsPolicyStateReturns = ();
 /// ⚠️ Experimental
 /// Get Origin Trials on given frame.
 pub type PageGetOriginTrialsParams = ();
 /// ⚠️ Experimental
 /// Get Origin Trials on given frame.
-pub type PageGetOriginTrialsResults = ();
+pub type PageGetOriginTrialsReturns = ();
 #[deprecated]
 /// ⚠️ Experimental
 /** Overrides the values of device screen dimensions (window.screen.width, window.screen.height,
@@ -900,7 +900,7 @@ pub type PageSetDeviceMetricsOverrideParams = ();
 /** Overrides the values of device screen dimensions (window.screen.width, window.screen.height,
 window.innerWidth, window.innerHeight, and "device-width"/"device-height"-related CSS media
 query results).*/
-pub type PageSetDeviceMetricsOverrideResults = ();
+pub type PageSetDeviceMetricsOverrideReturns = crate::emulation::EmulationSetDeviceMetricsOverrideReturns;
 #[deprecated]
 /// ⚠️ Experimental
 /// Overrides the Device Orientation.
@@ -908,23 +908,23 @@ pub type PageSetDeviceOrientationOverrideParams = ();
 #[deprecated]
 /// ⚠️ Experimental
 /// Overrides the Device Orientation.
-pub type PageSetDeviceOrientationOverrideResults = ();
+pub type PageSetDeviceOrientationOverrideReturns = crate::device_orientation::DeviceOrientationSetDeviceOrientationOverrideReturns;
 /// ⚠️ Experimental
 /// Set generic font families.
 pub type PageSetFontFamiliesParams = ();
 /// ⚠️ Experimental
 /// Set generic font families.
-pub type PageSetFontFamiliesResults = ();
+pub type PageSetFontFamiliesReturns = ();
 /// ⚠️ Experimental
 /// Set default font sizes.
 pub type PageSetFontSizesParams = ();
 /// ⚠️ Experimental
 /// Set default font sizes.
-pub type PageSetFontSizesResults = ();
+pub type PageSetFontSizesReturns = ();
 /// Sets given markup as the document's HTML.
 pub type PageSetDocumentContentParams = ();
 /// Sets given markup as the document's HTML.
-pub type PageSetDocumentContentResults = ();
+pub type PageSetDocumentContentReturns = ();
 #[deprecated]
 /// ⚠️ Experimental
 /// Set the behavior when downloading a file.
@@ -932,7 +932,7 @@ pub type PageSetDownloadBehaviorParams = ();
 #[deprecated]
 /// ⚠️ Experimental
 /// Set the behavior when downloading a file.
-pub type PageSetDownloadBehaviorResults = ();
+pub type PageSetDownloadBehaviorReturns = ();
 #[deprecated]
 /** Overrides the Geolocation Position or Error. Omitting any of the parameters emulates position
 unavailable.*/
@@ -940,11 +940,11 @@ pub type PageSetGeolocationOverrideParams = ();
 #[deprecated]
 /** Overrides the Geolocation Position or Error. Omitting any of the parameters emulates position
 unavailable.*/
-pub type PageSetGeolocationOverrideResults = ();
+pub type PageSetGeolocationOverrideReturns = crate::emulation::EmulationSetGeolocationOverrideReturns;
 /// Controls whether page will emit lifecycle events.
 pub type PageSetLifecycleEventsEnabledParams = ();
 /// Controls whether page will emit lifecycle events.
-pub type PageSetLifecycleEventsEnabledResults = ();
+pub type PageSetLifecycleEventsEnabledReturns = ();
 #[deprecated]
 /// ⚠️ Experimental
 /// Toggles mouse event-based touch event emulation.
@@ -952,39 +952,39 @@ pub type PageSetTouchEmulationEnabledParams = ();
 #[deprecated]
 /// ⚠️ Experimental
 /// Toggles mouse event-based touch event emulation.
-pub type PageSetTouchEmulationEnabledResults = ();
+pub type PageSetTouchEmulationEnabledReturns = crate::emulation::EmulationSetTouchEmulationEnabledReturns;
 /// ⚠️ Experimental
 /// Starts sending each frame using the `screencastFrame` event.
 pub type PageStartScreencastParams = ();
 /// ⚠️ Experimental
 /// Starts sending each frame using the `screencastFrame` event.
-pub type PageStartScreencastResults = ();
+pub type PageStartScreencastReturns = ();
 /// Force the page stop all navigations and pending resource fetches.
 pub type PageStopLoadingParams = ();
 /// Force the page stop all navigations and pending resource fetches.
-pub type PageStopLoadingResults = ();
+pub type PageStopLoadingReturns = ();
 /// ⚠️ Experimental
 /// Crashes renderer on the IO thread, generates minidumps.
 pub type PageCrashParams = ();
 /// ⚠️ Experimental
 /// Crashes renderer on the IO thread, generates minidumps.
-pub type PageCrashResults = ();
+pub type PageCrashReturns = ();
 /// Tries to close page, running its beforeunload hooks, if any.
 pub type PageCloseParams = ();
 /// Tries to close page, running its beforeunload hooks, if any.
-pub type PageCloseResults = ();
+pub type PageCloseReturns = ();
 /// ⚠️ Experimental
 #[doc = " Tries to update the web lifecycle state of the page.\nIt will transition the page to the given state according to:\nhttps://github.com/WICG/web-lifecycle/"]
 pub type PageSetWebLifecycleStateParams = ();
 /// ⚠️ Experimental
 #[doc = " Tries to update the web lifecycle state of the page.\nIt will transition the page to the given state according to:\nhttps://github.com/WICG/web-lifecycle/"]
-pub type PageSetWebLifecycleStateResults = ();
+pub type PageSetWebLifecycleStateReturns = ();
 /// ⚠️ Experimental
 /// Stops sending each frame in the `screencastFrame`.
 pub type PageStopScreencastParams = ();
 /// ⚠️ Experimental
 /// Stops sending each frame in the `screencastFrame`.
-pub type PageStopScreencastResults = ();
+pub type PageStopScreencastReturns = ();
 /// ⚠️ Experimental
 /** Requests backend to produce compilation cache for the specified scripts.
 `scripts` are appended to the list of scripts for which the cache
@@ -1000,7 +1000,7 @@ would be produced. The list may be reset during page navigation.
 When script with a matching URL is encountered, the cache is optionally
 produced upon backend discretion, based on internal heuristics.
 See also: `Page.compilationCacheProduced`.*/
-pub type PageProduceCompilationCacheResults = ();
+pub type PageProduceCompilationCacheReturns = ();
 /// ⚠️ Experimental
 /** Seeds compilation cache for given url. Compilation cache does not survive
 cross-process navigation.*/
@@ -1008,13 +1008,13 @@ pub type PageAddCompilationCacheParams = ();
 /// ⚠️ Experimental
 /** Seeds compilation cache for given url. Compilation cache does not survive
 cross-process navigation.*/
-pub type PageAddCompilationCacheResults = ();
+pub type PageAddCompilationCacheReturns = ();
 /// ⚠️ Experimental
 /// Clears seeded compilation cache.
 pub type PageClearCompilationCacheParams = ();
 /// ⚠️ Experimental
 /// Clears seeded compilation cache.
-pub type PageClearCompilationCacheResults = ();
+pub type PageClearCompilationCacheReturns = ();
 /// ⚠️ Experimental
 /** Sets the Secure Payment Confirmation transaction mode.
 https://w3c.github.io/secure-payment-confirmation/#sctn-automation-set-spc-transaction-mode*/
@@ -1022,7 +1022,7 @@ pub type PageSetSpcTransactionModeParams = ();
 /// ⚠️ Experimental
 /** Sets the Secure Payment Confirmation transaction mode.
 https://w3c.github.io/secure-payment-confirmation/#sctn-automation-set-spc-transaction-mode*/
-pub type PageSetSpcTransactionModeResults = ();
+pub type PageSetSpcTransactionModeReturns = ();
 /// ⚠️ Experimental
 /** Extensions for Custom Handlers API:
 https://html.spec.whatwg.org/multipage/system-state.html#rph-automation*/
@@ -1030,19 +1030,19 @@ pub type PageSetRphRegistrationModeParams = ();
 /// ⚠️ Experimental
 /** Extensions for Custom Handlers API:
 https://html.spec.whatwg.org/multipage/system-state.html#rph-automation*/
-pub type PageSetRphRegistrationModeResults = ();
+pub type PageSetRphRegistrationModeReturns = ();
 /// ⚠️ Experimental
 /// Generates a report for testing.
 pub type PageGenerateTestReportParams = ();
 /// ⚠️ Experimental
 /// Generates a report for testing.
-pub type PageGenerateTestReportResults = ();
+pub type PageGenerateTestReportReturns = ();
 /// ⚠️ Experimental
 /// Pauses page execution. Can be resumed using generic Runtime.runIfWaitingForDebugger.
 pub type PageWaitForDebuggerParams = ();
 /// ⚠️ Experimental
 /// Pauses page execution. Can be resumed using generic Runtime.runIfWaitingForDebugger.
-pub type PageWaitForDebuggerResults = ();
+pub type PageWaitForDebuggerReturns = ();
 /** Intercept file chooser requests and transfer control to protocol clients.
 When file chooser interception is enabled, native file chooser dialog is not shown.
 Instead, a protocol event `Page.fileChooserOpened` is emitted.*/
@@ -1050,7 +1050,7 @@ pub type PageSetInterceptFileChooserDialogParams = ();
 /** Intercept file chooser requests and transfer control to protocol clients.
 When file chooser interception is enabled, native file chooser dialog is not shown.
 Instead, a protocol event `Page.fileChooserOpened` is emitted.*/
-pub type PageSetInterceptFileChooserDialogResults = ();
+pub type PageSetInterceptFileChooserDialogReturns = ();
 /// ⚠️ Experimental
 /** Enable/disable prerendering manually.
 
@@ -1068,4 +1068,4 @@ See https://docs.google.com/document/d/12HVmFxYj5Jc-eJr5OmWsa2bqTJsbgGLKI6ZIyx0_
 for more details.
 
 TODO(https://crbug.com/1440085): Remove this once Puppeteer supports tab targets.*/
-pub type PageSetPrerenderingAllowedResults = ();
+pub type PageSetPrerenderingAllowedReturns = ();

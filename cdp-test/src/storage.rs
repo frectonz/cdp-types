@@ -380,69 +380,69 @@ pub struct RelatedWebsiteSet {
 /// Returns a storage key given a frame id.
 pub type StorageGetStorageKeyForFrameParams = ();
 /// Returns a storage key given a frame id.
-pub type StorageGetStorageKeyForFrameResults = ();
+pub type StorageGetStorageKeyForFrameReturns = ();
 /// Clears storage for origin.
 pub type StorageClearDataForOriginParams = ();
 /// Clears storage for origin.
-pub type StorageClearDataForOriginResults = ();
+pub type StorageClearDataForOriginReturns = ();
 /// Clears storage for storage key.
 pub type StorageClearDataForStorageKeyParams = ();
 /// Clears storage for storage key.
-pub type StorageClearDataForStorageKeyResults = ();
+pub type StorageClearDataForStorageKeyReturns = ();
 /// Returns all browser cookies.
 pub type StorageGetCookiesParams = ();
 /// Returns all browser cookies.
-pub type StorageGetCookiesResults = ();
+pub type StorageGetCookiesReturns = ();
 /// Sets given cookies.
 pub type StorageSetCookiesParams = ();
 /// Sets given cookies.
-pub type StorageSetCookiesResults = ();
+pub type StorageSetCookiesReturns = ();
 /// Clears cookies.
 pub type StorageClearCookiesParams = ();
 /// Clears cookies.
-pub type StorageClearCookiesResults = ();
+pub type StorageClearCookiesReturns = ();
 /// Returns usage and quota in bytes.
 pub type StorageGetUsageAndQuotaParams = ();
 /// Returns usage and quota in bytes.
-pub type StorageGetUsageAndQuotaResults = ();
+pub type StorageGetUsageAndQuotaReturns = ();
 /// ⚠️ Experimental
 /// Override quota for the specified origin
 pub type StorageOverrideQuotaForOriginParams = ();
 /// ⚠️ Experimental
 /// Override quota for the specified origin
-pub type StorageOverrideQuotaForOriginResults = ();
+pub type StorageOverrideQuotaForOriginReturns = ();
 /// Registers origin to be notified when an update occurs to its cache storage list.
 pub type StorageTrackCacheStorageForOriginParams = ();
 /// Registers origin to be notified when an update occurs to its cache storage list.
-pub type StorageTrackCacheStorageForOriginResults = ();
+pub type StorageTrackCacheStorageForOriginReturns = ();
 /// Registers storage key to be notified when an update occurs to its cache storage list.
 pub type StorageTrackCacheStorageForStorageKeyParams = ();
 /// Registers storage key to be notified when an update occurs to its cache storage list.
-pub type StorageTrackCacheStorageForStorageKeyResults = ();
+pub type StorageTrackCacheStorageForStorageKeyReturns = ();
 /// Registers origin to be notified when an update occurs to its IndexedDB.
 pub type StorageTrackIndexedDbForOriginParams = ();
 /// Registers origin to be notified when an update occurs to its IndexedDB.
-pub type StorageTrackIndexedDbForOriginResults = ();
+pub type StorageTrackIndexedDbForOriginReturns = ();
 /// Registers storage key to be notified when an update occurs to its IndexedDB.
 pub type StorageTrackIndexedDbForStorageKeyParams = ();
 /// Registers storage key to be notified when an update occurs to its IndexedDB.
-pub type StorageTrackIndexedDbForStorageKeyResults = ();
+pub type StorageTrackIndexedDbForStorageKeyReturns = ();
 /// Unregisters origin from receiving notifications for cache storage.
 pub type StorageUntrackCacheStorageForOriginParams = ();
 /// Unregisters origin from receiving notifications for cache storage.
-pub type StorageUntrackCacheStorageForOriginResults = ();
+pub type StorageUntrackCacheStorageForOriginReturns = ();
 /// Unregisters storage key from receiving notifications for cache storage.
 pub type StorageUntrackCacheStorageForStorageKeyParams = ();
 /// Unregisters storage key from receiving notifications for cache storage.
-pub type StorageUntrackCacheStorageForStorageKeyResults = ();
+pub type StorageUntrackCacheStorageForStorageKeyReturns = ();
 /// Unregisters origin from receiving notifications for IndexedDB.
 pub type StorageUntrackIndexedDbForOriginParams = ();
 /// Unregisters origin from receiving notifications for IndexedDB.
-pub type StorageUntrackIndexedDbForOriginResults = ();
+pub type StorageUntrackIndexedDbForOriginReturns = ();
 /// Unregisters storage key from receiving notifications for IndexedDB.
 pub type StorageUntrackIndexedDbForStorageKeyParams = ();
 /// Unregisters storage key from receiving notifications for IndexedDB.
-pub type StorageUntrackIndexedDbForStorageKeyResults = ();
+pub type StorageUntrackIndexedDbForStorageKeyReturns = ();
 /// ⚠️ Experimental
 /** Returns the number of stored Trust Tokens per issuer for the
 current browsing context.*/
@@ -450,7 +450,7 @@ pub type StorageGetTrustTokensParams = ();
 /// ⚠️ Experimental
 /** Returns the number of stored Trust Tokens per issuer for the
 current browsing context.*/
-pub type StorageGetTrustTokensResults = ();
+pub type StorageGetTrustTokensReturns = ();
 /// ⚠️ Experimental
 /** Removes all Trust Tokens issued by the provided issuerOrigin.
 Leaves other stored data, including the issuer's Redemption Records, intact.*/
@@ -458,19 +458,19 @@ pub type StorageClearTrustTokensParams = ();
 /// ⚠️ Experimental
 /** Removes all Trust Tokens issued by the provided issuerOrigin.
 Leaves other stored data, including the issuer's Redemption Records, intact.*/
-pub type StorageClearTrustTokensResults = ();
+pub type StorageClearTrustTokensReturns = ();
 /// ⚠️ Experimental
 /// Gets details for a named interest group.
 pub type StorageGetInterestGroupDetailsParams = ();
 /// ⚠️ Experimental
 /// Gets details for a named interest group.
-pub type StorageGetInterestGroupDetailsResults = ();
+pub type StorageGetInterestGroupDetailsReturns = ();
 /// ⚠️ Experimental
 /// Enables/Disables issuing of interestGroupAccessed events.
 pub type StorageSetInterestGroupTrackingParams = ();
 /// ⚠️ Experimental
 /// Enables/Disables issuing of interestGroupAccessed events.
-pub type StorageSetInterestGroupTrackingResults = ();
+pub type StorageSetInterestGroupTrackingReturns = ();
 /// ⚠️ Experimental
 /** Enables/Disables issuing of interestGroupAuctionEventOccurred and
 interestGroupAuctionNetworkRequestCreated.*/
@@ -478,79 +478,79 @@ pub type StorageSetInterestGroupAuctionTrackingParams = ();
 /// ⚠️ Experimental
 /** Enables/Disables issuing of interestGroupAuctionEventOccurred and
 interestGroupAuctionNetworkRequestCreated.*/
-pub type StorageSetInterestGroupAuctionTrackingResults = ();
+pub type StorageSetInterestGroupAuctionTrackingReturns = ();
 /// ⚠️ Experimental
 /// Gets metadata for an origin's shared storage.
 pub type StorageGetSharedStorageMetadataParams = ();
 /// ⚠️ Experimental
 /// Gets metadata for an origin's shared storage.
-pub type StorageGetSharedStorageMetadataResults = ();
+pub type StorageGetSharedStorageMetadataReturns = ();
 /// ⚠️ Experimental
 /// Gets the entries in an given origin's shared storage.
 pub type StorageGetSharedStorageEntriesParams = ();
 /// ⚠️ Experimental
 /// Gets the entries in an given origin's shared storage.
-pub type StorageGetSharedStorageEntriesResults = ();
+pub type StorageGetSharedStorageEntriesReturns = ();
 /// ⚠️ Experimental
 /// Sets entry with `key` and `value` for a given origin's shared storage.
 pub type StorageSetSharedStorageEntryParams = ();
 /// ⚠️ Experimental
 /// Sets entry with `key` and `value` for a given origin's shared storage.
-pub type StorageSetSharedStorageEntryResults = ();
+pub type StorageSetSharedStorageEntryReturns = ();
 /// ⚠️ Experimental
 /// Deletes entry for `key` (if it exists) for a given origin's shared storage.
 pub type StorageDeleteSharedStorageEntryParams = ();
 /// ⚠️ Experimental
 /// Deletes entry for `key` (if it exists) for a given origin's shared storage.
-pub type StorageDeleteSharedStorageEntryResults = ();
+pub type StorageDeleteSharedStorageEntryReturns = ();
 /// ⚠️ Experimental
 /// Clears all entries for a given origin's shared storage.
 pub type StorageClearSharedStorageEntriesParams = ();
 /// ⚠️ Experimental
 /// Clears all entries for a given origin's shared storage.
-pub type StorageClearSharedStorageEntriesResults = ();
+pub type StorageClearSharedStorageEntriesReturns = ();
 /// ⚠️ Experimental
 /// Resets the budget for `ownerOrigin` by clearing all budget withdrawals.
 pub type StorageResetSharedStorageBudgetParams = ();
 /// ⚠️ Experimental
 /// Resets the budget for `ownerOrigin` by clearing all budget withdrawals.
-pub type StorageResetSharedStorageBudgetResults = ();
+pub type StorageResetSharedStorageBudgetReturns = ();
 /// ⚠️ Experimental
 /// Enables/disables issuing of sharedStorageAccessed events.
 pub type StorageSetSharedStorageTrackingParams = ();
 /// ⚠️ Experimental
 /// Enables/disables issuing of sharedStorageAccessed events.
-pub type StorageSetSharedStorageTrackingResults = ();
+pub type StorageSetSharedStorageTrackingReturns = ();
 /// ⚠️ Experimental
 /// Set tracking for a storage key's buckets.
 pub type StorageSetStorageBucketTrackingParams = ();
 /// ⚠️ Experimental
 /// Set tracking for a storage key's buckets.
-pub type StorageSetStorageBucketTrackingResults = ();
+pub type StorageSetStorageBucketTrackingReturns = ();
 /// ⚠️ Experimental
 /// Deletes the Storage Bucket with the given storage key and bucket name.
 pub type StorageDeleteStorageBucketParams = ();
 /// ⚠️ Experimental
 /// Deletes the Storage Bucket with the given storage key and bucket name.
-pub type StorageDeleteStorageBucketResults = ();
+pub type StorageDeleteStorageBucketReturns = ();
 /// ⚠️ Experimental
 /// Deletes state for sites identified as potential bounce trackers, immediately.
 pub type StorageRunBounceTrackingMitigationsParams = ();
 /// ⚠️ Experimental
 /// Deletes state for sites identified as potential bounce trackers, immediately.
-pub type StorageRunBounceTrackingMitigationsResults = ();
+pub type StorageRunBounceTrackingMitigationsReturns = ();
 /// ⚠️ Experimental
 /// https://wicg.github.io/attribution-reporting-api/
 pub type StorageSetAttributionReportingLocalTestingModeParams = ();
 /// ⚠️ Experimental
 /// https://wicg.github.io/attribution-reporting-api/
-pub type StorageSetAttributionReportingLocalTestingModeResults = ();
+pub type StorageSetAttributionReportingLocalTestingModeReturns = ();
 /// ⚠️ Experimental
 /// Enables/disables issuing of Attribution Reporting events.
 pub type StorageSetAttributionReportingTrackingParams = ();
 /// ⚠️ Experimental
 /// Enables/disables issuing of Attribution Reporting events.
-pub type StorageSetAttributionReportingTrackingResults = ();
+pub type StorageSetAttributionReportingTrackingReturns = ();
 /// ⚠️ Experimental
 /** Sends all pending Attribution Reports immediately, regardless of their
 scheduled report time.*/
@@ -558,7 +558,7 @@ pub type StorageSendPendingAttributionReportsParams = ();
 /// ⚠️ Experimental
 /** Sends all pending Attribution Reports immediately, regardless of their
 scheduled report time.*/
-pub type StorageSendPendingAttributionReportsResults = ();
+pub type StorageSendPendingAttributionReportsReturns = ();
 /// ⚠️ Experimental
 /** Returns the effective Related Website Sets in use by this profile for the browser
 session. The effective Related Website Sets will not change during a browser session.*/
@@ -566,7 +566,7 @@ pub type StorageGetRelatedWebsiteSetsParams = ();
 /// ⚠️ Experimental
 /** Returns the effective Related Website Sets in use by this profile for the browser
 session. The effective Related Website Sets will not change during a browser session.*/
-pub type StorageGetRelatedWebsiteSetsResults = ();
+pub type StorageGetRelatedWebsiteSetsReturns = ();
 /// ⚠️ Experimental
 /** Returns the list of URLs from a page and its embedded resources that match
 existing grace period URL pattern rules.
@@ -576,6 +576,6 @@ pub type StorageGetAffectedUrlsForThirdPartyCookieMetadataParams = ();
 /** Returns the list of URLs from a page and its embedded resources that match
 existing grace period URL pattern rules.
 https://developers.google.com/privacy-sandbox/cookies/temporary-exceptions/grace-period*/
-pub type StorageGetAffectedUrlsForThirdPartyCookieMetadataResults = ();
+pub type StorageGetAffectedUrlsForThirdPartyCookieMetadataReturns = ();
 pub type StorageSetProtectedAudienceKAnonymityParams = ();
-pub type StorageSetProtectedAudienceKAnonymityResults = ();
+pub type StorageSetProtectedAudienceKAnonymityReturns = ();

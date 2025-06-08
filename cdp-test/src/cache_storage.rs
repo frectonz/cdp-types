@@ -30,20 +30,20 @@ pub struct CachedResponse {
 /// Deletes a cache.
 pub type CacheStorageDeleteCacheParams = ();
 /// Deletes a cache.
-pub type CacheStorageDeleteCacheResults = ();
+pub type CacheStorageDeleteCacheReturns = ();
 /// Deletes a cache entry.
 pub type CacheStorageDeleteEntryParams = ();
 /// Deletes a cache entry.
-pub type CacheStorageDeleteEntryResults = ();
+pub type CacheStorageDeleteEntryReturns = ();
 /// Requests cache names.
 pub type CacheStorageRequestCacheNamesParams = ();
 /// Requests cache names.
-pub type CacheStorageRequestCacheNamesResults = ();
+pub type CacheStorageRequestCacheNamesReturns = ();
 /// Fetches cache entry.
 pub type CacheStorageRequestCachedResponseParams = ();
 /// Fetches cache entry.
-pub type CacheStorageRequestCachedResponseResults = ();
+pub type CacheStorageRequestCachedResponseReturns = ();
 /// Requests data from cache.
 pub type CacheStorageRequestEntriesParams = ();
 /// Requests data from cache.
-pub type CacheStorageRequestEntriesResults = ();
+pub type CacheStorageRequestEntriesReturns = ();

@@ -586,26 +586,26 @@ applies to images.*/
 pub type AuditsGetEncodedResponseParams = ();
 /** Returns the response body and size if it were re-encoded with the specified settings. Only
 applies to images.*/
-pub type AuditsGetEncodedResponseResults = ();
+pub type AuditsGetEncodedResponseReturns = ();
 /// Disables issues domain, prevents further issues from being reported to the client.
 pub type AuditsDisableParams = ();
 /// Disables issues domain, prevents further issues from being reported to the client.
-pub type AuditsDisableResults = ();
+pub type AuditsDisableReturns = ();
 /** Enables issues domain, sends the issues collected so far to the client by means of the
 `issueAdded` event.*/
 pub type AuditsEnableParams = ();
 /** Enables issues domain, sends the issues collected so far to the client by means of the
 `issueAdded` event.*/
-pub type AuditsEnableResults = ();
+pub type AuditsEnableReturns = ();
 /** Runs the contrast check for the target page. Found issues are reported
 using Audits.issueAdded event.*/
 pub type AuditsCheckContrastParams = ();
 /** Runs the contrast check for the target page. Found issues are reported
 using Audits.issueAdded event.*/
-pub type AuditsCheckContrastResults = ();
+pub type AuditsCheckContrastReturns = ();
 /** Runs the form issues check for the target page. Found issues are reported
 using Audits.issueAdded event.*/
 pub type AuditsCheckFormsIssuesParams = ();
 /** Runs the form issues check for the target page. Found issues are reported
 using Audits.issueAdded event.*/
-pub type AuditsCheckFormsIssuesResults = ();
+pub type AuditsCheckFormsIssuesReturns = ();

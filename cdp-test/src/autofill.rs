@@ -49,16 +49,16 @@ If the field and related form cannot be autofilled, returns an error.*/
 pub type AutofillTriggerParams = ();
 /** Trigger autofill on a form identified by the fieldId.
 If the field and related form cannot be autofilled, returns an error.*/
-pub type AutofillTriggerResults = ();
+pub type AutofillTriggerReturns = ();
 /// Set addresses so that developers can verify their forms implementation.
 pub type AutofillSetAddressesParams = ();
 /// Set addresses so that developers can verify their forms implementation.
-pub type AutofillSetAddressesResults = ();
+pub type AutofillSetAddressesReturns = ();
 /// Disables autofill domain notifications.
 pub type AutofillDisableParams = ();
 /// Disables autofill domain notifications.
-pub type AutofillDisableResults = ();
+pub type AutofillDisableReturns = ();
 /// Enables autofill domain notifications.
 pub type AutofillEnableParams = ();
 /// Enables autofill domain notifications.
-pub type AutofillEnableResults = ();
+pub type AutofillEnableReturns = ();

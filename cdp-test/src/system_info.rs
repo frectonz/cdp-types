@@ -69,12 +69,12 @@ pub struct ProcessInfo {
 /// Returns information about the system.
 pub type SystemInfoGetInfoParams = ();
 /// Returns information about the system.
-pub type SystemInfoGetInfoResults = ();
+pub type SystemInfoGetInfoReturns = ();
 /// Returns information about the feature state.
 pub type SystemInfoGetFeatureStateParams = ();
 /// Returns information about the feature state.
-pub type SystemInfoGetFeatureStateResults = ();
+pub type SystemInfoGetFeatureStateReturns = ();
 /// Returns information about all running processes.
 pub type SystemInfoGetProcessInfoParams = ();
 /// Returns information about all running processes.
-pub type SystemInfoGetProcessInfoResults = ();
+pub type SystemInfoGetProcessInfoReturns = ();

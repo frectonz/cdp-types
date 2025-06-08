@@ -674,39 +674,39 @@ pub struct LoadNetworkResourceOptions {
 pub type NetworkSetAcceptedEncodingsParams = ();
 /// ⚠️ Experimental
 /// Sets a list of content encodings that will be accepted. Empty list means no encoding is accepted.
-pub type NetworkSetAcceptedEncodingsResults = ();
+pub type NetworkSetAcceptedEncodingsReturns = ();
 /// ⚠️ Experimental
 /// Clears accepted encodings set by setAcceptedEncodings
 pub type NetworkClearAcceptedEncodingsOverrideParams = ();
 /// ⚠️ Experimental
 /// Clears accepted encodings set by setAcceptedEncodings
-pub type NetworkClearAcceptedEncodingsOverrideResults = ();
+pub type NetworkClearAcceptedEncodingsOverrideReturns = ();
 #[deprecated]
 /// Tells whether clearing browser cache is supported.
 pub type NetworkCanClearBrowserCacheParams = ();
 #[deprecated]
 /// Tells whether clearing browser cache is supported.
-pub type NetworkCanClearBrowserCacheResults = ();
+pub type NetworkCanClearBrowserCacheReturns = ();
 #[deprecated]
 /// Tells whether clearing browser cookies is supported.
 pub type NetworkCanClearBrowserCookiesParams = ();
 #[deprecated]
 /// Tells whether clearing browser cookies is supported.
-pub type NetworkCanClearBrowserCookiesResults = ();
+pub type NetworkCanClearBrowserCookiesReturns = ();
 #[deprecated]
 /// Tells whether emulation of network conditions is supported.
 pub type NetworkCanEmulateNetworkConditionsParams = ();
 #[deprecated]
 /// Tells whether emulation of network conditions is supported.
-pub type NetworkCanEmulateNetworkConditionsResults = ();
+pub type NetworkCanEmulateNetworkConditionsReturns = ();
 /// Clears browser cache.
 pub type NetworkClearBrowserCacheParams = ();
 /// Clears browser cache.
-pub type NetworkClearBrowserCacheResults = ();
+pub type NetworkClearBrowserCacheReturns = ();
 /// Clears browser cookies.
 pub type NetworkClearBrowserCookiesParams = ();
 /// Clears browser cookies.
-pub type NetworkClearBrowserCookiesResults = ();
+pub type NetworkClearBrowserCookiesReturns = ();
 #[deprecated]
 /// ⚠️ Experimental
 /** Response to Network.requestIntercepted which either modifies the request to continue with any
@@ -722,23 +722,23 @@ modifications, or blocks it, or completes it with the provided response bytes. I
 fetch occurs as a result which encounters a redirect an additional Network.requestIntercepted
 event will be sent with the same InterceptionId.
 Deprecated, use Fetch.continueRequest, Fetch.fulfillRequest and Fetch.failRequest instead.*/
-pub type NetworkContinueInterceptedRequestResults = ();
+pub type NetworkContinueInterceptedRequestReturns = ();
 /// Deletes browser cookies with matching name and url or domain/path/partitionKey pair.
 pub type NetworkDeleteCookiesParams = ();
 /// Deletes browser cookies with matching name and url or domain/path/partitionKey pair.
-pub type NetworkDeleteCookiesResults = ();
+pub type NetworkDeleteCookiesReturns = ();
 /// Disables network tracking, prevents network events from being sent to the client.
 pub type NetworkDisableParams = ();
 /// Disables network tracking, prevents network events from being sent to the client.
-pub type NetworkDisableResults = ();
+pub type NetworkDisableReturns = ();
 /// Activates emulation of network conditions.
 pub type NetworkEmulateNetworkConditionsParams = ();
 /// Activates emulation of network conditions.
-pub type NetworkEmulateNetworkConditionsResults = ();
+pub type NetworkEmulateNetworkConditionsReturns = ();
 /// Enables network tracking, network events will now be delivered to the client.
 pub type NetworkEnableParams = ();
 /// Enables network tracking, network events will now be delivered to the client.
-pub type NetworkEnableResults = ();
+pub type NetworkEnableReturns = ();
 #[deprecated]
 /** Returns all browser cookies. Depending on the backend support, will return detailed cookie
 information in the `cookies` field.
@@ -748,33 +748,33 @@ pub type NetworkGetAllCookiesParams = ();
 /** Returns all browser cookies. Depending on the backend support, will return detailed cookie
 information in the `cookies` field.
 Deprecated. Use Storage.getCookies instead.*/
-pub type NetworkGetAllCookiesResults = ();
+pub type NetworkGetAllCookiesReturns = ();
 /// ⚠️ Experimental
 /// Returns the DER-encoded certificate.
 pub type NetworkGetCertificateParams = ();
 /// ⚠️ Experimental
 /// Returns the DER-encoded certificate.
-pub type NetworkGetCertificateResults = ();
+pub type NetworkGetCertificateReturns = ();
 /** Returns all browser cookies for the current URL. Depending on the backend support, will return
 detailed cookie information in the `cookies` field.*/
 pub type NetworkGetCookiesParams = ();
 /** Returns all browser cookies for the current URL. Depending on the backend support, will return
 detailed cookie information in the `cookies` field.*/
-pub type NetworkGetCookiesResults = ();
+pub type NetworkGetCookiesReturns = ();
 /// Returns content served for the given request.
 pub type NetworkGetResponseBodyParams = ();
 /// Returns content served for the given request.
-pub type NetworkGetResponseBodyResults = ();
+pub type NetworkGetResponseBodyReturns = ();
 /// Returns post data sent with the request. Returns an error when no data was sent with the request.
 pub type NetworkGetRequestPostDataParams = ();
 /// Returns post data sent with the request. Returns an error when no data was sent with the request.
-pub type NetworkGetRequestPostDataResults = ();
+pub type NetworkGetRequestPostDataReturns = ();
 /// ⚠️ Experimental
 /// Returns content served for the given currently intercepted request.
 pub type NetworkGetResponseBodyForInterceptionParams = ();
 /// ⚠️ Experimental
 /// Returns content served for the given currently intercepted request.
-pub type NetworkGetResponseBodyForInterceptionResults = ();
+pub type NetworkGetResponseBodyForInterceptionReturns = ();
 /// ⚠️ Experimental
 /** Returns a handle to the stream representing the response body. Note that after this command,
 the intercepted request can't be continued as is -- you either need to cancel it or to provide
@@ -786,7 +786,7 @@ pub type NetworkTakeResponseBodyForInterceptionAsStreamParams = ();
 the intercepted request can't be continued as is -- you either need to cancel it or to provide
 the response body. The stream only supports sequential read, IO.read will fail if the position
 is specified.*/
-pub type NetworkTakeResponseBodyForInterceptionAsStreamResults = ();
+pub type NetworkTakeResponseBodyForInterceptionAsStreamReturns = ();
 /// ⚠️ Experimental
 /** This method sends a new XMLHttpRequest which is identical to the original one. The following
 parameters should be identical: method, url, async, request body, extra headers, withCredentials
@@ -796,45 +796,45 @@ pub type NetworkReplayXhrParams = ();
 /** This method sends a new XMLHttpRequest which is identical to the original one. The following
 parameters should be identical: method, url, async, request body, extra headers, withCredentials
 attribute, user, password.*/
-pub type NetworkReplayXhrResults = ();
+pub type NetworkReplayXhrReturns = ();
 /// ⚠️ Experimental
 /// Searches for given string in response content.
 pub type NetworkSearchInResponseBodyParams = ();
 /// ⚠️ Experimental
 /// Searches for given string in response content.
-pub type NetworkSearchInResponseBodyResults = ();
+pub type NetworkSearchInResponseBodyReturns = ();
 /// ⚠️ Experimental
 /// Blocks URLs from loading.
 pub type NetworkSetBlockedUrLsParams = ();
 /// ⚠️ Experimental
 /// Blocks URLs from loading.
-pub type NetworkSetBlockedUrLsResults = ();
+pub type NetworkSetBlockedUrLsReturns = ();
 /// Toggles ignoring of service worker for each request.
 pub type NetworkSetBypassServiceWorkerParams = ();
 /// Toggles ignoring of service worker for each request.
-pub type NetworkSetBypassServiceWorkerResults = ();
+pub type NetworkSetBypassServiceWorkerReturns = ();
 /// Toggles ignoring cache for each request. If `true`, cache will not be used.
 pub type NetworkSetCacheDisabledParams = ();
 /// Toggles ignoring cache for each request. If `true`, cache will not be used.
-pub type NetworkSetCacheDisabledResults = ();
+pub type NetworkSetCacheDisabledReturns = ();
 /// Sets a cookie with the given cookie data; may overwrite equivalent cookies if they exist.
 pub type NetworkSetCookieParams = ();
 /// Sets a cookie with the given cookie data; may overwrite equivalent cookies if they exist.
-pub type NetworkSetCookieResults = ();
+pub type NetworkSetCookieReturns = ();
 /// Sets given cookies.
 pub type NetworkSetCookiesParams = ();
 /// Sets given cookies.
-pub type NetworkSetCookiesResults = ();
+pub type NetworkSetCookiesReturns = ();
 /// Specifies whether to always send extra HTTP headers with the requests from this page.
 pub type NetworkSetExtraHttpHeadersParams = ();
 /// Specifies whether to always send extra HTTP headers with the requests from this page.
-pub type NetworkSetExtraHttpHeadersResults = ();
+pub type NetworkSetExtraHttpHeadersReturns = ();
 /// ⚠️ Experimental
 /// Specifies whether to attach a page script stack id in requests
 pub type NetworkSetAttachDebugStackParams = ();
 /// ⚠️ Experimental
 /// Specifies whether to attach a page script stack id in requests
-pub type NetworkSetAttachDebugStackResults = ();
+pub type NetworkSetAttachDebugStackReturns = ();
 #[deprecated]
 /// ⚠️ Experimental
 /** Sets the requests to intercept that match the provided patterns and optionally resource types.
@@ -844,11 +844,11 @@ pub type NetworkSetRequestInterceptionParams = ();
 /// ⚠️ Experimental
 /** Sets the requests to intercept that match the provided patterns and optionally resource types.
 Deprecated, please use Fetch.enable instead.*/
-pub type NetworkSetRequestInterceptionResults = ();
+pub type NetworkSetRequestInterceptionReturns = ();
 /// Allows overriding user agent with the given string.
 pub type NetworkSetUserAgentOverrideParams = ();
 /// Allows overriding user agent with the given string.
-pub type NetworkSetUserAgentOverrideResults = ();
+pub type NetworkSetUserAgentOverrideReturns = crate::emulation::EmulationSetUserAgentOverrideReturns;
 /// ⚠️ Experimental
 /** Enables streaming of the response for the given requestId.
 If enabled, the dataReceived event contains the data that was received during streaming.*/
@@ -856,13 +856,13 @@ pub type NetworkStreamResourceContentParams = ();
 /// ⚠️ Experimental
 /** Enables streaming of the response for the given requestId.
 If enabled, the dataReceived event contains the data that was received during streaming.*/
-pub type NetworkStreamResourceContentResults = ();
+pub type NetworkStreamResourceContentReturns = ();
 /// ⚠️ Experimental
 /// Returns information about the COEP/COOP isolation status.
 pub type NetworkGetSecurityIsolationStatusParams = ();
 /// ⚠️ Experimental
 /// Returns information about the COEP/COOP isolation status.
-pub type NetworkGetSecurityIsolationStatusResults = ();
+pub type NetworkGetSecurityIsolationStatusReturns = ();
 /// ⚠️ Experimental
 /** Enables tracking for the Reporting API, events generated by the Reporting API will now be delivered to the client.
 Enabling triggers 'reportingApiReportAdded' for all existing reports.*/
@@ -870,13 +870,13 @@ pub type NetworkEnableReportingApiParams = ();
 /// ⚠️ Experimental
 /** Enables tracking for the Reporting API, events generated by the Reporting API will now be delivered to the client.
 Enabling triggers 'reportingApiReportAdded' for all existing reports.*/
-pub type NetworkEnableReportingApiResults = ();
+pub type NetworkEnableReportingApiReturns = ();
 /// ⚠️ Experimental
 /// Fetches the resource and returns the content.
 pub type NetworkLoadNetworkResourceParams = ();
 /// ⚠️ Experimental
 /// Fetches the resource and returns the content.
-pub type NetworkLoadNetworkResourceResults = ();
+pub type NetworkLoadNetworkResourceReturns = ();
 /// ⚠️ Experimental
 /** Sets Controls for third-party cookie access
 Page reload is required before the new cookie bahavior will be observed*/
@@ -884,4 +884,4 @@ pub type NetworkSetCookieControlsParams = ();
 /// ⚠️ Experimental
 /** Sets Controls for third-party cookie access
 Page reload is required before the new cookie bahavior will be observed*/
-pub type NetworkSetCookieControlsResults = ();
+pub type NetworkSetCookieControlsReturns = ();

@@ -37,4 +37,4 @@ See also: timelineEventAdded*/
 pub type PerformanceTimelineEnableParams = ();
 /** Previously buffered events would be reported before method returns.
 See also: timelineEventAdded*/
-pub type PerformanceTimelineEnableResults = ();
+pub type PerformanceTimelineEnableReturns = ();

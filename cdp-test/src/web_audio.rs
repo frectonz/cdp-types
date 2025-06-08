@@ -80,12 +80,12 @@ pub struct AudioParam {
 /// Enables the WebAudio domain and starts sending context lifetime events.
 pub type WebAudioEnableParams = ();
 /// Enables the WebAudio domain and starts sending context lifetime events.
-pub type WebAudioEnableResults = ();
+pub type WebAudioEnableReturns = ();
 /// Disables the WebAudio domain.
 pub type WebAudioDisableParams = ();
 /// Disables the WebAudio domain.
-pub type WebAudioDisableResults = ();
+pub type WebAudioDisableReturns = ();
 /// Fetch the realtime data from the registered contexts.
 pub type WebAudioGetRealtimeDataParams = ();
 /// Fetch the realtime data from the registered contexts.
-pub type WebAudioGetRealtimeDataResults = ();
+pub type WebAudioGetRealtimeDataReturns = ();

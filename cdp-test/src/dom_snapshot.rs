@@ -140,11 +140,11 @@ pub struct TextBoxSnapshot {
 /// Disables DOM snapshot agent for the given page.
 pub type DomSnapshotDisableParams = ();
 /// Disables DOM snapshot agent for the given page.
-pub type DomSnapshotDisableResults = ();
+pub type DomSnapshotDisableReturns = ();
 /// Enables DOM snapshot agent for the given page.
 pub type DomSnapshotEnableParams = ();
 /// Enables DOM snapshot agent for the given page.
-pub type DomSnapshotEnableResults = ();
+pub type DomSnapshotEnableReturns = ();
 #[deprecated]
 /** Returns a document snapshot, including the full DOM tree of the root node (including iframes,
 template contents, and imported documents) in a flattened array, as well as layout and
@@ -156,7 +156,7 @@ pub type DomSnapshotGetSnapshotParams = ();
 template contents, and imported documents) in a flattened array, as well as layout and
 white-listed computed style information for the nodes. Shadow DOM in the returned DOM tree is
 flattened.*/
-pub type DomSnapshotGetSnapshotResults = ();
+pub type DomSnapshotGetSnapshotReturns = ();
 /** Returns a document snapshot, including the full DOM tree of the root node (including iframes,
 template contents, and imported documents) in a flattened array, as well as layout and
 white-listed computed style information for the nodes. Shadow DOM in the returned DOM tree is
@@ -166,4 +166,4 @@ pub type DomSnapshotCaptureSnapshotParams = ();
 template contents, and imported documents) in a flattened array, as well as layout and
 white-listed computed style information for the nodes. Shadow DOM in the returned DOM tree is
 flattened.*/
-pub type DomSnapshotCaptureSnapshotResults = ();
+pub type DomSnapshotCaptureSnapshotReturns = ();

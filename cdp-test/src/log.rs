@@ -22,22 +22,22 @@ pub struct ViolationSetting {
 /// Clears the log.
 pub type LogClearParams = ();
 /// Clears the log.
-pub type LogClearResults = ();
+pub type LogClearReturns = ();
 /// Disables log domain, prevents further log entries from being reported to the client.
 pub type LogDisableParams = ();
 /// Disables log domain, prevents further log entries from being reported to the client.
-pub type LogDisableResults = ();
+pub type LogDisableReturns = ();
 /** Enables log domain, sends the entries collected so far to the client by means of the
 `entryAdded` notification.*/
 pub type LogEnableParams = ();
 /** Enables log domain, sends the entries collected so far to the client by means of the
 `entryAdded` notification.*/
-pub type LogEnableResults = ();
+pub type LogEnableReturns = ();
 /// start violation reporting.
 pub type LogStartViolationsReportParams = ();
 /// start violation reporting.
-pub type LogStartViolationsReportResults = ();
+pub type LogStartViolationsReportReturns = ();
 /// Stop violation reporting.
 pub type LogStopViolationsReportParams = ();
 /// Stop violation reporting.
-pub type LogStopViolationsReportResults = ();
+pub type LogStopViolationsReportReturns = ();

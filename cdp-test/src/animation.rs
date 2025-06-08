@@ -48,40 +48,40 @@ pub struct KeyframeStyle {
 /// Disables animation domain notifications.
 pub type AnimationDisableParams = ();
 /// Disables animation domain notifications.
-pub type AnimationDisableResults = ();
+pub type AnimationDisableReturns = ();
 /// Enables animation domain notifications.
 pub type AnimationEnableParams = ();
 /// Enables animation domain notifications.
-pub type AnimationEnableResults = ();
+pub type AnimationEnableReturns = ();
 /// Returns the current time of the an animation.
 pub type AnimationGetCurrentTimeParams = ();
 /// Returns the current time of the an animation.
-pub type AnimationGetCurrentTimeResults = ();
+pub type AnimationGetCurrentTimeReturns = ();
 /// Gets the playback rate of the document timeline.
 pub type AnimationGetPlaybackRateParams = ();
 /// Gets the playback rate of the document timeline.
-pub type AnimationGetPlaybackRateResults = ();
+pub type AnimationGetPlaybackRateReturns = ();
 /// Releases a set of animations to no longer be manipulated.
 pub type AnimationReleaseAnimationsParams = ();
 /// Releases a set of animations to no longer be manipulated.
-pub type AnimationReleaseAnimationsResults = ();
+pub type AnimationReleaseAnimationsReturns = ();
 /// Gets the remote object of the Animation.
 pub type AnimationResolveAnimationParams = ();
 /// Gets the remote object of the Animation.
-pub type AnimationResolveAnimationResults = ();
+pub type AnimationResolveAnimationReturns = ();
 /// Seek a set of animations to a particular time within each animation.
 pub type AnimationSeekAnimationsParams = ();
 /// Seek a set of animations to a particular time within each animation.
-pub type AnimationSeekAnimationsResults = ();
+pub type AnimationSeekAnimationsReturns = ();
 /// Sets the paused state of a set of animations.
 pub type AnimationSetPausedParams = ();
 /// Sets the paused state of a set of animations.
-pub type AnimationSetPausedResults = ();
+pub type AnimationSetPausedReturns = ();
 /// Sets the playback rate of the document timeline.
 pub type AnimationSetPlaybackRateParams = ();
 /// Sets the playback rate of the document timeline.
-pub type AnimationSetPlaybackRateResults = ();
+pub type AnimationSetPlaybackRateReturns = ();
 /// Sets the timing of an animation node.
 pub type AnimationSetTimingParams = ();
 /// Sets the timing of an animation node.
-pub type AnimationSetTimingResults = ();
+pub type AnimationSetTimingReturns = ();

@@ -141,25 +141,25 @@ pub struct AxNode {
 /// Disables the accessibility domain.
 pub type AccessibilityDisableParams = ();
 /// Disables the accessibility domain.
-pub type AccessibilityDisableResults = ();
+pub type AccessibilityDisableReturns = ();
 /** Enables the accessibility domain which causes `AXNodeId`s to remain consistent between method calls.
 This turns on accessibility for the page, which can impact performance until accessibility is disabled.*/
 pub type AccessibilityEnableParams = ();
 /** Enables the accessibility domain which causes `AXNodeId`s to remain consistent between method calls.
 This turns on accessibility for the page, which can impact performance until accessibility is disabled.*/
-pub type AccessibilityEnableResults = ();
+pub type AccessibilityEnableReturns = ();
 /// ⚠️ Experimental
 /// Fetches the accessibility node and partial accessibility tree for this DOM node, if it exists.
 pub type AccessibilityGetPartialAxTreeParams = ();
 /// ⚠️ Experimental
 /// Fetches the accessibility node and partial accessibility tree for this DOM node, if it exists.
-pub type AccessibilityGetPartialAxTreeResults = ();
+pub type AccessibilityGetPartialAxTreeReturns = ();
 /// ⚠️ Experimental
 /// Fetches the entire accessibility tree for the root Document
 pub type AccessibilityGetFullAxTreeParams = ();
 /// ⚠️ Experimental
 /// Fetches the entire accessibility tree for the root Document
-pub type AccessibilityGetFullAxTreeResults = ();
+pub type AccessibilityGetFullAxTreeReturns = ();
 /// ⚠️ Experimental
 /** Fetches the root node.
 Requires `enable()` to have been called previously.*/
@@ -167,7 +167,7 @@ pub type AccessibilityGetRootAxNodeParams = ();
 /// ⚠️ Experimental
 /** Fetches the root node.
 Requires `enable()` to have been called previously.*/
-pub type AccessibilityGetRootAxNodeResults = ();
+pub type AccessibilityGetRootAxNodeReturns = ();
 /// ⚠️ Experimental
 /** Fetches a node and all ancestors up to and including the root.
 Requires `enable()` to have been called previously.*/
@@ -175,7 +175,7 @@ pub type AccessibilityGetAxNodeAndAncestorsParams = ();
 /// ⚠️ Experimental
 /** Fetches a node and all ancestors up to and including the root.
 Requires `enable()` to have been called previously.*/
-pub type AccessibilityGetAxNodeAndAncestorsResults = ();
+pub type AccessibilityGetAxNodeAndAncestorsReturns = ();
 /// ⚠️ Experimental
 /** Fetches a particular accessibility node by AXNodeId.
 Requires `enable()` to have been called previously.*/
@@ -183,7 +183,7 @@ pub type AccessibilityGetChildAxNodesParams = ();
 /// ⚠️ Experimental
 /** Fetches a particular accessibility node by AXNodeId.
 Requires `enable()` to have been called previously.*/
-pub type AccessibilityGetChildAxNodesResults = ();
+pub type AccessibilityGetChildAxNodesReturns = ();
 /// ⚠️ Experimental
 /** Query a DOM node's accessibility subtree for accessible name and role.
 This command computes the name and role for all nodes in the subtree, including those that are
@@ -197,4 +197,4 @@ This command computes the name and role for all nodes in the subtree, including 
 ignored for accessibility, and returns those that match the specified name and role. If no DOM
 node is specified, or the DOM node does not exist, the command returns an error. If neither
 `accessibleName` or `role` is specified, it returns all the accessibility nodes in the subtree.*/
-pub type AccessibilityQueryAxTreeResults = ();
+pub type AccessibilityQueryAxTreeReturns = ();

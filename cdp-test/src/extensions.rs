@@ -17,7 +17,7 @@ pub type ExtensionsLoadUnpackedParams = ();
 has been installed. Available if the client is connected using the
 --remote-debugging-pipe flag and the --enable-unsafe-extension-debugging
 flag is set.*/
-pub type ExtensionsLoadUnpackedResults = ();
+pub type ExtensionsLoadUnpackedReturns = ();
 /** Uninstalls an unpacked extension (others not supported) from the profile.
 Available if the client is connected using the --remote-debugging-pipe flag
 and the --enable-unsafe-extension-debugging.*/
@@ -25,24 +25,24 @@ pub type ExtensionsUninstallParams = ();
 /** Uninstalls an unpacked extension (others not supported) from the profile.
 Available if the client is connected using the --remote-debugging-pipe flag
 and the --enable-unsafe-extension-debugging.*/
-pub type ExtensionsUninstallResults = ();
+pub type ExtensionsUninstallReturns = ();
 /** Gets data from extension storage in the given `storageArea`. If `keys` is
 specified, these are used to filter the result.*/
 pub type ExtensionsGetStorageItemsParams = ();
 /** Gets data from extension storage in the given `storageArea`. If `keys` is
 specified, these are used to filter the result.*/
-pub type ExtensionsGetStorageItemsResults = ();
+pub type ExtensionsGetStorageItemsReturns = ();
 /// Removes `keys` from extension storage in the given `storageArea`.
 pub type ExtensionsRemoveStorageItemsParams = ();
 /// Removes `keys` from extension storage in the given `storageArea`.
-pub type ExtensionsRemoveStorageItemsResults = ();
+pub type ExtensionsRemoveStorageItemsReturns = ();
 /// Clears extension storage in the given `storageArea`.
 pub type ExtensionsClearStorageItemsParams = ();
 /// Clears extension storage in the given `storageArea`.
-pub type ExtensionsClearStorageItemsResults = ();
+pub type ExtensionsClearStorageItemsReturns = ();
 /** Sets `values` in extension storage in the given `storageArea`. The provided `values`
 will be merged with existing values in the storage area.*/
 pub type ExtensionsSetStorageItemsParams = ();
 /** Sets `values` in extension storage in the given `storageArea`. The provided `values`
 will be merged with existing values in the storage area.*/
-pub type ExtensionsSetStorageItemsResults = ();
+pub type ExtensionsSetStorageItemsReturns = ();

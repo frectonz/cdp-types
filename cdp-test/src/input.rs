@@ -44,11 +44,11 @@ pub struct DragData {
 pub type InputDispatchDragEventParams = ();
 /// ⚠️ Experimental
 /// Dispatches a drag event into the page.
-pub type InputDispatchDragEventResults = ();
+pub type InputDispatchDragEventReturns = ();
 /// Dispatches a key event to the page.
 pub type InputDispatchKeyEventParams = ();
 /// Dispatches a key event to the page.
-pub type InputDispatchKeyEventResults = ();
+pub type InputDispatchKeyEventReturns = ();
 /// ⚠️ Experimental
 /** This method emulates inserting text that doesn't come from a key press,
 for example an emoji keyboard or an IME.*/
@@ -56,7 +56,7 @@ pub type InputInsertTextParams = ();
 /// ⚠️ Experimental
 /** This method emulates inserting text that doesn't come from a key press,
 for example an emoji keyboard or an IME.*/
-pub type InputInsertTextResults = ();
+pub type InputInsertTextReturns = ();
 /// ⚠️ Experimental
 /** This method sets the current candidate text for IME.
 Use imeCommitComposition to commit the final text.
@@ -66,29 +66,29 @@ pub type InputImeSetCompositionParams = ();
 /** This method sets the current candidate text for IME.
 Use imeCommitComposition to commit the final text.
 Use imeSetComposition with empty string as text to cancel composition.*/
-pub type InputImeSetCompositionResults = ();
+pub type InputImeSetCompositionReturns = ();
 /// Dispatches a mouse event to the page.
 pub type InputDispatchMouseEventParams = ();
 /// Dispatches a mouse event to the page.
-pub type InputDispatchMouseEventResults = ();
+pub type InputDispatchMouseEventReturns = ();
 /// Dispatches a touch event to the page.
 pub type InputDispatchTouchEventParams = ();
 /// Dispatches a touch event to the page.
-pub type InputDispatchTouchEventResults = ();
+pub type InputDispatchTouchEventReturns = ();
 /// Cancels any active dragging in the page.
 pub type InputCancelDraggingParams = ();
 /// Cancels any active dragging in the page.
-pub type InputCancelDraggingResults = ();
+pub type InputCancelDraggingReturns = ();
 /// ⚠️ Experimental
 /// Emulates touch event from the mouse event parameters.
 pub type InputEmulateTouchFromMouseEventParams = ();
 /// ⚠️ Experimental
 /// Emulates touch event from the mouse event parameters.
-pub type InputEmulateTouchFromMouseEventResults = ();
+pub type InputEmulateTouchFromMouseEventReturns = ();
 /// Ignores input events (useful while auditing page).
 pub type InputSetIgnoreInputEventsParams = ();
 /// Ignores input events (useful while auditing page).
-pub type InputSetIgnoreInputEventsResults = ();
+pub type InputSetIgnoreInputEventsReturns = ();
 /// ⚠️ Experimental
 /** Prevents default drag and drop behavior and instead emits `Input.dragIntercepted` events.
 Drag and drop behavior can be directly controlled via `Input.dispatchDragEvent`.*/
@@ -96,22 +96,22 @@ pub type InputSetInterceptDragsParams = ();
 /// ⚠️ Experimental
 /** Prevents default drag and drop behavior and instead emits `Input.dragIntercepted` events.
 Drag and drop behavior can be directly controlled via `Input.dispatchDragEvent`.*/
-pub type InputSetInterceptDragsResults = ();
+pub type InputSetInterceptDragsReturns = ();
 /// ⚠️ Experimental
 /// Synthesizes a pinch gesture over a time period by issuing appropriate touch events.
 pub type InputSynthesizePinchGestureParams = ();
 /// ⚠️ Experimental
 /// Synthesizes a pinch gesture over a time period by issuing appropriate touch events.
-pub type InputSynthesizePinchGestureResults = ();
+pub type InputSynthesizePinchGestureReturns = ();
 /// ⚠️ Experimental
 /// Synthesizes a scroll gesture over a time period by issuing appropriate touch events.
 pub type InputSynthesizeScrollGestureParams = ();
 /// ⚠️ Experimental
 /// Synthesizes a scroll gesture over a time period by issuing appropriate touch events.
-pub type InputSynthesizeScrollGestureResults = ();
+pub type InputSynthesizeScrollGestureReturns = ();
 /// ⚠️ Experimental
 /// Synthesizes a tap gesture over a time period by issuing appropriate touch events.
 pub type InputSynthesizeTapGestureParams = ();
 /// ⚠️ Experimental
 /// Synthesizes a tap gesture over a time period by issuing appropriate touch events.
-pub type InputSynthesizeTapGestureResults = ();
+pub type InputSynthesizeTapGestureReturns = ();

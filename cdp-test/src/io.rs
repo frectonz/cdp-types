@@ -5,12 +5,12 @@ pub struct StreamHandle(String);
 /// Close the stream, discard any temporary backing storage.
 pub type IoCloseParams = ();
 /// Close the stream, discard any temporary backing storage.
-pub type IoCloseResults = ();
+pub type IoCloseReturns = ();
 /// Read a chunk of the stream
 pub type IoReadParams = ();
 /// Read a chunk of the stream
-pub type IoReadResults = ();
+pub type IoReadReturns = ();
 /// Return UUID of Blob object specified by a remote object id.
 pub type IoResolveBlobParams = ();
 /// Return UUID of Blob object specified by a remote object id.
-pub type IoResolveBlobResults = ();
+pub type IoResolveBlobReturns = ();

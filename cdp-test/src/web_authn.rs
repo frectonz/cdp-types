@@ -48,60 +48,60 @@ retrieval with a virtual authenticator.*/
 pub type WebAuthnEnableParams = ();
 /** Enable the WebAuthn domain and start intercepting credential storage and
 retrieval with a virtual authenticator.*/
-pub type WebAuthnEnableResults = ();
+pub type WebAuthnEnableReturns = ();
 /// Disable the WebAuthn domain.
 pub type WebAuthnDisableParams = ();
 /// Disable the WebAuthn domain.
-pub type WebAuthnDisableResults = ();
+pub type WebAuthnDisableReturns = ();
 /// Creates and adds a virtual authenticator.
 pub type WebAuthnAddVirtualAuthenticatorParams = ();
 /// Creates and adds a virtual authenticator.
-pub type WebAuthnAddVirtualAuthenticatorResults = ();
+pub type WebAuthnAddVirtualAuthenticatorReturns = ();
 /// Resets parameters isBogusSignature, isBadUV, isBadUP to false if they are not present.
 pub type WebAuthnSetResponseOverrideBitsParams = ();
 /// Resets parameters isBogusSignature, isBadUV, isBadUP to false if they are not present.
-pub type WebAuthnSetResponseOverrideBitsResults = ();
+pub type WebAuthnSetResponseOverrideBitsReturns = ();
 /// Removes the given authenticator.
 pub type WebAuthnRemoveVirtualAuthenticatorParams = ();
 /// Removes the given authenticator.
-pub type WebAuthnRemoveVirtualAuthenticatorResults = ();
+pub type WebAuthnRemoveVirtualAuthenticatorReturns = ();
 /// Adds the credential to the specified authenticator.
 pub type WebAuthnAddCredentialParams = ();
 /// Adds the credential to the specified authenticator.
-pub type WebAuthnAddCredentialResults = ();
+pub type WebAuthnAddCredentialReturns = ();
 /** Returns a single credential stored in the given virtual authenticator that
 matches the credential ID.*/
 pub type WebAuthnGetCredentialParams = ();
 /** Returns a single credential stored in the given virtual authenticator that
 matches the credential ID.*/
-pub type WebAuthnGetCredentialResults = ();
+pub type WebAuthnGetCredentialReturns = ();
 /// Returns all the credentials stored in the given virtual authenticator.
 pub type WebAuthnGetCredentialsParams = ();
 /// Returns all the credentials stored in the given virtual authenticator.
-pub type WebAuthnGetCredentialsResults = ();
+pub type WebAuthnGetCredentialsReturns = ();
 /// Removes a credential from the authenticator.
 pub type WebAuthnRemoveCredentialParams = ();
 /// Removes a credential from the authenticator.
-pub type WebAuthnRemoveCredentialResults = ();
+pub type WebAuthnRemoveCredentialReturns = ();
 /// Clears all the credentials from the specified device.
 pub type WebAuthnClearCredentialsParams = ();
 /// Clears all the credentials from the specified device.
-pub type WebAuthnClearCredentialsResults = ();
+pub type WebAuthnClearCredentialsReturns = ();
 /** Sets whether User Verification succeeds or fails for an authenticator.
 The default is true.*/
 pub type WebAuthnSetUserVerifiedParams = ();
 /** Sets whether User Verification succeeds or fails for an authenticator.
 The default is true.*/
-pub type WebAuthnSetUserVerifiedResults = ();
+pub type WebAuthnSetUserVerifiedReturns = ();
 /** Sets whether tests of user presence will succeed immediately (if true) or fail to resolve (if false) for an authenticator.
 The default is true.*/
 pub type WebAuthnSetAutomaticPresenceSimulationParams = ();
 /** Sets whether tests of user presence will succeed immediately (if true) or fail to resolve (if false) for an authenticator.
 The default is true.*/
-pub type WebAuthnSetAutomaticPresenceSimulationResults = ();
+pub type WebAuthnSetAutomaticPresenceSimulationReturns = ();
 /** Allows setting credential properties.
 https://w3c.github.io/webauthn/#sctn-automation-set-credential-properties*/
 pub type WebAuthnSetCredentialPropertiesParams = ();
 /** Allows setting credential properties.
 https://w3c.github.io/webauthn/#sctn-automation-set-credential-properties*/
-pub type WebAuthnSetCredentialPropertiesResults = ();
+pub type WebAuthnSetCredentialPropertiesReturns = ();

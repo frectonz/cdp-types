@@ -44,36 +44,36 @@ pub struct KeyPath {
 /// Clears all entries from an object store.
 pub type IndexedDbClearObjectStoreParams = ();
 /// Clears all entries from an object store.
-pub type IndexedDbClearObjectStoreResults = ();
+pub type IndexedDbClearObjectStoreReturns = ();
 /// Deletes a database.
 pub type IndexedDbDeleteDatabaseParams = ();
 /// Deletes a database.
-pub type IndexedDbDeleteDatabaseResults = ();
+pub type IndexedDbDeleteDatabaseReturns = ();
 /// Delete a range of entries from an object store
 pub type IndexedDbDeleteObjectStoreEntriesParams = ();
 /// Delete a range of entries from an object store
-pub type IndexedDbDeleteObjectStoreEntriesResults = ();
+pub type IndexedDbDeleteObjectStoreEntriesReturns = ();
 /// Disables events from backend.
 pub type IndexedDbDisableParams = ();
 /// Disables events from backend.
-pub type IndexedDbDisableResults = ();
+pub type IndexedDbDisableReturns = ();
 /// Enables events from backend.
 pub type IndexedDbEnableParams = ();
 /// Enables events from backend.
-pub type IndexedDbEnableResults = ();
+pub type IndexedDbEnableReturns = ();
 /// Requests data from object store or index.
 pub type IndexedDbRequestDataParams = ();
 /// Requests data from object store or index.
-pub type IndexedDbRequestDataResults = ();
+pub type IndexedDbRequestDataReturns = ();
 /// Gets metadata of an object store.
 pub type IndexedDbGetMetadataParams = ();
 /// Gets metadata of an object store.
-pub type IndexedDbGetMetadataResults = ();
+pub type IndexedDbGetMetadataReturns = ();
 /// Requests database with given name in given frame.
 pub type IndexedDbRequestDatabaseParams = ();
 /// Requests database with given name in given frame.
-pub type IndexedDbRequestDatabaseResults = ();
+pub type IndexedDbRequestDatabaseReturns = ();
 /// Requests database names for given security origin.
 pub type IndexedDbRequestDatabaseNamesParams = ();
 /// Requests database names for given security origin.
-pub type IndexedDbRequestDatabaseNamesResults = ();
+pub type IndexedDbRequestDatabaseNamesReturns = ();

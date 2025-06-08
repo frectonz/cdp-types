@@ -35,8 +35,8 @@ pub struct PlayerError {
 /// Enables the Media domain
 pub type MediaEnableParams = ();
 /// Enables the Media domain
-pub type MediaEnableResults = ();
+pub type MediaEnableReturns = ();
 /// Disables the Media domain.
 pub type MediaDisableParams = ();
 /// Disables the Media domain.
-pub type MediaDisableResults = ();
+pub type MediaDisableReturns = ();

@@ -30,52 +30,52 @@ pub struct DomCounter {
 /// Retruns current DOM object counters.
 pub type MemoryGetDomCountersParams = ();
 /// Retruns current DOM object counters.
-pub type MemoryGetDomCountersResults = ();
+pub type MemoryGetDomCountersReturns = ();
 /// Retruns DOM object counters after preparing renderer for leak detection.
 pub type MemoryGetDomCountersForLeakDetectionParams = ();
 /// Retruns DOM object counters after preparing renderer for leak detection.
-pub type MemoryGetDomCountersForLeakDetectionResults = ();
+pub type MemoryGetDomCountersForLeakDetectionReturns = ();
 /** Prepares for leak detection by terminating workers, stopping spellcheckers,
 dropping non-essential internal caches, running garbage collections, etc.*/
 pub type MemoryPrepareForLeakDetectionParams = ();
 /** Prepares for leak detection by terminating workers, stopping spellcheckers,
 dropping non-essential internal caches, running garbage collections, etc.*/
-pub type MemoryPrepareForLeakDetectionResults = ();
+pub type MemoryPrepareForLeakDetectionReturns = ();
 /// Simulate OomIntervention by purging V8 memory.
 pub type MemoryForciblyPurgeJavaScriptMemoryParams = ();
 /// Simulate OomIntervention by purging V8 memory.
-pub type MemoryForciblyPurgeJavaScriptMemoryResults = ();
+pub type MemoryForciblyPurgeJavaScriptMemoryReturns = ();
 /// Enable/disable suppressing memory pressure notifications in all processes.
 pub type MemorySetPressureNotificationsSuppressedParams = ();
 /// Enable/disable suppressing memory pressure notifications in all processes.
-pub type MemorySetPressureNotificationsSuppressedResults = ();
+pub type MemorySetPressureNotificationsSuppressedReturns = ();
 /// Simulate a memory pressure notification in all processes.
 pub type MemorySimulatePressureNotificationParams = ();
 /// Simulate a memory pressure notification in all processes.
-pub type MemorySimulatePressureNotificationResults = ();
+pub type MemorySimulatePressureNotificationReturns = ();
 /// Start collecting native memory profile.
 pub type MemoryStartSamplingParams = ();
 /// Start collecting native memory profile.
-pub type MemoryStartSamplingResults = ();
+pub type MemoryStartSamplingReturns = ();
 /// Stop collecting native memory profile.
 pub type MemoryStopSamplingParams = ();
 /// Stop collecting native memory profile.
-pub type MemoryStopSamplingResults = ();
+pub type MemoryStopSamplingReturns = ();
 /** Retrieve native memory allocations profile
 collected since renderer process startup.*/
 pub type MemoryGetAllTimeSamplingProfileParams = ();
 /** Retrieve native memory allocations profile
 collected since renderer process startup.*/
-pub type MemoryGetAllTimeSamplingProfileResults = ();
+pub type MemoryGetAllTimeSamplingProfileReturns = ();
 /** Retrieve native memory allocations profile
 collected since browser process startup.*/
 pub type MemoryGetBrowserSamplingProfileParams = ();
 /** Retrieve native memory allocations profile
 collected since browser process startup.*/
-pub type MemoryGetBrowserSamplingProfileResults = ();
+pub type MemoryGetBrowserSamplingProfileReturns = ();
 /** Retrieve native memory allocations profile collected since last
 `startSampling` call.*/
 pub type MemoryGetSamplingProfileParams = ();
 /** Retrieve native memory allocations profile collected since last
 `startSampling` call.*/
-pub type MemoryGetSamplingProfileResults = ();
+pub type MemoryGetSamplingProfileReturns = ();

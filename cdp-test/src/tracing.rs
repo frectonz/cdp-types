@@ -50,26 +50,26 @@ pub enum TracingBackend {
 /// Stop trace events collection.
 pub type TracingEndParams = ();
 /// Stop trace events collection.
-pub type TracingEndResults = ();
+pub type TracingEndReturns = ();
 /// ⚠️ Experimental
 /// Gets supported tracing categories.
 pub type TracingGetCategoriesParams = ();
 /// ⚠️ Experimental
 /// Gets supported tracing categories.
-pub type TracingGetCategoriesResults = ();
+pub type TracingGetCategoriesReturns = ();
 /// ⚠️ Experimental
 /// Record a clock sync marker in the trace.
 pub type TracingRecordClockSyncMarkerParams = ();
 /// ⚠️ Experimental
 /// Record a clock sync marker in the trace.
-pub type TracingRecordClockSyncMarkerResults = ();
+pub type TracingRecordClockSyncMarkerReturns = ();
 /// ⚠️ Experimental
 /// Request a global memory dump.
 pub type TracingRequestMemoryDumpParams = ();
 /// ⚠️ Experimental
 /// Request a global memory dump.
-pub type TracingRequestMemoryDumpResults = ();
+pub type TracingRequestMemoryDumpReturns = ();
 /// Start trace events collection.
 pub type TracingStartParams = ();
 /// Start trace events collection.
-pub type TracingStartResults = ();
+pub type TracingStartReturns = ();
