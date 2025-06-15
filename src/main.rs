@@ -305,6 +305,38 @@ fn resolve_type(protocol_data: &ProtocolData, ref_typ: &str) -> TokenStream {
         };
     }
 
+    if ref_typ == "Target.TargetID" {
+        return quote! {
+            crate::target::TargetId
+        };
+    }
+
+    if ref_typ == "Emulation.ScreenOrientation" {
+        return quote! {
+            crate::emulation::ScreenOrientation
+        };
+    }
+
+    if ref_typ == "Emulation.UserAgentMetadata" {
+        return quote! {
+            crate::emulation::UserAgentMetadata
+        };
+    }
+
+    if ref_typ == "AuthChallengeResponse" {
+        // use either from NetworkAuthChallengeResponse or FetchAuthChallengeResponse depending on which module we are in
+        return quote! {
+            ()
+        };
+    }
+
+    if ref_typ == "RequestPattern" {
+        // use either from NetworkRequestPattern or FetchRequestPattern depending on which module we are in
+        return quote! {
+            ()
+        };
+    }
+
     if ref_typ.starts_with("Runtime.") {
         return quote! {
             ()
@@ -338,8 +370,52 @@ impl Parameter {
         Ident::new(&name, Span::call_site())
     }
 
-    fn to_rust(&self) -> TokenStream {
+    fn to_rust(&self, protocol_data: &ProtocolData) -> TokenStream {
         let name = self.name_ident();
+
+        let basic_type = self.r#type.as_ref().and_then(|typ| get_rust_type(typ));
+
+        if let Some(typ) = basic_type {
+            return quote! {
+                pub #name: #typ
+            };
+        }
+
+        let ref_typ = self
+            .r#ref
+            .as_ref()
+            .map(|ref_typ| resolve_type(protocol_data, ref_typ));
+
+        if let Some(typ) = ref_typ {
+            return quote! {
+                pub #name: Box<#typ>
+            };
+        }
+
+        let items_basic_typ = self
+            .items
+            .as_ref()
+            .and_then(|items| items.r#type.as_ref())
+            .and_then(|typ| get_rust_type(typ));
+
+        if let Some(item) = items_basic_typ {
+            return quote! {
+                pub #name: Vec<#item>
+            };
+        }
+
+        let items_ref_typ = self
+            .items
+            .as_ref()
+            .and_then(|items| items.r#ref.as_ref())
+            .map(|ref_typ| resolve_type(protocol_data, ref_typ));
+
+        if let Some(item) = items_ref_typ {
+            return quote! {
+                pub #name: Vec<#item>
+            };
+        }
+
         quote! {
             pub #name: ()
         }
@@ -490,14 +566,18 @@ impl Command {
             })
     }
 
-    fn parameters(&self) -> Option<TokenStream> {
+    fn parameters(&self, protocol_data: &ProtocolData) -> Option<TokenStream> {
         self.parameters
             .as_ref()
-            .map(|parameters| parameters.into_iter().map(|param| param.to_rust()))
+            .map(|parameters| {
+                parameters
+                    .into_iter()
+                    .map(|param| param.to_rust(protocol_data))
+            })
             .map(|parameters| quote! { #(#parameters),* })
     }
 
-    fn to_rust(&self, domain: &str) -> TokenStream {
+    fn to_rust(&self, domain: &str, protocol_data: &ProtocolData) -> TokenStream {
         let idents = self.name_ident(domain);
 
         let description = self.description();
@@ -524,7 +604,7 @@ impl Command {
             }
         });
 
-        let real_params = self.parameters().map(|params| {
+        let real_params = self.parameters(protocol_data).map(|params| {
             quote! {
                 #attrs
                 pub struct #params_ident {
@@ -727,7 +807,10 @@ impl Domain {
             .filter(|x| !protocol.is_common_type(&x.id))
             .map(|t| t.to_rust(protocol));
 
-        let commands = self.commands.iter().map(|c| c.to_rust(&self.domain));
+        let commands = self
+            .commands
+            .iter()
+            .map(|c| c.to_rust(&self.domain, protocol));
 
         let content = quote! {
             use crate::common::*;
