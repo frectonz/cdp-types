@@ -9,7 +9,9 @@ sinks compatible with |presentationUrl| as well. When sinks are found, a
 |sinksUpdated| event is fired.
 Also starts observing for issue messages. When an issue is added or removed,
 an |issueUpdated| event is fired.*/
-pub type CastEnableParams = ();
+pub struct CastEnableParams {
+    test: (),
+}
 /** Starts observing for sinks that can be used for tab mirroring, and if set,
 sinks compatible with |presentationUrl| as well. When sinks are found, a
 |sinksUpdated| event is fired.
@@ -22,19 +24,27 @@ pub type CastDisableParams = ();
 pub type CastDisableReturns = ();
 /** Sets a sink to be used when the web page requests the browser to choose a
 sink via Presentation API, Remote Playback API, or Cast SDK.*/
-pub type CastSetSinkToUseParams = ();
+pub struct CastSetSinkToUseParams {
+    test: (),
+}
 /** Sets a sink to be used when the web page requests the browser to choose a
 sink via Presentation API, Remote Playback API, or Cast SDK.*/
 pub type CastSetSinkToUseReturns = ();
 /// Starts mirroring the desktop to the sink.
-pub type CastStartDesktopMirroringParams = ();
+pub struct CastStartDesktopMirroringParams {
+    test: (),
+}
 /// Starts mirroring the desktop to the sink.
 pub type CastStartDesktopMirroringReturns = ();
 /// Starts mirroring the tab to the sink.
-pub type CastStartTabMirroringParams = ();
+pub struct CastStartTabMirroringParams {
+    test: (),
+}
 /// Starts mirroring the tab to the sink.
 pub type CastStartTabMirroringReturns = ();
 /// Stops the active Cast session on the sink.
-pub type CastStopCastingParams = ();
+pub struct CastStopCastingParams {
+    test: (),
+}
 /// Stops the active Cast session on the sink.
 pub type CastStopCastingReturns = ();

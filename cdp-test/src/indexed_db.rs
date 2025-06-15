@@ -42,15 +42,33 @@ pub struct KeyPath {
     pub array: Vec<String>,
 }
 /// Clears all entries from an object store.
-pub type IndexedDbClearObjectStoreParams = ();
+pub struct IndexedDbClearObjectStoreParams {
+    test: (),
+    test: (),
+    test: (),
+    test: (),
+    test: (),
+}
 /// Clears all entries from an object store.
 pub type IndexedDbClearObjectStoreReturns = ();
 /// Deletes a database.
-pub type IndexedDbDeleteDatabaseParams = ();
+pub struct IndexedDbDeleteDatabaseParams {
+    test: (),
+    test: (),
+    test: (),
+    test: (),
+}
 /// Deletes a database.
 pub type IndexedDbDeleteDatabaseReturns = ();
 /// Delete a range of entries from an object store
-pub type IndexedDbDeleteObjectStoreEntriesParams = ();
+pub struct IndexedDbDeleteObjectStoreEntriesParams {
+    test: (),
+    test: (),
+    test: (),
+    test: (),
+    test: (),
+    test: (),
+}
 /// Delete a range of entries from an object store
 pub type IndexedDbDeleteObjectStoreEntriesReturns = ();
 /// Disables events from backend.
@@ -62,18 +80,43 @@ pub type IndexedDbEnableParams = ();
 /// Enables events from backend.
 pub type IndexedDbEnableReturns = ();
 /// Requests data from object store or index.
-pub type IndexedDbRequestDataParams = ();
+pub struct IndexedDbRequestDataParams {
+    test: (),
+    test: (),
+    test: (),
+    test: (),
+    test: (),
+    test: (),
+    test: (),
+    test: (),
+    test: (),
+}
 /// Requests data from object store or index.
 pub type IndexedDbRequestDataReturns = ();
 /// Gets metadata of an object store.
-pub type IndexedDbGetMetadataParams = ();
+pub struct IndexedDbGetMetadataParams {
+    test: (),
+    test: (),
+    test: (),
+    test: (),
+    test: (),
+}
 /// Gets metadata of an object store.
 pub type IndexedDbGetMetadataReturns = ();
 /// Requests database with given name in given frame.
-pub type IndexedDbRequestDatabaseParams = ();
+pub struct IndexedDbRequestDatabaseParams {
+    test: (),
+    test: (),
+    test: (),
+    test: (),
+}
 /// Requests database with given name in given frame.
 pub type IndexedDbRequestDatabaseReturns = ();
 /// Requests database names for given security origin.
-pub type IndexedDbRequestDatabaseNamesParams = ();
+pub struct IndexedDbRequestDatabaseNamesParams {
+    test: (),
+    test: (),
+    test: (),
+}
 /// Requests database names for given security origin.
 pub type IndexedDbRequestDatabaseNamesReturns = ();

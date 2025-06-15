@@ -54,7 +54,9 @@ pub type AnimationEnableParams = ();
 /// Enables animation domain notifications.
 pub type AnimationEnableReturns = ();
 /// Returns the current time of the an animation.
-pub type AnimationGetCurrentTimeParams = ();
+pub struct AnimationGetCurrentTimeParams {
+    test: (),
+}
 /// Returns the current time of the an animation.
 pub type AnimationGetCurrentTimeReturns = ();
 /// Gets the playback rate of the document timeline.
@@ -62,26 +64,42 @@ pub type AnimationGetPlaybackRateParams = ();
 /// Gets the playback rate of the document timeline.
 pub type AnimationGetPlaybackRateReturns = ();
 /// Releases a set of animations to no longer be manipulated.
-pub type AnimationReleaseAnimationsParams = ();
+pub struct AnimationReleaseAnimationsParams {
+    test: (),
+}
 /// Releases a set of animations to no longer be manipulated.
 pub type AnimationReleaseAnimationsReturns = ();
 /// Gets the remote object of the Animation.
-pub type AnimationResolveAnimationParams = ();
+pub struct AnimationResolveAnimationParams {
+    test: (),
+}
 /// Gets the remote object of the Animation.
 pub type AnimationResolveAnimationReturns = ();
 /// Seek a set of animations to a particular time within each animation.
-pub type AnimationSeekAnimationsParams = ();
+pub struct AnimationSeekAnimationsParams {
+    test: (),
+    test: (),
+}
 /// Seek a set of animations to a particular time within each animation.
 pub type AnimationSeekAnimationsReturns = ();
 /// Sets the paused state of a set of animations.
-pub type AnimationSetPausedParams = ();
+pub struct AnimationSetPausedParams {
+    test: (),
+    test: (),
+}
 /// Sets the paused state of a set of animations.
 pub type AnimationSetPausedReturns = ();
 /// Sets the playback rate of the document timeline.
-pub type AnimationSetPlaybackRateParams = ();
+pub struct AnimationSetPlaybackRateParams {
+    test: (),
+}
 /// Sets the playback rate of the document timeline.
 pub type AnimationSetPlaybackRateReturns = ();
 /// Sets the timing of an animation node.
-pub type AnimationSetTimingParams = ();
+pub struct AnimationSetTimingParams {
+    test: (),
+    test: (),
+    test: (),
+}
 /// Sets the timing of an animation node.
 pub type AnimationSetTimingReturns = ();

@@ -34,7 +34,9 @@ pub struct TimelineEvent {
 }
 /** Previously buffered events would be reported before method returns.
 See also: timelineEventAdded*/
-pub type PerformanceTimelineEnableParams = ();
+pub struct PerformanceTimelineEnableParams {
+    test: (),
+}
 /** Previously buffered events would be reported before method returns.
 See also: timelineEventAdded*/
 pub type PerformanceTimelineEnableReturns = ();

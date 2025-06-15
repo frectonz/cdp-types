@@ -15,10 +15,15 @@ pub type DeviceAccessDisableParams = ();
 /// Disable events in this domain.
 pub type DeviceAccessDisableReturns = ();
 /// Select a device in response to a DeviceAccess.deviceRequestPrompted event.
-pub type DeviceAccessSelectPromptParams = ();
+pub struct DeviceAccessSelectPromptParams {
+    test: (),
+    test: (),
+}
 /// Select a device in response to a DeviceAccess.deviceRequestPrompted event.
 pub type DeviceAccessSelectPromptReturns = ();
 /// Cancel a prompt in response to a DeviceAccess.deviceRequestPrompted event.
-pub type DeviceAccessCancelPromptParams = ();
+pub struct DeviceAccessCancelPromptParams {
+    test: (),
+}
 /// Cancel a prompt in response to a DeviceAccess.deviceRequestPrompted event.
 pub type DeviceAccessCancelPromptReturns = ();

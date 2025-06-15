@@ -26,52 +26,78 @@ pub struct EventListener {
     pub backend_node_id: Box<BackendNodeId>,
 }
 /// Returns event listeners of the given object.
-pub type DomDebuggerGetEventListenersParams = ();
+pub struct DomDebuggerGetEventListenersParams {
+    test: (),
+    test: (),
+    test: (),
+}
 /// Returns event listeners of the given object.
 pub type DomDebuggerGetEventListenersReturns = ();
 /// Removes DOM breakpoint that was set using `setDOMBreakpoint`.
-pub type DomDebuggerRemoveDomBreakpointParams = ();
+pub struct DomDebuggerRemoveDomBreakpointParams {
+    test: (),
+    test: (),
+}
 /// Removes DOM breakpoint that was set using `setDOMBreakpoint`.
 pub type DomDebuggerRemoveDomBreakpointReturns = ();
 /// Removes breakpoint on particular DOM event.
-pub type DomDebuggerRemoveEventListenerBreakpointParams = ();
+pub struct DomDebuggerRemoveEventListenerBreakpointParams {
+    test: (),
+    test: (),
+}
 /// Removes breakpoint on particular DOM event.
 pub type DomDebuggerRemoveEventListenerBreakpointReturns = ();
 #[deprecated]
 /// ⚠️ Experimental
 /// Removes breakpoint on particular native event.
-pub type DomDebuggerRemoveInstrumentationBreakpointParams = ();
+pub struct DomDebuggerRemoveInstrumentationBreakpointParams {
+    test: (),
+}
 #[deprecated]
 /// ⚠️ Experimental
 /// Removes breakpoint on particular native event.
 pub type DomDebuggerRemoveInstrumentationBreakpointReturns = crate::event_breakpoints::EventBreakpointsRemoveInstrumentationBreakpointReturns;
 /// Removes breakpoint from XMLHttpRequest.
-pub type DomDebuggerRemoveXhrBreakpointParams = ();
+pub struct DomDebuggerRemoveXhrBreakpointParams {
+    test: (),
+}
 /// Removes breakpoint from XMLHttpRequest.
 pub type DomDebuggerRemoveXhrBreakpointReturns = ();
 /// ⚠️ Experimental
 /// Sets breakpoint on particular CSP violations.
-pub type DomDebuggerSetBreakOnCspViolationParams = ();
+pub struct DomDebuggerSetBreakOnCspViolationParams {
+    test: (),
+}
 /// ⚠️ Experimental
 /// Sets breakpoint on particular CSP violations.
 pub type DomDebuggerSetBreakOnCspViolationReturns = ();
 /// Sets breakpoint on particular operation with DOM.
-pub type DomDebuggerSetDomBreakpointParams = ();
+pub struct DomDebuggerSetDomBreakpointParams {
+    test: (),
+    test: (),
+}
 /// Sets breakpoint on particular operation with DOM.
 pub type DomDebuggerSetDomBreakpointReturns = ();
 /// Sets breakpoint on particular DOM event.
-pub type DomDebuggerSetEventListenerBreakpointParams = ();
+pub struct DomDebuggerSetEventListenerBreakpointParams {
+    test: (),
+    test: (),
+}
 /// Sets breakpoint on particular DOM event.
 pub type DomDebuggerSetEventListenerBreakpointReturns = ();
 #[deprecated]
 /// ⚠️ Experimental
 /// Sets breakpoint on particular native event.
-pub type DomDebuggerSetInstrumentationBreakpointParams = ();
+pub struct DomDebuggerSetInstrumentationBreakpointParams {
+    test: (),
+}
 #[deprecated]
 /// ⚠️ Experimental
 /// Sets breakpoint on particular native event.
 pub type DomDebuggerSetInstrumentationBreakpointReturns = crate::event_breakpoints::EventBreakpointsSetInstrumentationBreakpointReturns;
 /// Sets breakpoint on XMLHttpRequest.
-pub type DomDebuggerSetXhrBreakpointParams = ();
+pub struct DomDebuggerSetXhrBreakpointParams {
+    test: (),
+}
 /// Sets breakpoint on XMLHttpRequest.
 pub type DomDebuggerSetXhrBreakpointReturns = ();

@@ -9,7 +9,9 @@ pub type PerformanceDisableParams = ();
 /// Disable collecting and reporting metrics.
 pub type PerformanceDisableReturns = ();
 /// Enable collecting and reporting metrics.
-pub type PerformanceEnableParams = ();
+pub struct PerformanceEnableParams {
+    test: (),
+}
 /// Enable collecting and reporting metrics.
 pub type PerformanceEnableReturns = ();
 #[deprecated]
@@ -17,7 +19,9 @@ pub type PerformanceEnableReturns = ();
 /** Sets time domain to use for collecting and reporting duration metrics.
 Note that this must be called before enabling metrics collection. Calling
 this method while metrics collection is enabled returns an error.*/
-pub type PerformanceSetTimeDomainParams = ();
+pub struct PerformanceSetTimeDomainParams {
+    test: (),
+}
 #[deprecated]
 /// ⚠️ Experimental
 /** Sets time domain to use for collecting and reporting duration metrics.

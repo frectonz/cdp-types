@@ -4,6 +4,10 @@ pub type DeviceOrientationClearDeviceOrientationOverrideParams = ();
 /// Clears the overridden Device Orientation.
 pub type DeviceOrientationClearDeviceOrientationOverrideReturns = ();
 /// Overrides the Device Orientation.
-pub type DeviceOrientationSetDeviceOrientationOverrideParams = ();
+pub struct DeviceOrientationSetDeviceOrientationOverrideParams {
+    test: (),
+    test: (),
+    test: (),
+}
 /// Overrides the Device Orientation.
 pub type DeviceOrientationSetDeviceOrientationOverrideReturns = ();

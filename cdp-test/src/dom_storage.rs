@@ -7,7 +7,9 @@ pub struct StorageId {
 }
 /// DOM Storage item.
 pub struct Item(Vec<String>);
-pub type DomStorageClearParams = ();
+pub struct DomStorageClearParams {
+    test: (),
+}
 pub type DomStorageClearReturns = ();
 /// Disables storage tracking, prevents storage events from being sent to the client.
 pub type DomStorageDisableParams = ();
@@ -17,9 +19,18 @@ pub type DomStorageDisableReturns = ();
 pub type DomStorageEnableParams = ();
 /// Enables storage tracking, storage events will now be delivered to the client.
 pub type DomStorageEnableReturns = ();
-pub type DomStorageGetDomStorageItemsParams = ();
+pub struct DomStorageGetDomStorageItemsParams {
+    test: (),
+}
 pub type DomStorageGetDomStorageItemsReturns = ();
-pub type DomStorageRemoveDomStorageItemParams = ();
+pub struct DomStorageRemoveDomStorageItemParams {
+    test: (),
+    test: (),
+}
 pub type DomStorageRemoveDomStorageItemReturns = ();
-pub type DomStorageSetDomStorageItemParams = ();
+pub struct DomStorageSetDomStorageItemParams {
+    test: (),
+    test: (),
+    test: (),
+}
 pub type DomStorageSetDomStorageItemReturns = ();

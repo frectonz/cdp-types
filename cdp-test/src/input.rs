@@ -41,18 +41,42 @@ pub struct DragData {
 }
 /// ⚠️ Experimental
 /// Dispatches a drag event into the page.
-pub type InputDispatchDragEventParams = ();
+pub struct InputDispatchDragEventParams {
+    test: (),
+    test: (),
+    test: (),
+    test: (),
+    test: (),
+}
 /// ⚠️ Experimental
 /// Dispatches a drag event into the page.
 pub type InputDispatchDragEventReturns = ();
 /// Dispatches a key event to the page.
-pub type InputDispatchKeyEventParams = ();
+pub struct InputDispatchKeyEventParams {
+    test: (),
+    test: (),
+    test: (),
+    test: (),
+    test: (),
+    test: (),
+    test: (),
+    test: (),
+    test: (),
+    test: (),
+    test: (),
+    test: (),
+    test: (),
+    test: (),
+    test: (),
+}
 /// Dispatches a key event to the page.
 pub type InputDispatchKeyEventReturns = ();
 /// ⚠️ Experimental
 /** This method emulates inserting text that doesn't come from a key press,
 for example an emoji keyboard or an IME.*/
-pub type InputInsertTextParams = ();
+pub struct InputInsertTextParams {
+    test: (),
+}
 /// ⚠️ Experimental
 /** This method emulates inserting text that doesn't come from a key press,
 for example an emoji keyboard or an IME.*/
@@ -61,18 +85,46 @@ pub type InputInsertTextReturns = ();
 /** This method sets the current candidate text for IME.
 Use imeCommitComposition to commit the final text.
 Use imeSetComposition with empty string as text to cancel composition.*/
-pub type InputImeSetCompositionParams = ();
+pub struct InputImeSetCompositionParams {
+    test: (),
+    test: (),
+    test: (),
+    test: (),
+    test: (),
+}
 /// ⚠️ Experimental
 /** This method sets the current candidate text for IME.
 Use imeCommitComposition to commit the final text.
 Use imeSetComposition with empty string as text to cancel composition.*/
 pub type InputImeSetCompositionReturns = ();
 /// Dispatches a mouse event to the page.
-pub type InputDispatchMouseEventParams = ();
+pub struct InputDispatchMouseEventParams {
+    test: (),
+    test: (),
+    test: (),
+    test: (),
+    test: (),
+    test: (),
+    test: (),
+    test: (),
+    test: (),
+    test: (),
+    test: (),
+    test: (),
+    test: (),
+    test: (),
+    test: (),
+    test: (),
+}
 /// Dispatches a mouse event to the page.
 pub type InputDispatchMouseEventReturns = ();
 /// Dispatches a touch event to the page.
-pub type InputDispatchTouchEventParams = ();
+pub struct InputDispatchTouchEventParams {
+    test: (),
+    test: (),
+    test: (),
+    test: (),
+}
 /// Dispatches a touch event to the page.
 pub type InputDispatchTouchEventReturns = ();
 /// Cancels any active dragging in the page.
@@ -81,37 +133,76 @@ pub type InputCancelDraggingParams = ();
 pub type InputCancelDraggingReturns = ();
 /// ⚠️ Experimental
 /// Emulates touch event from the mouse event parameters.
-pub type InputEmulateTouchFromMouseEventParams = ();
+pub struct InputEmulateTouchFromMouseEventParams {
+    test: (),
+    test: (),
+    test: (),
+    test: (),
+    test: (),
+    test: (),
+    test: (),
+    test: (),
+    test: (),
+}
 /// ⚠️ Experimental
 /// Emulates touch event from the mouse event parameters.
 pub type InputEmulateTouchFromMouseEventReturns = ();
 /// Ignores input events (useful while auditing page).
-pub type InputSetIgnoreInputEventsParams = ();
+pub struct InputSetIgnoreInputEventsParams {
+    test: (),
+}
 /// Ignores input events (useful while auditing page).
 pub type InputSetIgnoreInputEventsReturns = ();
 /// ⚠️ Experimental
 /** Prevents default drag and drop behavior and instead emits `Input.dragIntercepted` events.
 Drag and drop behavior can be directly controlled via `Input.dispatchDragEvent`.*/
-pub type InputSetInterceptDragsParams = ();
+pub struct InputSetInterceptDragsParams {
+    test: (),
+}
 /// ⚠️ Experimental
 /** Prevents default drag and drop behavior and instead emits `Input.dragIntercepted` events.
 Drag and drop behavior can be directly controlled via `Input.dispatchDragEvent`.*/
 pub type InputSetInterceptDragsReturns = ();
 /// ⚠️ Experimental
 /// Synthesizes a pinch gesture over a time period by issuing appropriate touch events.
-pub type InputSynthesizePinchGestureParams = ();
+pub struct InputSynthesizePinchGestureParams {
+    test: (),
+    test: (),
+    test: (),
+    test: (),
+    test: (),
+}
 /// ⚠️ Experimental
 /// Synthesizes a pinch gesture over a time period by issuing appropriate touch events.
 pub type InputSynthesizePinchGestureReturns = ();
 /// ⚠️ Experimental
 /// Synthesizes a scroll gesture over a time period by issuing appropriate touch events.
-pub type InputSynthesizeScrollGestureParams = ();
+pub struct InputSynthesizeScrollGestureParams {
+    test: (),
+    test: (),
+    test: (),
+    test: (),
+    test: (),
+    test: (),
+    test: (),
+    test: (),
+    test: (),
+    test: (),
+    test: (),
+    test: (),
+}
 /// ⚠️ Experimental
 /// Synthesizes a scroll gesture over a time period by issuing appropriate touch events.
 pub type InputSynthesizeScrollGestureReturns = ();
 /// ⚠️ Experimental
 /// Synthesizes a tap gesture over a time period by issuing appropriate touch events.
-pub type InputSynthesizeTapGestureParams = ();
+pub struct InputSynthesizeTapGestureParams {
+    test: (),
+    test: (),
+    test: (),
+    test: (),
+    test: (),
+}
 /// ⚠️ Experimental
 /// Synthesizes a tap gesture over a time period by issuing appropriate touch events.
 pub type InputSynthesizeTapGestureReturns = ();

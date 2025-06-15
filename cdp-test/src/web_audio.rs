@@ -86,6 +86,8 @@ pub type WebAudioDisableParams = ();
 /// Disables the WebAudio domain.
 pub type WebAudioDisableReturns = ();
 /// Fetch the realtime data from the registered contexts.
-pub type WebAudioGetRealtimeDataParams = ();
+pub struct WebAudioGetRealtimeDataParams {
+    test: (),
+}
 /// Fetch the realtime data from the registered contexts.
 pub type WebAudioGetRealtimeDataReturns = ();

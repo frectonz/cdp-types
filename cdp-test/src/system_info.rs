@@ -71,7 +71,9 @@ pub type SystemInfoGetInfoParams = ();
 /// Returns information about the system.
 pub type SystemInfoGetInfoReturns = ();
 /// Returns information about the feature state.
-pub type SystemInfoGetFeatureStateParams = ();
+pub struct SystemInfoGetFeatureStateParams {
+    test: (),
+}
 /// Returns information about the feature state.
 pub type SystemInfoGetFeatureStateReturns = ();
 /// Returns information about all running processes.

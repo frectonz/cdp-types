@@ -46,15 +46,22 @@ pub type MemoryForciblyPurgeJavaScriptMemoryParams = ();
 /// Simulate OomIntervention by purging V8 memory.
 pub type MemoryForciblyPurgeJavaScriptMemoryReturns = ();
 /// Enable/disable suppressing memory pressure notifications in all processes.
-pub type MemorySetPressureNotificationsSuppressedParams = ();
+pub struct MemorySetPressureNotificationsSuppressedParams {
+    test: (),
+}
 /// Enable/disable suppressing memory pressure notifications in all processes.
 pub type MemorySetPressureNotificationsSuppressedReturns = ();
 /// Simulate a memory pressure notification in all processes.
-pub type MemorySimulatePressureNotificationParams = ();
+pub struct MemorySimulatePressureNotificationParams {
+    test: (),
+}
 /// Simulate a memory pressure notification in all processes.
 pub type MemorySimulatePressureNotificationReturns = ();
 /// Start collecting native memory profile.
-pub type MemoryStartSamplingParams = ();
+pub struct MemoryStartSamplingParams {
+    test: (),
+    test: (),
+}
 /// Start collecting native memory profile.
 pub type MemoryStartSamplingReturns = ();
 /// Stop collecting native memory profile.

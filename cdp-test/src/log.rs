@@ -34,7 +34,9 @@ pub type LogEnableParams = ();
 `entryAdded` notification.*/
 pub type LogEnableReturns = ();
 /// start violation reporting.
-pub type LogStartViolationsReportParams = ();
+pub struct LogStartViolationsReportParams {
+    test: (),
+}
 /// start violation reporting.
 pub type LogStartViolationsReportReturns = ();
 /// Stop violation reporting.

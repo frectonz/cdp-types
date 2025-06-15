@@ -583,7 +583,12 @@ pub struct InspectorIssue {
 }
 /** Returns the response body and size if it were re-encoded with the specified settings. Only
 applies to images.*/
-pub type AuditsGetEncodedResponseParams = ();
+pub struct AuditsGetEncodedResponseParams {
+    test: (),
+    test: (),
+    test: (),
+    test: (),
+}
 /** Returns the response body and size if it were re-encoded with the specified settings. Only
 applies to images.*/
 pub type AuditsGetEncodedResponseReturns = ();
@@ -599,7 +604,9 @@ pub type AuditsEnableParams = ();
 pub type AuditsEnableReturns = ();
 /** Runs the contrast check for the target page. Found issues are reported
 using Audits.issueAdded event.*/
-pub type AuditsCheckContrastParams = ();
+pub struct AuditsCheckContrastParams {
+    test: (),
+}
 /** Runs the contrast check for the target page. Found issues are reported
 using Audits.issueAdded event.*/
 pub type AuditsCheckContrastReturns = ();

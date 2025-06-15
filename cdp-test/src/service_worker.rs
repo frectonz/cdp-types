@@ -43,29 +43,56 @@ pub struct ServiceWorkerErrorMessage {
     pub line_number: i64,
     pub column_number: i64,
 }
-pub type ServiceWorkerDeliverPushMessageParams = ();
+pub struct ServiceWorkerDeliverPushMessageParams {
+    test: (),
+    test: (),
+    test: (),
+}
 pub type ServiceWorkerDeliverPushMessageReturns = ();
 pub type ServiceWorkerDisableParams = ();
 pub type ServiceWorkerDisableReturns = ();
-pub type ServiceWorkerDispatchSyncEventParams = ();
+pub struct ServiceWorkerDispatchSyncEventParams {
+    test: (),
+    test: (),
+    test: (),
+    test: (),
+}
 pub type ServiceWorkerDispatchSyncEventReturns = ();
-pub type ServiceWorkerDispatchPeriodicSyncEventParams = ();
+pub struct ServiceWorkerDispatchPeriodicSyncEventParams {
+    test: (),
+    test: (),
+    test: (),
+}
 pub type ServiceWorkerDispatchPeriodicSyncEventReturns = ();
 pub type ServiceWorkerEnableParams = ();
 pub type ServiceWorkerEnableReturns = ();
-pub type ServiceWorkerInspectWorkerParams = ();
+pub struct ServiceWorkerInspectWorkerParams {
+    test: (),
+}
 pub type ServiceWorkerInspectWorkerReturns = ();
-pub type ServiceWorkerSetForceUpdateOnPageLoadParams = ();
+pub struct ServiceWorkerSetForceUpdateOnPageLoadParams {
+    test: (),
+}
 pub type ServiceWorkerSetForceUpdateOnPageLoadReturns = ();
-pub type ServiceWorkerSkipWaitingParams = ();
+pub struct ServiceWorkerSkipWaitingParams {
+    test: (),
+}
 pub type ServiceWorkerSkipWaitingReturns = ();
-pub type ServiceWorkerStartWorkerParams = ();
+pub struct ServiceWorkerStartWorkerParams {
+    test: (),
+}
 pub type ServiceWorkerStartWorkerReturns = ();
 pub type ServiceWorkerStopAllWorkersParams = ();
 pub type ServiceWorkerStopAllWorkersReturns = ();
-pub type ServiceWorkerStopWorkerParams = ();
+pub struct ServiceWorkerStopWorkerParams {
+    test: (),
+}
 pub type ServiceWorkerStopWorkerReturns = ();
-pub type ServiceWorkerUnregisterParams = ();
+pub struct ServiceWorkerUnregisterParams {
+    test: (),
+}
 pub type ServiceWorkerUnregisterReturns = ();
-pub type ServiceWorkerUpdateRegistrationParams = ();
+pub struct ServiceWorkerUpdateRegistrationParams {
+    test: (),
+}
 pub type ServiceWorkerUpdateRegistrationReturns = ();

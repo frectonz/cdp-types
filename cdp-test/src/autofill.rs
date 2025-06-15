@@ -46,12 +46,18 @@ pub struct FilledField {
 }
 /** Trigger autofill on a form identified by the fieldId.
 If the field and related form cannot be autofilled, returns an error.*/
-pub type AutofillTriggerParams = ();
+pub struct AutofillTriggerParams {
+    test: (),
+    test: (),
+    test: (),
+}
 /** Trigger autofill on a form identified by the fieldId.
 If the field and related form cannot be autofilled, returns an error.*/
 pub type AutofillTriggerReturns = ();
 /// Set addresses so that developers can verify their forms implementation.
-pub type AutofillSetAddressesParams = ();
+pub struct AutofillSetAddressesParams {
+    test: (),
+}
 /// Set addresses so that developers can verify their forms implementation.
 pub type AutofillSetAddressesReturns = ();
 /// Disables autofill domain notifications.

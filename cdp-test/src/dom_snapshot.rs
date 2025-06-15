@@ -150,7 +150,12 @@ pub type DomSnapshotEnableReturns = ();
 template contents, and imported documents) in a flattened array, as well as layout and
 white-listed computed style information for the nodes. Shadow DOM in the returned DOM tree is
 flattened.*/
-pub type DomSnapshotGetSnapshotParams = ();
+pub struct DomSnapshotGetSnapshotParams {
+    test: (),
+    test: (),
+    test: (),
+    test: (),
+}
 #[deprecated]
 /** Returns a document snapshot, including the full DOM tree of the root node (including iframes,
 template contents, and imported documents) in a flattened array, as well as layout and
@@ -161,7 +166,13 @@ pub type DomSnapshotGetSnapshotReturns = ();
 template contents, and imported documents) in a flattened array, as well as layout and
 white-listed computed style information for the nodes. Shadow DOM in the returned DOM tree is
 flattened.*/
-pub type DomSnapshotCaptureSnapshotParams = ();
+pub struct DomSnapshotCaptureSnapshotParams {
+    test: (),
+    test: (),
+    test: (),
+    test: (),
+    test: (),
+}
 /** Returns a document snapshot, including the full DOM tree of the root node (including iframes,
 template contents, and imported documents) in a flattened array, as well as layout and
 white-listed computed style information for the nodes. Shadow DOM in the returned DOM tree is

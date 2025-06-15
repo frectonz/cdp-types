@@ -60,11 +60,16 @@ pub struct CharacteristicProperties {
     pub extended_properties: bool,
 }
 /// Enable the BluetoothEmulation domain.
-pub type BluetoothEmulationEnableParams = ();
+pub struct BluetoothEmulationEnableParams {
+    test: (),
+    test: (),
+}
 /// Enable the BluetoothEmulation domain.
 pub type BluetoothEmulationEnableReturns = ();
 /// Set the state of the simulated central.
-pub type BluetoothEmulationSetSimulatedCentralStateParams = ();
+pub struct BluetoothEmulationSetSimulatedCentralStateParams {
+    test: (),
+}
 /// Set the state of the simulated central.
 pub type BluetoothEmulationSetSimulatedCentralStateReturns = ();
 /// Disable the BluetoothEmulation domain.
@@ -73,20 +78,31 @@ pub type BluetoothEmulationDisableParams = ();
 pub type BluetoothEmulationDisableReturns = ();
 /** Simulates a peripheral with |address|, |name| and |knownServiceUuids|
 that has already been connected to the system.*/
-pub type BluetoothEmulationSimulatePreconnectedPeripheralParams = ();
+pub struct BluetoothEmulationSimulatePreconnectedPeripheralParams {
+    test: (),
+    test: (),
+    test: (),
+    test: (),
+}
 /** Simulates a peripheral with |address|, |name| and |knownServiceUuids|
 that has already been connected to the system.*/
 pub type BluetoothEmulationSimulatePreconnectedPeripheralReturns = ();
 /** Simulates an advertisement packet described in |entry| being received by
 the central.*/
-pub type BluetoothEmulationSimulateAdvertisementParams = ();
+pub struct BluetoothEmulationSimulateAdvertisementParams {
+    test: (),
+}
 /** Simulates an advertisement packet described in |entry| being received by
 the central.*/
 pub type BluetoothEmulationSimulateAdvertisementReturns = ();
 /** Simulates the response code from the peripheral with |address| for a
 GATT operation of |type|. The |code| value follows the HCI Error Codes from
 Bluetooth Core Specification Vol 2 Part D 1.3 List Of Error Codes.*/
-pub type BluetoothEmulationSimulateGattOperationResponseParams = ();
+pub struct BluetoothEmulationSimulateGattOperationResponseParams {
+    test: (),
+    test: (),
+    test: (),
+}
 /** Simulates the response code from the peripheral with |address| for a
 GATT operation of |type|. The |code| value follows the HCI Error Codes from
 Bluetooth Core Specification Vol 2 Part D 1.3 List Of Error Codes.*/
@@ -96,7 +112,12 @@ characteristic operation of |type|. The |code| value follows the Error
 Codes from Bluetooth Core Specification Vol 3 Part F 3.4.1.1 Error Response.
 The |data| is expected to exist when simulating a successful read operation
 response.*/
-pub type BluetoothEmulationSimulateCharacteristicOperationResponseParams = ();
+pub struct BluetoothEmulationSimulateCharacteristicOperationResponseParams {
+    test: (),
+    test: (),
+    test: (),
+    test: (),
+}
 /** Simulates the response from the characteristic with |characteristicId| for a
 characteristic operation of |type|. The |code| value follows the Error
 Codes from Bluetooth Core Specification Vol 3 Part F 3.4.1.1 Error Response.
@@ -108,7 +129,12 @@ descriptor operation of |type|. The |code| value follows the Error
 Codes from Bluetooth Core Specification Vol 3 Part F 3.4.1.1 Error Response.
 The |data| is expected to exist when simulating a successful read operation
 response.*/
-pub type BluetoothEmulationSimulateDescriptorOperationResponseParams = ();
+pub struct BluetoothEmulationSimulateDescriptorOperationResponseParams {
+    test: (),
+    test: (),
+    test: (),
+    test: (),
+}
 /** Simulates the response from the descriptor with |descriptorId| for a
 descriptor operation of |type|. The |code| value follows the Error
 Codes from Bluetooth Core Specification Vol 3 Part F 3.4.1.1 Error Response.
@@ -116,36 +142,54 @@ The |data| is expected to exist when simulating a successful read operation
 response.*/
 pub type BluetoothEmulationSimulateDescriptorOperationResponseReturns = ();
 /// Adds a service with |serviceUuid| to the peripheral with |address|.
-pub type BluetoothEmulationAddServiceParams = ();
+pub struct BluetoothEmulationAddServiceParams {
+    test: (),
+    test: (),
+}
 /// Adds a service with |serviceUuid| to the peripheral with |address|.
 pub type BluetoothEmulationAddServiceReturns = ();
 /// Removes the service respresented by |serviceId| from the simulated central.
-pub type BluetoothEmulationRemoveServiceParams = ();
+pub struct BluetoothEmulationRemoveServiceParams {
+    test: (),
+}
 /// Removes the service respresented by |serviceId| from the simulated central.
 pub type BluetoothEmulationRemoveServiceReturns = ();
 /** Adds a characteristic with |characteristicUuid| and |properties| to the
 service represented by |serviceId|.*/
-pub type BluetoothEmulationAddCharacteristicParams = ();
+pub struct BluetoothEmulationAddCharacteristicParams {
+    test: (),
+    test: (),
+    test: (),
+}
 /** Adds a characteristic with |characteristicUuid| and |properties| to the
 service represented by |serviceId|.*/
 pub type BluetoothEmulationAddCharacteristicReturns = ();
 /** Removes the characteristic respresented by |characteristicId| from the
 simulated central.*/
-pub type BluetoothEmulationRemoveCharacteristicParams = ();
+pub struct BluetoothEmulationRemoveCharacteristicParams {
+    test: (),
+}
 /** Removes the characteristic respresented by |characteristicId| from the
 simulated central.*/
 pub type BluetoothEmulationRemoveCharacteristicReturns = ();
 /** Adds a descriptor with |descriptorUuid| to the characteristic respresented
 by |characteristicId|.*/
-pub type BluetoothEmulationAddDescriptorParams = ();
+pub struct BluetoothEmulationAddDescriptorParams {
+    test: (),
+    test: (),
+}
 /** Adds a descriptor with |descriptorUuid| to the characteristic respresented
 by |characteristicId|.*/
 pub type BluetoothEmulationAddDescriptorReturns = ();
 /// Removes the descriptor with |descriptorId| from the simulated central.
-pub type BluetoothEmulationRemoveDescriptorParams = ();
+pub struct BluetoothEmulationRemoveDescriptorParams {
+    test: (),
+}
 /// Removes the descriptor with |descriptorId| from the simulated central.
 pub type BluetoothEmulationRemoveDescriptorReturns = ();
 /// Simulates a GATT disconnection from the peripheral with |address|.
-pub type BluetoothEmulationSimulateGattDisconnectionParams = ();
+pub struct BluetoothEmulationSimulateGattDisconnectionParams {
+    test: (),
+}
 /// Simulates a GATT disconnection from the peripheral with |address|.
 pub type BluetoothEmulationSimulateGattDisconnectionReturns = ();

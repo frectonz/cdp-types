@@ -44,7 +44,9 @@ pub struct Layer {
 /// Array of timings, one per paint step.
 pub struct PaintProfile(Vec<u64>);
 /// Provides the reasons why the given layer was composited.
-pub type LayerTreeCompositingReasonsParams = ();
+pub struct LayerTreeCompositingReasonsParams {
+    test: (),
+}
 /// Provides the reasons why the given layer was composited.
 pub type LayerTreeCompositingReasonsReturns = ();
 /// Disables compositing tree inspection.
@@ -56,24 +58,42 @@ pub type LayerTreeEnableParams = ();
 /// Enables compositing tree inspection.
 pub type LayerTreeEnableReturns = ();
 /// Returns the snapshot identifier.
-pub type LayerTreeLoadSnapshotParams = ();
+pub struct LayerTreeLoadSnapshotParams {
+    test: (),
+}
 /// Returns the snapshot identifier.
 pub type LayerTreeLoadSnapshotReturns = ();
 /// Returns the layer snapshot identifier.
-pub type LayerTreeMakeSnapshotParams = ();
+pub struct LayerTreeMakeSnapshotParams {
+    test: (),
+}
 /// Returns the layer snapshot identifier.
 pub type LayerTreeMakeSnapshotReturns = ();
-pub type LayerTreeProfileSnapshotParams = ();
+pub struct LayerTreeProfileSnapshotParams {
+    test: (),
+    test: (),
+    test: (),
+    test: (),
+}
 pub type LayerTreeProfileSnapshotReturns = ();
 /// Releases layer snapshot captured by the back-end.
-pub type LayerTreeReleaseSnapshotParams = ();
+pub struct LayerTreeReleaseSnapshotParams {
+    test: (),
+}
 /// Releases layer snapshot captured by the back-end.
 pub type LayerTreeReleaseSnapshotReturns = ();
 /// Replays the layer snapshot and returns the resulting bitmap.
-pub type LayerTreeReplaySnapshotParams = ();
+pub struct LayerTreeReplaySnapshotParams {
+    test: (),
+    test: (),
+    test: (),
+    test: (),
+}
 /// Replays the layer snapshot and returns the resulting bitmap.
 pub type LayerTreeReplaySnapshotReturns = ();
 /// Replays the layer snapshot and returns canvas log.
-pub type LayerTreeSnapshotCommandLogParams = ();
+pub struct LayerTreeSnapshotCommandLogParams {
+    test: (),
+}
 /// Replays the layer snapshot and returns canvas log.
 pub type LayerTreeSnapshotCommandLogReturns = ();
