@@ -325,6 +325,14 @@ fn resolve_type(protocol_data: &ProtocolData, ref_typ: &str) -> TokenStream {
     quote! { #ref_type }
 }
 
+impl Parameter {
+    fn to_rust(&self) -> TokenStream {
+        quote! {
+            test: ()
+        }
+    }
+}
+
 impl Property {
     fn to_rust(&self, protocol_data: &ProtocolData) -> TokenStream {
         let name = if self.name.as_ref() == "type" {
@@ -440,7 +448,7 @@ impl Command {
                 let CommandIdents {
                     params: params_redirect,
                     returns: returns_redirect,
-                } = self.name_ident(&redirect);
+                } = self.name_ident(redirect);
 
                 let module = redirect.to_snake_case();
                 let module = Ident::new(&module, Span::call_site());
@@ -469,6 +477,13 @@ impl Command {
             })
     }
 
+    fn parameters(&self) -> Option<TokenStream> {
+        self.parameters
+            .as_ref()
+            .map(|parameters| parameters.into_iter().map(|param| param.to_rust()))
+            .map(|parameters| quote! { #(#parameters),* })
+    }
+
     fn to_rust(&self, domain: &str) -> TokenStream {
         let idents = self.name_ident(domain);
 
@@ -489,29 +504,38 @@ impl Command {
             returns: returns_ident,
         } = idents;
 
-        let params = params
-            .map(|params| {
-                quote! {
-                    #attrs
+        let redirect_params = params.map(|params| {
+            quote! {
+                #attrs
+                #params
+            }
+        });
+
+        let real_params = self.parameters().map(|params| {
+            quote! {
+                #attrs
+                pub struct #params_ident {
                     #params
                 }
-            })
-            .unwrap_or(quote! {
-                #attrs
-                pub type #params_ident = ();
-            });
+            }
+        });
 
-        let returns = returns
-            .map(|returns| {
-                quote! {
-                    #attrs
-                    #returns
-                }
-            })
-            .unwrap_or(quote! {
+        let redirect_returns = returns.map(|returns| {
+            quote! {
                 #attrs
-                pub type #returns_ident = ();
-            });
+                #returns
+            }
+        });
+
+        let params = redirect_params.or(real_params).unwrap_or(quote! {
+            #attrs
+            pub type #params_ident = ();
+        });
+
+        let returns = redirect_returns.unwrap_or(quote! {
+            #attrs
+            pub type #returns_ident = ();
+        });
 
         quote! {
             #params
