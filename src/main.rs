@@ -326,9 +326,22 @@ fn resolve_type(protocol_data: &ProtocolData, ref_typ: &str) -> TokenStream {
 }
 
 impl Parameter {
+    fn name_ident(&self) -> Ident {
+        let name = if self.name.as_ref() == "type" {
+            "_type".to_owned()
+        } else if self.name.as_ref() == "override" {
+            "_override".to_owned()
+        } else {
+            self.name.to_snake_case()
+        };
+
+        Ident::new(&name, Span::call_site())
+    }
+
     fn to_rust(&self) -> TokenStream {
+        let name = self.name_ident();
         quote! {
-            test: ()
+            pub #name: ()
         }
     }
 }
