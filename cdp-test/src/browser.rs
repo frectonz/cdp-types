@@ -271,3 +271,19 @@ to a trusted coordinator.  Since this is intended for test automation only,
 coordinatorOrigin must be a .test domain. No existing coordinator
 configuration for the origin may exist.*/
 pub type BrowserAddPrivacySandboxCoordinatorKeyConfigReturns = ();
+/// ⚠️ Experimental
+/// Fired when page is about to start a download.
+pub struct BrowserDownloadWillBeginEvent {
+    pub frame_id: Box<crate::page::FrameId>,
+    pub guid: String,
+    pub url: String,
+    pub suggested_filename: String,
+}
+/// ⚠️ Experimental
+/// Fired when download makes progress. Last call has |done| == true.
+pub struct BrowserDownloadProgressEvent {
+    pub guid: String,
+    pub total_bytes: u64,
+    pub received_bytes: u64,
+    pub state: String,
+}

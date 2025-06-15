@@ -206,3 +206,9 @@ pub struct InputSynthesizeTapGestureParams {
 /// ⚠️ Experimental
 /// Synthesizes a tap gesture over a time period by issuing appropriate touch events.
 pub type InputSynthesizeTapGestureReturns = ();
+/// ⚠️ Experimental
+/** Emitted only when `Input.setInterceptDrags` is enabled. Use this data with `Input.dispatchDragEvent` to
+restore normal drag and drop behavior.*/
+pub struct InputDragInterceptedEvent {
+    pub data: Box<DragData>,
+}

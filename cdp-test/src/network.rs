@@ -1014,3 +1014,310 @@ pub struct NetworkSetCookieControlsParams {
 /** Sets Controls for third-party cookie access
 Page reload is required before the new cookie bahavior will be observed*/
 pub type NetworkSetCookieControlsReturns = ();
+/// Fired when data chunk was received over the network.
+pub struct NetworkDataReceivedEvent {
+    pub request_id: Box<NetworkRequestId>,
+    pub timestamp: Box<MonotonicTime>,
+    pub data_length: i64,
+    pub encoded_data_length: i64,
+    pub data: String,
+}
+/// Fired when EventSource message is received.
+pub struct NetworkEventSourceMessageReceivedEvent {
+    pub request_id: Box<NetworkRequestId>,
+    pub timestamp: Box<MonotonicTime>,
+    pub event_name: String,
+    pub event_id: String,
+    pub data: String,
+}
+/// Fired when HTTP request has failed to load.
+pub struct NetworkLoadingFailedEvent {
+    pub request_id: Box<NetworkRequestId>,
+    pub timestamp: Box<MonotonicTime>,
+    pub _type: Box<ResourceType>,
+    pub error_text: String,
+    pub canceled: bool,
+    pub blocked_reason: Box<BlockedReason>,
+    pub cors_error_status: Box<CorsErrorStatus>,
+}
+/// Fired when HTTP request has finished loading.
+pub struct NetworkLoadingFinishedEvent {
+    pub request_id: Box<NetworkRequestId>,
+    pub timestamp: Box<MonotonicTime>,
+    pub encoded_data_length: u64,
+}
+#[deprecated]
+/// ⚠️ Experimental
+/** Details of an intercepted HTTP request, which must be either allowed, blocked, modified or
+mocked.
+Deprecated, use Fetch.requestPaused instead.*/
+pub struct NetworkRequestInterceptedEvent {
+    pub interception_id: Box<InterceptionId>,
+    pub request: Box<Request>,
+    pub frame_id: Box<crate::page::FrameId>,
+    pub resource_type: Box<ResourceType>,
+    pub is_navigation_request: bool,
+    pub is_download: bool,
+    pub redirect_url: String,
+    pub auth_challenge: Box<AuthChallenge>,
+    pub response_error_reason: Box<ErrorReason>,
+    pub response_status_code: i64,
+    pub response_headers: Box<Headers>,
+    pub request_id: Box<NetworkRequestId>,
+}
+/// Fired if request ended up loading from cache.
+pub struct NetworkRequestServedFromCacheEvent {
+    pub request_id: Box<NetworkRequestId>,
+}
+/// Fired when page is about to send HTTP request.
+pub struct NetworkRequestWillBeSentEvent {
+    pub request_id: Box<NetworkRequestId>,
+    pub loader_id: Box<LoaderId>,
+    pub document_url: String,
+    pub request: Box<Request>,
+    pub timestamp: Box<MonotonicTime>,
+    pub wall_time: Box<NetworkTimeSinceEpoch>,
+    pub initiator: Box<Initiator>,
+    pub redirect_has_extra_info: bool,
+    pub redirect_response: Box<Response>,
+    pub _type: Box<ResourceType>,
+    pub frame_id: Box<crate::page::FrameId>,
+    pub has_user_gesture: bool,
+}
+/// ⚠️ Experimental
+/// Fired when resource loading priority is changed
+pub struct NetworkResourceChangedPriorityEvent {
+    pub request_id: Box<NetworkRequestId>,
+    pub new_priority: Box<ResourcePriority>,
+    pub timestamp: Box<MonotonicTime>,
+}
+/// ⚠️ Experimental
+/// Fired when a signed exchange was received over the network
+pub struct NetworkSignedExchangeReceivedEvent {
+    pub request_id: Box<NetworkRequestId>,
+    pub info: Box<SignedExchangeInfo>,
+}
+/// Fired when HTTP response is available.
+pub struct NetworkResponseReceivedEvent {
+    pub request_id: Box<NetworkRequestId>,
+    pub loader_id: Box<LoaderId>,
+    pub timestamp: Box<MonotonicTime>,
+    pub _type: Box<ResourceType>,
+    pub response: Box<Response>,
+    pub has_extra_info: bool,
+    pub frame_id: Box<crate::page::FrameId>,
+}
+/// Fired when WebSocket is closed.
+pub struct NetworkWebSocketClosedEvent {
+    pub request_id: Box<NetworkRequestId>,
+    pub timestamp: Box<MonotonicTime>,
+}
+/// Fired upon WebSocket creation.
+pub struct NetworkWebSocketCreatedEvent {
+    pub request_id: Box<NetworkRequestId>,
+    pub url: String,
+    pub initiator: Box<Initiator>,
+}
+/// Fired when WebSocket message error occurs.
+pub struct NetworkWebSocketFrameErrorEvent {
+    pub request_id: Box<NetworkRequestId>,
+    pub timestamp: Box<MonotonicTime>,
+    pub error_message: String,
+}
+/// Fired when WebSocket message is received.
+pub struct NetworkWebSocketFrameReceivedEvent {
+    pub request_id: Box<NetworkRequestId>,
+    pub timestamp: Box<MonotonicTime>,
+    pub response: Box<WebSocketFrame>,
+}
+/// Fired when WebSocket message is sent.
+pub struct NetworkWebSocketFrameSentEvent {
+    pub request_id: Box<NetworkRequestId>,
+    pub timestamp: Box<MonotonicTime>,
+    pub response: Box<WebSocketFrame>,
+}
+/// Fired when WebSocket handshake response becomes available.
+pub struct NetworkWebSocketHandshakeResponseReceivedEvent {
+    pub request_id: Box<NetworkRequestId>,
+    pub timestamp: Box<MonotonicTime>,
+    pub response: Box<WebSocketResponse>,
+}
+/// Fired when WebSocket is about to initiate handshake.
+pub struct NetworkWebSocketWillSendHandshakeRequestEvent {
+    pub request_id: Box<NetworkRequestId>,
+    pub timestamp: Box<MonotonicTime>,
+    pub wall_time: Box<NetworkTimeSinceEpoch>,
+    pub request: Box<WebSocketRequest>,
+}
+/// Fired upon WebTransport creation.
+pub struct NetworkWebTransportCreatedEvent {
+    pub transport_id: Box<NetworkRequestId>,
+    pub url: String,
+    pub timestamp: Box<MonotonicTime>,
+    pub initiator: Box<Initiator>,
+}
+/// Fired when WebTransport handshake is finished.
+pub struct NetworkWebTransportConnectionEstablishedEvent {
+    pub transport_id: Box<NetworkRequestId>,
+    pub timestamp: Box<MonotonicTime>,
+}
+/// Fired when WebTransport is disposed.
+pub struct NetworkWebTransportClosedEvent {
+    pub transport_id: Box<NetworkRequestId>,
+    pub timestamp: Box<MonotonicTime>,
+}
+/// ⚠️ Experimental
+/// Fired upon direct_socket.TCPSocket creation.
+pub struct NetworkDirectTcpSocketCreatedEvent {
+    pub identifier: Box<NetworkRequestId>,
+    pub remote_addr: String,
+    pub remote_port: i64,
+    pub options: Box<DirectTcpSocketOptions>,
+    pub timestamp: Box<MonotonicTime>,
+    pub initiator: Box<Initiator>,
+}
+/// ⚠️ Experimental
+/// Fired when direct_socket.TCPSocket connection is opened.
+pub struct NetworkDirectTcpSocketOpenedEvent {
+    pub identifier: Box<NetworkRequestId>,
+    pub remote_addr: String,
+    pub remote_port: i64,
+    pub timestamp: Box<MonotonicTime>,
+    pub local_addr: String,
+    pub local_port: i64,
+}
+/// ⚠️ Experimental
+/// Fired when direct_socket.TCPSocket is aborted.
+pub struct NetworkDirectTcpSocketAbortedEvent {
+    pub identifier: Box<NetworkRequestId>,
+    pub error_message: String,
+    pub timestamp: Box<MonotonicTime>,
+}
+/// ⚠️ Experimental
+/// Fired when direct_socket.TCPSocket is closed.
+pub struct NetworkDirectTcpSocketClosedEvent {
+    pub identifier: Box<NetworkRequestId>,
+    pub timestamp: Box<MonotonicTime>,
+}
+/// ⚠️ Experimental
+/// Fired when data is sent to tcp direct socket stream.
+pub struct NetworkDirectTcpSocketChunkSentEvent {
+    pub identifier: Box<NetworkRequestId>,
+    pub data: String,
+    pub timestamp: Box<MonotonicTime>,
+}
+/// ⚠️ Experimental
+/// Fired when data is received from tcp direct socket stream.
+pub struct NetworkDirectTcpSocketChunkReceivedEvent {
+    pub identifier: Box<NetworkRequestId>,
+    pub data: String,
+    pub timestamp: Box<MonotonicTime>,
+}
+/// ⚠️ Experimental
+/** Fired when there is an error
+when writing to tcp direct socket stream.
+For example, if user writes illegal type like string
+instead of ArrayBuffer or ArrayBufferView.
+There's no reporting for reading, because
+we cannot know errors on the other side.*/
+pub struct NetworkDirectTcpSocketChunkErrorEvent {
+    pub identifier: Box<NetworkRequestId>,
+    pub error_message: String,
+    pub timestamp: Box<MonotonicTime>,
+}
+/// ⚠️ Experimental
+/** Fired when additional information about a requestWillBeSent event is available from the
+network stack. Not every requestWillBeSent event will have an additional
+requestWillBeSentExtraInfo fired for it, and there is no guarantee whether requestWillBeSent
+or requestWillBeSentExtraInfo will be fired first for the same request.*/
+pub struct NetworkRequestWillBeSentExtraInfoEvent {
+    pub request_id: Box<NetworkRequestId>,
+    pub associated_cookies: Vec<AssociatedCookie>,
+    pub headers: Box<Headers>,
+    pub connect_timing: Box<ConnectTiming>,
+    pub client_security_state: Box<ClientSecurityState>,
+    pub site_has_cookie_in_other_partition: bool,
+}
+/// ⚠️ Experimental
+/** Fired when additional information about a responseReceived event is available from the network
+stack. Not every responseReceived event will have an additional responseReceivedExtraInfo for
+it, and responseReceivedExtraInfo may be fired before or after responseReceived.*/
+pub struct NetworkResponseReceivedExtraInfoEvent {
+    pub request_id: Box<NetworkRequestId>,
+    pub blocked_cookies: Vec<BlockedSetCookieWithReason>,
+    pub headers: Box<Headers>,
+    pub resource_ip_address_space: Box<IpAddressSpace>,
+    pub status_code: i64,
+    pub headers_text: String,
+    pub cookie_partition_key: Box<CookiePartitionKey>,
+    pub cookie_partition_key_opaque: bool,
+    pub exempted_cookies: Vec<ExemptedSetCookieWithReason>,
+}
+/// ⚠️ Experimental
+/** Fired when 103 Early Hints headers is received in addition to the common response.
+Not every responseReceived event will have an responseReceivedEarlyHints fired.
+Only one responseReceivedEarlyHints may be fired for eached responseReceived event.*/
+pub struct NetworkResponseReceivedEarlyHintsEvent {
+    pub request_id: Box<NetworkRequestId>,
+    pub headers: Box<Headers>,
+}
+/// ⚠️ Experimental
+/** Fired exactly once for each Trust Token operation. Depending on
+the type of the operation and whether the operation succeeded or
+failed, the event is fired before the corresponding request was sent
+or after the response was received.*/
+pub struct NetworkTrustTokenOperationDoneEvent {
+    pub status: String,
+    pub _type: Box<TrustTokenOperationType>,
+    pub request_id: Box<NetworkRequestId>,
+    pub top_level_origin: String,
+    pub issuer_origin: String,
+    pub issued_token_count: i64,
+}
+/// ⚠️ Experimental
+/// Fired once security policy has been updated.
+pub type NetworkPolicyUpdatedEvent = String;
+/// ⚠️ Experimental
+/** Fired once when parsing the .wbn file has succeeded.
+The event contains the information about the web bundle contents.*/
+pub struct NetworkSubresourceWebBundleMetadataReceivedEvent {
+    pub request_id: Box<NetworkRequestId>,
+    pub urls: Vec<String>,
+}
+/// ⚠️ Experimental
+/// Fired once when parsing the .wbn file has failed.
+pub struct NetworkSubresourceWebBundleMetadataErrorEvent {
+    pub request_id: Box<NetworkRequestId>,
+    pub error_message: String,
+}
+/// ⚠️ Experimental
+/** Fired when handling requests for resources within a .wbn file.
+Note: this will only be fired for resources that are requested by the webpage.*/
+pub struct NetworkSubresourceWebBundleInnerResponseParsedEvent {
+    pub inner_request_id: Box<NetworkRequestId>,
+    pub inner_request_url: String,
+    pub bundle_request_id: Box<NetworkRequestId>,
+}
+/// ⚠️ Experimental
+/// Fired when request for resources within a .wbn file failed.
+pub struct NetworkSubresourceWebBundleInnerResponseErrorEvent {
+    pub inner_request_id: Box<NetworkRequestId>,
+    pub inner_request_url: String,
+    pub error_message: String,
+    pub bundle_request_id: Box<NetworkRequestId>,
+}
+/// ⚠️ Experimental
+/** Is sent whenever a new report is added.
+And after 'enableReportingApi' for all existing reports.*/
+pub struct NetworkReportingApiReportAddedEvent {
+    pub report: Box<ReportingApiReport>,
+}
+/// ⚠️ Experimental
+pub struct NetworkReportingApiReportUpdatedEvent {
+    pub report: Box<ReportingApiReport>,
+}
+/// ⚠️ Experimental
+pub struct NetworkReportingApiEndpointsChangedForOriginEvent {
+    pub origin: String,
+    pub endpoints: Vec<ReportingApiEndpoint>,
+}

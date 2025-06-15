@@ -199,3 +199,26 @@ pub struct BluetoothEmulationSimulateGattDisconnectionParams {
 }
 /// Simulates a GATT disconnection from the peripheral with |address|.
 pub type BluetoothEmulationSimulateGattDisconnectionReturns = ();
+/** Event for when a GATT operation of |type| to the peripheral with |address|
+happened.*/
+pub struct BluetoothEmulationGattOperationReceivedEvent {
+    pub address: String,
+    pub _type: Box<GattOperationType>,
+}
+/** Event for when a characteristic operation of |type| to the characteristic
+respresented by |characteristicId| happened. |data| and |writeType| is
+expected to exist when |type| is write.*/
+pub struct BluetoothEmulationCharacteristicOperationReceivedEvent {
+    pub characteristic_id: String,
+    pub _type: Box<CharacteristicOperationType>,
+    pub data: String,
+    pub write_type: Box<CharacteristicWriteType>,
+}
+/** Event for when a descriptor operation of |type| to the descriptor
+respresented by |descriptorId| happened. |data| is expected to exist when
+|type| is write.*/
+pub struct BluetoothEmulationDescriptorOperationReceivedEvent {
+    pub descriptor_id: String,
+    pub _type: Box<CharacteristicOperationType>,
+    pub data: String,
+}

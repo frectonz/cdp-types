@@ -11,3 +11,8 @@ pub struct TetheringUnbindParams {
 }
 /// Request browser port unbinding.
 pub type TetheringUnbindReturns = ();
+/// Informs that port was successfully bound and got a specified connection id.
+pub struct TetheringAcceptedEvent {
+    pub port: i64,
+    pub connection_id: String,
+}

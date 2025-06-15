@@ -62,3 +62,15 @@ pub type FedCmResetCooldownParams = ();
 /** Resets the cooldown time, if any, to allow the next FedCM call to show
 a dialog even if one was recently dismissed by the user.*/
 pub type FedCmResetCooldownReturns = ();
+pub struct FedCmDialogShownEvent {
+    pub dialog_id: String,
+    pub dialog_type: Box<DialogType>,
+    pub accounts: Vec<Account>,
+    pub title: String,
+    pub subtitle: String,
+}
+/** Triggered when a dialog is closed, either by user action, JS abort,
+or a command below.*/
+pub struct FedCmDialogClosedEvent {
+    pub dialog_id: String,
+}

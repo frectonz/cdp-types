@@ -710,3 +710,27 @@ pub struct CssSetLocalFontsEnabledParams {
 /// ⚠️ Experimental
 /// Enables/disables rendering of local CSS fonts (enabled by default).
 pub type CssSetLocalFontsEnabledReturns = ();
+/** Fires whenever a web font is updated.  A non-empty font parameter indicates a successfully loaded
+web font.*/
+pub struct CSSFontsUpdatedEvent {
+    pub font: Box<FontFace>,
+}
+/** Fires whenever a MediaQuery result changes (for example, after a browser window has been
+resized.) The current implementation considers only viewport-dependent media features.*/
+pub type CSSMediaQueryResultChangedEvent = String;
+/// Fired whenever an active document stylesheet is added.
+pub struct CSSStyleSheetAddedEvent {
+    pub header: Box<CssStyleSheetHeader>,
+}
+/// Fired whenever a stylesheet is changed as a result of the client operation.
+pub struct CSSStyleSheetChangedEvent {
+    pub style_sheet_id: Box<StyleSheetId>,
+}
+/// Fired whenever an active document stylesheet is removed.
+pub struct CSSStyleSheetRemovedEvent {
+    pub style_sheet_id: Box<StyleSheetId>,
+}
+/// ⚠️ Experimental
+pub struct CSSComputedStyleUpdatedEvent {
+    pub node_id: Box<NodeId>,
+}

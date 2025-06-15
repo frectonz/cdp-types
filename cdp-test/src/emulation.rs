@@ -491,3 +491,6 @@ pub struct EmulationSetSmallViewportHeightDifferenceOverrideParams {
 /** Allows overriding the difference between the small and large viewport sizes, which determine the
 value of the `svh` and `lvh` unit, respectively. Only supported for top-level frames.*/
 pub type EmulationSetSmallViewportHeightDifferenceOverrideReturns = ();
+/// ⚠️ Experimental
+/// Notification sent after the virtual time budget for the current VirtualTimePolicy has run out.
+pub type EmulationVirtualTimeBudgetExpiredEvent = String;

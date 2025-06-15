@@ -196,3 +196,42 @@ pub type PreloadEnableParams = ();
 pub type PreloadEnableReturns = ();
 pub type PreloadDisableParams = ();
 pub type PreloadDisableReturns = ();
+/// Upsert. Currently, it is only emitted when a rule set added.
+pub struct PreloadRuleSetUpdatedEvent {
+    pub rule_set: Box<RuleSet>,
+}
+pub struct PreloadRuleSetRemovedEvent {
+    pub id: Box<RuleSetId>,
+}
+/// Fired when a preload enabled state is updated.
+pub struct PreloadPreloadEnabledStateUpdatedEvent {
+    pub disabled_by_preference: bool,
+    pub disabled_by_data_saver: bool,
+    pub disabled_by_battery_saver: bool,
+    pub disabled_by_holdback_prefetch_speculation_rules: bool,
+    pub disabled_by_holdback_prerender_speculation_rules: bool,
+}
+/// Fired when a prefetch attempt is updated.
+pub struct PreloadPrefetchStatusUpdatedEvent {
+    pub key: Box<PreloadingAttemptKey>,
+    pub pipeline_id: Box<PreloadPipelineId>,
+    pub initiating_frame_id: Box<crate::page::FrameId>,
+    pub prefetch_url: String,
+    pub status: Box<PreloadingStatus>,
+    pub prefetch_status: Box<PrefetchStatus>,
+    pub request_id: Box<NetworkRequestId>,
+}
+/// Fired when a prerender attempt is updated.
+pub struct PreloadPrerenderStatusUpdatedEvent {
+    pub key: Box<PreloadingAttemptKey>,
+    pub pipeline_id: Box<PreloadPipelineId>,
+    pub status: Box<PreloadingStatus>,
+    pub prerender_status: Box<PrerenderFinalStatus>,
+    pub disallowed_mojo_interface: String,
+    pub mismatched_headers: Vec<PrerenderMismatchedHeaders>,
+}
+/// Send a list of sources for all preloading attempts in a document.
+pub struct PreloadPreloadingAttemptSourcesUpdatedEvent {
+    pub loader_id: Box<LoaderId>,
+    pub preloading_attempt_sources: Vec<PreloadingAttemptSource>,
+}

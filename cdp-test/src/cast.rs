@@ -48,3 +48,13 @@ pub struct CastStopCastingParams {
 }
 /// Stops the active Cast session on the sink.
 pub type CastStopCastingReturns = ();
+/** This is fired whenever the list of available sinks changes. A sink is a
+device or a software surface that you can cast to.*/
+pub struct CastSinksUpdatedEvent {
+    pub sinks: Vec<Sink>,
+}
+/** This is fired whenever the outstanding issue/error message changes.
+|issueMessage| is empty if there is no issue.*/
+pub struct CastIssueUpdatedEvent {
+    pub issue_message: String,
+}

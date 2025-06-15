@@ -669,3 +669,87 @@ https://www.w3.org/TR/css-anchor-position-1/#target.*/
 pub struct DomGetAnchorElementParams {
     pub node_id: Box<NodeId>,
 }
+/// Fired when `Element`'s attribute is modified.
+pub struct DOMAttributeModifiedEvent {
+    pub node_id: Box<NodeId>,
+    pub name: String,
+    pub value: String,
+}
+/// Fired when `Element`'s attribute is removed.
+pub struct DOMAttributeRemovedEvent {
+    pub node_id: Box<NodeId>,
+    pub name: String,
+}
+/// Mirrors `DOMCharacterDataModified` event.
+pub struct DOMCharacterDataModifiedEvent {
+    pub node_id: Box<NodeId>,
+    pub character_data: String,
+}
+/// Fired when `Container`'s child node count has changed.
+pub struct DOMChildNodeCountUpdatedEvent {
+    pub node_id: Box<NodeId>,
+    pub child_node_count: i64,
+}
+/// Mirrors `DOMNodeInserted` event.
+pub struct DOMChildNodeInsertedEvent {
+    pub parent_node_id: Box<NodeId>,
+    pub previous_node_id: Box<NodeId>,
+    pub node: Box<Node>,
+}
+/// Mirrors `DOMNodeRemoved` event.
+pub struct DOMChildNodeRemovedEvent {
+    pub parent_node_id: Box<NodeId>,
+    pub node_id: Box<NodeId>,
+}
+/// ⚠️ Experimental
+/// Called when distribution is changed.
+pub struct DOMDistributedNodesUpdatedEvent {
+    pub insertion_point_id: Box<NodeId>,
+    pub distributed_nodes: Vec<BackendNode>,
+}
+/// Fired when `Document` has been totally updated. Node ids are no longer valid.
+pub type DOMDocumentUpdatedEvent = String;
+/// ⚠️ Experimental
+/// Fired when `Element`'s inline style is modified via a CSS property modification.
+pub struct DOMInlineStyleInvalidatedEvent {
+    pub node_ids: Vec<NodeId>,
+}
+/// ⚠️ Experimental
+/// Called when a pseudo element is added to an element.
+pub struct DOMPseudoElementAddedEvent {
+    pub parent_id: Box<NodeId>,
+    pub pseudo_element: Box<Node>,
+}
+/// ⚠️ Experimental
+/// Called when top layer elements are changed.
+pub type DOMTopLayerElementsUpdatedEvent = String;
+/// ⚠️ Experimental
+/// Fired when a node's scrollability state changes.
+pub struct DOMScrollableFlagUpdatedEvent {
+    pub node_id: Box<NodeId>,
+    pub is_scrollable: bool,
+}
+/// ⚠️ Experimental
+/// Called when a pseudo element is removed from an element.
+pub struct DOMPseudoElementRemovedEvent {
+    pub parent_id: Box<NodeId>,
+    pub pseudo_element_id: Box<NodeId>,
+}
+/** Fired when backend wants to provide client with the missing DOM structure. This happens upon
+most of the calls requesting node ids.*/
+pub struct DOMSetChildNodesEvent {
+    pub parent_id: Box<NodeId>,
+    pub nodes: Vec<Node>,
+}
+/// ⚠️ Experimental
+/// Called when shadow root is popped from the element.
+pub struct DOMShadowRootPoppedEvent {
+    pub host_id: Box<NodeId>,
+    pub root_id: Box<NodeId>,
+}
+/// ⚠️ Experimental
+/// Called when shadow root is pushed into the element.
+pub struct DOMShadowRootPushedEvent {
+    pub host_id: Box<NodeId>,
+    pub root: Box<Node>,
+}

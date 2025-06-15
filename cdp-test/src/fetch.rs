@@ -132,3 +132,35 @@ domain before body is received results in an undefined behavior.*/
 pub struct FetchTakeResponseBodyAsStreamParams {
     pub stream: Box<StreamHandle>,
 }
+/** Issued when the domain is enabled and the request URL matches the
+specified filter. The request is paused until the client responds
+with one of continueRequest, failRequest or fulfillRequest.
+The stage of the request can be determined by presence of responseErrorReason
+and responseStatusCode -- the request is at the response stage if either
+of these fields is present and in the request stage otherwise.
+Redirect responses and subsequent requests are reported similarly to regular
+responses and requests. Redirect responses may be distinguished by the value
+of `responseStatusCode` (which is one of 301, 302, 303, 307, 308) along with
+presence of the `location` header. Requests resulting from a redirect will
+have `redirectedRequestId` field set.*/
+pub struct FetchRequestPausedEvent {
+    pub request_id: Box<NetworkRequestId>,
+    pub request: Box<Request>,
+    pub frame_id: Box<crate::page::FrameId>,
+    pub resource_type: Box<ResourceType>,
+    pub response_error_reason: Box<ErrorReason>,
+    pub response_status_code: i64,
+    pub response_status_text: String,
+    pub response_headers: Vec<HeaderEntry>,
+    pub network_id: Box<NetworkRequestId>,
+    pub redirected_request_id: Box<NetworkRequestId>,
+}
+/** Issued when the domain is enabled with handleAuthRequests set to true.
+The request is paused until client responds with continueWithAuth.*/
+pub struct FetchAuthRequiredEvent {
+    pub request_id: Box<NetworkRequestId>,
+    pub request: Box<Request>,
+    pub frame_id: Box<crate::page::FrameId>,
+    pub resource_type: Box<ResourceType>,
+    pub auth_challenge: Box<AuthChallenge>,
+}

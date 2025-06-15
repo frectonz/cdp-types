@@ -110,3 +110,10 @@ pub struct LayerTreeSnapshotCommandLogParams {
 pub struct LayerTreeSnapshotCommandLogParams {
     pub command_log: Vec<serde_json::Map<String, serde_json::Value>>,
 }
+pub struct LayerTreeLayerPaintedEvent {
+    pub layer_id: Box<LayerId>,
+    pub clip: Box<Rect>,
+}
+pub struct LayerTreeLayerTreeDidChangeEvent {
+    pub layers: Vec<Layer>,
+}

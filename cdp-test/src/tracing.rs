@@ -93,3 +93,23 @@ pub struct TracingStartParams {
 }
 /// Start trace events collection.
 pub type TracingStartReturns = ();
+/// ⚠️ Experimental
+pub struct TracingBufferUsageEvent {
+    pub percent_full: u64,
+    pub event_count: u64,
+    pub value: u64,
+}
+/// ⚠️ Experimental
+/** Contains a bucket of collected trace events. When tracing is stopped collected events will be
+sent as a sequence of dataCollected events followed by tracingComplete event.*/
+pub struct TracingDataCollectedEvent {
+    pub value: Vec<serde_json::Map<String, serde_json::Value>>,
+}
+/** Signals that tracing is stopped and there is no trace buffers pending flush, all data were
+delivered via dataCollected events.*/
+pub struct TracingTracingCompleteEvent {
+    pub data_loss_occurred: bool,
+    pub stream: Box<StreamHandle>,
+    pub trace_format: Box<StreamFormat>,
+    pub stream_compression: Box<StreamCompression>,
+}

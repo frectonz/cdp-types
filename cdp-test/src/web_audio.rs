@@ -93,3 +93,73 @@ pub struct WebAudioGetRealtimeDataParams {
 pub struct WebAudioGetRealtimeDataParams {
     pub realtime_data: Box<ContextRealtimeData>,
 }
+/// Notifies that a new BaseAudioContext has been created.
+pub struct WebAudioContextCreatedEvent {
+    pub context: Box<BaseAudioContext>,
+}
+/// Notifies that an existing BaseAudioContext will be destroyed.
+pub struct WebAudioContextWillBeDestroyedEvent {
+    pub context_id: Box<GraphObjectId>,
+}
+/// Notifies that existing BaseAudioContext has changed some properties (id stays the same)..
+pub struct WebAudioContextChangedEvent {
+    pub context: Box<BaseAudioContext>,
+}
+/// Notifies that the construction of an AudioListener has finished.
+pub struct WebAudioAudioListenerCreatedEvent {
+    pub listener: Box<AudioListener>,
+}
+/// Notifies that a new AudioListener has been created.
+pub struct WebAudioAudioListenerWillBeDestroyedEvent {
+    pub context_id: Box<GraphObjectId>,
+    pub listener_id: Box<GraphObjectId>,
+}
+/// Notifies that a new AudioNode has been created.
+pub struct WebAudioAudioNodeCreatedEvent {
+    pub node: Box<AudioNode>,
+}
+/// Notifies that an existing AudioNode has been destroyed.
+pub struct WebAudioAudioNodeWillBeDestroyedEvent {
+    pub context_id: Box<GraphObjectId>,
+    pub node_id: Box<GraphObjectId>,
+}
+/// Notifies that a new AudioParam has been created.
+pub struct WebAudioAudioParamCreatedEvent {
+    pub param: Box<AudioParam>,
+}
+/// Notifies that an existing AudioParam has been destroyed.
+pub struct WebAudioAudioParamWillBeDestroyedEvent {
+    pub context_id: Box<GraphObjectId>,
+    pub node_id: Box<GraphObjectId>,
+    pub param_id: Box<GraphObjectId>,
+}
+/// Notifies that two AudioNodes are connected.
+pub struct WebAudioNodesConnectedEvent {
+    pub context_id: Box<GraphObjectId>,
+    pub source_id: Box<GraphObjectId>,
+    pub destination_id: Box<GraphObjectId>,
+    pub source_output_index: u64,
+    pub destination_input_index: u64,
+}
+/// Notifies that AudioNodes are disconnected. The destination can be null, and it means all the outgoing connections from the source are disconnected.
+pub struct WebAudioNodesDisconnectedEvent {
+    pub context_id: Box<GraphObjectId>,
+    pub source_id: Box<GraphObjectId>,
+    pub destination_id: Box<GraphObjectId>,
+    pub source_output_index: u64,
+    pub destination_input_index: u64,
+}
+/// Notifies that an AudioNode is connected to an AudioParam.
+pub struct WebAudioNodeParamConnectedEvent {
+    pub context_id: Box<GraphObjectId>,
+    pub source_id: Box<GraphObjectId>,
+    pub destination_id: Box<GraphObjectId>,
+    pub source_output_index: u64,
+}
+/// Notifies that an AudioNode is disconnected to an AudioParam.
+pub struct WebAudioNodeParamDisconnectedEvent {
+    pub context_id: Box<GraphObjectId>,
+    pub source_id: Box<GraphObjectId>,
+    pub destination_id: Box<GraphObjectId>,
+    pub source_output_index: u64,
+}

@@ -52,3 +52,13 @@ pub struct BackgroundServiceClearEventsParams {
 }
 /// Clears all stored data for the service.
 pub type BackgroundServiceClearEventsReturns = ();
+/// Called when the recording state for the service has been updated.
+pub struct BackgroundServiceRecordingStateChangedEvent {
+    pub is_recording: bool,
+    pub service: Box<ServiceName>,
+}
+/** Called with all existing backgroundServiceEvents when enabled, and all new
+events afterwards if enabled and recording.*/
+pub struct BackgroundServiceBackgroundServiceEventReceivedEvent {
+    pub background_service_event: Box<BackgroundServiceEvent>,
+}

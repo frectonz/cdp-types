@@ -34,3 +34,8 @@ pub type PerformanceGetMetricsParams = ();
 pub struct PerformanceGetMetricsParams {
     pub metrics: Vec<Metric>,
 }
+/// Current values of the metrics.
+pub struct PerformanceMetricsEvent {
+    pub metrics: Vec<Metric>,
+    pub title: String,
+}

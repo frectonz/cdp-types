@@ -353,3 +353,18 @@ pub struct OverlaySetShowWindowControlsOverlayParams {
 }
 /// Show Window Controls Overlay for PWA
 pub type OverlaySetShowWindowControlsOverlayReturns = ();
+/** Fired when the node should be inspected. This happens after call to `setInspectMode` or when
+user manually inspects an element.*/
+pub struct OverlayInspectNodeRequestedEvent {
+    pub backend_node_id: Box<BackendNodeId>,
+}
+/// Fired when the node should be highlighted. This happens after call to `setInspectMode`.
+pub struct OverlayNodeHighlightRequestedEvent {
+    pub node_id: Box<NodeId>,
+}
+/// Fired when user asks to capture screenshot of some area on the page.
+pub struct OverlayScreenshotRequestedEvent {
+    pub viewport: Box<Viewport>,
+}
+/// Fired when user cancels the inspect mode.
+pub type OverlayInspectModeCanceledEvent = String;

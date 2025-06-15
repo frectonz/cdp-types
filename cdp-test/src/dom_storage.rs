@@ -36,3 +36,21 @@ pub struct DomStorageSetDomStorageItemParams {
     pub value: String,
 }
 pub type DomStorageSetDomStorageItemReturns = ();
+pub struct DOMStorageDomStorageItemAddedEvent {
+    pub storage_id: Box<StorageId>,
+    pub key: String,
+    pub new_value: String,
+}
+pub struct DOMStorageDomStorageItemRemovedEvent {
+    pub storage_id: Box<StorageId>,
+    pub key: String,
+}
+pub struct DOMStorageDomStorageItemUpdatedEvent {
+    pub storage_id: Box<StorageId>,
+    pub key: String,
+    pub old_value: String,
+    pub new_value: String,
+}
+pub struct DOMStorageDomStorageItemsClearedEvent {
+    pub storage_id: Box<StorageId>,
+}

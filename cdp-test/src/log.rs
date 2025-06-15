@@ -43,3 +43,7 @@ pub type LogStartViolationsReportReturns = ();
 pub type LogStopViolationsReportParams = ();
 /// Stop violation reporting.
 pub type LogStopViolationsReportReturns = ();
+/// Issued when new message was logged.
+pub struct LogEntryAddedEvent {
+    pub entry: Box<LogEntry>,
+}

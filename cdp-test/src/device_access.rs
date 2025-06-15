@@ -27,3 +27,9 @@ pub struct DeviceAccessCancelPromptParams {
 }
 /// Cancel a prompt in response to a DeviceAccess.deviceRequestPrompted event.
 pub type DeviceAccessCancelPromptReturns = ();
+/** A device request opened a user prompt to select a device. Respond with the
+selectPrompt or cancelPrompt command.*/
+pub struct DeviceAccessDeviceRequestPromptedEvent {
+    pub id: Box<NetworkRequestId>,
+    pub devices: Vec<PromptDevice>,
+}

@@ -40,3 +40,7 @@ pub struct PerformanceTimelineEnableParams {
 /** Previously buffered events would be reported before method returns.
 See also: timelineEventAdded*/
 pub type PerformanceTimelineEnableReturns = ();
+/// Sent when a performance timeline event is added. See reportPerformanceTimeline method.
+pub struct PerformanceTimelineTimelineEventAddedEvent {
+    pub event: Box<TimelineEvent>,
+}

@@ -96,3 +96,12 @@ pub struct ServiceWorkerUpdateRegistrationParams {
     pub scope_url: String,
 }
 pub type ServiceWorkerUpdateRegistrationReturns = ();
+pub struct ServiceWorkerWorkerErrorReportedEvent {
+    pub error_message: Box<ServiceWorkerErrorMessage>,
+}
+pub struct ServiceWorkerWorkerRegistrationUpdatedEvent {
+    pub registrations: Vec<ServiceWorkerRegistration>,
+}
+pub struct ServiceWorkerWorkerVersionUpdatedEvent {
+    pub versions: Vec<ServiceWorkerVersion>,
+}

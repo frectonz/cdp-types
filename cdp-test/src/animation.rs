@@ -109,3 +109,19 @@ pub struct AnimationSetTimingParams {
 }
 /// Sets the timing of an animation node.
 pub type AnimationSetTimingReturns = ();
+/// Event for when an animation has been cancelled.
+pub struct AnimationAnimationCanceledEvent {
+    pub id: String,
+}
+/// Event for each animation that has been created.
+pub struct AnimationAnimationCreatedEvent {
+    pub id: String,
+}
+/// Event for animation that has been started.
+pub struct AnimationAnimationStartedEvent {
+    pub animation: Box<Animation>,
+}
+/// Event for animation that has been updated.
+pub struct AnimationAnimationUpdatedEvent {
+    pub animation: Box<Animation>,
+}

@@ -233,3 +233,14 @@ node is specified, or the DOM node does not exist, the command returns an error.
 pub struct AccessibilityQueryAxTreeParams {
     pub nodes: Vec<AxNode>,
 }
+/// ⚠️ Experimental
+/** The loadComplete event mirrors the load complete event sent by the browser to assistive
+technology when the web page has finished loading.*/
+pub struct AccessibilityLoadCompleteEvent {
+    pub root: Box<AxNode>,
+}
+/// ⚠️ Experimental
+/// The nodesUpdated event is sent every time a previously requested node has changed the in tree.
+pub struct AccessibilityNodesUpdatedEvent {
+    pub nodes: Vec<AxNode>,
+}

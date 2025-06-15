@@ -622,3 +622,6 @@ using Audits.issueAdded event.*/
 pub struct AuditsCheckFormsIssuesParams {
     pub form_issues: Vec<GenericIssueDetails>,
 }
+pub struct AuditsIssueAddedEvent {
+    pub issue: Box<InspectorIssue>,
+}

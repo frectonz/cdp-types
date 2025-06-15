@@ -685,3 +685,97 @@ pub struct StorageSetProtectedAudienceKAnonymityParams {
     pub hashes: Vec<String>,
 }
 pub type StorageSetProtectedAudienceKAnonymityReturns = ();
+/// A cache's contents have been modified.
+pub struct StorageCacheStorageContentUpdatedEvent {
+    pub origin: String,
+    pub storage_key: String,
+    pub bucket_id: String,
+    pub cache_name: String,
+}
+/// A cache has been added/deleted.
+pub struct StorageCacheStorageListUpdatedEvent {
+    pub origin: String,
+    pub storage_key: String,
+    pub bucket_id: String,
+}
+/// The origin's IndexedDB object store has been modified.
+pub struct StorageIndexedDbContentUpdatedEvent {
+    pub origin: String,
+    pub storage_key: String,
+    pub bucket_id: String,
+    pub database_name: String,
+    pub object_store_name: String,
+}
+/// The origin's IndexedDB database list has been modified.
+pub struct StorageIndexedDbListUpdatedEvent {
+    pub origin: String,
+    pub storage_key: String,
+    pub bucket_id: String,
+}
+/** One of the interest groups was accessed. Note that these events are global
+to all targets sharing an interest group store.*/
+pub struct StorageInterestGroupAccessedEvent {
+    pub access_time: Box<NetworkTimeSinceEpoch>,
+    pub _type: Box<InterestGroupAccessType>,
+    pub owner_origin: String,
+    pub name: String,
+    pub component_seller_origin: String,
+    pub bid: u64,
+    pub bid_currency: String,
+    pub unique_auction_id: Box<InterestGroupAuctionId>,
+}
+/** An auction involving interest groups is taking place. These events are
+target-specific.*/
+pub struct StorageInterestGroupAuctionEventOccurredEvent {
+    pub event_time: Box<NetworkTimeSinceEpoch>,
+    pub _type: Box<InterestGroupAuctionEventType>,
+    pub unique_auction_id: Box<InterestGroupAuctionId>,
+    pub parent_auction_id: Box<InterestGroupAuctionId>,
+    pub auction_config: serde_json::Map<String, serde_json::Value>,
+}
+/** Specifies which auctions a particular network fetch may be related to, and
+in what role. Note that it is not ordered with respect to
+Network.requestWillBeSent (but will happen before loadingFinished
+loadingFailed).*/
+pub struct StorageInterestGroupAuctionNetworkRequestCreatedEvent {
+    pub _type: Box<InterestGroupAuctionFetchType>,
+    pub request_id: Box<NetworkRequestId>,
+    pub auctions: Vec<InterestGroupAuctionId>,
+}
+/** Shared storage was accessed by the associated page.
+The following parameters are included in all events.*/
+pub struct StorageSharedStorageAccessedEvent {
+    pub access_time: Box<NetworkTimeSinceEpoch>,
+    pub scope: Box<SharedStorageAccessScope>,
+    pub method: Box<SharedStorageAccessMethod>,
+    pub main_frame_id: Box<crate::page::FrameId>,
+    pub owner_origin: String,
+    pub owner_site: String,
+    pub params: Box<SharedStorageAccessParams>,
+}
+pub struct StorageStorageBucketCreatedOrUpdatedEvent {
+    pub bucket_info: Box<StorageBucketInfo>,
+}
+pub struct StorageStorageBucketDeletedEvent {
+    pub bucket_id: String,
+}
+/// ⚠️ Experimental
+pub struct StorageAttributionReportingSourceRegisteredEvent {
+    pub registration: Box<AttributionReportingSourceRegistration>,
+    pub result: Box<AttributionReportingSourceRegistrationResult>,
+}
+/// ⚠️ Experimental
+pub struct StorageAttributionReportingTriggerRegisteredEvent {
+    pub registration: Box<AttributionReportingTriggerRegistration>,
+    pub event_level: Box<AttributionReportingEventLevelResult>,
+    pub aggregatable: Box<AttributionReportingAggregatableResult>,
+}
+/// ⚠️ Experimental
+pub struct StorageAttributionReportingReportSentEvent {
+    pub url: String,
+    pub body: serde_json::Map<String, serde_json::Value>,
+    pub result: Box<AttributionReportingReportResult>,
+    pub net_error: i64,
+    pub net_error_name: String,
+    pub http_status_code: i64,
+}

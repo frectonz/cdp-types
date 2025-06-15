@@ -1271,3 +1271,184 @@ for more details.
 
 TODO(https://crbug.com/1440085): Remove this once Puppeteer supports tab targets.*/
 pub type PageSetPrerenderingAllowedReturns = ();
+pub struct PageDomContentEventFiredEvent {
+    pub timestamp: Box<MonotonicTime>,
+}
+/// Emitted only when `page.interceptFileChooser` is enabled.
+pub struct PageFileChooserOpenedEvent {
+    pub frame_id: Box<FrameId>,
+    pub mode: String,
+    pub backend_node_id: Box<BackendNodeId>,
+}
+/// Fired when frame has been attached to its parent.
+pub struct PageFrameAttachedEvent {
+    pub frame_id: Box<FrameId>,
+    pub parent_frame_id: Box<FrameId>,
+    pub stack: Box<()>,
+}
+#[deprecated]
+/// Fired when frame no longer has a scheduled navigation.
+pub struct PageFrameClearedScheduledNavigationEvent {
+    pub frame_id: Box<FrameId>,
+}
+/// Fired when frame has been detached from its parent.
+pub struct PageFrameDetachedEvent {
+    pub frame_id: Box<FrameId>,
+    pub reason: String,
+}
+/// ⚠️ Experimental
+/** Fired before frame subtree is detached. Emitted before any frame of the
+subtree is actually detached.*/
+pub struct PageFrameSubtreeWillBeDetachedEvent {
+    pub frame_id: Box<FrameId>,
+}
+/// Fired once navigation of the frame has completed. Frame is now associated with the new loader.
+pub struct PageFrameNavigatedEvent {
+    pub frame: Box<Frame>,
+    pub _type: Box<NavigationType>,
+}
+/// ⚠️ Experimental
+/// Fired when opening document to write to.
+pub struct PageDocumentOpenedEvent {
+    pub frame: Box<Frame>,
+}
+/// ⚠️ Experimental
+pub type PageFrameResizedEvent = String;
+/// ⚠️ Experimental
+/** Fired when a navigation starts. This event is fired for both
+renderer-initiated and browser-initiated navigations. For renderer-initiated
+navigations, the event is fired after `frameRequestedNavigation`.
+Navigation may still be cancelled after the event is issued. Multiple events
+can be fired for a single navigation, for example, when a same-document
+navigation becomes a cross-document navigation (such as in the case of a
+frameset).*/
+pub struct PageFrameStartedNavigatingEvent {
+    pub frame_id: Box<FrameId>,
+    pub url: String,
+    pub loader_id: Box<LoaderId>,
+    pub navigation_type: String,
+}
+/// ⚠️ Experimental
+/** Fired when a renderer-initiated navigation is requested.
+Navigation may still be cancelled after the event is issued.*/
+pub struct PageFrameRequestedNavigationEvent {
+    pub frame_id: Box<FrameId>,
+    pub reason: Box<ClientNavigationReason>,
+    pub url: String,
+    pub disposition: Box<ClientNavigationDisposition>,
+}
+#[deprecated]
+/// Fired when frame schedules a potential navigation.
+pub struct PageFrameScheduledNavigationEvent {
+    pub frame_id: Box<FrameId>,
+    pub delay: u64,
+    pub reason: Box<ClientNavigationReason>,
+    pub url: String,
+}
+/// ⚠️ Experimental
+/// Fired when frame has started loading.
+pub struct PageFrameStartedLoadingEvent {
+    pub frame_id: Box<FrameId>,
+}
+/// ⚠️ Experimental
+/// Fired when frame has stopped loading.
+pub struct PageFrameStoppedLoadingEvent {
+    pub frame_id: Box<FrameId>,
+}
+#[deprecated]
+/// ⚠️ Experimental
+/** Fired when page is about to start a download.
+Deprecated. Use Browser.downloadWillBegin instead.*/
+pub struct PageDownloadWillBeginEvent {
+    pub frame_id: Box<FrameId>,
+    pub guid: String,
+    pub url: String,
+    pub suggested_filename: String,
+}
+#[deprecated]
+/// ⚠️ Experimental
+/** Fired when download makes progress. Last call has |done| == true.
+Deprecated. Use Browser.downloadProgress instead.*/
+pub struct PageDownloadProgressEvent {
+    pub guid: String,
+    pub total_bytes: u64,
+    pub received_bytes: u64,
+    pub state: String,
+}
+/// Fired when interstitial page was hidden
+pub type PageInterstitialHiddenEvent = String;
+/// Fired when interstitial page was shown
+pub type PageInterstitialShownEvent = String;
+/** Fired when a JavaScript initiated dialog (alert, confirm, prompt, or onbeforeunload) has been
+closed.*/
+pub struct PageJavascriptDialogClosedEvent {
+    pub frame_id: Box<FrameId>,
+    pub result: bool,
+    pub user_input: String,
+}
+/** Fired when a JavaScript initiated dialog (alert, confirm, prompt, or onbeforeunload) is about to
+open.*/
+pub struct PageJavascriptDialogOpeningEvent {
+    pub url: String,
+    pub frame_id: Box<FrameId>,
+    pub message: String,
+    pub _type: Box<DialogType>,
+    pub has_browser_handler: bool,
+    pub default_prompt: String,
+}
+/** Fired for lifecycle events (navigation, load, paint, etc) in the current
+target (including local frames).*/
+pub struct PageLifecycleEventEvent {
+    pub frame_id: Box<FrameId>,
+    pub loader_id: Box<LoaderId>,
+    pub name: String,
+    pub timestamp: Box<MonotonicTime>,
+}
+/// ⚠️ Experimental
+/** Fired for failed bfcache history navigations if BackForwardCache feature is enabled. Do
+not assume any ordering with the Page.frameNavigated event. This event is fired only for
+main-frame history navigation where the document changes (non-same-document navigations),
+when bfcache navigation fails.*/
+pub struct PageBackForwardCacheNotUsedEvent {
+    pub loader_id: Box<LoaderId>,
+    pub frame_id: Box<FrameId>,
+    pub not_restored_explanations: Vec<BackForwardCacheNotRestoredExplanation>,
+    pub not_restored_explanations_tree: Box<BackForwardCacheNotRestoredExplanationTree>,
+}
+pub struct PageLoadEventFiredEvent {
+    pub timestamp: Box<MonotonicTime>,
+}
+/// ⚠️ Experimental
+/// Fired when same-document navigation happens, e.g. due to history API usage or anchor navigation.
+pub struct PageNavigatedWithinDocumentEvent {
+    pub frame_id: Box<FrameId>,
+    pub url: String,
+    pub navigation_type: String,
+}
+/// ⚠️ Experimental
+/// Compressed image data requested by the `startScreencast`.
+pub struct PageScreencastFrameEvent {
+    pub data: String,
+    pub metadata: Box<ScreencastFrameMetadata>,
+    pub session_id: i64,
+}
+/// ⚠️ Experimental
+/// Fired when the page with currently enabled screencast was shown or hidden `.
+pub struct PageScreencastVisibilityChangedEvent {
+    pub visible: bool,
+}
+/** Fired when a new window is going to be opened, via window.open(), link click, form submission,
+etc.*/
+pub struct PageWindowOpenEvent {
+    pub url: String,
+    pub window_name: String,
+    pub window_features: Vec<String>,
+    pub user_gesture: bool,
+}
+/// ⚠️ Experimental
+/** Issued for every compilation cache generated. Is only available
+if Page.setGenerateCompilationCache is enabled.*/
+pub struct PageCompilationCacheProducedEvent {
+    pub url: String,
+    pub data: String,
+}

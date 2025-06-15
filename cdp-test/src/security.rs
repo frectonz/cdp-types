@@ -118,3 +118,27 @@ pub struct SecuritySetOverrideCertificateErrorsParams {
 /** Enable/disable overriding certificate errors. If enabled, all certificate error events need to
 be handled by the DevTools client and should be answered with `handleCertificateError` commands.*/
 pub type SecuritySetOverrideCertificateErrorsReturns = ();
+#[deprecated]
+/** There is a certificate error. If overriding certificate errors is enabled, then it should be
+handled with the `handleCertificateError` command. Note: this event does not fire if the
+certificate error has been allowed internally. Only one client per target should override
+certificate errors at the same time.*/
+pub struct SecurityCertificateErrorEvent {
+    pub event_id: i64,
+    pub error_type: String,
+    pub request_url: String,
+}
+/// ⚠️ Experimental
+/// The security state of the page changed.
+pub struct SecurityVisibleSecurityStateChangedEvent {
+    pub visible_security_state: Box<VisibleSecurityState>,
+}
+#[deprecated]
+/// The security state of the page changed. No longer being sent.
+pub struct SecuritySecurityStateChangedEvent {
+    pub security_state: Box<SecurityState>,
+    pub scheme_is_cryptographic: bool,
+    pub explanations: Vec<SecurityStateExplanation>,
+    pub insecure_content_status: Box<InsecureContentStatus>,
+    pub summary: String,
+}

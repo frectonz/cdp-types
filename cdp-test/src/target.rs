@@ -235,3 +235,43 @@ pub struct TargetSetRemoteLocationsParams {
 /** Enables target discovery for the specified locations, when `setDiscoverTargets` was set to
 `true`.*/
 pub type TargetSetRemoteLocationsReturns = ();
+/// ⚠️ Experimental
+/// Issued when attached to target because of auto-attach or `attachToTarget` command.
+pub struct TargetAttachedToTargetEvent {
+    pub session_id: Box<SessionId>,
+    pub target_info: Box<TargetInfo>,
+    pub waiting_for_debugger: bool,
+}
+/// ⚠️ Experimental
+/** Issued when detached from target for any reason (including `detachFromTarget` command). Can be
+issued multiple times per target if multiple sessions have been attached to it.*/
+pub struct TargetDetachedFromTargetEvent {
+    pub session_id: Box<SessionId>,
+    pub target_id: Box<TargetId>,
+}
+/** Notifies about a new protocol message received from the session (as reported in
+`attachedToTarget` event).*/
+pub struct TargetReceivedMessageFromTargetEvent {
+    pub session_id: Box<SessionId>,
+    pub message: String,
+    pub target_id: Box<TargetId>,
+}
+/// Issued when a possible inspection target is created.
+pub struct TargetTargetCreatedEvent {
+    pub target_info: Box<TargetInfo>,
+}
+/// Issued when a target is destroyed.
+pub struct TargetTargetDestroyedEvent {
+    pub target_id: Box<TargetId>,
+}
+/// Issued when a target has crashed.
+pub struct TargetTargetCrashedEvent {
+    pub target_id: Box<TargetId>,
+    pub status: String,
+    pub error_code: i64,
+}
+/** Issued when some information about a target has changed. This only happens between
+`targetCreated` and `targetDestroyed`.*/
+pub struct TargetTargetInfoChangedEvent {
+    pub target_info: Box<TargetInfo>,
+}

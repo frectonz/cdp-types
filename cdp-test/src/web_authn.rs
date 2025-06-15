@@ -146,3 +146,25 @@ pub struct WebAuthnSetCredentialPropertiesParams {
 /** Allows setting credential properties.
 https://w3c.github.io/webauthn/#sctn-automation-set-credential-properties*/
 pub type WebAuthnSetCredentialPropertiesReturns = ();
+/// Triggered when a credential is added to an authenticator.
+pub struct WebAuthnCredentialAddedEvent {
+    pub authenticator_id: Box<AuthenticatorId>,
+    pub credential: Box<Credential>,
+}
+/** Triggered when a credential is deleted, e.g. through
+PublicKeyCredential.signalUnknownCredential().*/
+pub struct WebAuthnCredentialDeletedEvent {
+    pub authenticator_id: Box<AuthenticatorId>,
+    pub credential_id: String,
+}
+/** Triggered when a credential is updated, e.g. through
+PublicKeyCredential.signalCurrentUserDetails().*/
+pub struct WebAuthnCredentialUpdatedEvent {
+    pub authenticator_id: Box<AuthenticatorId>,
+    pub credential: Box<Credential>,
+}
+/// Triggered when a credential is used in a webauthn assertion.
+pub struct WebAuthnCredentialAssertedEvent {
+    pub authenticator_id: Box<AuthenticatorId>,
+    pub credential: Box<Credential>,
+}

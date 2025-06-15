@@ -68,3 +68,8 @@ pub type AutofillDisableReturns = ();
 pub type AutofillEnableParams = ();
 /// Enables autofill domain notifications.
 pub type AutofillEnableReturns = ();
+/// Emitted when an address form is filled.
+pub struct AutofillAddressFormFilledEvent {
+    pub filled_fields: Vec<FilledField>,
+    pub address_ui: Box<AddressUi>,
+}
