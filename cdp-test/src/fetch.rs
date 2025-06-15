@@ -102,7 +102,10 @@ Note that the response body is not available for redirects. Requests
 paused in the _redirect received_ state may be differentiated by
 `responseCode` and presence of `location` response header, see
 comments to `requestPaused` for details.*/
-pub type FetchGetResponseBodyReturns = ();
+pub struct FetchGetResponseBodyParams {
+    pub body: String,
+    pub base64_encoded: bool,
+}
 /** Returns a handle to the stream representing the response body.
 The request must be paused in the HeadersReceived stage.
 Note that after this command the request can't be continued
@@ -126,4 +129,6 @@ is specified.
 This method is mutually exclusive with getResponseBody.
 Calling other methods that affect the request or disabling fetch
 domain before body is received results in an undefined behavior.*/
-pub type FetchTakeResponseBodyAsStreamReturns = ();
+pub struct FetchTakeResponseBodyAsStreamParams {
+    pub stream: Box<StreamHandle>,
+}

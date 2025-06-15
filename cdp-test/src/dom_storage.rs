@@ -22,7 +22,9 @@ pub type DomStorageEnableReturns = ();
 pub struct DomStorageGetDomStorageItemsParams {
     pub storage_id: Box<StorageId>,
 }
-pub type DomStorageGetDomStorageItemsReturns = ();
+pub struct DomStorageGetDomStorageItemsParams {
+    pub entries: Vec<Item>,
+}
 pub struct DomStorageRemoveDomStorageItemParams {
     pub storage_id: Box<StorageId>,
     pub key: String,

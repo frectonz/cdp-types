@@ -69,14 +69,23 @@ pub struct ProcessInfo {
 /// Returns information about the system.
 pub type SystemInfoGetInfoParams = ();
 /// Returns information about the system.
-pub type SystemInfoGetInfoReturns = ();
+pub struct SystemInfoGetInfoParams {
+    pub gpu: Box<GpuInfo>,
+    pub model_name: String,
+    pub model_version: String,
+    pub command_line: String,
+}
 /// Returns information about the feature state.
 pub struct SystemInfoGetFeatureStateParams {
     pub feature_state: String,
 }
 /// Returns information about the feature state.
-pub type SystemInfoGetFeatureStateReturns = ();
+pub struct SystemInfoGetFeatureStateParams {
+    pub feature_enabled: bool,
+}
 /// Returns information about all running processes.
 pub type SystemInfoGetProcessInfoParams = ();
 /// Returns information about all running processes.
-pub type SystemInfoGetProcessInfoReturns = ();
+pub struct SystemInfoGetProcessInfoParams {
+    pub process_info: Vec<ProcessInfo>,
+}

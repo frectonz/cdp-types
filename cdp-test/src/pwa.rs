@@ -15,7 +15,10 @@ pub struct PwaGetOsAppStateParams {
     pub manifest_id: String,
 }
 /// Returns the following OS state for the given manifest id.
-pub type PwaGetOsAppStateReturns = ();
+pub struct PwaGetOsAppStateParams {
+    pub badge_count: i64,
+    pub file_handlers: Vec<PageFileHandler>,
+}
 /** Installs the given manifest identity, optionally using the given install_url
 or IWA bundle location.
 
@@ -57,7 +60,9 @@ pub struct PwaLaunchParams {
 /** Launches the installed web app, or an url in the same web app instead of the
 default start url if it is provided. Returns a page Target.TargetID which
 can be used to attach to via Target.attachToTarget or similar APIs.*/
-pub type PwaLaunchReturns = ();
+pub struct PwaLaunchParams {
+    pub target_id: Box<crate::target::TargetId>,
+}
 /** Opens one or more local files from an installed web app identified by its
 manifestId. The web app needs to have file handlers registered to process
 the files. The API returns one or more page Target.TargetIDs which can be
@@ -88,7 +93,9 @@ Target.TargetID may represent a page handling one or more files. The order
 of the returned Target.TargetIDs is not guaranteed.
 
 TODO(crbug.com/339454034): Check the existences of the input files.*/
-pub type PwaLaunchFilesInAppReturns = ();
+pub struct PwaLaunchFilesInAppParams {
+    pub target_ids: Vec<crate::target::TargetId>,
+}
 /** Opens the current page in its web app identified by the manifest id, needs
 to be called on a page target. This function returns immediately without
 waiting for the app to finish loading.*/

@@ -19,7 +19,9 @@ pub struct ExtensionsLoadUnpackedParams {
 has been installed. Available if the client is connected using the
 --remote-debugging-pipe flag and the --enable-unsafe-extension-debugging
 flag is set.*/
-pub type ExtensionsLoadUnpackedReturns = ();
+pub struct ExtensionsLoadUnpackedParams {
+    pub id: String,
+}
 /** Uninstalls an unpacked extension (others not supported) from the profile.
 Available if the client is connected using the --remote-debugging-pipe flag
 and the --enable-unsafe-extension-debugging.*/
@@ -39,7 +41,9 @@ pub struct ExtensionsGetStorageItemsParams {
 }
 /** Gets data from extension storage in the given `storageArea`. If `keys` is
 specified, these are used to filter the result.*/
-pub type ExtensionsGetStorageItemsReturns = ();
+pub struct ExtensionsGetStorageItemsParams {
+    pub data: serde_json::Map<String, serde_json::Value>,
+}
 /// Removes `keys` from extension storage in the given `storageArea`.
 pub struct ExtensionsRemoveStorageItemsParams {
     pub id: String,

@@ -161,7 +161,11 @@ pub struct DomSnapshotGetSnapshotParams {
 template contents, and imported documents) in a flattened array, as well as layout and
 white-listed computed style information for the nodes. Shadow DOM in the returned DOM tree is
 flattened.*/
-pub type DomSnapshotGetSnapshotReturns = ();
+pub struct DomSnapshotGetSnapshotParams {
+    pub dom_nodes: Vec<DomNode>,
+    pub layout_tree_nodes: Vec<LayoutTreeNode>,
+    pub computed_styles: Vec<ComputedStyle>,
+}
 /** Returns a document snapshot, including the full DOM tree of the root node (including iframes,
 template contents, and imported documents) in a flattened array, as well as layout and
 white-listed computed style information for the nodes. Shadow DOM in the returned DOM tree is
@@ -177,4 +181,7 @@ pub struct DomSnapshotCaptureSnapshotParams {
 template contents, and imported documents) in a flattened array, as well as layout and
 white-listed computed style information for the nodes. Shadow DOM in the returned DOM tree is
 flattened.*/
-pub type DomSnapshotCaptureSnapshotReturns = ();
+pub struct DomSnapshotCaptureSnapshotParams {
+    pub documents: Vec<DocumentSnapshot>,
+    pub strings: Vec<String>,
+}

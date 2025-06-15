@@ -333,20 +333,26 @@ pub struct CssAddRuleParams {
 }
 /** Inserts a new rule with the given `ruleText` in a stylesheet with given `styleSheetId`, at the
 position specified by `location`.*/
-pub type CssAddRuleReturns = ();
+pub struct CssAddRuleParams {
+    pub rule: Box<CssRule>,
+}
 /// Returns all class names from specified stylesheet.
 pub struct CssCollectClassNamesParams {
     pub style_sheet_id: Box<StyleSheetId>,
 }
 /// Returns all class names from specified stylesheet.
-pub type CssCollectClassNamesReturns = ();
+pub struct CssCollectClassNamesParams {
+    pub class_names: Vec<String>,
+}
 /// Creates a new special "via-inspector" stylesheet in the frame with given `frameId`.
 pub struct CssCreateStyleSheetParams {
     pub frame_id: Box<crate::page::FrameId>,
     pub force: bool,
 }
 /// Creates a new special "via-inspector" stylesheet in the frame with given `frameId`.
-pub type CssCreateStyleSheetReturns = ();
+pub struct CssCreateStyleSheetParams {
+    pub style_sheet_id: Box<StyleSheetId>,
+}
 /// Disables the CSS agent for the given page.
 pub type CssDisableParams = ();
 /// Disables the CSS agent for the given page.
@@ -376,13 +382,19 @@ pub type CssForceStartingStyleReturns = ();
 pub struct CssGetBackgroundColorsParams {
     pub node_id: Box<NodeId>,
 }
-pub type CssGetBackgroundColorsReturns = ();
+pub struct CssGetBackgroundColorsParams {
+    pub background_colors: Vec<String>,
+    pub computed_font_size: String,
+    pub computed_font_weight: String,
+}
 /// Returns the computed style for a DOM node identified by `nodeId`.
 pub struct CssGetComputedStyleForNodeParams {
     pub node_id: Box<NodeId>,
 }
 /// Returns the computed style for a DOM node identified by `nodeId`.
-pub type CssGetComputedStyleForNodeReturns = ();
+pub struct CssGetComputedStyleForNodeParams {
+    pub computed_style: Vec<CssComputedStyleProperty>,
+}
 /// ⚠️ Experimental
 /** Resolve the specified values in the context of the provided element.
 For example, a value of '1em' is evaluated according to the computed
@@ -410,14 +422,18 @@ they were property's declaration. If a value cannot be parsed according
 to the provided property syntax, the value is parsed using combined
 syntax as if null `propertyName` was provided. If the value cannot be
 resolved even then, return the provided value without any changes.*/
-pub type CssResolveValuesReturns = ();
+pub struct CssResolveValuesParams {
+    pub results: Vec<String>,
+}
 /// ⚠️ Experimental
 pub struct CssGetLonghandPropertiesParams {
     pub shorthand_name: String,
     pub value: String,
 }
 /// ⚠️ Experimental
-pub type CssGetLonghandPropertiesReturns = ();
+pub struct CssGetLonghandPropertiesParams {
+    pub longhand_properties: Vec<CssProperty>,
+}
 /** Returns the styles defined inline (explicitly in the "style" attribute and implicitly, using DOM
 attributes) for a DOM node identified by `nodeId`.*/
 pub struct CssGetInlineStylesForNodeParams {
@@ -425,7 +441,10 @@ pub struct CssGetInlineStylesForNodeParams {
 }
 /** Returns the styles defined inline (explicitly in the "style" attribute and implicitly, using DOM
 attributes) for a DOM node identified by `nodeId`.*/
-pub type CssGetInlineStylesForNodeReturns = ();
+pub struct CssGetInlineStylesForNodeParams {
+    pub inline_style: Box<CssStyle>,
+    pub attributes_style: Box<CssStyle>,
+}
 /// ⚠️ Experimental
 /** Returns the styles coming from animations & transitions
 including the animation & transition styles coming from inheritance chain.*/
@@ -435,17 +454,38 @@ pub struct CssGetAnimatedStylesForNodeParams {
 /// ⚠️ Experimental
 /** Returns the styles coming from animations & transitions
 including the animation & transition styles coming from inheritance chain.*/
-pub type CssGetAnimatedStylesForNodeReturns = ();
+pub struct CssGetAnimatedStylesForNodeParams {
+    pub animation_styles: Vec<CssAnimationStyle>,
+    pub transitions_style: Box<CssStyle>,
+    pub inherited: Vec<InheritedAnimatedStyleEntry>,
+}
 /// Returns requested styles for a DOM node identified by `nodeId`.
 pub struct CssGetMatchedStylesForNodeParams {
     pub node_id: Box<NodeId>,
 }
 /// Returns requested styles for a DOM node identified by `nodeId`.
-pub type CssGetMatchedStylesForNodeReturns = ();
+pub struct CssGetMatchedStylesForNodeParams {
+    pub inline_style: Box<CssStyle>,
+    pub attributes_style: Box<CssStyle>,
+    pub matched_css_rules: Vec<RuleMatch>,
+    pub pseudo_elements: Vec<PseudoElementMatches>,
+    pub inherited: Vec<InheritedStyleEntry>,
+    pub inherited_pseudo_elements: Vec<InheritedPseudoElementMatches>,
+    pub css_keyframes_rules: Vec<CssKeyframesRule>,
+    pub css_position_try_rules: Vec<CssPositionTryRule>,
+    pub active_position_fallback_index: i64,
+    pub css_property_rules: Vec<CssPropertyRule>,
+    pub css_property_registrations: Vec<CssPropertyRegistration>,
+    pub css_font_palette_values_rule: Box<CssFontPaletteValuesRule>,
+    pub parent_layout_node_id: Box<NodeId>,
+    pub css_function_rules: Vec<CssFunctionRule>,
+}
 /// Returns all media queries parsed by the rendering engine.
 pub type CssGetMediaQueriesParams = ();
 /// Returns all media queries parsed by the rendering engine.
-pub type CssGetMediaQueriesReturns = ();
+pub struct CssGetMediaQueriesParams {
+    pub medias: Vec<CssMedia>,
+}
 /** Requests information about platform fonts which we used to render child TextNodes in the given
 node.*/
 pub struct CssGetPlatformFontsForNodeParams {
@@ -453,13 +493,17 @@ pub struct CssGetPlatformFontsForNodeParams {
 }
 /** Requests information about platform fonts which we used to render child TextNodes in the given
 node.*/
-pub type CssGetPlatformFontsForNodeReturns = ();
+pub struct CssGetPlatformFontsForNodeParams {
+    pub fonts: Vec<PlatformFontUsage>,
+}
 /// Returns the current textual content for a stylesheet.
 pub struct CssGetStyleSheetTextParams {
     pub style_sheet_id: Box<StyleSheetId>,
 }
 /// Returns the current textual content for a stylesheet.
-pub type CssGetStyleSheetTextReturns = ();
+pub struct CssGetStyleSheetTextParams {
+    pub text: String,
+}
 /// ⚠️ Experimental
 /** Returns all layers parsed by the rendering engine for the tree scope of a node.
 Given a DOM element identified by nodeId, getLayersForNode returns the root
@@ -473,7 +517,9 @@ pub struct CssGetLayersForNodeParams {
 Given a DOM element identified by nodeId, getLayersForNode returns the root
 layer for the nearest ancestor document or shadow root. The layer root contains
 the full layer tree for the tree scope and their ordering.*/
-pub type CssGetLayersForNodeReturns = ();
+pub struct CssGetLayersForNodeParams {
+    pub root_layer: Box<CssLayerData>,
+}
 /// ⚠️ Experimental
 /** Given a CSS selector text and a style sheet ID, getLocationForSelector
 returns an array of locations of the CSS selector in the style sheet.*/
@@ -484,7 +530,9 @@ pub struct CssGetLocationForSelectorParams {
 /// ⚠️ Experimental
 /** Given a CSS selector text and a style sheet ID, getLocationForSelector
 returns an array of locations of the CSS selector in the style sheet.*/
-pub type CssGetLocationForSelectorReturns = ();
+pub struct CssGetLocationForSelectorParams {
+    pub ranges: Vec<SourceRange>,
+}
 /// ⚠️ Experimental
 /** Starts tracking the given node for the computed style updates
 and whenever the computed style is updated for node, it queues
@@ -526,7 +574,9 @@ pub type CssTrackComputedStyleUpdatesReturns = ();
 pub type CssTakeComputedStyleUpdatesParams = ();
 /// ⚠️ Experimental
 /// Polls the next batch of computed style updates.
-pub type CssTakeComputedStyleUpdatesReturns = ();
+pub struct CssTakeComputedStyleUpdatesParams {
+    pub node_ids: Vec<NodeId>,
+}
 /** Find a rule with the given active property for the given node and set the new value for this
 property*/
 pub struct CssSetEffectivePropertyValueForNodeParams {
@@ -544,7 +594,9 @@ pub struct CssSetPropertyRulePropertyNameParams {
     pub property_name: String,
 }
 /// Modifies the property rule property name.
-pub type CssSetPropertyRulePropertyNameReturns = ();
+pub struct CssSetPropertyRulePropertyNameParams {
+    pub property_name: Box<Value>,
+}
 /// Modifies the keyframe rule key text.
 pub struct CssSetKeyframeKeyParams {
     pub style_sheet_id: Box<StyleSheetId>,
@@ -552,7 +604,9 @@ pub struct CssSetKeyframeKeyParams {
     pub key_text: String,
 }
 /// Modifies the keyframe rule key text.
-pub type CssSetKeyframeKeyReturns = ();
+pub struct CssSetKeyframeKeyParams {
+    pub key_text: Box<Value>,
+}
 /// Modifies the rule selector.
 pub struct CssSetMediaTextParams {
     pub style_sheet_id: Box<StyleSheetId>,
@@ -560,7 +614,9 @@ pub struct CssSetMediaTextParams {
     pub text: String,
 }
 /// Modifies the rule selector.
-pub type CssSetMediaTextReturns = ();
+pub struct CssSetMediaTextParams {
+    pub media: Box<CssMedia>,
+}
 /// ⚠️ Experimental
 /// Modifies the expression of a container query.
 pub struct CssSetContainerQueryTextParams {
@@ -570,7 +626,9 @@ pub struct CssSetContainerQueryTextParams {
 }
 /// ⚠️ Experimental
 /// Modifies the expression of a container query.
-pub type CssSetContainerQueryTextReturns = ();
+pub struct CssSetContainerQueryTextParams {
+    pub container_query: Box<CssContainerQuery>,
+}
 /// ⚠️ Experimental
 /// Modifies the expression of a supports at-rule.
 pub struct CssSetSupportsTextParams {
@@ -580,7 +638,9 @@ pub struct CssSetSupportsTextParams {
 }
 /// ⚠️ Experimental
 /// Modifies the expression of a supports at-rule.
-pub type CssSetSupportsTextReturns = ();
+pub struct CssSetSupportsTextParams {
+    pub supports: Box<CssSupports>,
+}
 /// ⚠️ Experimental
 /// Modifies the expression of a scope at-rule.
 pub struct CssSetScopeTextParams {
@@ -590,7 +650,9 @@ pub struct CssSetScopeTextParams {
 }
 /// ⚠️ Experimental
 /// Modifies the expression of a scope at-rule.
-pub type CssSetScopeTextReturns = ();
+pub struct CssSetScopeTextParams {
+    pub scope: Box<CssScope>,
+}
 /// Modifies the rule selector.
 pub struct CssSetRuleSelectorParams {
     pub style_sheet_id: Box<StyleSheetId>,
@@ -598,21 +660,27 @@ pub struct CssSetRuleSelectorParams {
     pub selector: String,
 }
 /// Modifies the rule selector.
-pub type CssSetRuleSelectorReturns = ();
+pub struct CssSetRuleSelectorParams {
+    pub selector_list: Box<SelectorList>,
+}
 /// Sets the new stylesheet text.
 pub struct CssSetStyleSheetTextParams {
     pub style_sheet_id: Box<StyleSheetId>,
     pub text: String,
 }
 /// Sets the new stylesheet text.
-pub type CssSetStyleSheetTextReturns = ();
+pub struct CssSetStyleSheetTextParams {
+    pub source_map_url: String,
+}
 /// Applies specified style edits one after another in the given order.
 pub struct CssSetStyleTextsParams {
     pub edits: Vec<StyleDeclarationEdit>,
     pub node_for_property_syntax_validation: Box<NodeId>,
 }
 /// Applies specified style edits one after another in the given order.
-pub type CssSetStyleTextsReturns = ();
+pub struct CssSetStyleTextsParams {
+    pub styles: Vec<CssStyle>,
+}
 /// Enables the selector recording.
 pub type CssStartRuleUsageTrackingParams = ();
 /// Enables the selector recording.
@@ -622,13 +690,18 @@ pub type CssStartRuleUsageTrackingReturns = ();
 pub type CssStopRuleUsageTrackingParams = ();
 /** Stop tracking rule usage and return the list of rules that were used since last call to
 `takeCoverageDelta` (or since start of coverage instrumentation).*/
-pub type CssStopRuleUsageTrackingReturns = ();
+pub struct CssStopRuleUsageTrackingParams {
+    pub rule_usage: Vec<RuleUsage>,
+}
 /** Obtain list of rules that became used since last call to this method (or since start of coverage
 instrumentation).*/
 pub type CssTakeCoverageDeltaParams = ();
 /** Obtain list of rules that became used since last call to this method (or since start of coverage
 instrumentation).*/
-pub type CssTakeCoverageDeltaReturns = ();
+pub struct CssTakeCoverageDeltaParams {
+    pub coverage: Vec<RuleUsage>,
+    pub timestamp: u64,
+}
 /// ⚠️ Experimental
 /// Enables/disables rendering of local CSS fonts (enabled by default).
 pub struct CssSetLocalFontsEnabledParams {

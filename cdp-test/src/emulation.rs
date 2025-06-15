@@ -128,7 +128,9 @@ pub enum DisabledImageType {
 pub type EmulationCanEmulateParams = ();
 #[deprecated]
 /// Tells whether emulation is supported.
-pub type EmulationCanEmulateReturns = ();
+pub struct EmulationCanEmulateParams {
+    pub result: bool,
+}
 /// Clears the overridden device metrics.
 pub type EmulationClearDeviceMetricsOverrideParams = ();
 /// Clears the overridden device metrics.
@@ -301,7 +303,9 @@ pub struct EmulationGetOverriddenSensorInformationParams {
     pub _type: Box<SensorType>,
 }
 /// ⚠️ Experimental
-pub type EmulationGetOverriddenSensorInformationReturns = ();
+pub struct EmulationGetOverriddenSensorInformationParams {
+    pub requested_sampling_frequency: u64,
+}
 /// ⚠️ Experimental
 /** Overrides a platform sensor of a given type. If |enabled| is true, calls to
 Sensor.start() will use a virtual sensor as backend rather than fetching
@@ -414,7 +418,9 @@ pub struct EmulationSetVirtualTimePolicyParams {
 /// ⚠️ Experimental
 /** Turns on virtual time for all frames (replacing real-time with a synthetic time source) and sets
 the current virtual time policy.  Note this supersedes any previous time budget.*/
-pub type EmulationSetVirtualTimePolicyReturns = ();
+pub struct EmulationSetVirtualTimePolicyParams {
+    pub virtual_time_ticks_base: u64,
+}
 /// ⚠️ Experimental
 /// Overrides default host system locale with the specified one.
 pub struct EmulationSetLocaleOverrideParams {

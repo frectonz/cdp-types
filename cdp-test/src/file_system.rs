@@ -20,4 +20,6 @@ pub struct BucketFileSystemLocator {
 pub struct FileSystemGetDirectoryParams {
     pub bucket_file_system_locator: Box<BucketFileSystemLocator>,
 }
-pub type FileSystemGetDirectoryReturns = ();
+pub struct FileSystemGetDirectoryParams {
+    pub directory: Box<Directory>,
+}

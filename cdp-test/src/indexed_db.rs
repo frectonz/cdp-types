@@ -92,7 +92,10 @@ pub struct IndexedDbRequestDataParams {
     pub key_range: Box<KeyRange>,
 }
 /// Requests data from object store or index.
-pub type IndexedDbRequestDataReturns = ();
+pub struct IndexedDbRequestDataParams {
+    pub object_store_data_entries: Vec<DataEntry>,
+    pub has_more: bool,
+}
 /// Gets metadata of an object store.
 pub struct IndexedDbGetMetadataParams {
     pub security_origin: String,
@@ -102,7 +105,10 @@ pub struct IndexedDbGetMetadataParams {
     pub object_store_name: String,
 }
 /// Gets metadata of an object store.
-pub type IndexedDbGetMetadataReturns = ();
+pub struct IndexedDbGetMetadataParams {
+    pub entries_count: u64,
+    pub key_generator_value: u64,
+}
 /// Requests database with given name in given frame.
 pub struct IndexedDbRequestDatabaseParams {
     pub security_origin: String,
@@ -111,7 +117,9 @@ pub struct IndexedDbRequestDatabaseParams {
     pub database_name: String,
 }
 /// Requests database with given name in given frame.
-pub type IndexedDbRequestDatabaseReturns = ();
+pub struct IndexedDbRequestDatabaseParams {
+    pub database_with_object_stores: Box<DatabaseWithObjectStores>,
+}
 /// Requests database names for given security origin.
 pub struct IndexedDbRequestDatabaseNamesParams {
     pub security_origin: String,
@@ -119,4 +127,6 @@ pub struct IndexedDbRequestDatabaseNamesParams {
     pub storage_bucket: Box<StorageBucket>,
 }
 /// Requests database names for given security origin.
-pub type IndexedDbRequestDatabaseNamesReturns = ();
+pub struct IndexedDbRequestDatabaseNamesParams {
+    pub database_names: Vec<String>,
+}

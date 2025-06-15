@@ -158,7 +158,9 @@ pub struct AccessibilityGetPartialAxTreeParams {
 }
 /// ⚠️ Experimental
 /// Fetches the accessibility node and partial accessibility tree for this DOM node, if it exists.
-pub type AccessibilityGetPartialAxTreeReturns = ();
+pub struct AccessibilityGetPartialAxTreeParams {
+    pub nodes: Vec<AxNode>,
+}
 /// ⚠️ Experimental
 /// Fetches the entire accessibility tree for the root Document
 pub struct AccessibilityGetFullAxTreeParams {
@@ -167,7 +169,9 @@ pub struct AccessibilityGetFullAxTreeParams {
 }
 /// ⚠️ Experimental
 /// Fetches the entire accessibility tree for the root Document
-pub type AccessibilityGetFullAxTreeReturns = ();
+pub struct AccessibilityGetFullAxTreeParams {
+    pub nodes: Vec<AxNode>,
+}
 /// ⚠️ Experimental
 /** Fetches the root node.
 Requires `enable()` to have been called previously.*/
@@ -177,7 +181,9 @@ pub struct AccessibilityGetRootAxNodeParams {
 /// ⚠️ Experimental
 /** Fetches the root node.
 Requires `enable()` to have been called previously.*/
-pub type AccessibilityGetRootAxNodeReturns = ();
+pub struct AccessibilityGetRootAxNodeParams {
+    pub node: Box<AxNode>,
+}
 /// ⚠️ Experimental
 /** Fetches a node and all ancestors up to and including the root.
 Requires `enable()` to have been called previously.*/
@@ -189,7 +195,9 @@ pub struct AccessibilityGetAxNodeAndAncestorsParams {
 /// ⚠️ Experimental
 /** Fetches a node and all ancestors up to and including the root.
 Requires `enable()` to have been called previously.*/
-pub type AccessibilityGetAxNodeAndAncestorsReturns = ();
+pub struct AccessibilityGetAxNodeAndAncestorsParams {
+    pub nodes: Vec<AxNode>,
+}
 /// ⚠️ Experimental
 /** Fetches a particular accessibility node by AXNodeId.
 Requires `enable()` to have been called previously.*/
@@ -200,7 +208,9 @@ pub struct AccessibilityGetChildAxNodesParams {
 /// ⚠️ Experimental
 /** Fetches a particular accessibility node by AXNodeId.
 Requires `enable()` to have been called previously.*/
-pub type AccessibilityGetChildAxNodesReturns = ();
+pub struct AccessibilityGetChildAxNodesParams {
+    pub nodes: Vec<AxNode>,
+}
 /// ⚠️ Experimental
 /** Query a DOM node's accessibility subtree for accessible name and role.
 This command computes the name and role for all nodes in the subtree, including those that are
@@ -220,4 +230,6 @@ This command computes the name and role for all nodes in the subtree, including 
 ignored for accessibility, and returns those that match the specified name and role. If no DOM
 node is specified, or the DOM node does not exist, the command returns an error. If neither
 `accessibleName` or `role` is specified, it returns all the accessibility nodes in the subtree.*/
-pub type AccessibilityQueryAxTreeReturns = ();
+pub struct AccessibilityQueryAxTreeParams {
+    pub nodes: Vec<AxNode>,
+}

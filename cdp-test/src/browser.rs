@@ -162,7 +162,13 @@ pub type BrowserCrashGpuProcessReturns = ();
 /// Returns version information.
 pub type BrowserGetVersionParams = ();
 /// Returns version information.
-pub type BrowserGetVersionReturns = ();
+pub struct BrowserGetVersionParams {
+    pub protocol_version: String,
+    pub product: String,
+    pub revision: String,
+    pub user_agent: String,
+    pub js_version: String,
+}
 /// ⚠️ Experimental
 /** Returns the command line switches for the browser process if, and only if
 --enable-automation is on the commandline.*/
@@ -170,7 +176,9 @@ pub type BrowserGetBrowserCommandLineParams = ();
 /// ⚠️ Experimental
 /** Returns the command line switches for the browser process if, and only if
 --enable-automation is on the commandline.*/
-pub type BrowserGetBrowserCommandLineReturns = ();
+pub struct BrowserGetBrowserCommandLineParams {
+    pub arguments: Vec<String>,
+}
 /// ⚠️ Experimental
 /// Get Chrome histograms.
 pub struct BrowserGetHistogramsParams {
@@ -179,7 +187,9 @@ pub struct BrowserGetHistogramsParams {
 }
 /// ⚠️ Experimental
 /// Get Chrome histograms.
-pub type BrowserGetHistogramsReturns = ();
+pub struct BrowserGetHistogramsParams {
+    pub histograms: Vec<Histogram>,
+}
 /// ⚠️ Experimental
 /// Get a Chrome histogram by name.
 pub struct BrowserGetHistogramParams {
@@ -188,7 +198,9 @@ pub struct BrowserGetHistogramParams {
 }
 /// ⚠️ Experimental
 /// Get a Chrome histogram by name.
-pub type BrowserGetHistogramReturns = ();
+pub struct BrowserGetHistogramParams {
+    pub histogram: Box<Histogram>,
+}
 /// ⚠️ Experimental
 /// Get position and size of the browser window.
 pub struct BrowserGetWindowBoundsParams {
@@ -196,7 +208,9 @@ pub struct BrowserGetWindowBoundsParams {
 }
 /// ⚠️ Experimental
 /// Get position and size of the browser window.
-pub type BrowserGetWindowBoundsReturns = ();
+pub struct BrowserGetWindowBoundsParams {
+    pub bounds: Box<Bounds>,
+}
 /// ⚠️ Experimental
 /// Get the browser window that contains the devtools target.
 pub struct BrowserGetWindowForTargetParams {
@@ -204,7 +218,10 @@ pub struct BrowserGetWindowForTargetParams {
 }
 /// ⚠️ Experimental
 /// Get the browser window that contains the devtools target.
-pub type BrowserGetWindowForTargetReturns = ();
+pub struct BrowserGetWindowForTargetParams {
+    pub window_id: Box<WindowId>,
+    pub bounds: Box<Bounds>,
+}
 /// ⚠️ Experimental
 /// Set position and/or size of the browser window.
 pub struct BrowserSetWindowBoundsParams {

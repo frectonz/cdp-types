@@ -48,7 +48,10 @@ pub struct LayerTreeCompositingReasonsParams {
     pub layer_id: Box<LayerId>,
 }
 /// Provides the reasons why the given layer was composited.
-pub type LayerTreeCompositingReasonsReturns = ();
+pub struct LayerTreeCompositingReasonsParams {
+    pub compositing_reasons: Vec<String>,
+    pub compositing_reason_ids: Vec<String>,
+}
 /// Disables compositing tree inspection.
 pub type LayerTreeDisableParams = ();
 /// Disables compositing tree inspection.
@@ -62,20 +65,26 @@ pub struct LayerTreeLoadSnapshotParams {
     pub tiles: Vec<PictureTile>,
 }
 /// Returns the snapshot identifier.
-pub type LayerTreeLoadSnapshotReturns = ();
+pub struct LayerTreeLoadSnapshotParams {
+    pub snapshot_id: Box<SnapshotId>,
+}
 /// Returns the layer snapshot identifier.
 pub struct LayerTreeMakeSnapshotParams {
     pub layer_id: Box<LayerId>,
 }
 /// Returns the layer snapshot identifier.
-pub type LayerTreeMakeSnapshotReturns = ();
+pub struct LayerTreeMakeSnapshotParams {
+    pub snapshot_id: Box<SnapshotId>,
+}
 pub struct LayerTreeProfileSnapshotParams {
     pub snapshot_id: Box<SnapshotId>,
     pub min_repeat_count: i64,
     pub min_duration: u64,
     pub clip_rect: Box<Rect>,
 }
-pub type LayerTreeProfileSnapshotReturns = ();
+pub struct LayerTreeProfileSnapshotParams {
+    pub timings: Vec<PaintProfile>,
+}
 /// Releases layer snapshot captured by the back-end.
 pub struct LayerTreeReleaseSnapshotParams {
     pub snapshot_id: Box<SnapshotId>,
@@ -90,10 +99,14 @@ pub struct LayerTreeReplaySnapshotParams {
     pub scale: u64,
 }
 /// Replays the layer snapshot and returns the resulting bitmap.
-pub type LayerTreeReplaySnapshotReturns = ();
+pub struct LayerTreeReplaySnapshotParams {
+    pub data_url: String,
+}
 /// Replays the layer snapshot and returns canvas log.
 pub struct LayerTreeSnapshotCommandLogParams {
     pub snapshot_id: Box<SnapshotId>,
 }
 /// Replays the layer snapshot and returns canvas log.
-pub type LayerTreeSnapshotCommandLogReturns = ();
+pub struct LayerTreeSnapshotCommandLogParams {
+    pub command_log: Vec<serde_json::Map<String, serde_json::Value>>,
+}

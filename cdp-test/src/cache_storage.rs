@@ -47,7 +47,9 @@ pub struct CacheStorageRequestCacheNamesParams {
     pub storage_bucket: Box<StorageBucket>,
 }
 /// Requests cache names.
-pub type CacheStorageRequestCacheNamesReturns = ();
+pub struct CacheStorageRequestCacheNamesParams {
+    pub caches: Vec<Cache>,
+}
 /// Fetches cache entry.
 pub struct CacheStorageRequestCachedResponseParams {
     pub cache_id: Box<CacheId>,
@@ -55,7 +57,9 @@ pub struct CacheStorageRequestCachedResponseParams {
     pub request_headers: Vec<Header>,
 }
 /// Fetches cache entry.
-pub type CacheStorageRequestCachedResponseReturns = ();
+pub struct CacheStorageRequestCachedResponseParams {
+    pub response: Box<CachedResponse>,
+}
 /// Requests data from cache.
 pub struct CacheStorageRequestEntriesParams {
     pub cache_id: Box<CacheId>,
@@ -64,4 +68,7 @@ pub struct CacheStorageRequestEntriesParams {
     pub path_filter: String,
 }
 /// Requests data from cache.
-pub type CacheStorageRequestEntriesReturns = ();
+pub struct CacheStorageRequestEntriesParams {
+    pub cache_data_entries: Vec<DataEntry>,
+    pub return_count: u64,
+}

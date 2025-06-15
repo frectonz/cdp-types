@@ -31,4 +31,6 @@ pub type PerformanceSetTimeDomainReturns = ();
 /// Retrieve current values of run-time metrics.
 pub type PerformanceGetMetricsParams = ();
 /// Retrieve current values of run-time metrics.
-pub type PerformanceGetMetricsReturns = ();
+pub struct PerformanceGetMetricsParams {
+    pub metrics: Vec<Metric>,
+}

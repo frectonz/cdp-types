@@ -698,7 +698,9 @@ pub struct PageAddScriptToEvaluateOnLoadParams {
 #[deprecated]
 /// ⚠️ Experimental
 /// Deprecated, please use addScriptToEvaluateOnNewDocument instead.
-pub type PageAddScriptToEvaluateOnLoadReturns = ();
+pub struct PageAddScriptToEvaluateOnLoadParams {
+    pub identifier: Box<ScriptIdentifier>,
+}
 /// Evaluates given script in every frame upon creation (before loading frame's scripts).
 pub struct PageAddScriptToEvaluateOnNewDocumentParams {
     pub source: String,
@@ -707,7 +709,9 @@ pub struct PageAddScriptToEvaluateOnNewDocumentParams {
     pub run_immediately: bool,
 }
 /// Evaluates given script in every frame upon creation (before loading frame's scripts).
-pub type PageAddScriptToEvaluateOnNewDocumentReturns = ();
+pub struct PageAddScriptToEvaluateOnNewDocumentParams {
+    pub identifier: Box<ScriptIdentifier>,
+}
 /// Brings page to front (activates tab).
 pub type PageBringToFrontParams = ();
 /// Brings page to front (activates tab).
@@ -722,7 +726,9 @@ pub struct PageCaptureScreenshotParams {
     pub optimize_for_speed: bool,
 }
 /// Capture page screenshot.
-pub type PageCaptureScreenshotReturns = ();
+pub struct PageCaptureScreenshotParams {
+    pub data: String,
+}
 /// ⚠️ Experimental
 /** Returns a snapshot of the page as a string. For MHTML format, the serialization includes
 iframes, shadow DOM, external resources, and element-inline styles.*/
@@ -732,7 +738,9 @@ pub struct PageCaptureSnapshotParams {
 /// ⚠️ Experimental
 /** Returns a snapshot of the page as a string. For MHTML format, the serialization includes
 iframes, shadow DOM, external resources, and element-inline styles.*/
-pub type PageCaptureSnapshotReturns = ();
+pub struct PageCaptureSnapshotParams {
+    pub data: String,
+}
 #[deprecated]
 /// ⚠️ Experimental
 /// Clears the overridden device metrics.
@@ -762,7 +770,9 @@ pub struct PageCreateIsolatedWorldParams {
     pub grant_univeral_access: bool,
 }
 /// Creates an isolated world for the given frame.
-pub type PageCreateIsolatedWorldReturns = ();
+pub struct PageCreateIsolatedWorldParams {
+    pub execution_context_id: Box<()>,
+}
 #[deprecated]
 /// ⚠️ Experimental
 /// Deletes browser cookie with given name, domain and path.
@@ -797,11 +807,19 @@ pub struct PageGetAppManifestParams {
   If manifestId is provided, and it does not match the manifest of the
     current document, this API errors out.
   If there is not a loaded page, this API errors out immediately.*/
-pub type PageGetAppManifestReturns = ();
+pub struct PageGetAppManifestParams {
+    pub url: String,
+    pub errors: Vec<AppManifestError>,
+    pub data: String,
+    pub parsed: Box<AppManifestParsedProperties>,
+    pub manifest: Box<WebAppManifest>,
+}
 /// ⚠️ Experimental
 pub type PageGetInstallabilityErrorsParams = ();
 /// ⚠️ Experimental
-pub type PageGetInstallabilityErrorsReturns = ();
+pub struct PageGetInstallabilityErrorsParams {
+    pub installability_errors: Vec<InstallabilityError>,
+}
 #[deprecated]
 /// ⚠️ Experimental
 /// Deprecated because it's not guaranteed that the returned icon is in fact the one used for PWA installation.
@@ -809,7 +827,9 @@ pub type PageGetManifestIconsParams = ();
 #[deprecated]
 /// ⚠️ Experimental
 /// Deprecated because it's not guaranteed that the returned icon is in fact the one used for PWA installation.
-pub type PageGetManifestIconsReturns = ();
+pub struct PageGetManifestIconsParams {
+    pub primary_icon: String,
+}
 /// ⚠️ Experimental
 /** Returns the unique (PWA) app id.
 Only returns values if the feature flag 'WebAppEnableManifestId' is enabled*/
@@ -817,25 +837,42 @@ pub type PageGetAppIdParams = ();
 /// ⚠️ Experimental
 /** Returns the unique (PWA) app id.
 Only returns values if the feature flag 'WebAppEnableManifestId' is enabled*/
-pub type PageGetAppIdReturns = ();
+pub struct PageGetAppIdParams {
+    pub app_id: String,
+    pub recommended_id: String,
+}
 /// ⚠️ Experimental
 pub struct PageGetAdScriptAncestryIdsParams {
     pub frame_id: Box<FrameId>,
 }
 /// ⚠️ Experimental
-pub type PageGetAdScriptAncestryIdsReturns = ();
+pub struct PageGetAdScriptAncestryIdsParams {
+    pub ad_script_ancestry_ids: Vec<AdScriptId>,
+}
 /// Returns present frame tree structure.
 pub type PageGetFrameTreeParams = ();
 /// Returns present frame tree structure.
-pub type PageGetFrameTreeReturns = ();
+pub struct PageGetFrameTreeParams {
+    pub frame_tree: Box<FrameTree>,
+}
 /// Returns metrics relating to the layouting of the page, such as viewport bounds/scale.
 pub type PageGetLayoutMetricsParams = ();
 /// Returns metrics relating to the layouting of the page, such as viewport bounds/scale.
-pub type PageGetLayoutMetricsReturns = ();
+pub struct PageGetLayoutMetricsParams {
+    pub layout_viewport: Box<LayoutViewport>,
+    pub visual_viewport: Box<VisualViewport>,
+    pub content_size: Box<Rect>,
+    pub css_layout_viewport: Box<LayoutViewport>,
+    pub css_visual_viewport: Box<VisualViewport>,
+    pub css_content_size: Box<Rect>,
+}
 /// Returns navigation history for the current page.
 pub type PageGetNavigationHistoryParams = ();
 /// Returns navigation history for the current page.
-pub type PageGetNavigationHistoryReturns = ();
+pub struct PageGetNavigationHistoryParams {
+    pub current_index: i64,
+    pub entries: Vec<NavigationEntry>,
+}
 /// Resets navigation history for the current page.
 pub type PageResetNavigationHistoryParams = ();
 /// Resets navigation history for the current page.
@@ -848,13 +885,18 @@ pub struct PageGetResourceContentParams {
 }
 /// ⚠️ Experimental
 /// Returns content of the given resource.
-pub type PageGetResourceContentReturns = ();
+pub struct PageGetResourceContentParams {
+    pub content: String,
+    pub base64_encoded: bool,
+}
 /// ⚠️ Experimental
 /// Returns present frame / resource tree structure.
 pub type PageGetResourceTreeParams = ();
 /// ⚠️ Experimental
 /// Returns present frame / resource tree structure.
-pub type PageGetResourceTreeReturns = ();
+pub struct PageGetResourceTreeParams {
+    pub frame_tree: Box<FrameResourceTree>,
+}
 /// Accepts or dismisses a JavaScript initiated dialog (alert, confirm, prompt, or onbeforeunload).
 pub struct PageHandleJavaScriptDialogParams {
     pub accept: bool,
@@ -871,7 +913,11 @@ pub struct PageNavigateParams {
     pub referrer_policy: Box<ReferrerPolicy>,
 }
 /// Navigates current page to the given URL.
-pub type PageNavigateReturns = ();
+pub struct PageNavigateParams {
+    pub frame_id: Box<FrameId>,
+    pub loader_id: Box<LoaderId>,
+    pub error_text: String,
+}
 /// Navigates current page to the given history entry.
 pub struct PageNavigateToHistoryEntryParams {
     pub entry_id: i64,
@@ -899,7 +945,10 @@ pub struct PagePrintToPdfParams {
     pub generate_document_outline: bool,
 }
 /// Print page as PDF.
-pub type PagePrintToPdfReturns = ();
+pub struct PagePrintToPdfParams {
+    pub data: String,
+    pub stream: Box<StreamHandle>,
+}
 /// Reloads given page optionally ignoring the cache.
 pub struct PageReloadParams {
     pub ignore_cache: bool,
@@ -943,7 +992,9 @@ pub struct PageSearchInResourceParams {
 }
 /// ⚠️ Experimental
 /// Searches for given string in resource content.
-pub type PageSearchInResourceReturns = ();
+pub struct PageSearchInResourceParams {
+    pub result: Vec<SearchMatch>,
+}
 /// ⚠️ Experimental
 /// Enable Chrome's experimental ad filter on all sites.
 pub struct PageSetAdBlockingEnabledParams {
@@ -965,7 +1016,9 @@ pub struct PageGetPermissionsPolicyStateParams {
 }
 /// ⚠️ Experimental
 /// Get Permissions Policy state on given frame.
-pub type PageGetPermissionsPolicyStateReturns = ();
+pub struct PageGetPermissionsPolicyStateParams {
+    pub states: Vec<PermissionsPolicyFeatureState>,
+}
 /// ⚠️ Experimental
 /// Get Origin Trials on given frame.
 pub struct PageGetOriginTrialsParams {
@@ -973,7 +1026,9 @@ pub struct PageGetOriginTrialsParams {
 }
 /// ⚠️ Experimental
 /// Get Origin Trials on given frame.
-pub type PageGetOriginTrialsReturns = ();
+pub struct PageGetOriginTrialsParams {
+    pub origin_trials: Vec<OriginTrial>,
+}
 #[deprecated]
 /// ⚠️ Experimental
 /** Overrides the values of device screen dimensions (window.screen.width, window.screen.height,

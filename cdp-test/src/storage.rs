@@ -382,7 +382,9 @@ pub struct StorageGetStorageKeyForFrameParams {
     pub frame_id: Box<crate::page::FrameId>,
 }
 /// Returns a storage key given a frame id.
-pub type StorageGetStorageKeyForFrameReturns = ();
+pub struct StorageGetStorageKeyForFrameParams {
+    pub storage_key: Box<StorageSerializedStorageKey>,
+}
 /// Clears storage for origin.
 pub struct StorageClearDataForOriginParams {
     pub origin: String,
@@ -402,7 +404,9 @@ pub struct StorageGetCookiesParams {
     pub browser_context_id: Box<BrowserContextId>,
 }
 /// Returns all browser cookies.
-pub type StorageGetCookiesReturns = ();
+pub struct StorageGetCookiesParams {
+    pub cookies: Vec<Cookie>,
+}
 /// Sets given cookies.
 pub struct StorageSetCookiesParams {
     pub cookies: Vec<CookieParam>,
@@ -421,7 +425,12 @@ pub struct StorageGetUsageAndQuotaParams {
     pub origin: String,
 }
 /// Returns usage and quota in bytes.
-pub type StorageGetUsageAndQuotaReturns = ();
+pub struct StorageGetUsageAndQuotaParams {
+    pub usage: u64,
+    pub quota: u64,
+    pub override_active: bool,
+    pub usage_breakdown: Vec<UsageForType>,
+}
 /// ⚠️ Experimental
 /// Override quota for the specified origin
 pub struct StorageOverrideQuotaForOriginParams {
@@ -486,7 +495,9 @@ pub type StorageGetTrustTokensParams = ();
 /// ⚠️ Experimental
 /** Returns the number of stored Trust Tokens per issuer for the
 current browsing context.*/
-pub type StorageGetTrustTokensReturns = ();
+pub struct StorageGetTrustTokensParams {
+    pub tokens: Vec<TrustTokens>,
+}
 /// ⚠️ Experimental
 /** Removes all Trust Tokens issued by the provided issuerOrigin.
 Leaves other stored data, including the issuer's Redemption Records, intact.*/
@@ -496,7 +507,9 @@ pub struct StorageClearTrustTokensParams {
 /// ⚠️ Experimental
 /** Removes all Trust Tokens issued by the provided issuerOrigin.
 Leaves other stored data, including the issuer's Redemption Records, intact.*/
-pub type StorageClearTrustTokensReturns = ();
+pub struct StorageClearTrustTokensParams {
+    pub did_delete_tokens: bool,
+}
 /// ⚠️ Experimental
 /// Gets details for a named interest group.
 pub struct StorageGetInterestGroupDetailsParams {
@@ -505,7 +518,9 @@ pub struct StorageGetInterestGroupDetailsParams {
 }
 /// ⚠️ Experimental
 /// Gets details for a named interest group.
-pub type StorageGetInterestGroupDetailsReturns = ();
+pub struct StorageGetInterestGroupDetailsParams {
+    pub details: serde_json::Map<String, serde_json::Value>,
+}
 /// ⚠️ Experimental
 /// Enables/Disables issuing of interestGroupAccessed events.
 pub struct StorageSetInterestGroupTrackingParams {
@@ -531,7 +546,9 @@ pub struct StorageGetSharedStorageMetadataParams {
 }
 /// ⚠️ Experimental
 /// Gets metadata for an origin's shared storage.
-pub type StorageGetSharedStorageMetadataReturns = ();
+pub struct StorageGetSharedStorageMetadataParams {
+    pub metadata: Box<SharedStorageMetadata>,
+}
 /// ⚠️ Experimental
 /// Gets the entries in an given origin's shared storage.
 pub struct StorageGetSharedStorageEntriesParams {
@@ -539,7 +556,9 @@ pub struct StorageGetSharedStorageEntriesParams {
 }
 /// ⚠️ Experimental
 /// Gets the entries in an given origin's shared storage.
-pub type StorageGetSharedStorageEntriesReturns = ();
+pub struct StorageGetSharedStorageEntriesParams {
+    pub entries: Vec<SharedStorageEntry>,
+}
 /// ⚠️ Experimental
 /// Sets entry with `key` and `value` for a given origin's shared storage.
 pub struct StorageSetSharedStorageEntryParams {
@@ -606,7 +625,9 @@ pub type StorageDeleteStorageBucketReturns = ();
 pub type StorageRunBounceTrackingMitigationsParams = ();
 /// ⚠️ Experimental
 /// Deletes state for sites identified as potential bounce trackers, immediately.
-pub type StorageRunBounceTrackingMitigationsReturns = ();
+pub struct StorageRunBounceTrackingMitigationsParams {
+    pub deleted_sites: Vec<String>,
+}
 /// ⚠️ Experimental
 /// https://wicg.github.io/attribution-reporting-api/
 pub struct StorageSetAttributionReportingLocalTestingModeParams {
@@ -630,7 +651,9 @@ pub type StorageSendPendingAttributionReportsParams = ();
 /// ⚠️ Experimental
 /** Sends all pending Attribution Reports immediately, regardless of their
 scheduled report time.*/
-pub type StorageSendPendingAttributionReportsReturns = ();
+pub struct StorageSendPendingAttributionReportsParams {
+    pub num_sent: i64,
+}
 /// ⚠️ Experimental
 /** Returns the effective Related Website Sets in use by this profile for the browser
 session. The effective Related Website Sets will not change during a browser session.*/
@@ -638,7 +661,9 @@ pub type StorageGetRelatedWebsiteSetsParams = ();
 /// ⚠️ Experimental
 /** Returns the effective Related Website Sets in use by this profile for the browser
 session. The effective Related Website Sets will not change during a browser session.*/
-pub type StorageGetRelatedWebsiteSetsReturns = ();
+pub struct StorageGetRelatedWebsiteSetsParams {
+    pub sets: Vec<RelatedWebsiteSet>,
+}
 /// ⚠️ Experimental
 /** Returns the list of URLs from a page and its embedded resources that match
 existing grace period URL pattern rules.
@@ -651,7 +676,9 @@ pub struct StorageGetAffectedUrlsForThirdPartyCookieMetadataParams {
 /** Returns the list of URLs from a page and its embedded resources that match
 existing grace period URL pattern rules.
 https://developers.google.com/privacy-sandbox/cookies/temporary-exceptions/grace-period*/
-pub type StorageGetAffectedUrlsForThirdPartyCookieMetadataReturns = ();
+pub struct StorageGetAffectedUrlsForThirdPartyCookieMetadataParams {
+    pub matched_urls: Vec<String>,
+}
 pub struct StorageSetProtectedAudienceKAnonymityParams {
     pub owner: String,
     pub name: String,

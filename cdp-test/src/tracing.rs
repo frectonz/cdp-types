@@ -56,7 +56,9 @@ pub type TracingEndReturns = ();
 pub type TracingGetCategoriesParams = ();
 /// ⚠️ Experimental
 /// Gets supported tracing categories.
-pub type TracingGetCategoriesReturns = ();
+pub struct TracingGetCategoriesParams {
+    pub categories: Vec<String>,
+}
 /// ⚠️ Experimental
 /// Record a clock sync marker in the trace.
 pub struct TracingRecordClockSyncMarkerParams {
@@ -73,7 +75,10 @@ pub struct TracingRequestMemoryDumpParams {
 }
 /// ⚠️ Experimental
 /// Request a global memory dump.
-pub type TracingRequestMemoryDumpReturns = ();
+pub struct TracingRequestMemoryDumpParams {
+    pub dump_guid: String,
+    pub success: bool,
+}
 /// Start trace events collection.
 pub struct TracingStartParams {
     pub categories: String,

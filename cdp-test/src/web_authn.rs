@@ -60,7 +60,9 @@ pub struct WebAuthnAddVirtualAuthenticatorParams {
     pub options: Box<VirtualAuthenticatorOptions>,
 }
 /// Creates and adds a virtual authenticator.
-pub type WebAuthnAddVirtualAuthenticatorReturns = ();
+pub struct WebAuthnAddVirtualAuthenticatorParams {
+    pub authenticator_id: Box<AuthenticatorId>,
+}
 /// Resets parameters isBogusSignature, isBadUV, isBadUP to false if they are not present.
 pub struct WebAuthnSetResponseOverrideBitsParams {
     pub authenticator_id: Box<AuthenticatorId>,
@@ -91,13 +93,17 @@ pub struct WebAuthnGetCredentialParams {
 }
 /** Returns a single credential stored in the given virtual authenticator that
 matches the credential ID.*/
-pub type WebAuthnGetCredentialReturns = ();
+pub struct WebAuthnGetCredentialParams {
+    pub credential: Box<Credential>,
+}
 /// Returns all the credentials stored in the given virtual authenticator.
 pub struct WebAuthnGetCredentialsParams {
     pub authenticator_id: Box<AuthenticatorId>,
 }
 /// Returns all the credentials stored in the given virtual authenticator.
-pub type WebAuthnGetCredentialsReturns = ();
+pub struct WebAuthnGetCredentialsParams {
+    pub credentials: Vec<Credential>,
+}
 /// Removes a credential from the authenticator.
 pub struct WebAuthnRemoveCredentialParams {
     pub authenticator_id: Box<AuthenticatorId>,

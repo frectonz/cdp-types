@@ -159,7 +159,9 @@ pub struct DomCollectClassNamesFromSubtreeParams {
 }
 /// ⚠️ Experimental
 /// Collects class names for the node with given id and all of it's child nodes.
-pub type DomCollectClassNamesFromSubtreeReturns = ();
+pub struct DomCollectClassNamesFromSubtreeParams {
+    pub class_names: Vec<String>,
+}
 /// ⚠️ Experimental
 /** Creates a deep copy of the specified node and places it into the target container before the
 given anchor.*/
@@ -171,7 +173,9 @@ pub struct DomCopyToParams {
 /// ⚠️ Experimental
 /** Creates a deep copy of the specified node and places it into the target container before the
 given anchor.*/
-pub type DomCopyToReturns = ();
+pub struct DomCopyToParams {
+    pub node_id: Box<NodeId>,
+}
 /** Describes node given its id, does not require domain to be enabled. Does not start tracking any
 objects, can be used for automation.*/
 pub struct DomDescribeNodeParams {
@@ -183,7 +187,9 @@ pub struct DomDescribeNodeParams {
 }
 /** Describes node given its id, does not require domain to be enabled. Does not start tracking any
 objects, can be used for automation.*/
-pub type DomDescribeNodeReturns = ();
+pub struct DomDescribeNodeParams {
+    pub node: Box<Node>,
+}
 /** Scrolls the specified rect of the given node into view if not already visible.
 Note: exactly one between nodeId, backendNodeId and objectId should be passed
 to identify the node.*/
@@ -230,7 +236,9 @@ pub struct DomGetAttributesParams {
     pub node_id: Box<NodeId>,
 }
 /// Returns attributes for the specified node.
-pub type DomGetAttributesReturns = ();
+pub struct DomGetAttributesParams {
+    pub attributes: Vec<String>,
+}
 /// Returns boxes for the given node.
 pub struct DomGetBoxModelParams {
     pub node_id: Box<NodeId>,
@@ -238,7 +246,9 @@ pub struct DomGetBoxModelParams {
     pub object_id: Box<()>,
 }
 /// Returns boxes for the given node.
-pub type DomGetBoxModelReturns = ();
+pub struct DomGetBoxModelParams {
+    pub model: Box<BoxModel>,
+}
 /// ⚠️ Experimental
 /** Returns quads that describe node position on the page. This method
 might return multiple quads for inline nodes.*/
@@ -250,7 +260,9 @@ pub struct DomGetContentQuadsParams {
 /// ⚠️ Experimental
 /** Returns quads that describe node position on the page. This method
 might return multiple quads for inline nodes.*/
-pub type DomGetContentQuadsReturns = ();
+pub struct DomGetContentQuadsParams {
+    pub quads: Vec<Quad>,
+}
 /** Returns the root DOM node (and optionally the subtree) to the caller.
 Implicitly enables the DOM domain events for the current target.*/
 pub struct DomGetDocumentParams {
@@ -259,7 +271,9 @@ pub struct DomGetDocumentParams {
 }
 /** Returns the root DOM node (and optionally the subtree) to the caller.
 Implicitly enables the DOM domain events for the current target.*/
-pub type DomGetDocumentReturns = ();
+pub struct DomGetDocumentParams {
+    pub root: Box<Node>,
+}
 #[deprecated]
 /** Returns the root DOM node (and optionally the subtree) to the caller.
 Deprecated, as it is not designed to work well with the rest of the DOM agent.
@@ -272,7 +286,9 @@ pub struct DomGetFlattenedDocumentParams {
 /** Returns the root DOM node (and optionally the subtree) to the caller.
 Deprecated, as it is not designed to work well with the rest of the DOM agent.
 Use DOMSnapshot.captureSnapshot instead.*/
-pub type DomGetFlattenedDocumentReturns = ();
+pub struct DomGetFlattenedDocumentParams {
+    pub nodes: Vec<Node>,
+}
 /// ⚠️ Experimental
 /// Finds nodes with a given computed style in a subtree.
 pub struct DomGetNodesForSubtreeByStyleParams {
@@ -282,7 +298,9 @@ pub struct DomGetNodesForSubtreeByStyleParams {
 }
 /// ⚠️ Experimental
 /// Finds nodes with a given computed style in a subtree.
-pub type DomGetNodesForSubtreeByStyleReturns = ();
+pub struct DomGetNodesForSubtreeByStyleParams {
+    pub node_ids: Vec<NodeId>,
+}
 /** Returns node id at given location. Depending on whether DOM domain is enabled, nodeId is
 either returned or not.*/
 pub struct DomGetNodeForLocationParams {
@@ -293,7 +311,11 @@ pub struct DomGetNodeForLocationParams {
 }
 /** Returns node id at given location. Depending on whether DOM domain is enabled, nodeId is
 either returned or not.*/
-pub type DomGetNodeForLocationReturns = ();
+pub struct DomGetNodeForLocationParams {
+    pub backend_node_id: Box<BackendNodeId>,
+    pub frame_id: Box<crate::page::FrameId>,
+    pub node_id: Box<NodeId>,
+}
 /// Returns node's HTML markup.
 pub struct DomGetOuterHtmlParams {
     pub node_id: Box<NodeId>,
@@ -301,7 +323,9 @@ pub struct DomGetOuterHtmlParams {
     pub object_id: Box<()>,
 }
 /// Returns node's HTML markup.
-pub type DomGetOuterHtmlReturns = ();
+pub struct DomGetOuterHtmlParams {
+    pub outer_html: String,
+}
 /// ⚠️ Experimental
 /// Returns the id of the nearest ancestor that is a relayout boundary.
 pub struct DomGetRelayoutBoundaryParams {
@@ -309,7 +333,9 @@ pub struct DomGetRelayoutBoundaryParams {
 }
 /// ⚠️ Experimental
 /// Returns the id of the nearest ancestor that is a relayout boundary.
-pub type DomGetRelayoutBoundaryReturns = ();
+pub struct DomGetRelayoutBoundaryParams {
+    pub node_id: Box<NodeId>,
+}
 /// ⚠️ Experimental
 /** Returns search results from given `fromIndex` to given `toIndex` from the search with the given
 identifier.*/
@@ -321,7 +347,9 @@ pub struct DomGetSearchResultsParams {
 /// ⚠️ Experimental
 /** Returns search results from given `fromIndex` to given `toIndex` from the search with the given
 identifier.*/
-pub type DomGetSearchResultsReturns = ();
+pub struct DomGetSearchResultsParams {
+    pub node_ids: Vec<NodeId>,
+}
 /// Hides any highlight.
 pub type DomHideHighlightParams = crate::overlay::OverlayHideHighlightParams;
 /// Hides any highlight.
@@ -347,7 +375,9 @@ pub struct DomMoveToParams {
     pub insert_before_node_id: Box<NodeId>,
 }
 /// Moves node into the new container, places it before the given anchor.
-pub type DomMoveToReturns = ();
+pub struct DomMoveToParams {
+    pub node_id: Box<NodeId>,
+}
 /// ⚠️ Experimental
 /** Searches for a given string in the DOM tree. Use `getSearchResults` to access search results or
 `cancelSearch` to end this search session.*/
@@ -358,7 +388,10 @@ pub struct DomPerformSearchParams {
 /// ⚠️ Experimental
 /** Searches for a given string in the DOM tree. Use `getSearchResults` to access search results or
 `cancelSearch` to end this search session.*/
-pub type DomPerformSearchReturns = ();
+pub struct DomPerformSearchParams {
+    pub search_id: String,
+    pub result_count: i64,
+}
 /// ⚠️ Experimental
 /// Requests that the node is sent to the caller given its path. // FIXME, use XPath
 pub struct DomPushNodeByPathToFrontendParams {
@@ -366,7 +399,9 @@ pub struct DomPushNodeByPathToFrontendParams {
 }
 /// ⚠️ Experimental
 /// Requests that the node is sent to the caller given its path. // FIXME, use XPath
-pub type DomPushNodeByPathToFrontendReturns = ();
+pub struct DomPushNodeByPathToFrontendParams {
+    pub node_id: Box<NodeId>,
+}
 /// ⚠️ Experimental
 /// Requests that a batch of nodes is sent to the caller given their backend node ids.
 pub struct DomPushNodesByBackendIdsToFrontendParams {
@@ -374,21 +409,27 @@ pub struct DomPushNodesByBackendIdsToFrontendParams {
 }
 /// ⚠️ Experimental
 /// Requests that a batch of nodes is sent to the caller given their backend node ids.
-pub type DomPushNodesByBackendIdsToFrontendReturns = ();
+pub struct DomPushNodesByBackendIdsToFrontendParams {
+    pub node_ids: Vec<NodeId>,
+}
 /// Executes `querySelector` on a given node.
 pub struct DomQuerySelectorParams {
     pub node_id: Box<NodeId>,
     pub selector: String,
 }
 /// Executes `querySelector` on a given node.
-pub type DomQuerySelectorReturns = ();
+pub struct DomQuerySelectorParams {
+    pub node_id: Box<NodeId>,
+}
 /// Executes `querySelectorAll` on a given node.
 pub struct DomQuerySelectorAllParams {
     pub node_id: Box<NodeId>,
     pub selector: String,
 }
 /// Executes `querySelectorAll` on a given node.
-pub type DomQuerySelectorAllReturns = ();
+pub struct DomQuerySelectorAllParams {
+    pub node_ids: Vec<NodeId>,
+}
 /// ⚠️ Experimental
 /** Returns NodeIds of current top layer elements.
 Top layer is rendered closest to the user within a viewport, therefore its elements always
@@ -398,7 +439,9 @@ pub type DomGetTopLayerElementsParams = ();
 /** Returns NodeIds of current top layer elements.
 Top layer is rendered closest to the user within a viewport, therefore its elements always
 appear on top of all other content.*/
-pub type DomGetTopLayerElementsReturns = ();
+pub struct DomGetTopLayerElementsParams {
+    pub node_ids: Vec<NodeId>,
+}
 /// ⚠️ Experimental
 /// Returns the NodeId of the matched element according to certain relations.
 pub struct DomGetElementByRelationParams {
@@ -407,7 +450,9 @@ pub struct DomGetElementByRelationParams {
 }
 /// ⚠️ Experimental
 /// Returns the NodeId of the matched element according to certain relations.
-pub type DomGetElementByRelationReturns = ();
+pub struct DomGetElementByRelationParams {
+    pub node_id: Box<NodeId>,
+}
 /// ⚠️ Experimental
 /// Re-does the last undone action.
 pub type DomRedoParams = ();
@@ -448,7 +493,9 @@ pub struct DomRequestNodeParams {
 /** Requests that the node is sent to the caller given the JavaScript node object reference. All
 nodes that form the path from the node to the root are also sent to the client as a series of
 `setChildNodes` notifications.*/
-pub type DomRequestNodeReturns = ();
+pub struct DomRequestNodeParams {
+    pub node_id: Box<NodeId>,
+}
 /// Resolves the JavaScript node object for a given NodeId or BackendNodeId.
 pub struct DomResolveNodeParams {
     pub node_id: Box<NodeId>,
@@ -457,7 +504,9 @@ pub struct DomResolveNodeParams {
     pub execution_context_id: Box<()>,
 }
 /// Resolves the JavaScript node object for a given NodeId or BackendNodeId.
-pub type DomResolveNodeReturns = ();
+pub struct DomResolveNodeParams {
+    pub object: Box<()>,
+}
 /// Sets attribute for an element with given id.
 pub struct DomSetAttributeValueParams {
     pub node_id: Box<NodeId>,
@@ -500,7 +549,9 @@ pub struct DomGetNodeStackTracesParams {
 }
 /// ⚠️ Experimental
 /// Gets stack traces associated with a Node. As of now, only provides stack trace for Node creation.
-pub type DomGetNodeStackTracesReturns = ();
+pub struct DomGetNodeStackTracesParams {
+    pub creation: Box<()>,
+}
 /// ⚠️ Experimental
 /** Returns file information for the given
 File wrapper.*/
@@ -510,13 +561,17 @@ pub struct DomGetFileInfoParams {
 /// ⚠️ Experimental
 /** Returns file information for the given
 File wrapper.*/
-pub type DomGetFileInfoReturns = ();
+pub struct DomGetFileInfoParams {
+    pub path: String,
+}
 /// ⚠️ Experimental
 /// Returns list of detached nodes
 pub type DomGetDetachedDomNodesParams = ();
 /// ⚠️ Experimental
 /// Returns list of detached nodes
-pub type DomGetDetachedDomNodesReturns = ();
+pub struct DomGetDetachedDomNodesParams {
+    pub detached_nodes: Vec<DetachedElementInfo>,
+}
 /// ⚠️ Experimental
 /** Enables console to refer to the node with given id via $x (see Command Line API for more details
 $x functions).*/
@@ -533,7 +588,9 @@ pub struct DomSetNodeNameParams {
     pub name: String,
 }
 /// Sets node name for a node with given id.
-pub type DomSetNodeNameReturns = ();
+pub struct DomSetNodeNameParams {
+    pub node_id: Box<NodeId>,
+}
 /// Sets node value for a node with given id.
 pub struct DomSetNodeValueParams {
     pub node_id: Box<NodeId>,
@@ -561,7 +618,10 @@ pub struct DomGetFrameOwnerParams {
 }
 /// ⚠️ Experimental
 /// Returns iframe node that owns iframe with the given domain.
-pub type DomGetFrameOwnerReturns = ();
+pub struct DomGetFrameOwnerParams {
+    pub backend_node_id: Box<BackendNodeId>,
+    pub node_id: Box<NodeId>,
+}
 /// ⚠️ Experimental
 /** Returns the query container of the given node based on container query
 conditions: containerName, physical and logical axes, and whether it queries
@@ -581,7 +641,9 @@ conditions: containerName, physical and logical axes, and whether it queries
 scroll-state. If no axes are provided and queriesScrollState is false, the
 style container is returned, which is the direct parent or the closest
 element with a matching container-name.*/
-pub type DomGetContainerForNodeReturns = ();
+pub struct DomGetContainerForNodeParams {
+    pub node_id: Box<NodeId>,
+}
 /// ⚠️ Experimental
 /** Returns the descendants of a container query container that have
 container queries against this container.*/
@@ -591,7 +653,9 @@ pub struct DomGetQueryingDescendantsForContainerParams {
 /// ⚠️ Experimental
 /** Returns the descendants of a container query container that have
 container queries against this container.*/
-pub type DomGetQueryingDescendantsForContainerReturns = ();
+pub struct DomGetQueryingDescendantsForContainerParams {
+    pub node_ids: Vec<NodeId>,
+}
 /// ⚠️ Experimental
 /** Returns the target anchor element of the given anchor query according to
 https://www.w3.org/TR/css-anchor-position-1/#target.*/
@@ -602,4 +666,6 @@ pub struct DomGetAnchorElementParams {
 /// ⚠️ Experimental
 /** Returns the target anchor element of the given anchor query according to
 https://www.w3.org/TR/css-anchor-position-1/#target.*/
-pub type DomGetAnchorElementReturns = ();
+pub struct DomGetAnchorElementParams {
+    pub node_id: Box<NodeId>,
+}

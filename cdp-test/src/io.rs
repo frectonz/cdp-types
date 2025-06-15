@@ -15,10 +15,16 @@ pub struct IoReadParams {
     pub size: i64,
 }
 /// Read a chunk of the stream
-pub type IoReadReturns = ();
+pub struct IoReadParams {
+    pub base64_encoded: bool,
+    pub data: String,
+    pub eof: bool,
+}
 /// Return UUID of Blob object specified by a remote object id.
 pub struct IoResolveBlobParams {
     pub object_id: Box<()>,
 }
 /// Return UUID of Blob object specified by a remote object id.
-pub type IoResolveBlobReturns = ();
+pub struct IoResolveBlobParams {
+    pub uuid: String,
+}

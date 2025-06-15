@@ -32,7 +32,9 @@ pub struct DomDebuggerGetEventListenersParams {
     pub pierce: bool,
 }
 /// Returns event listeners of the given object.
-pub type DomDebuggerGetEventListenersReturns = ();
+pub struct DomDebuggerGetEventListenersParams {
+    pub listeners: Vec<EventListener>,
+}
 /// Removes DOM breakpoint that was set using `setDOMBreakpoint`.
 pub struct DomDebuggerRemoveDomBreakpointParams {
     pub node_id: Box<NodeId>,

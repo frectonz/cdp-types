@@ -165,19 +165,25 @@ pub struct OverlayGetHighlightObjectForTestParams {
     pub show_accessibility_info: bool,
 }
 /// For testing.
-pub type OverlayGetHighlightObjectForTestReturns = ();
+pub struct OverlayGetHighlightObjectForTestParams {
+    pub highlight: serde_json::Map<String, serde_json::Value>,
+}
 /// For Persistent Grid testing.
 pub struct OverlayGetGridHighlightObjectsForTestParams {
     pub node_ids: Vec<NodeId>,
 }
 /// For Persistent Grid testing.
-pub type OverlayGetGridHighlightObjectsForTestReturns = ();
+pub struct OverlayGetGridHighlightObjectsForTestParams {
+    pub highlights: serde_json::Map<String, serde_json::Value>,
+}
 /// For Source Order Viewer testing.
 pub struct OverlayGetSourceOrderHighlightObjectForTestParams {
     pub node_id: Box<NodeId>,
 }
 /// For Source Order Viewer testing.
-pub type OverlayGetSourceOrderHighlightObjectForTestReturns = ();
+pub struct OverlayGetSourceOrderHighlightObjectForTestParams {
+    pub highlight: serde_json::Map<String, serde_json::Value>,
+}
 /// Hides any highlight.
 pub type OverlayHideHighlightParams = ();
 /// Hides any highlight.

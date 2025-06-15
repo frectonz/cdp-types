@@ -30,11 +30,17 @@ pub struct DomCounter {
 /// Retruns current DOM object counters.
 pub type MemoryGetDomCountersParams = ();
 /// Retruns current DOM object counters.
-pub type MemoryGetDomCountersReturns = ();
+pub struct MemoryGetDomCountersParams {
+    pub documents: i64,
+    pub nodes: i64,
+    pub js_event_listeners: i64,
+}
 /// Retruns DOM object counters after preparing renderer for leak detection.
 pub type MemoryGetDomCountersForLeakDetectionParams = ();
 /// Retruns DOM object counters after preparing renderer for leak detection.
-pub type MemoryGetDomCountersForLeakDetectionReturns = ();
+pub struct MemoryGetDomCountersForLeakDetectionParams {
+    pub counters: Vec<DomCounter>,
+}
 /** Prepares for leak detection by terminating workers, stopping spellcheckers,
 dropping non-essential internal caches, running garbage collections, etc.*/
 pub type MemoryPrepareForLeakDetectionParams = ();
@@ -73,16 +79,22 @@ collected since renderer process startup.*/
 pub type MemoryGetAllTimeSamplingProfileParams = ();
 /** Retrieve native memory allocations profile
 collected since renderer process startup.*/
-pub type MemoryGetAllTimeSamplingProfileReturns = ();
+pub struct MemoryGetAllTimeSamplingProfileParams {
+    pub profile: Box<SamplingProfile>,
+}
 /** Retrieve native memory allocations profile
 collected since browser process startup.*/
 pub type MemoryGetBrowserSamplingProfileParams = ();
 /** Retrieve native memory allocations profile
 collected since browser process startup.*/
-pub type MemoryGetBrowserSamplingProfileReturns = ();
+pub struct MemoryGetBrowserSamplingProfileParams {
+    pub profile: Box<SamplingProfile>,
+}
 /** Retrieve native memory allocations profile collected since last
 `startSampling` call.*/
 pub type MemoryGetSamplingProfileParams = ();
 /** Retrieve native memory allocations profile collected since last
 `startSampling` call.*/
-pub type MemoryGetSamplingProfileReturns = ();
+pub struct MemoryGetSamplingProfileParams {
+    pub profile: Box<SamplingProfile>,
+}

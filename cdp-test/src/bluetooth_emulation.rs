@@ -147,7 +147,9 @@ pub struct BluetoothEmulationAddServiceParams {
     pub service_uuid: String,
 }
 /// Adds a service with |serviceUuid| to the peripheral with |address|.
-pub type BluetoothEmulationAddServiceReturns = ();
+pub struct BluetoothEmulationAddServiceParams {
+    pub service_id: String,
+}
 /// Removes the service respresented by |serviceId| from the simulated central.
 pub struct BluetoothEmulationRemoveServiceParams {
     pub service_id: String,
@@ -163,7 +165,9 @@ pub struct BluetoothEmulationAddCharacteristicParams {
 }
 /** Adds a characteristic with |characteristicUuid| and |properties| to the
 service represented by |serviceId|.*/
-pub type BluetoothEmulationAddCharacteristicReturns = ();
+pub struct BluetoothEmulationAddCharacteristicParams {
+    pub characteristic_id: String,
+}
 /** Removes the characteristic respresented by |characteristicId| from the
 simulated central.*/
 pub struct BluetoothEmulationRemoveCharacteristicParams {
@@ -180,7 +184,9 @@ pub struct BluetoothEmulationAddDescriptorParams {
 }
 /** Adds a descriptor with |descriptorUuid| to the characteristic respresented
 by |characteristicId|.*/
-pub type BluetoothEmulationAddDescriptorReturns = ();
+pub struct BluetoothEmulationAddDescriptorParams {
+    pub descriptor_id: String,
+}
 /// Removes the descriptor with |descriptorId| from the simulated central.
 pub struct BluetoothEmulationRemoveDescriptorParams {
     pub descriptor_id: String,

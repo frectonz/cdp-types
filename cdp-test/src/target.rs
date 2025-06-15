@@ -47,19 +47,25 @@ pub struct TargetAttachToTargetParams {
     pub flatten: bool,
 }
 /// Attaches to the target with given id.
-pub type TargetAttachToTargetReturns = ();
+pub struct TargetAttachToTargetParams {
+    pub session_id: Box<SessionId>,
+}
 /// ⚠️ Experimental
 /// Attaches to the browser target, only uses flat sessionId mode.
 pub type TargetAttachToBrowserTargetParams = ();
 /// ⚠️ Experimental
 /// Attaches to the browser target, only uses flat sessionId mode.
-pub type TargetAttachToBrowserTargetReturns = ();
+pub struct TargetAttachToBrowserTargetParams {
+    pub session_id: Box<SessionId>,
+}
 /// Closes the target. If the target is a page that gets closed too.
 pub struct TargetCloseTargetParams {
     pub target_id: Box<TargetId>,
 }
 /// Closes the target. If the target is a page that gets closed too.
-pub type TargetCloseTargetReturns = ();
+pub struct TargetCloseTargetParams {
+    pub success: bool,
+}
 /// ⚠️ Experimental
 /** Inject object to the target's main frame that provides a communication
 channel with browser target.
@@ -94,11 +100,15 @@ pub struct TargetCreateBrowserContextParams {
 }
 /** Creates a new empty BrowserContext. Similar to an incognito profile but you can have more than
 one.*/
-pub type TargetCreateBrowserContextReturns = ();
+pub struct TargetCreateBrowserContextParams {
+    pub browser_context_id: Box<BrowserContextId>,
+}
 /// Returns all browser contexts created with `Target.createBrowserContext` method.
 pub type TargetGetBrowserContextsParams = ();
 /// Returns all browser contexts created with `Target.createBrowserContext` method.
-pub type TargetGetBrowserContextsReturns = ();
+pub struct TargetGetBrowserContextsParams {
+    pub browser_context_ids: Vec<BrowserContextId>,
+}
 /// Creates a new page.
 pub struct TargetCreateTargetParams {
     pub url: String,
@@ -115,7 +125,9 @@ pub struct TargetCreateTargetParams {
     pub hidden: bool,
 }
 /// Creates a new page.
-pub type TargetCreateTargetReturns = ();
+pub struct TargetCreateTargetParams {
+    pub target_id: Box<TargetId>,
+}
 /// Detaches session with given id.
 pub struct TargetDetachFromTargetParams {
     pub session_id: Box<SessionId>,
@@ -138,13 +150,17 @@ pub struct TargetGetTargetInfoParams {
 }
 /// ⚠️ Experimental
 /// Returns information about a target.
-pub type TargetGetTargetInfoReturns = ();
+pub struct TargetGetTargetInfoParams {
+    pub target_info: Box<TargetInfo>,
+}
 /// Retrieves a list of available targets.
 pub struct TargetGetTargetsParams {
     pub filter: Box<TargetFilter>,
 }
 /// Retrieves a list of available targets.
-pub type TargetGetTargetsReturns = ();
+pub struct TargetGetTargetsParams {
+    pub target_infos: Vec<TargetInfo>,
+}
 #[deprecated]
 /** Sends protocol message over session with given id.
 Consider using flat mode instead; see commands attachToTarget, setAutoAttach,

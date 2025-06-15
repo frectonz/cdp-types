@@ -688,19 +688,25 @@ pub type NetworkClearAcceptedEncodingsOverrideReturns = ();
 pub type NetworkCanClearBrowserCacheParams = ();
 #[deprecated]
 /// Tells whether clearing browser cache is supported.
-pub type NetworkCanClearBrowserCacheReturns = ();
+pub struct NetworkCanClearBrowserCacheParams {
+    pub result: bool,
+}
 #[deprecated]
 /// Tells whether clearing browser cookies is supported.
 pub type NetworkCanClearBrowserCookiesParams = ();
 #[deprecated]
 /// Tells whether clearing browser cookies is supported.
-pub type NetworkCanClearBrowserCookiesReturns = ();
+pub struct NetworkCanClearBrowserCookiesParams {
+    pub result: bool,
+}
 #[deprecated]
 /// Tells whether emulation of network conditions is supported.
 pub type NetworkCanEmulateNetworkConditionsParams = ();
 #[deprecated]
 /// Tells whether emulation of network conditions is supported.
-pub type NetworkCanEmulateNetworkConditionsReturns = ();
+pub struct NetworkCanEmulateNetworkConditionsParams {
+    pub result: bool,
+}
 /// Clears browser cache.
 pub type NetworkClearBrowserCacheParams = ();
 /// Clears browser cache.
@@ -778,7 +784,9 @@ pub type NetworkGetAllCookiesParams = ();
 /** Returns all browser cookies. Depending on the backend support, will return detailed cookie
 information in the `cookies` field.
 Deprecated. Use Storage.getCookies instead.*/
-pub type NetworkGetAllCookiesReturns = ();
+pub struct NetworkGetAllCookiesParams {
+    pub cookies: Vec<Cookie>,
+}
 /// ⚠️ Experimental
 /// Returns the DER-encoded certificate.
 pub struct NetworkGetCertificateParams {
@@ -786,7 +794,9 @@ pub struct NetworkGetCertificateParams {
 }
 /// ⚠️ Experimental
 /// Returns the DER-encoded certificate.
-pub type NetworkGetCertificateReturns = ();
+pub struct NetworkGetCertificateParams {
+    pub table_names: Vec<String>,
+}
 /** Returns all browser cookies for the current URL. Depending on the backend support, will return
 detailed cookie information in the `cookies` field.*/
 pub struct NetworkGetCookiesParams {
@@ -794,19 +804,26 @@ pub struct NetworkGetCookiesParams {
 }
 /** Returns all browser cookies for the current URL. Depending on the backend support, will return
 detailed cookie information in the `cookies` field.*/
-pub type NetworkGetCookiesReturns = ();
+pub struct NetworkGetCookiesParams {
+    pub cookies: Vec<Cookie>,
+}
 /// Returns content served for the given request.
 pub struct NetworkGetResponseBodyParams {
     pub request_id: Box<NetworkRequestId>,
 }
 /// Returns content served for the given request.
-pub type NetworkGetResponseBodyReturns = ();
+pub struct NetworkGetResponseBodyParams {
+    pub body: String,
+    pub base64_encoded: bool,
+}
 /// Returns post data sent with the request. Returns an error when no data was sent with the request.
 pub struct NetworkGetRequestPostDataParams {
     pub request_id: Box<NetworkRequestId>,
 }
 /// Returns post data sent with the request. Returns an error when no data was sent with the request.
-pub type NetworkGetRequestPostDataReturns = ();
+pub struct NetworkGetRequestPostDataParams {
+    pub post_data: String,
+}
 /// ⚠️ Experimental
 /// Returns content served for the given currently intercepted request.
 pub struct NetworkGetResponseBodyForInterceptionParams {
@@ -814,7 +831,10 @@ pub struct NetworkGetResponseBodyForInterceptionParams {
 }
 /// ⚠️ Experimental
 /// Returns content served for the given currently intercepted request.
-pub type NetworkGetResponseBodyForInterceptionReturns = ();
+pub struct NetworkGetResponseBodyForInterceptionParams {
+    pub body: String,
+    pub base64_encoded: bool,
+}
 /// ⚠️ Experimental
 /** Returns a handle to the stream representing the response body. Note that after this command,
 the intercepted request can't be continued as is -- you either need to cancel it or to provide
@@ -828,7 +848,9 @@ pub struct NetworkTakeResponseBodyForInterceptionAsStreamParams {
 the intercepted request can't be continued as is -- you either need to cancel it or to provide
 the response body. The stream only supports sequential read, IO.read will fail if the position
 is specified.*/
-pub type NetworkTakeResponseBodyForInterceptionAsStreamReturns = ();
+pub struct NetworkTakeResponseBodyForInterceptionAsStreamParams {
+    pub stream: Box<StreamHandle>,
+}
 /// ⚠️ Experimental
 /** This method sends a new XMLHttpRequest which is identical to the original one. The following
 parameters should be identical: method, url, async, request body, extra headers, withCredentials
@@ -851,7 +873,9 @@ pub struct NetworkSearchInResponseBodyParams {
 }
 /// ⚠️ Experimental
 /// Searches for given string in response content.
-pub type NetworkSearchInResponseBodyReturns = ();
+pub struct NetworkSearchInResponseBodyParams {
+    pub result: Vec<SearchMatch>,
+}
 /// ⚠️ Experimental
 /// Blocks URLs from loading.
 pub struct NetworkSetBlockedUrLsParams {
@@ -890,7 +914,9 @@ pub struct NetworkSetCookieParams {
     pub partition_key: Box<CookiePartitionKey>,
 }
 /// Sets a cookie with the given cookie data; may overwrite equivalent cookies if they exist.
-pub type NetworkSetCookieReturns = ();
+pub struct NetworkSetCookieParams {
+    pub success: bool,
+}
 /// Sets given cookies.
 pub struct NetworkSetCookiesParams {
     pub cookies: Vec<CookieParam>,
@@ -941,7 +967,9 @@ pub struct NetworkStreamResourceContentParams {
 /// ⚠️ Experimental
 /** Enables streaming of the response for the given requestId.
 If enabled, the dataReceived event contains the data that was received during streaming.*/
-pub type NetworkStreamResourceContentReturns = ();
+pub struct NetworkStreamResourceContentParams {
+    pub buffered_data: String,
+}
 /// ⚠️ Experimental
 /// Returns information about the COEP/COOP isolation status.
 pub struct NetworkGetSecurityIsolationStatusParams {
@@ -949,7 +977,9 @@ pub struct NetworkGetSecurityIsolationStatusParams {
 }
 /// ⚠️ Experimental
 /// Returns information about the COEP/COOP isolation status.
-pub type NetworkGetSecurityIsolationStatusReturns = ();
+pub struct NetworkGetSecurityIsolationStatusParams {
+    pub status: Box<SecurityIsolationStatus>,
+}
 /// ⚠️ Experimental
 /** Enables tracking for the Reporting API, events generated by the Reporting API will now be delivered to the client.
 Enabling triggers 'reportingApiReportAdded' for all existing reports.*/
@@ -969,7 +999,9 @@ pub struct NetworkLoadNetworkResourceParams {
 }
 /// ⚠️ Experimental
 /// Fetches the resource and returns the content.
-pub type NetworkLoadNetworkResourceReturns = ();
+pub struct NetworkLoadNetworkResourceParams {
+    pub resource: Box<LoadNetworkResourcePageResult>,
+}
 /// ⚠️ Experimental
 /** Sets Controls for third-party cookie access
 Page reload is required before the new cookie bahavior will be observed*/

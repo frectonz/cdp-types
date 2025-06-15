@@ -90,4 +90,6 @@ pub struct WebAudioGetRealtimeDataParams {
     pub context_id: Box<GraphObjectId>,
 }
 /// Fetch the realtime data from the registered contexts.
-pub type WebAudioGetRealtimeDataReturns = ();
+pub struct WebAudioGetRealtimeDataParams {
+    pub realtime_data: Box<ContextRealtimeData>,
+}

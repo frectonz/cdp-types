@@ -591,7 +591,11 @@ pub struct AuditsGetEncodedResponseParams {
 }
 /** Returns the response body and size if it were re-encoded with the specified settings. Only
 applies to images.*/
-pub type AuditsGetEncodedResponseReturns = ();
+pub struct AuditsGetEncodedResponseParams {
+    pub body: String,
+    pub original_size: i64,
+    pub encoded_size: i64,
+}
 /// Disables issues domain, prevents further issues from being reported to the client.
 pub type AuditsDisableParams = ();
 /// Disables issues domain, prevents further issues from being reported to the client.
@@ -615,4 +619,6 @@ using Audits.issueAdded event.*/
 pub type AuditsCheckFormsIssuesParams = ();
 /** Runs the form issues check for the target page. Found issues are reported
 using Audits.issueAdded event.*/
-pub type AuditsCheckFormsIssuesReturns = ();
+pub struct AuditsCheckFormsIssuesParams {
+    pub form_issues: Vec<GenericIssueDetails>,
+}

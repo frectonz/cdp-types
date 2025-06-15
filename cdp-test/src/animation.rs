@@ -58,11 +58,15 @@ pub struct AnimationGetCurrentTimeParams {
     pub id: String,
 }
 /// Returns the current time of the an animation.
-pub type AnimationGetCurrentTimeReturns = ();
+pub struct AnimationGetCurrentTimeParams {
+    pub current_time: u64,
+}
 /// Gets the playback rate of the document timeline.
 pub type AnimationGetPlaybackRateParams = ();
 /// Gets the playback rate of the document timeline.
-pub type AnimationGetPlaybackRateReturns = ();
+pub struct AnimationGetPlaybackRateParams {
+    pub playback_rate: u64,
+}
 /// Releases a set of animations to no longer be manipulated.
 pub struct AnimationReleaseAnimationsParams {
     pub animations: Vec<String>,
@@ -74,7 +78,9 @@ pub struct AnimationResolveAnimationParams {
     pub animation_id: String,
 }
 /// Gets the remote object of the Animation.
-pub type AnimationResolveAnimationReturns = ();
+pub struct AnimationResolveAnimationParams {
+    pub remote_object: Box<()>,
+}
 /// Seek a set of animations to a particular time within each animation.
 pub struct AnimationSeekAnimationsParams {
     pub animations: Vec<String>,
