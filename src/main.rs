@@ -422,6 +422,71 @@ impl Parameter {
     }
 }
 
+impl Return {
+    fn name_ident(&self) -> Ident {
+        let name = if self.name.as_ref() == "type" {
+            "_type".to_owned()
+        } else if self.name.as_ref() == "override" {
+            "_override".to_owned()
+        } else {
+            self.name.to_snake_case()
+        };
+
+        Ident::new(&name, Span::call_site())
+    }
+
+    fn to_rust(&self, protocol_data: &ProtocolData) -> TokenStream {
+        let name = self.name_ident();
+
+        let basic_type = self.r#type.as_ref().and_then(|typ| get_rust_type(typ));
+
+        if let Some(typ) = basic_type {
+            return quote! {
+                pub #name: #typ
+            };
+        }
+
+        let ref_typ = self
+            .r#ref
+            .as_ref()
+            .map(|ref_typ| resolve_type(protocol_data, ref_typ));
+
+        if let Some(typ) = ref_typ {
+            return quote! {
+                pub #name: Box<#typ>
+            };
+        }
+
+        let items_basic_typ = self
+            .items
+            .as_ref()
+            .and_then(|items| items.r#type.as_ref())
+            .and_then(|typ| get_rust_type(typ));
+
+        if let Some(item) = items_basic_typ {
+            return quote! {
+                pub #name: Vec<#item>
+            };
+        }
+
+        let items_ref_typ = self
+            .items
+            .as_ref()
+            .and_then(|items| items.r#ref.as_ref())
+            .map(|ref_typ| resolve_type(protocol_data, ref_typ));
+
+        if let Some(item) = items_ref_typ {
+            return quote! {
+                pub #name: Vec<#item>
+            };
+        }
+
+        quote! {
+            pub #name: ()
+        }
+    }
+}
+
 impl Property {
     fn to_rust(&self, protocol_data: &ProtocolData) -> TokenStream {
         let name = if self.name.as_ref() == "type" {
@@ -577,6 +642,13 @@ impl Command {
             .map(|parameters| quote! { #(#parameters),* })
     }
 
+    fn returns(&self, protocol_data: &ProtocolData) -> Option<TokenStream> {
+        self.returns
+            .as_ref()
+            .map(|returns| returns.into_iter().map(|ret| ret.to_rust(protocol_data)))
+            .map(|returns| quote! { #(#returns),* })
+    }
+
     fn to_rust(&self, domain: &str, protocol_data: &ProtocolData) -> TokenStream {
         let idents = self.name_ident(domain);
 
@@ -620,12 +692,21 @@ impl Command {
             }
         });
 
+        let real_returns = self.returns(protocol_data).map(|returns| {
+            quote! {
+                #attrs
+                pub struct #params_ident {
+                    #returns
+                }
+            }
+        });
+
         let params = redirect_params.or(real_params).unwrap_or(quote! {
             #attrs
             pub type #params_ident = ();
         });
 
-        let returns = redirect_returns.unwrap_or(quote! {
+        let returns = redirect_returns.or(real_returns).unwrap_or(quote! {
             #attrs
             pub type #returns_ident = ();
         });
