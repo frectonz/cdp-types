@@ -10,7 +10,7 @@ sinks compatible with |presentationUrl| as well. When sinks are found, a
 Also starts observing for issue messages. When an issue is added or removed,
 an |issueUpdated| event is fired.*/
 pub struct CastEnableParams {
-    test: (),
+    pub presentation_url: (),
 }
 /** Starts observing for sinks that can be used for tab mirroring, and if set,
 sinks compatible with |presentationUrl| as well. When sinks are found, a
@@ -25,26 +25,26 @@ pub type CastDisableReturns = ();
 /** Sets a sink to be used when the web page requests the browser to choose a
 sink via Presentation API, Remote Playback API, or Cast SDK.*/
 pub struct CastSetSinkToUseParams {
-    test: (),
+    pub sink_name: (),
 }
 /** Sets a sink to be used when the web page requests the browser to choose a
 sink via Presentation API, Remote Playback API, or Cast SDK.*/
 pub type CastSetSinkToUseReturns = ();
 /// Starts mirroring the desktop to the sink.
 pub struct CastStartDesktopMirroringParams {
-    test: (),
+    pub sink_name: (),
 }
 /// Starts mirroring the desktop to the sink.
 pub type CastStartDesktopMirroringReturns = ();
 /// Starts mirroring the tab to the sink.
 pub struct CastStartTabMirroringParams {
-    test: (),
+    pub sink_name: (),
 }
 /// Starts mirroring the tab to the sink.
 pub type CastStartTabMirroringReturns = ();
 /// Stops the active Cast session on the sink.
 pub struct CastStopCastingParams {
-    test: (),
+    pub sink_name: (),
 }
 /// Stops the active Cast session on the sink.
 pub type CastStopCastingReturns = ();

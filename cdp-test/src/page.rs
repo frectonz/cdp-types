@@ -693,7 +693,7 @@ pub struct BackForwardCacheNotRestoredExplanationTree {
 /// ⚠️ Experimental
 /// Deprecated, please use addScriptToEvaluateOnNewDocument instead.
 pub struct PageAddScriptToEvaluateOnLoadParams {
-    test: (),
+    pub script_source: (),
 }
 #[deprecated]
 /// ⚠️ Experimental
@@ -701,10 +701,10 @@ pub struct PageAddScriptToEvaluateOnLoadParams {
 pub type PageAddScriptToEvaluateOnLoadReturns = ();
 /// Evaluates given script in every frame upon creation (before loading frame's scripts).
 pub struct PageAddScriptToEvaluateOnNewDocumentParams {
-    test: (),
-    test: (),
-    test: (),
-    test: (),
+    pub source: (),
+    pub world_name: (),
+    pub include_command_line_api: (),
+    pub run_immediately: (),
 }
 /// Evaluates given script in every frame upon creation (before loading frame's scripts).
 pub type PageAddScriptToEvaluateOnNewDocumentReturns = ();
@@ -714,12 +714,12 @@ pub type PageBringToFrontParams = ();
 pub type PageBringToFrontReturns = ();
 /// Capture page screenshot.
 pub struct PageCaptureScreenshotParams {
-    test: (),
-    test: (),
-    test: (),
-    test: (),
-    test: (),
-    test: (),
+    pub format: (),
+    pub quality: (),
+    pub clip: (),
+    pub from_surface: (),
+    pub capture_beyond_viewport: (),
+    pub optimize_for_speed: (),
 }
 /// Capture page screenshot.
 pub type PageCaptureScreenshotReturns = ();
@@ -727,7 +727,7 @@ pub type PageCaptureScreenshotReturns = ();
 /** Returns a snapshot of the page as a string. For MHTML format, the serialization includes
 iframes, shadow DOM, external resources, and element-inline styles.*/
 pub struct PageCaptureSnapshotParams {
-    test: (),
+    pub format: (),
 }
 /// ⚠️ Experimental
 /** Returns a snapshot of the page as a string. For MHTML format, the serialization includes
@@ -757,9 +757,9 @@ pub type PageClearGeolocationOverrideParams = crate::emulation::EmulationClearGe
 pub type PageClearGeolocationOverrideReturns = crate::emulation::EmulationClearGeolocationOverrideReturns;
 /// Creates an isolated world for the given frame.
 pub struct PageCreateIsolatedWorldParams {
-    test: (),
-    test: (),
-    test: (),
+    pub frame_id: (),
+    pub world_name: (),
+    pub grant_univeral_access: (),
 }
 /// Creates an isolated world for the given frame.
 pub type PageCreateIsolatedWorldReturns = ();
@@ -767,8 +767,8 @@ pub type PageCreateIsolatedWorldReturns = ();
 /// ⚠️ Experimental
 /// Deletes browser cookie with given name, domain and path.
 pub struct PageDeleteCookieParams {
-    test: (),
-    test: (),
+    pub cookie_name: (),
+    pub url: (),
 }
 #[deprecated]
 /// ⚠️ Experimental
@@ -780,7 +780,7 @@ pub type PageDisableParams = ();
 pub type PageDisableReturns = ();
 /// Enables page domain notifications.
 pub struct PageEnableParams {
-    test: (),
+    pub enable_file_chooser_opened_event: (),
 }
 /// Enables page domain notifications.
 pub type PageEnableReturns = ();
@@ -790,7 +790,7 @@ pub type PageEnableReturns = ();
     current document, this API errors out.
   If there is not a loaded page, this API errors out immediately.*/
 pub struct PageGetAppManifestParams {
-    test: (),
+    pub manifest_id: (),
 }
 /** Gets the processed manifest for this current document.
   This API always waits for the manifest to be loaded.
@@ -820,7 +820,7 @@ Only returns values if the feature flag 'WebAppEnableManifestId' is enabled*/
 pub type PageGetAppIdReturns = ();
 /// ⚠️ Experimental
 pub struct PageGetAdScriptAncestryIdsParams {
-    test: (),
+    pub frame_id: (),
 }
 /// ⚠️ Experimental
 pub type PageGetAdScriptAncestryIdsReturns = ();
@@ -843,8 +843,8 @@ pub type PageResetNavigationHistoryReturns = ();
 /// ⚠️ Experimental
 /// Returns content of the given resource.
 pub struct PageGetResourceContentParams {
-    test: (),
-    test: (),
+    pub frame_id: (),
+    pub url: (),
 }
 /// ⚠️ Experimental
 /// Returns content of the given resource.
@@ -857,54 +857,54 @@ pub type PageGetResourceTreeParams = ();
 pub type PageGetResourceTreeReturns = ();
 /// Accepts or dismisses a JavaScript initiated dialog (alert, confirm, prompt, or onbeforeunload).
 pub struct PageHandleJavaScriptDialogParams {
-    test: (),
-    test: (),
+    pub accept: (),
+    pub prompt_text: (),
 }
 /// Accepts or dismisses a JavaScript initiated dialog (alert, confirm, prompt, or onbeforeunload).
 pub type PageHandleJavaScriptDialogReturns = ();
 /// Navigates current page to the given URL.
 pub struct PageNavigateParams {
-    test: (),
-    test: (),
-    test: (),
-    test: (),
-    test: (),
+    pub url: (),
+    pub referrer: (),
+    pub transition_type: (),
+    pub frame_id: (),
+    pub referrer_policy: (),
 }
 /// Navigates current page to the given URL.
 pub type PageNavigateReturns = ();
 /// Navigates current page to the given history entry.
 pub struct PageNavigateToHistoryEntryParams {
-    test: (),
+    pub entry_id: (),
 }
 /// Navigates current page to the given history entry.
 pub type PageNavigateToHistoryEntryReturns = ();
 /// Print page as PDF.
 pub struct PagePrintToPdfParams {
-    test: (),
-    test: (),
-    test: (),
-    test: (),
-    test: (),
-    test: (),
-    test: (),
-    test: (),
-    test: (),
-    test: (),
-    test: (),
-    test: (),
-    test: (),
-    test: (),
-    test: (),
-    test: (),
-    test: (),
+    pub landscape: (),
+    pub display_header_footer: (),
+    pub print_background: (),
+    pub scale: (),
+    pub paper_width: (),
+    pub paper_height: (),
+    pub margin_top: (),
+    pub margin_bottom: (),
+    pub margin_left: (),
+    pub margin_right: (),
+    pub page_ranges: (),
+    pub header_template: (),
+    pub footer_template: (),
+    pub prefer_css_page_size: (),
+    pub transfer_mode: (),
+    pub generate_tagged_pdf: (),
+    pub generate_document_outline: (),
 }
 /// Print page as PDF.
 pub type PagePrintToPdfReturns = ();
 /// Reloads given page optionally ignoring the cache.
 pub struct PageReloadParams {
-    test: (),
-    test: (),
-    test: (),
+    pub ignore_cache: (),
+    pub script_to_evaluate_on_load: (),
+    pub loader_id: (),
 }
 /// Reloads given page optionally ignoring the cache.
 pub type PageReloadReturns = ();
@@ -912,7 +912,7 @@ pub type PageReloadReturns = ();
 /// ⚠️ Experimental
 /// Deprecated, please use removeScriptToEvaluateOnNewDocument instead.
 pub struct PageRemoveScriptToEvaluateOnLoadParams {
-    test: (),
+    pub identifier: (),
 }
 #[deprecated]
 /// ⚠️ Experimental
@@ -920,14 +920,14 @@ pub struct PageRemoveScriptToEvaluateOnLoadParams {
 pub type PageRemoveScriptToEvaluateOnLoadReturns = ();
 /// Removes given script from the list.
 pub struct PageRemoveScriptToEvaluateOnNewDocumentParams {
-    test: (),
+    pub identifier: (),
 }
 /// Removes given script from the list.
 pub type PageRemoveScriptToEvaluateOnNewDocumentReturns = ();
 /// ⚠️ Experimental
 /// Acknowledges that a screencast frame has been received by the frontend.
 pub struct PageScreencastFrameAckParams {
-    test: (),
+    pub session_id: (),
 }
 /// ⚠️ Experimental
 /// Acknowledges that a screencast frame has been received by the frontend.
@@ -935,11 +935,11 @@ pub type PageScreencastFrameAckReturns = ();
 /// ⚠️ Experimental
 /// Searches for given string in resource content.
 pub struct PageSearchInResourceParams {
-    test: (),
-    test: (),
-    test: (),
-    test: (),
-    test: (),
+    pub frame_id: (),
+    pub url: (),
+    pub query: (),
+    pub case_sensitive: (),
+    pub is_regex: (),
 }
 /// ⚠️ Experimental
 /// Searches for given string in resource content.
@@ -947,21 +947,21 @@ pub type PageSearchInResourceReturns = ();
 /// ⚠️ Experimental
 /// Enable Chrome's experimental ad filter on all sites.
 pub struct PageSetAdBlockingEnabledParams {
-    test: (),
+    pub enabled: (),
 }
 /// ⚠️ Experimental
 /// Enable Chrome's experimental ad filter on all sites.
 pub type PageSetAdBlockingEnabledReturns = ();
 /// Enable page Content Security Policy by-passing.
 pub struct PageSetBypassCspParams {
-    test: (),
+    pub enabled: (),
 }
 /// Enable page Content Security Policy by-passing.
 pub type PageSetBypassCspReturns = ();
 /// ⚠️ Experimental
 /// Get Permissions Policy state on given frame.
 pub struct PageGetPermissionsPolicyStateParams {
-    test: (),
+    pub frame_id: (),
 }
 /// ⚠️ Experimental
 /// Get Permissions Policy state on given frame.
@@ -969,7 +969,7 @@ pub type PageGetPermissionsPolicyStateReturns = ();
 /// ⚠️ Experimental
 /// Get Origin Trials on given frame.
 pub struct PageGetOriginTrialsParams {
-    test: (),
+    pub frame_id: (),
 }
 /// ⚠️ Experimental
 /// Get Origin Trials on given frame.
@@ -980,18 +980,18 @@ pub type PageGetOriginTrialsReturns = ();
 window.innerWidth, window.innerHeight, and "device-width"/"device-height"-related CSS media
 query results).*/
 pub struct PageSetDeviceMetricsOverrideParams {
-    test: (),
-    test: (),
-    test: (),
-    test: (),
-    test: (),
-    test: (),
-    test: (),
-    test: (),
-    test: (),
-    test: (),
-    test: (),
-    test: (),
+    pub width: (),
+    pub height: (),
+    pub device_scale_factor: (),
+    pub mobile: (),
+    pub scale: (),
+    pub screen_width: (),
+    pub screen_height: (),
+    pub position_x: (),
+    pub position_y: (),
+    pub dont_set_visible_size: (),
+    pub screen_orientation: (),
+    pub viewport: (),
 }
 #[deprecated]
 /// ⚠️ Experimental
@@ -1003,9 +1003,9 @@ pub type PageSetDeviceMetricsOverrideReturns = crate::emulation::EmulationSetDev
 /// ⚠️ Experimental
 /// Overrides the Device Orientation.
 pub struct PageSetDeviceOrientationOverrideParams {
-    test: (),
-    test: (),
-    test: (),
+    pub alpha: (),
+    pub beta: (),
+    pub gamma: (),
 }
 #[deprecated]
 /// ⚠️ Experimental
@@ -1014,8 +1014,8 @@ pub type PageSetDeviceOrientationOverrideReturns = crate::device_orientation::De
 /// ⚠️ Experimental
 /// Set generic font families.
 pub struct PageSetFontFamiliesParams {
-    test: (),
-    test: (),
+    pub font_families: (),
+    pub for_scripts: (),
 }
 /// ⚠️ Experimental
 /// Set generic font families.
@@ -1023,15 +1023,15 @@ pub type PageSetFontFamiliesReturns = ();
 /// ⚠️ Experimental
 /// Set default font sizes.
 pub struct PageSetFontSizesParams {
-    test: (),
+    pub font_sizes: (),
 }
 /// ⚠️ Experimental
 /// Set default font sizes.
 pub type PageSetFontSizesReturns = ();
 /// Sets given markup as the document's HTML.
 pub struct PageSetDocumentContentParams {
-    test: (),
-    test: (),
+    pub frame_id: (),
+    pub html: (),
 }
 /// Sets given markup as the document's HTML.
 pub type PageSetDocumentContentReturns = ();
@@ -1039,8 +1039,8 @@ pub type PageSetDocumentContentReturns = ();
 /// ⚠️ Experimental
 /// Set the behavior when downloading a file.
 pub struct PageSetDownloadBehaviorParams {
-    test: (),
-    test: (),
+    pub behavior: (),
+    pub download_path: (),
 }
 #[deprecated]
 /// ⚠️ Experimental
@@ -1050,9 +1050,9 @@ pub type PageSetDownloadBehaviorReturns = ();
 /** Overrides the Geolocation Position or Error. Omitting any of the parameters emulates position
 unavailable.*/
 pub struct PageSetGeolocationOverrideParams {
-    test: (),
-    test: (),
-    test: (),
+    pub latitude: (),
+    pub longitude: (),
+    pub accuracy: (),
 }
 #[deprecated]
 /** Overrides the Geolocation Position or Error. Omitting any of the parameters emulates position
@@ -1060,7 +1060,7 @@ unavailable.*/
 pub type PageSetGeolocationOverrideReturns = crate::emulation::EmulationSetGeolocationOverrideReturns;
 /// Controls whether page will emit lifecycle events.
 pub struct PageSetLifecycleEventsEnabledParams {
-    test: (),
+    pub enabled: (),
 }
 /// Controls whether page will emit lifecycle events.
 pub type PageSetLifecycleEventsEnabledReturns = ();
@@ -1068,8 +1068,8 @@ pub type PageSetLifecycleEventsEnabledReturns = ();
 /// ⚠️ Experimental
 /// Toggles mouse event-based touch event emulation.
 pub struct PageSetTouchEmulationEnabledParams {
-    test: (),
-    test: (),
+    pub enabled: (),
+    pub configuration: (),
 }
 #[deprecated]
 /// ⚠️ Experimental
@@ -1078,11 +1078,11 @@ pub type PageSetTouchEmulationEnabledReturns = crate::emulation::EmulationSetTou
 /// ⚠️ Experimental
 /// Starts sending each frame using the `screencastFrame` event.
 pub struct PageStartScreencastParams {
-    test: (),
-    test: (),
-    test: (),
-    test: (),
-    test: (),
+    pub format: (),
+    pub quality: (),
+    pub max_width: (),
+    pub max_height: (),
+    pub every_nth_frame: (),
 }
 /// ⚠️ Experimental
 /// Starts sending each frame using the `screencastFrame` event.
@@ -1104,7 +1104,7 @@ pub type PageCloseReturns = ();
 /// ⚠️ Experimental
 #[doc = " Tries to update the web lifecycle state of the page.\nIt will transition the page to the given state according to:\nhttps://github.com/WICG/web-lifecycle/"]
 pub struct PageSetWebLifecycleStateParams {
-    test: (),
+    pub state: (),
 }
 /// ⚠️ Experimental
 #[doc = " Tries to update the web lifecycle state of the page.\nIt will transition the page to the given state according to:\nhttps://github.com/WICG/web-lifecycle/"]
@@ -1123,7 +1123,7 @@ When script with a matching URL is encountered, the cache is optionally
 produced upon backend discretion, based on internal heuristics.
 See also: `Page.compilationCacheProduced`.*/
 pub struct PageProduceCompilationCacheParams {
-    test: (),
+    pub scripts: (),
 }
 /// ⚠️ Experimental
 /** Requests backend to produce compilation cache for the specified scripts.
@@ -1137,8 +1137,8 @@ pub type PageProduceCompilationCacheReturns = ();
 /** Seeds compilation cache for given url. Compilation cache does not survive
 cross-process navigation.*/
 pub struct PageAddCompilationCacheParams {
-    test: (),
-    test: (),
+    pub url: (),
+    pub data: (),
 }
 /// ⚠️ Experimental
 /** Seeds compilation cache for given url. Compilation cache does not survive
@@ -1154,7 +1154,7 @@ pub type PageClearCompilationCacheReturns = ();
 /** Sets the Secure Payment Confirmation transaction mode.
 https://w3c.github.io/secure-payment-confirmation/#sctn-automation-set-spc-transaction-mode*/
 pub struct PageSetSpcTransactionModeParams {
-    test: (),
+    pub mode: (),
 }
 /// ⚠️ Experimental
 /** Sets the Secure Payment Confirmation transaction mode.
@@ -1164,7 +1164,7 @@ pub type PageSetSpcTransactionModeReturns = ();
 /** Extensions for Custom Handlers API:
 https://html.spec.whatwg.org/multipage/system-state.html#rph-automation*/
 pub struct PageSetRphRegistrationModeParams {
-    test: (),
+    pub mode: (),
 }
 /// ⚠️ Experimental
 /** Extensions for Custom Handlers API:
@@ -1173,8 +1173,8 @@ pub type PageSetRphRegistrationModeReturns = ();
 /// ⚠️ Experimental
 /// Generates a report for testing.
 pub struct PageGenerateTestReportParams {
-    test: (),
-    test: (),
+    pub message: (),
+    pub group: (),
 }
 /// ⚠️ Experimental
 /// Generates a report for testing.
@@ -1189,8 +1189,8 @@ pub type PageWaitForDebuggerReturns = ();
 When file chooser interception is enabled, native file chooser dialog is not shown.
 Instead, a protocol event `Page.fileChooserOpened` is emitted.*/
 pub struct PageSetInterceptFileChooserDialogParams {
-    test: (),
-    test: (),
+    pub enabled: (),
+    pub cancel: (),
 }
 /** Intercept file chooser requests and transfer control to protocol clients.
 When file chooser interception is enabled, native file chooser dialog is not shown.
@@ -1205,7 +1205,7 @@ for more details.
 
 TODO(https://crbug.com/1440085): Remove this once Puppeteer supports tab targets.*/
 pub struct PageSetPrerenderingAllowedParams {
-    test: (),
+    pub is_allowed: (),
 }
 /// ⚠️ Experimental
 /** Enable/disable prerendering manually.

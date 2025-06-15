@@ -95,15 +95,15 @@ pub type SecurityEnableParams = ();
 pub type SecurityEnableReturns = ();
 /// Enable/disable whether all certificate errors should be ignored.
 pub struct SecuritySetIgnoreCertificateErrorsParams {
-    test: (),
+    pub ignore: (),
 }
 /// Enable/disable whether all certificate errors should be ignored.
 pub type SecuritySetIgnoreCertificateErrorsReturns = ();
 #[deprecated]
 /// Handles a certificate error that fired a certificateError event.
 pub struct SecurityHandleCertificateErrorParams {
-    test: (),
-    test: (),
+    pub event_id: (),
+    pub action: (),
 }
 #[deprecated]
 /// Handles a certificate error that fired a certificateError event.
@@ -112,7 +112,7 @@ pub type SecurityHandleCertificateErrorReturns = ();
 /** Enable/disable overriding certificate errors. If enabled, all certificate error events need to
 be handled by the DevTools client and should be answered with `handleCertificateError` commands.*/
 pub struct SecuritySetOverrideCertificateErrorsParams {
-    test: (),
+    pub _override: (),
 }
 #[deprecated]
 /** Enable/disable overriding certificate errors. If enabled, all certificate error events need to

@@ -46,7 +46,7 @@ pub struct Credential {
 /** Enable the WebAuthn domain and start intercepting credential storage and
 retrieval with a virtual authenticator.*/
 pub struct WebAuthnEnableParams {
-    test: (),
+    pub enable_ui: (),
 }
 /** Enable the WebAuthn domain and start intercepting credential storage and
 retrieval with a virtual authenticator.*/
@@ -57,65 +57,65 @@ pub type WebAuthnDisableParams = ();
 pub type WebAuthnDisableReturns = ();
 /// Creates and adds a virtual authenticator.
 pub struct WebAuthnAddVirtualAuthenticatorParams {
-    test: (),
+    pub options: (),
 }
 /// Creates and adds a virtual authenticator.
 pub type WebAuthnAddVirtualAuthenticatorReturns = ();
 /// Resets parameters isBogusSignature, isBadUV, isBadUP to false if they are not present.
 pub struct WebAuthnSetResponseOverrideBitsParams {
-    test: (),
-    test: (),
-    test: (),
-    test: (),
+    pub authenticator_id: (),
+    pub is_bogus_signature: (),
+    pub is_bad_uv: (),
+    pub is_bad_up: (),
 }
 /// Resets parameters isBogusSignature, isBadUV, isBadUP to false if they are not present.
 pub type WebAuthnSetResponseOverrideBitsReturns = ();
 /// Removes the given authenticator.
 pub struct WebAuthnRemoveVirtualAuthenticatorParams {
-    test: (),
+    pub authenticator_id: (),
 }
 /// Removes the given authenticator.
 pub type WebAuthnRemoveVirtualAuthenticatorReturns = ();
 /// Adds the credential to the specified authenticator.
 pub struct WebAuthnAddCredentialParams {
-    test: (),
-    test: (),
+    pub authenticator_id: (),
+    pub credential: (),
 }
 /// Adds the credential to the specified authenticator.
 pub type WebAuthnAddCredentialReturns = ();
 /** Returns a single credential stored in the given virtual authenticator that
 matches the credential ID.*/
 pub struct WebAuthnGetCredentialParams {
-    test: (),
-    test: (),
+    pub authenticator_id: (),
+    pub credential_id: (),
 }
 /** Returns a single credential stored in the given virtual authenticator that
 matches the credential ID.*/
 pub type WebAuthnGetCredentialReturns = ();
 /// Returns all the credentials stored in the given virtual authenticator.
 pub struct WebAuthnGetCredentialsParams {
-    test: (),
+    pub authenticator_id: (),
 }
 /// Returns all the credentials stored in the given virtual authenticator.
 pub type WebAuthnGetCredentialsReturns = ();
 /// Removes a credential from the authenticator.
 pub struct WebAuthnRemoveCredentialParams {
-    test: (),
-    test: (),
+    pub authenticator_id: (),
+    pub credential_id: (),
 }
 /// Removes a credential from the authenticator.
 pub type WebAuthnRemoveCredentialReturns = ();
 /// Clears all the credentials from the specified device.
 pub struct WebAuthnClearCredentialsParams {
-    test: (),
+    pub authenticator_id: (),
 }
 /// Clears all the credentials from the specified device.
 pub type WebAuthnClearCredentialsReturns = ();
 /** Sets whether User Verification succeeds or fails for an authenticator.
 The default is true.*/
 pub struct WebAuthnSetUserVerifiedParams {
-    test: (),
-    test: (),
+    pub authenticator_id: (),
+    pub is_user_verified: (),
 }
 /** Sets whether User Verification succeeds or fails for an authenticator.
 The default is true.*/
@@ -123,8 +123,8 @@ pub type WebAuthnSetUserVerifiedReturns = ();
 /** Sets whether tests of user presence will succeed immediately (if true) or fail to resolve (if false) for an authenticator.
 The default is true.*/
 pub struct WebAuthnSetAutomaticPresenceSimulationParams {
-    test: (),
-    test: (),
+    pub authenticator_id: (),
+    pub enabled: (),
 }
 /** Sets whether tests of user presence will succeed immediately (if true) or fail to resolve (if false) for an authenticator.
 The default is true.*/
@@ -132,10 +132,10 @@ pub type WebAuthnSetAutomaticPresenceSimulationReturns = ();
 /** Allows setting credential properties.
 https://w3c.github.io/webauthn/#sctn-automation-set-credential-properties*/
 pub struct WebAuthnSetCredentialPropertiesParams {
-    test: (),
-    test: (),
-    test: (),
-    test: (),
+    pub authenticator_id: (),
+    pub credential_id: (),
+    pub backup_eligibility: (),
+    pub backup_state: (),
 }
 /** Allows setting credential properties.
 https://w3c.github.io/webauthn/#sctn-automation-set-credential-properties*/

@@ -5,9 +5,9 @@ pub type DeviceOrientationClearDeviceOrientationOverrideParams = ();
 pub type DeviceOrientationClearDeviceOrientationOverrideReturns = ();
 /// Overrides the Device Orientation.
 pub struct DeviceOrientationSetDeviceOrientationOverrideParams {
-    test: (),
-    test: (),
-    test: (),
+    pub alpha: (),
+    pub beta: (),
+    pub gamma: (),
 }
 /// Overrides the Device Orientation.
 pub type DeviceOrientationSetDeviceOrientationOverrideReturns = ();

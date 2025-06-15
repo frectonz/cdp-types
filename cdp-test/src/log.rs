@@ -35,7 +35,7 @@ pub type LogEnableParams = ();
 pub type LogEnableReturns = ();
 /// start violation reporting.
 pub struct LogStartViolationsReportParams {
-    test: (),
+    pub config: (),
 }
 /// start violation reporting.
 pub type LogStartViolationsReportReturns = ();

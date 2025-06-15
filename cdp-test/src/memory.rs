@@ -47,20 +47,20 @@ pub type MemoryForciblyPurgeJavaScriptMemoryParams = ();
 pub type MemoryForciblyPurgeJavaScriptMemoryReturns = ();
 /// Enable/disable suppressing memory pressure notifications in all processes.
 pub struct MemorySetPressureNotificationsSuppressedParams {
-    test: (),
+    pub suppressed: (),
 }
 /// Enable/disable suppressing memory pressure notifications in all processes.
 pub type MemorySetPressureNotificationsSuppressedReturns = ();
 /// Simulate a memory pressure notification in all processes.
 pub struct MemorySimulatePressureNotificationParams {
-    test: (),
+    pub level: (),
 }
 /// Simulate a memory pressure notification in all processes.
 pub type MemorySimulatePressureNotificationReturns = ();
 /// Start collecting native memory profile.
 pub struct MemoryStartSamplingParams {
-    test: (),
-    test: (),
+    pub sampling_interval: (),
+    pub suppress_randomness: (),
 }
 /// Start collecting native memory profile.
 pub type MemoryStartSamplingReturns = ();

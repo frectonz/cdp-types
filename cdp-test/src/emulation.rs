@@ -146,7 +146,7 @@ pub type EmulationResetPageScaleFactorReturns = ();
 /// ⚠️ Experimental
 /// Enables or disables simulating a focused and active page.
 pub struct EmulationSetFocusEmulationEnabledParams {
-    test: (),
+    pub enabled: (),
 }
 /// ⚠️ Experimental
 /// Enables or disables simulating a focused and active page.
@@ -154,21 +154,21 @@ pub type EmulationSetFocusEmulationEnabledReturns = ();
 /// ⚠️ Experimental
 /// Automatically render all web contents using a dark theme.
 pub struct EmulationSetAutoDarkModeOverrideParams {
-    test: (),
+    pub enabled: (),
 }
 /// ⚠️ Experimental
 /// Automatically render all web contents using a dark theme.
 pub type EmulationSetAutoDarkModeOverrideReturns = ();
 /// Enables CPU throttling to emulate slow CPUs.
 pub struct EmulationSetCpuThrottlingRateParams {
-    test: (),
+    pub rate: (),
 }
 /// Enables CPU throttling to emulate slow CPUs.
 pub type EmulationSetCpuThrottlingRateReturns = ();
 /** Sets or clears an override of the default background color of the frame. This override is used
 if the content does not specify one.*/
 pub struct EmulationSetDefaultBackgroundColorOverrideParams {
-    test: (),
+    pub color: (),
 }
 /** Sets or clears an override of the default background color of the frame. This override is used
 if the content does not specify one.*/
@@ -177,7 +177,7 @@ pub type EmulationSetDefaultBackgroundColorOverrideReturns = ();
 /** Overrides the values for env(safe-area-inset-*) and env(safe-area-max-inset-*). Unset values will cause the
 respective variables to be undefined, even if previously overridden.*/
 pub struct EmulationSetSafeAreaInsetsOverrideParams {
-    test: (),
+    pub insets: (),
 }
 /// ⚠️ Experimental
 /** Overrides the values for env(safe-area-inset-*) and env(safe-area-max-inset-*). Unset values will cause the
@@ -187,20 +187,20 @@ pub type EmulationSetSafeAreaInsetsOverrideReturns = ();
 window.innerWidth, window.innerHeight, and "device-width"/"device-height"-related CSS media
 query results).*/
 pub struct EmulationSetDeviceMetricsOverrideParams {
-    test: (),
-    test: (),
-    test: (),
-    test: (),
-    test: (),
-    test: (),
-    test: (),
-    test: (),
-    test: (),
-    test: (),
-    test: (),
-    test: (),
-    test: (),
-    test: (),
+    pub width: (),
+    pub height: (),
+    pub device_scale_factor: (),
+    pub mobile: (),
+    pub scale: (),
+    pub screen_width: (),
+    pub screen_height: (),
+    pub position_x: (),
+    pub position_y: (),
+    pub dont_set_visible_size: (),
+    pub screen_orientation: (),
+    pub viewport: (),
+    pub display_feature: (),
+    pub device_posture: (),
 }
 /** Overrides the values of device screen dimensions (window.screen.width, window.screen.height,
 window.innerWidth, window.innerHeight, and "device-width"/"device-height"-related CSS media
@@ -210,7 +210,7 @@ pub type EmulationSetDeviceMetricsOverrideReturns = ();
 /** Start reporting the given posture value to the Device Posture API.
 This override can also be set in setDeviceMetricsOverride().*/
 pub struct EmulationSetDevicePostureOverrideParams {
-    test: (),
+    pub posture: (),
 }
 /// ⚠️ Experimental
 /** Start reporting the given posture value to the Device Posture API.
@@ -232,7 +232,7 @@ pub type EmulationClearDevicePostureOverrideReturns = ();
 /** Start using the given display features to pupulate the Viewport Segments API.
 This override can also be set in setDeviceMetricsOverride().*/
 pub struct EmulationSetDisplayFeaturesOverrideParams {
-    test: (),
+    pub features: (),
 }
 /// ⚠️ Experimental
 /** Start using the given display features to pupulate the Viewport Segments API.
@@ -252,53 +252,53 @@ Does nothing if no override is set.*/
 pub type EmulationClearDisplayFeaturesOverrideReturns = ();
 /// ⚠️ Experimental
 pub struct EmulationSetScrollbarsHiddenParams {
-    test: (),
+    pub hidden: (),
 }
 /// ⚠️ Experimental
 pub type EmulationSetScrollbarsHiddenReturns = ();
 /// ⚠️ Experimental
 pub struct EmulationSetDocumentCookieDisabledParams {
-    test: (),
+    pub disabled: (),
 }
 /// ⚠️ Experimental
 pub type EmulationSetDocumentCookieDisabledReturns = ();
 /// ⚠️ Experimental
 pub struct EmulationSetEmitTouchEventsForMouseParams {
-    test: (),
-    test: (),
+    pub enabled: (),
+    pub configuration: (),
 }
 /// ⚠️ Experimental
 pub type EmulationSetEmitTouchEventsForMouseReturns = ();
 /// Emulates the given media type or media feature for CSS media queries.
 pub struct EmulationSetEmulatedMediaParams {
-    test: (),
-    test: (),
+    pub media: (),
+    pub features: (),
 }
 /// Emulates the given media type or media feature for CSS media queries.
 pub type EmulationSetEmulatedMediaReturns = ();
 /// Emulates the given vision deficiency.
 pub struct EmulationSetEmulatedVisionDeficiencyParams {
-    test: (),
+    pub _type: (),
 }
 /// Emulates the given vision deficiency.
 pub type EmulationSetEmulatedVisionDeficiencyReturns = ();
 /** Overrides the Geolocation Position or Error. Omitting latitude, longitude or
 accuracy emulates position unavailable.*/
 pub struct EmulationSetGeolocationOverrideParams {
-    test: (),
-    test: (),
-    test: (),
-    test: (),
-    test: (),
-    test: (),
-    test: (),
+    pub latitude: (),
+    pub longitude: (),
+    pub accuracy: (),
+    pub altitude: (),
+    pub altitude_accuracy: (),
+    pub heading: (),
+    pub speed: (),
 }
 /** Overrides the Geolocation Position or Error. Omitting latitude, longitude or
 accuracy emulates position unavailable.*/
 pub type EmulationSetGeolocationOverrideReturns = ();
 /// ⚠️ Experimental
 pub struct EmulationGetOverriddenSensorInformationParams {
-    test: (),
+    pub _type: (),
 }
 /// ⚠️ Experimental
 pub type EmulationGetOverriddenSensorInformationReturns = ();
@@ -309,9 +309,9 @@ data from a real hardware sensor. Otherwise, existing virtual
 sensor-backend Sensor objects will fire an error event and new calls to
 Sensor.start() will attempt to use a real sensor instead.*/
 pub struct EmulationSetSensorOverrideEnabledParams {
-    test: (),
-    test: (),
-    test: (),
+    pub enabled: (),
+    pub _type: (),
+    pub metadata: (),
 }
 /// ⚠️ Experimental
 /** Overrides a platform sensor of a given type. If |enabled| is true, calls to
@@ -324,8 +324,8 @@ pub type EmulationSetSensorOverrideEnabledReturns = ();
 /** Updates the sensor readings reported by a sensor type previously overridden
 by setSensorOverrideEnabled.*/
 pub struct EmulationSetSensorOverrideReadingsParams {
-    test: (),
-    test: (),
+    pub _type: (),
+    pub reading: (),
 }
 /// ⚠️ Experimental
 /** Updates the sensor readings reported by a sensor type previously overridden
@@ -337,9 +337,9 @@ Pressure API, so that updates to PressureObserver.observe() are provided
 via setPressureStateOverride instead of being retrieved from
 platform-provided telemetry data.*/
 pub struct EmulationSetPressureSourceOverrideEnabledParams {
-    test: (),
-    test: (),
-    test: (),
+    pub enabled: (),
+    pub source: (),
+    pub metadata: (),
 }
 /// ⚠️ Experimental
 /** Overrides a pressure source of a given type, as used by the Compute
@@ -352,8 +352,8 @@ pub type EmulationSetPressureSourceOverrideEnabledReturns = ();
 delivered to PressureObserver users. |source| must have been previously
 overridden by setPressureSourceOverrideEnabled.*/
 pub struct EmulationSetPressureStateOverrideParams {
-    test: (),
-    test: (),
+    pub source: (),
+    pub state: (),
 }
 /// ⚠️ Experimental
 /** Provides a given pressure state that will be processed and eventually be
@@ -362,8 +362,8 @@ overridden by setPressureSourceOverrideEnabled.*/
 pub type EmulationSetPressureStateOverrideReturns = ();
 /// Overrides the Idle state.
 pub struct EmulationSetIdleOverrideParams {
-    test: (),
-    test: (),
+    pub is_user_active: (),
+    pub is_screen_unlocked: (),
 }
 /// Overrides the Idle state.
 pub type EmulationSetIdleOverrideReturns = ();
@@ -375,7 +375,7 @@ pub type EmulationClearIdleOverrideReturns = ();
 /// ⚠️ Experimental
 /// Overrides value returned by the javascript navigator object.
 pub struct EmulationSetNavigatorOverridesParams {
-    test: (),
+    pub platform: (),
 }
 #[deprecated]
 /// ⚠️ Experimental
@@ -384,21 +384,21 @@ pub type EmulationSetNavigatorOverridesReturns = ();
 /// ⚠️ Experimental
 /// Sets a specified page scale factor.
 pub struct EmulationSetPageScaleFactorParams {
-    test: (),
+    pub page_scale_factor: (),
 }
 /// ⚠️ Experimental
 /// Sets a specified page scale factor.
 pub type EmulationSetPageScaleFactorReturns = ();
 /// Switches script execution in the page.
 pub struct EmulationSetScriptExecutionDisabledParams {
-    test: (),
+    pub value: (),
 }
 /// Switches script execution in the page.
 pub type EmulationSetScriptExecutionDisabledReturns = ();
 /// Enables touch on platforms which do not support them.
 pub struct EmulationSetTouchEmulationEnabledParams {
-    test: (),
-    test: (),
+    pub enabled: (),
+    pub max_touch_points: (),
 }
 /// Enables touch on platforms which do not support them.
 pub type EmulationSetTouchEmulationEnabledReturns = ();
@@ -406,10 +406,10 @@ pub type EmulationSetTouchEmulationEnabledReturns = ();
 /** Turns on virtual time for all frames (replacing real-time with a synthetic time source) and sets
 the current virtual time policy.  Note this supersedes any previous time budget.*/
 pub struct EmulationSetVirtualTimePolicyParams {
-    test: (),
-    test: (),
-    test: (),
-    test: (),
+    pub policy: (),
+    pub budget: (),
+    pub max_virtual_time_task_starvation_count: (),
+    pub initial_virtual_time: (),
 }
 /// ⚠️ Experimental
 /** Turns on virtual time for all frames (replacing real-time with a synthetic time source) and sets
@@ -418,14 +418,14 @@ pub type EmulationSetVirtualTimePolicyReturns = ();
 /// ⚠️ Experimental
 /// Overrides default host system locale with the specified one.
 pub struct EmulationSetLocaleOverrideParams {
-    test: (),
+    pub locale: (),
 }
 /// ⚠️ Experimental
 /// Overrides default host system locale with the specified one.
 pub type EmulationSetLocaleOverrideReturns = ();
 /// Overrides default host system timezone with the specified one.
 pub struct EmulationSetTimezoneOverrideParams {
-    test: (),
+    pub timezone_id: (),
 }
 /// Overrides default host system timezone with the specified one.
 pub type EmulationSetTimezoneOverrideReturns = ();
@@ -435,8 +435,8 @@ pub type EmulationSetTimezoneOverrideReturns = ();
 (e.g. browser window). Can be used to produce screenshots of the specified size. Not supported
 on Android.*/
 pub struct EmulationSetVisibleSizeParams {
-    test: (),
-    test: (),
+    pub width: (),
+    pub height: (),
 }
 #[deprecated]
 /// ⚠️ Experimental
@@ -446,23 +446,23 @@ on Android.*/
 pub type EmulationSetVisibleSizeReturns = ();
 /// ⚠️ Experimental
 pub struct EmulationSetDisabledImageTypesParams {
-    test: (),
+    pub image_types: (),
 }
 /// ⚠️ Experimental
 pub type EmulationSetDisabledImageTypesReturns = ();
 /// ⚠️ Experimental
 pub struct EmulationSetHardwareConcurrencyOverrideParams {
-    test: (),
+    pub hardware_concurrency: (),
 }
 /// ⚠️ Experimental
 pub type EmulationSetHardwareConcurrencyOverrideReturns = ();
 /** Allows overriding user agent with the given string.
 `userAgentMetadata` must be set for Client Hint headers to be sent.*/
 pub struct EmulationSetUserAgentOverrideParams {
-    test: (),
-    test: (),
-    test: (),
-    test: (),
+    pub user_agent: (),
+    pub accept_language: (),
+    pub platform: (),
+    pub user_agent_metadata: (),
 }
 /** Allows overriding user agent with the given string.
 `userAgentMetadata` must be set for Client Hint headers to be sent.*/
@@ -470,7 +470,7 @@ pub type EmulationSetUserAgentOverrideReturns = ();
 /// ⚠️ Experimental
 /// Allows overriding the automation flag.
 pub struct EmulationSetAutomationOverrideParams {
-    test: (),
+    pub enabled: (),
 }
 /// ⚠️ Experimental
 /// Allows overriding the automation flag.
@@ -479,7 +479,7 @@ pub type EmulationSetAutomationOverrideReturns = ();
 /** Allows overriding the difference between the small and large viewport sizes, which determine the
 value of the `svh` and `lvh` unit, respectively. Only supported for top-level frames.*/
 pub struct EmulationSetSmallViewportHeightDifferenceOverrideParams {
-    test: (),
+    pub difference: (),
 }
 /// ⚠️ Experimental
 /** Allows overriding the difference between the small and large viewport sizes, which determine the

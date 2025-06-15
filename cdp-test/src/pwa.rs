@@ -12,7 +12,7 @@ pub enum DisplayMode {
 }
 /// Returns the following OS state for the given manifest id.
 pub struct PwaGetOsAppStateParams {
-    test: (),
+    pub manifest_id: (),
 }
 /// Returns the following OS state for the given manifest id.
 pub type PwaGetOsAppStateReturns = ();
@@ -27,8 +27,8 @@ file:// URL pointing to a signed web bundle (.swbn). The .swbn file's
 signing key must correspond to manifest_id. If Chrome is not in IWA dev
 mode, the installation will fail, regardless of the state of the allowlist.*/
 pub struct PwaInstallParams {
-    test: (),
-    test: (),
+    pub manifest_id: (),
+    pub install_url_or_bundle_url: (),
 }
 /** Installs the given manifest identity, optionally using the given install_url
 or IWA bundle location.
@@ -43,7 +43,7 @@ mode, the installation will fail, regardless of the state of the allowlist.*/
 pub type PwaInstallReturns = ();
 /// Uninstalls the given manifest_id and closes any opened app windows.
 pub struct PwaUninstallParams {
-    test: (),
+    pub manifest_id: (),
 }
 /// Uninstalls the given manifest_id and closes any opened app windows.
 pub type PwaUninstallReturns = ();
@@ -51,8 +51,8 @@ pub type PwaUninstallReturns = ();
 default start url if it is provided. Returns a page Target.TargetID which
 can be used to attach to via Target.attachToTarget or similar APIs.*/
 pub struct PwaLaunchParams {
-    test: (),
-    test: (),
+    pub manifest_id: (),
+    pub url: (),
 }
 /** Launches the installed web app, or an url in the same web app instead of the
 default start url if it is provided. Returns a page Target.TargetID which
@@ -72,8 +72,8 @@ of the returned Target.TargetIDs is not guaranteed.
 
 TODO(crbug.com/339454034): Check the existences of the input files.*/
 pub struct PwaLaunchFilesInAppParams {
-    test: (),
-    test: (),
+    pub manifest_id: (),
+    pub files: (),
 }
 /** Opens one or more local files from an installed web app identified by its
 manifestId. The web app needs to have file handlers registered to process
@@ -93,7 +93,7 @@ pub type PwaLaunchFilesInAppReturns = ();
 to be called on a page target. This function returns immediately without
 waiting for the app to finish loading.*/
 pub struct PwaOpenCurrentPageInAppParams {
-    test: (),
+    pub manifest_id: (),
 }
 /** Opens the current page in its web app identified by the manifest id, needs
 to be called on a page target. This function returns immediately without
@@ -109,9 +109,9 @@ impact the way the browser handling the web apps.
 
 See the comment of each parameter.*/
 pub struct PwaChangeAppUserSettingsParams {
-    test: (),
-    test: (),
-    test: (),
+    pub manifest_id: (),
+    pub link_capturing: (),
+    pub display_mode: (),
 }
 /** Changes user settings of the web app identified by its manifestId. If the
 app was not installed, this command returns an error. Unset parameters will

@@ -72,7 +72,7 @@ pub type SystemInfoGetInfoParams = ();
 pub type SystemInfoGetInfoReturns = ();
 /// Returns information about the feature state.
 pub struct SystemInfoGetFeatureStateParams {
-    test: (),
+    pub feature_state: (),
 }
 /// Returns information about the feature state.
 pub type SystemInfoGetFeatureStateReturns = ();

@@ -1,13 +1,13 @@
 use crate::common::*;
 /// Sets breakpoint on particular native event.
 pub struct EventBreakpointsSetInstrumentationBreakpointParams {
-    test: (),
+    pub event_name: (),
 }
 /// Sets breakpoint on particular native event.
 pub type EventBreakpointsSetInstrumentationBreakpointReturns = ();
 /// Removes breakpoint on particular native event.
 pub struct EventBreakpointsRemoveInstrumentationBreakpointParams {
-    test: (),
+    pub event_name: (),
 }
 /// Removes breakpoint on particular native event.
 pub type EventBreakpointsRemoveInstrumentationBreakpointReturns = ();

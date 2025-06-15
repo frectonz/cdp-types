@@ -12,7 +12,7 @@ has been installed. Available if the client is connected using the
 --remote-debugging-pipe flag and the --enable-unsafe-extension-debugging
 flag is set.*/
 pub struct ExtensionsLoadUnpackedParams {
-    test: (),
+    pub path: (),
 }
 /** Installs an unpacked extension from the filesystem similar to
 --load-extension CLI flags. Returns extension ID once the extension
@@ -24,7 +24,7 @@ pub type ExtensionsLoadUnpackedReturns = ();
 Available if the client is connected using the --remote-debugging-pipe flag
 and the --enable-unsafe-extension-debugging.*/
 pub struct ExtensionsUninstallParams {
-    test: (),
+    pub id: (),
 }
 /** Uninstalls an unpacked extension (others not supported) from the profile.
 Available if the client is connected using the --remote-debugging-pipe flag
@@ -33,34 +33,34 @@ pub type ExtensionsUninstallReturns = ();
 /** Gets data from extension storage in the given `storageArea`. If `keys` is
 specified, these are used to filter the result.*/
 pub struct ExtensionsGetStorageItemsParams {
-    test: (),
-    test: (),
-    test: (),
+    pub id: (),
+    pub storage_area: (),
+    pub keys: (),
 }
 /** Gets data from extension storage in the given `storageArea`. If `keys` is
 specified, these are used to filter the result.*/
 pub type ExtensionsGetStorageItemsReturns = ();
 /// Removes `keys` from extension storage in the given `storageArea`.
 pub struct ExtensionsRemoveStorageItemsParams {
-    test: (),
-    test: (),
-    test: (),
+    pub id: (),
+    pub storage_area: (),
+    pub keys: (),
 }
 /// Removes `keys` from extension storage in the given `storageArea`.
 pub type ExtensionsRemoveStorageItemsReturns = ();
 /// Clears extension storage in the given `storageArea`.
 pub struct ExtensionsClearStorageItemsParams {
-    test: (),
-    test: (),
+    pub id: (),
+    pub storage_area: (),
 }
 /// Clears extension storage in the given `storageArea`.
 pub type ExtensionsClearStorageItemsReturns = ();
 /** Sets `values` in extension storage in the given `storageArea`. The provided `values`
 will be merged with existing values in the storage area.*/
 pub struct ExtensionsSetStorageItemsParams {
-    test: (),
-    test: (),
-    test: (),
+    pub id: (),
+    pub storage_area: (),
+    pub values: (),
 }
 /** Sets `values` in extension storage in the given `storageArea`. The provided `values`
 will be merged with existing values in the storage area.*/

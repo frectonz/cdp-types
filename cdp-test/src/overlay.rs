@@ -158,23 +158,23 @@ pub type OverlayEnableParams = ();
 pub type OverlayEnableReturns = ();
 /// For testing.
 pub struct OverlayGetHighlightObjectForTestParams {
-    test: (),
-    test: (),
-    test: (),
-    test: (),
-    test: (),
+    pub node_id: (),
+    pub include_distance: (),
+    pub include_style: (),
+    pub color_format: (),
+    pub show_accessibility_info: (),
 }
 /// For testing.
 pub type OverlayGetHighlightObjectForTestReturns = ();
 /// For Persistent Grid testing.
 pub struct OverlayGetGridHighlightObjectsForTestParams {
-    test: (),
+    pub node_ids: (),
 }
 /// For Persistent Grid testing.
 pub type OverlayGetGridHighlightObjectsForTestReturns = ();
 /// For Source Order Viewer testing.
 pub struct OverlayGetSourceOrderHighlightObjectForTestParams {
-    test: (),
+    pub node_id: (),
 }
 /// For Source Order Viewer testing.
 pub type OverlayGetSourceOrderHighlightObjectForTestReturns = ();
@@ -188,9 +188,9 @@ Deprecated: Doesn't work reliably and cannot be fixed due to process
 separation (the owner node might be in a different process). Determine
 the owner node in the client and use highlightNode.*/
 pub struct OverlayHighlightFrameParams {
-    test: (),
-    test: (),
-    test: (),
+    pub frame_id: (),
+    pub content_color: (),
+    pub content_outline_color: (),
 }
 #[deprecated]
 /** Highlights owner element of the frame with given id.
@@ -201,41 +201,41 @@ pub type OverlayHighlightFrameReturns = ();
 /** Highlights DOM node with given id or with the given JavaScript object wrapper. Either nodeId or
 objectId must be specified.*/
 pub struct OverlayHighlightNodeParams {
-    test: (),
-    test: (),
-    test: (),
-    test: (),
-    test: (),
+    pub highlight_config: (),
+    pub node_id: (),
+    pub backend_node_id: (),
+    pub object_id: (),
+    pub selector: (),
 }
 /** Highlights DOM node with given id or with the given JavaScript object wrapper. Either nodeId or
 objectId must be specified.*/
 pub type OverlayHighlightNodeReturns = ();
 /// Highlights given quad. Coordinates are absolute with respect to the main frame viewport.
 pub struct OverlayHighlightQuadParams {
-    test: (),
-    test: (),
-    test: (),
+    pub quad: (),
+    pub color: (),
+    pub outline_color: (),
 }
 /// Highlights given quad. Coordinates are absolute with respect to the main frame viewport.
 pub type OverlayHighlightQuadReturns = ();
 /// Highlights given rectangle. Coordinates are absolute with respect to the main frame viewport.
 pub struct OverlayHighlightRectParams {
-    test: (),
-    test: (),
-    test: (),
-    test: (),
-    test: (),
-    test: (),
+    pub x: (),
+    pub y: (),
+    pub width: (),
+    pub height: (),
+    pub color: (),
+    pub outline_color: (),
 }
 /// Highlights given rectangle. Coordinates are absolute with respect to the main frame viewport.
 pub type OverlayHighlightRectReturns = ();
 /** Highlights the source order of the children of the DOM node with given id or with the given
 JavaScript object wrapper. Either nodeId or objectId must be specified.*/
 pub struct OverlayHighlightSourceOrderParams {
-    test: (),
-    test: (),
-    test: (),
-    test: (),
+    pub source_order_config: (),
+    pub node_id: (),
+    pub backend_node_id: (),
+    pub object_id: (),
 }
 /** Highlights the source order of the children of the DOM node with given id or with the given
 JavaScript object wrapper. Either nodeId or objectId must be specified.*/
@@ -243,74 +243,74 @@ pub type OverlayHighlightSourceOrderReturns = ();
 /** Enters the 'inspect' mode. In this mode, elements that user is hovering over are highlighted.
 Backend then generates 'inspectNodeRequested' event upon element selection.*/
 pub struct OverlaySetInspectModeParams {
-    test: (),
-    test: (),
+    pub mode: (),
+    pub highlight_config: (),
 }
 /** Enters the 'inspect' mode. In this mode, elements that user is hovering over are highlighted.
 Backend then generates 'inspectNodeRequested' event upon element selection.*/
 pub type OverlaySetInspectModeReturns = ();
 /// Highlights owner element of all frames detected to be ads.
 pub struct OverlaySetShowAdHighlightsParams {
-    test: (),
+    pub show: (),
 }
 /// Highlights owner element of all frames detected to be ads.
 pub type OverlaySetShowAdHighlightsReturns = ();
 pub struct OverlaySetPausedInDebuggerMessageParams {
-    test: (),
+    pub message: (),
 }
 pub type OverlaySetPausedInDebuggerMessageReturns = ();
 /// Requests that backend shows debug borders on layers
 pub struct OverlaySetShowDebugBordersParams {
-    test: (),
+    pub show: (),
 }
 /// Requests that backend shows debug borders on layers
 pub type OverlaySetShowDebugBordersReturns = ();
 /// Requests that backend shows the FPS counter
 pub struct OverlaySetShowFpsCounterParams {
-    test: (),
+    pub show: (),
 }
 /// Requests that backend shows the FPS counter
 pub type OverlaySetShowFpsCounterReturns = ();
 /// Highlight multiple elements with the CSS Grid overlay.
 pub struct OverlaySetShowGridOverlaysParams {
-    test: (),
+    pub grid_node_highlight_configs: (),
 }
 /// Highlight multiple elements with the CSS Grid overlay.
 pub type OverlaySetShowGridOverlaysReturns = ();
 pub struct OverlaySetShowFlexOverlaysParams {
-    test: (),
+    pub flex_node_highlight_configs: (),
 }
 pub type OverlaySetShowFlexOverlaysReturns = ();
 pub struct OverlaySetShowScrollSnapOverlaysParams {
-    test: (),
+    pub scroll_snap_highlight_configs: (),
 }
 pub type OverlaySetShowScrollSnapOverlaysReturns = ();
 pub struct OverlaySetShowContainerQueryOverlaysParams {
-    test: (),
+    pub container_query_highlight_configs: (),
 }
 pub type OverlaySetShowContainerQueryOverlaysReturns = ();
 /// Requests that backend shows paint rectangles
 pub struct OverlaySetShowPaintRectsParams {
-    test: (),
+    pub result: (),
 }
 /// Requests that backend shows paint rectangles
 pub type OverlaySetShowPaintRectsReturns = ();
 /// Requests that backend shows layout shift regions
 pub struct OverlaySetShowLayoutShiftRegionsParams {
-    test: (),
+    pub result: (),
 }
 /// Requests that backend shows layout shift regions
 pub type OverlaySetShowLayoutShiftRegionsReturns = ();
 /// Requests that backend shows scroll bottleneck rects
 pub struct OverlaySetShowScrollBottleneckRectsParams {
-    test: (),
+    pub show: (),
 }
 /// Requests that backend shows scroll bottleneck rects
 pub type OverlaySetShowScrollBottleneckRectsReturns = ();
 #[deprecated]
 /// Deprecated, no longer has any effect.
 pub struct OverlaySetShowHitTestBordersParams {
-    test: (),
+    pub show: (),
 }
 #[deprecated]
 /// Deprecated, no longer has any effect.
@@ -318,32 +318,32 @@ pub type OverlaySetShowHitTestBordersReturns = ();
 #[deprecated]
 /// Deprecated, no longer has any effect.
 pub struct OverlaySetShowWebVitalsParams {
-    test: (),
+    pub show: (),
 }
 #[deprecated]
 /// Deprecated, no longer has any effect.
 pub type OverlaySetShowWebVitalsReturns = ();
 /// Paints viewport size upon main frame resize.
 pub struct OverlaySetShowViewportSizeOnResizeParams {
-    test: (),
+    pub show: (),
 }
 /// Paints viewport size upon main frame resize.
 pub type OverlaySetShowViewportSizeOnResizeReturns = ();
 /// Add a dual screen device hinge
 pub struct OverlaySetShowHingeParams {
-    test: (),
+    pub hinge_config: (),
 }
 /// Add a dual screen device hinge
 pub type OverlaySetShowHingeReturns = ();
 /// Show elements in isolation mode with overlays.
 pub struct OverlaySetShowIsolatedElementsParams {
-    test: (),
+    pub isolated_element_highlight_configs: (),
 }
 /// Show elements in isolation mode with overlays.
 pub type OverlaySetShowIsolatedElementsReturns = ();
 /// Show Window Controls Overlay for PWA
 pub struct OverlaySetShowWindowControlsOverlayParams {
-    test: (),
+    pub window_controls_overlay_config: (),
 }
 /// Show Window Controls Overlay for PWA
 pub type OverlaySetShowWindowControlsOverlayReturns = ();

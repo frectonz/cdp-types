@@ -29,39 +29,39 @@ pub struct CachedResponse {
 }
 /// Deletes a cache.
 pub struct CacheStorageDeleteCacheParams {
-    test: (),
+    pub cache_id: (),
 }
 /// Deletes a cache.
 pub type CacheStorageDeleteCacheReturns = ();
 /// Deletes a cache entry.
 pub struct CacheStorageDeleteEntryParams {
-    test: (),
-    test: (),
+    pub cache_id: (),
+    pub request: (),
 }
 /// Deletes a cache entry.
 pub type CacheStorageDeleteEntryReturns = ();
 /// Requests cache names.
 pub struct CacheStorageRequestCacheNamesParams {
-    test: (),
-    test: (),
-    test: (),
+    pub security_origin: (),
+    pub storage_key: (),
+    pub storage_bucket: (),
 }
 /// Requests cache names.
 pub type CacheStorageRequestCacheNamesReturns = ();
 /// Fetches cache entry.
 pub struct CacheStorageRequestCachedResponseParams {
-    test: (),
-    test: (),
-    test: (),
+    pub cache_id: (),
+    pub request_url: (),
+    pub request_headers: (),
 }
 /// Fetches cache entry.
 pub type CacheStorageRequestCachedResponseReturns = ();
 /// Requests data from cache.
 pub struct CacheStorageRequestEntriesParams {
-    test: (),
-    test: (),
-    test: (),
-    test: (),
+    pub cache_id: (),
+    pub skip_count: (),
+    pub page_size: (),
+    pub path_filter: (),
 }
 /// Requests data from cache.
 pub type CacheStorageRequestEntriesReturns = ();

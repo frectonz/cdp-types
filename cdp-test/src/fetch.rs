@@ -21,45 +21,45 @@ pub type FetchDisableReturns = ();
 /** Enables issuing of requestPaused events. A request will be paused until client
 calls one of failRequest, fulfillRequest or continueRequest/continueWithAuth.*/
 pub struct FetchEnableParams {
-    test: (),
-    test: (),
+    pub patterns: (),
+    pub handle_auth_requests: (),
 }
 /** Enables issuing of requestPaused events. A request will be paused until client
 calls one of failRequest, fulfillRequest or continueRequest/continueWithAuth.*/
 pub type FetchEnableReturns = ();
 /// Causes the request to fail with specified reason.
 pub struct FetchFailRequestParams {
-    test: (),
-    test: (),
+    pub request_id: (),
+    pub error_reason: (),
 }
 /// Causes the request to fail with specified reason.
 pub type FetchFailRequestReturns = ();
 /// Provides response to the request.
 pub struct FetchFulfillRequestParams {
-    test: (),
-    test: (),
-    test: (),
-    test: (),
-    test: (),
-    test: (),
+    pub request_id: (),
+    pub response_code: (),
+    pub response_headers: (),
+    pub binary_response_headers: (),
+    pub body: (),
+    pub response_phrase: (),
 }
 /// Provides response to the request.
 pub type FetchFulfillRequestReturns = ();
 /// Continues the request, optionally modifying some of its parameters.
 pub struct FetchContinueRequestParams {
-    test: (),
-    test: (),
-    test: (),
-    test: (),
-    test: (),
-    test: (),
+    pub request_id: (),
+    pub url: (),
+    pub method: (),
+    pub post_data: (),
+    pub headers: (),
+    pub intercept_response: (),
 }
 /// Continues the request, optionally modifying some of its parameters.
 pub type FetchContinueRequestReturns = ();
 /// Continues a request supplying authChallengeResponse following authRequired event.
 pub struct FetchContinueWithAuthParams {
-    test: (),
-    test: (),
+    pub request_id: (),
+    pub auth_challenge_response: (),
 }
 /// Continues a request supplying authChallengeResponse following authRequired event.
 pub type FetchContinueWithAuthReturns = ();
@@ -68,11 +68,11 @@ pub type FetchContinueWithAuthReturns = ();
 response headers. If either responseCode or headers are modified, all of them
 must be present.*/
 pub struct FetchContinueResponseParams {
-    test: (),
-    test: (),
-    test: (),
-    test: (),
-    test: (),
+    pub request_id: (),
+    pub response_code: (),
+    pub response_phrase: (),
+    pub response_headers: (),
+    pub binary_response_headers: (),
 }
 /// ⚠️ Experimental
 /** Continues loading of the paused response, optionally modifying the
@@ -90,7 +90,7 @@ paused in the _redirect received_ state may be differentiated by
 `responseCode` and presence of `location` response header, see
 comments to `requestPaused` for details.*/
 pub struct FetchGetResponseBodyParams {
-    test: (),
+    pub request_id: (),
 }
 /** Causes the body of the response to be received from the server and
 returned as a single string. May only be issued for a request that
@@ -114,7 +114,7 @@ This method is mutually exclusive with getResponseBody.
 Calling other methods that affect the request or disabling fetch
 domain before body is received results in an undefined behavior.*/
 pub struct FetchTakeResponseBodyAsStreamParams {
-    test: (),
+    pub request_id: (),
 }
 /** Returns a handle to the stream representing the response body.
 The request must be paused in the HeadersReceived stage.

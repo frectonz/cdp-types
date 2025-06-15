@@ -672,7 +672,7 @@ pub struct LoadNetworkResourceOptions {
 /// ⚠️ Experimental
 /// Sets a list of content encodings that will be accepted. Empty list means no encoding is accepted.
 pub struct NetworkSetAcceptedEncodingsParams {
-    test: (),
+    pub encodings: (),
 }
 /// ⚠️ Experimental
 /// Sets a list of content encodings that will be accepted. Empty list means no encoding is accepted.
@@ -717,14 +717,14 @@ fetch occurs as a result which encounters a redirect an additional Network.reque
 event will be sent with the same InterceptionId.
 Deprecated, use Fetch.continueRequest, Fetch.fulfillRequest and Fetch.failRequest instead.*/
 pub struct NetworkContinueInterceptedRequestParams {
-    test: (),
-    test: (),
-    test: (),
-    test: (),
-    test: (),
-    test: (),
-    test: (),
-    test: (),
+    pub interception_id: (),
+    pub error_reason: (),
+    pub raw_response: (),
+    pub url: (),
+    pub method: (),
+    pub post_data: (),
+    pub headers: (),
+    pub auth_challenge_response: (),
 }
 #[deprecated]
 /// ⚠️ Experimental
@@ -736,11 +736,11 @@ Deprecated, use Fetch.continueRequest, Fetch.fulfillRequest and Fetch.failReques
 pub type NetworkContinueInterceptedRequestReturns = ();
 /// Deletes browser cookies with matching name and url or domain/path/partitionKey pair.
 pub struct NetworkDeleteCookiesParams {
-    test: (),
-    test: (),
-    test: (),
-    test: (),
-    test: (),
+    pub name: (),
+    pub url: (),
+    pub domain: (),
+    pub path: (),
+    pub partition_key: (),
 }
 /// Deletes browser cookies with matching name and url or domain/path/partitionKey pair.
 pub type NetworkDeleteCookiesReturns = ();
@@ -750,22 +750,22 @@ pub type NetworkDisableParams = ();
 pub type NetworkDisableReturns = ();
 /// Activates emulation of network conditions.
 pub struct NetworkEmulateNetworkConditionsParams {
-    test: (),
-    test: (),
-    test: (),
-    test: (),
-    test: (),
-    test: (),
-    test: (),
-    test: (),
+    pub offline: (),
+    pub latency: (),
+    pub download_throughput: (),
+    pub upload_throughput: (),
+    pub connection_type: (),
+    pub packet_loss: (),
+    pub packet_queue_length: (),
+    pub packet_reordering: (),
 }
 /// Activates emulation of network conditions.
 pub type NetworkEmulateNetworkConditionsReturns = ();
 /// Enables network tracking, network events will now be delivered to the client.
 pub struct NetworkEnableParams {
-    test: (),
-    test: (),
-    test: (),
+    pub max_total_buffer_size: (),
+    pub max_resource_buffer_size: (),
+    pub max_post_data_size: (),
 }
 /// Enables network tracking, network events will now be delivered to the client.
 pub type NetworkEnableReturns = ();
@@ -782,7 +782,7 @@ pub type NetworkGetAllCookiesReturns = ();
 /// ⚠️ Experimental
 /// Returns the DER-encoded certificate.
 pub struct NetworkGetCertificateParams {
-    test: (),
+    pub origin: (),
 }
 /// ⚠️ Experimental
 /// Returns the DER-encoded certificate.
@@ -790,27 +790,27 @@ pub type NetworkGetCertificateReturns = ();
 /** Returns all browser cookies for the current URL. Depending on the backend support, will return
 detailed cookie information in the `cookies` field.*/
 pub struct NetworkGetCookiesParams {
-    test: (),
+    pub urls: (),
 }
 /** Returns all browser cookies for the current URL. Depending on the backend support, will return
 detailed cookie information in the `cookies` field.*/
 pub type NetworkGetCookiesReturns = ();
 /// Returns content served for the given request.
 pub struct NetworkGetResponseBodyParams {
-    test: (),
+    pub request_id: (),
 }
 /// Returns content served for the given request.
 pub type NetworkGetResponseBodyReturns = ();
 /// Returns post data sent with the request. Returns an error when no data was sent with the request.
 pub struct NetworkGetRequestPostDataParams {
-    test: (),
+    pub request_id: (),
 }
 /// Returns post data sent with the request. Returns an error when no data was sent with the request.
 pub type NetworkGetRequestPostDataReturns = ();
 /// ⚠️ Experimental
 /// Returns content served for the given currently intercepted request.
 pub struct NetworkGetResponseBodyForInterceptionParams {
-    test: (),
+    pub interception_id: (),
 }
 /// ⚠️ Experimental
 /// Returns content served for the given currently intercepted request.
@@ -821,7 +821,7 @@ the intercepted request can't be continued as is -- you either need to cancel it
 the response body. The stream only supports sequential read, IO.read will fail if the position
 is specified.*/
 pub struct NetworkTakeResponseBodyForInterceptionAsStreamParams {
-    test: (),
+    pub interception_id: (),
 }
 /// ⚠️ Experimental
 /** Returns a handle to the stream representing the response body. Note that after this command,
@@ -834,7 +834,7 @@ pub type NetworkTakeResponseBodyForInterceptionAsStreamReturns = ();
 parameters should be identical: method, url, async, request body, extra headers, withCredentials
 attribute, user, password.*/
 pub struct NetworkReplayXhrParams {
-    test: (),
+    pub request_id: (),
 }
 /// ⚠️ Experimental
 /** This method sends a new XMLHttpRequest which is identical to the original one. The following
@@ -844,10 +844,10 @@ pub type NetworkReplayXhrReturns = ();
 /// ⚠️ Experimental
 /// Searches for given string in response content.
 pub struct NetworkSearchInResponseBodyParams {
-    test: (),
-    test: (),
-    test: (),
-    test: (),
+    pub request_id: (),
+    pub query: (),
+    pub case_sensitive: (),
+    pub is_regex: (),
 }
 /// ⚠️ Experimental
 /// Searches for given string in response content.
@@ -855,58 +855,58 @@ pub type NetworkSearchInResponseBodyReturns = ();
 /// ⚠️ Experimental
 /// Blocks URLs from loading.
 pub struct NetworkSetBlockedUrLsParams {
-    test: (),
+    pub urls: (),
 }
 /// ⚠️ Experimental
 /// Blocks URLs from loading.
 pub type NetworkSetBlockedUrLsReturns = ();
 /// Toggles ignoring of service worker for each request.
 pub struct NetworkSetBypassServiceWorkerParams {
-    test: (),
+    pub bypass: (),
 }
 /// Toggles ignoring of service worker for each request.
 pub type NetworkSetBypassServiceWorkerReturns = ();
 /// Toggles ignoring cache for each request. If `true`, cache will not be used.
 pub struct NetworkSetCacheDisabledParams {
-    test: (),
+    pub cache_disabled: (),
 }
 /// Toggles ignoring cache for each request. If `true`, cache will not be used.
 pub type NetworkSetCacheDisabledReturns = ();
 /// Sets a cookie with the given cookie data; may overwrite equivalent cookies if they exist.
 pub struct NetworkSetCookieParams {
-    test: (),
-    test: (),
-    test: (),
-    test: (),
-    test: (),
-    test: (),
-    test: (),
-    test: (),
-    test: (),
-    test: (),
-    test: (),
-    test: (),
-    test: (),
-    test: (),
+    pub name: (),
+    pub value: (),
+    pub url: (),
+    pub domain: (),
+    pub path: (),
+    pub secure: (),
+    pub http_only: (),
+    pub same_site: (),
+    pub expires: (),
+    pub priority: (),
+    pub same_party: (),
+    pub source_scheme: (),
+    pub source_port: (),
+    pub partition_key: (),
 }
 /// Sets a cookie with the given cookie data; may overwrite equivalent cookies if they exist.
 pub type NetworkSetCookieReturns = ();
 /// Sets given cookies.
 pub struct NetworkSetCookiesParams {
-    test: (),
+    pub cookies: (),
 }
 /// Sets given cookies.
 pub type NetworkSetCookiesReturns = ();
 /// Specifies whether to always send extra HTTP headers with the requests from this page.
 pub struct NetworkSetExtraHttpHeadersParams {
-    test: (),
+    pub headers: (),
 }
 /// Specifies whether to always send extra HTTP headers with the requests from this page.
 pub type NetworkSetExtraHttpHeadersReturns = ();
 /// ⚠️ Experimental
 /// Specifies whether to attach a page script stack id in requests
 pub struct NetworkSetAttachDebugStackParams {
-    test: (),
+    pub enabled: (),
 }
 /// ⚠️ Experimental
 /// Specifies whether to attach a page script stack id in requests
@@ -916,7 +916,7 @@ pub type NetworkSetAttachDebugStackReturns = ();
 /** Sets the requests to intercept that match the provided patterns and optionally resource types.
 Deprecated, please use Fetch.enable instead.*/
 pub struct NetworkSetRequestInterceptionParams {
-    test: (),
+    pub patterns: (),
 }
 #[deprecated]
 /// ⚠️ Experimental
@@ -925,10 +925,10 @@ Deprecated, please use Fetch.enable instead.*/
 pub type NetworkSetRequestInterceptionReturns = ();
 /// Allows overriding user agent with the given string.
 pub struct NetworkSetUserAgentOverrideParams {
-    test: (),
-    test: (),
-    test: (),
-    test: (),
+    pub user_agent: (),
+    pub accept_language: (),
+    pub platform: (),
+    pub user_agent_metadata: (),
 }
 /// Allows overriding user agent with the given string.
 pub type NetworkSetUserAgentOverrideReturns = crate::emulation::EmulationSetUserAgentOverrideReturns;
@@ -936,7 +936,7 @@ pub type NetworkSetUserAgentOverrideReturns = crate::emulation::EmulationSetUser
 /** Enables streaming of the response for the given requestId.
 If enabled, the dataReceived event contains the data that was received during streaming.*/
 pub struct NetworkStreamResourceContentParams {
-    test: (),
+    pub request_id: (),
 }
 /// ⚠️ Experimental
 /** Enables streaming of the response for the given requestId.
@@ -945,7 +945,7 @@ pub type NetworkStreamResourceContentReturns = ();
 /// ⚠️ Experimental
 /// Returns information about the COEP/COOP isolation status.
 pub struct NetworkGetSecurityIsolationStatusParams {
-    test: (),
+    pub frame_id: (),
 }
 /// ⚠️ Experimental
 /// Returns information about the COEP/COOP isolation status.
@@ -954,7 +954,7 @@ pub type NetworkGetSecurityIsolationStatusReturns = ();
 /** Enables tracking for the Reporting API, events generated by the Reporting API will now be delivered to the client.
 Enabling triggers 'reportingApiReportAdded' for all existing reports.*/
 pub struct NetworkEnableReportingApiParams {
-    test: (),
+    pub enable: (),
 }
 /// ⚠️ Experimental
 /** Enables tracking for the Reporting API, events generated by the Reporting API will now be delivered to the client.
@@ -963,9 +963,9 @@ pub type NetworkEnableReportingApiReturns = ();
 /// ⚠️ Experimental
 /// Fetches the resource and returns the content.
 pub struct NetworkLoadNetworkResourceParams {
-    test: (),
-    test: (),
-    test: (),
+    pub frame_id: (),
+    pub url: (),
+    pub options: (),
 }
 /// ⚠️ Experimental
 /// Fetches the resource and returns the content.
@@ -974,9 +974,9 @@ pub type NetworkLoadNetworkResourceReturns = ();
 /** Sets Controls for third-party cookie access
 Page reload is required before the new cookie bahavior will be observed*/
 pub struct NetworkSetCookieControlsParams {
-    test: (),
-    test: (),
-    test: (),
+    pub enable_third_party_cookie_restriction: (),
+    pub disable_third_party_cookie_metadata: (),
+    pub disable_third_party_cookie_heuristics: (),
 }
 /// ⚠️ Experimental
 /** Sets Controls for third-party cookie access

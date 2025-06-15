@@ -37,14 +37,14 @@ pub struct RemoteLocation {
 }
 /// Activates (focuses) the target.
 pub struct TargetActivateTargetParams {
-    test: (),
+    pub target_id: (),
 }
 /// Activates (focuses) the target.
 pub type TargetActivateTargetReturns = ();
 /// Attaches to the target with given id.
 pub struct TargetAttachToTargetParams {
-    test: (),
-    test: (),
+    pub target_id: (),
+    pub flatten: (),
 }
 /// Attaches to the target with given id.
 pub type TargetAttachToTargetReturns = ();
@@ -56,7 +56,7 @@ pub type TargetAttachToBrowserTargetParams = ();
 pub type TargetAttachToBrowserTargetReturns = ();
 /// Closes the target. If the target is a page that gets closed too.
 pub struct TargetCloseTargetParams {
-    test: (),
+    pub target_id: (),
 }
 /// Closes the target. If the target is a page that gets closed too.
 pub type TargetCloseTargetReturns = ();
@@ -70,9 +70,9 @@ The object has the following API:
 - `binding.send(json)` - a method to send messages over the remote debugging protocol
 - `binding.onmessage = json => handleMessage(json)` - a callback that will be called for the protocol notifications and command responses.*/
 pub struct TargetExposeDevToolsProtocolParams {
-    test: (),
-    test: (),
-    test: (),
+    pub target_id: (),
+    pub binding_name: (),
+    pub inherit_permissions: (),
 }
 /// ⚠️ Experimental
 /** Inject object to the target's main frame that provides a communication
@@ -87,10 +87,10 @@ pub type TargetExposeDevToolsProtocolReturns = ();
 /** Creates a new empty BrowserContext. Similar to an incognito profile but you can have more than
 one.*/
 pub struct TargetCreateBrowserContextParams {
-    test: (),
-    test: (),
-    test: (),
-    test: (),
+    pub dispose_on_detach: (),
+    pub proxy_server: (),
+    pub proxy_bypass_list: (),
+    pub origins_with_universal_network_access: (),
 }
 /** Creates a new empty BrowserContext. Similar to an incognito profile but you can have more than
 one.*/
@@ -101,32 +101,32 @@ pub type TargetGetBrowserContextsParams = ();
 pub type TargetGetBrowserContextsReturns = ();
 /// Creates a new page.
 pub struct TargetCreateTargetParams {
-    test: (),
-    test: (),
-    test: (),
-    test: (),
-    test: (),
-    test: (),
-    test: (),
-    test: (),
-    test: (),
-    test: (),
-    test: (),
-    test: (),
+    pub url: (),
+    pub left: (),
+    pub top: (),
+    pub width: (),
+    pub height: (),
+    pub window_state: (),
+    pub browser_context_id: (),
+    pub enable_begin_frame_control: (),
+    pub new_window: (),
+    pub background: (),
+    pub for_tab: (),
+    pub hidden: (),
 }
 /// Creates a new page.
 pub type TargetCreateTargetReturns = ();
 /// Detaches session with given id.
 pub struct TargetDetachFromTargetParams {
-    test: (),
-    test: (),
+    pub session_id: (),
+    pub target_id: (),
 }
 /// Detaches session with given id.
 pub type TargetDetachFromTargetReturns = ();
 /** Deletes a BrowserContext. All the belonging pages will be closed without calling their
 beforeunload hooks.*/
 pub struct TargetDisposeBrowserContextParams {
-    test: (),
+    pub browser_context_id: (),
 }
 /** Deletes a BrowserContext. All the belonging pages will be closed without calling their
 beforeunload hooks.*/
@@ -134,14 +134,14 @@ pub type TargetDisposeBrowserContextReturns = ();
 /// ⚠️ Experimental
 /// Returns information about a target.
 pub struct TargetGetTargetInfoParams {
-    test: (),
+    pub target_id: (),
 }
 /// ⚠️ Experimental
 /// Returns information about a target.
 pub type TargetGetTargetInfoReturns = ();
 /// Retrieves a list of available targets.
 pub struct TargetGetTargetsParams {
-    test: (),
+    pub filter: (),
 }
 /// Retrieves a list of available targets.
 pub type TargetGetTargetsReturns = ();
@@ -150,9 +150,9 @@ pub type TargetGetTargetsReturns = ();
 Consider using flat mode instead; see commands attachToTarget, setAutoAttach,
 and crbug.com/991325.*/
 pub struct TargetSendMessageToTargetParams {
-    test: (),
-    test: (),
-    test: (),
+    pub message: (),
+    pub session_id: (),
+    pub target_id: (),
 }
 #[deprecated]
 /** Sends protocol message over session with given id.
@@ -168,10 +168,10 @@ for creation of related targets.
 You might want to call this recursively for auto-attached targets to attach
 to all available targets.*/
 pub struct TargetSetAutoAttachParams {
-    test: (),
-    test: (),
-    test: (),
-    test: (),
+    pub auto_attach: (),
+    pub wait_for_debugger_on_start: (),
+    pub flatten: (),
+    pub filter: (),
 }
 /** Controls whether to automatically attach to new targets which are considered
 to be directly related to this one (for example, iframes or workers).
@@ -189,9 +189,9 @@ through `attachedToTarget`. The specified target is also auto-attached.
 This cancels the effect of any previous `setAutoAttach` and is also cancelled by subsequent
 `setAutoAttach`. Only available at the Browser target.*/
 pub struct TargetAutoAttachRelatedParams {
-    test: (),
-    test: (),
-    test: (),
+    pub target_id: (),
+    pub wait_for_debugger_on_start: (),
+    pub filter: (),
 }
 /// ⚠️ Experimental
 /** Adds the specified target to the list of targets that will be monitored for any related target
@@ -203,8 +203,8 @@ pub type TargetAutoAttachRelatedReturns = ();
 /** Controls whether to discover available targets and notify via
 `targetCreated/targetInfoChanged/targetDestroyed` events.*/
 pub struct TargetSetDiscoverTargetsParams {
-    test: (),
-    test: (),
+    pub discover: (),
+    pub filter: (),
 }
 /** Controls whether to discover available targets and notify via
 `targetCreated/targetInfoChanged/targetDestroyed` events.*/
@@ -213,7 +213,7 @@ pub type TargetSetDiscoverTargetsReturns = ();
 /** Enables target discovery for the specified locations, when `setDiscoverTargets` was set to
 `true`.*/
 pub struct TargetSetRemoteLocationsParams {
-    test: (),
+    pub locations: (),
 }
 /// ⚠️ Experimental
 /** Enables target discovery for the specified locations, when `setDiscoverTargets` was set to

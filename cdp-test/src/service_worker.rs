@@ -44,55 +44,55 @@ pub struct ServiceWorkerErrorMessage {
     pub column_number: i64,
 }
 pub struct ServiceWorkerDeliverPushMessageParams {
-    test: (),
-    test: (),
-    test: (),
+    pub origin: (),
+    pub registration_id: (),
+    pub data: (),
 }
 pub type ServiceWorkerDeliverPushMessageReturns = ();
 pub type ServiceWorkerDisableParams = ();
 pub type ServiceWorkerDisableReturns = ();
 pub struct ServiceWorkerDispatchSyncEventParams {
-    test: (),
-    test: (),
-    test: (),
-    test: (),
+    pub origin: (),
+    pub registration_id: (),
+    pub tag: (),
+    pub last_chance: (),
 }
 pub type ServiceWorkerDispatchSyncEventReturns = ();
 pub struct ServiceWorkerDispatchPeriodicSyncEventParams {
-    test: (),
-    test: (),
-    test: (),
+    pub origin: (),
+    pub registration_id: (),
+    pub tag: (),
 }
 pub type ServiceWorkerDispatchPeriodicSyncEventReturns = ();
 pub type ServiceWorkerEnableParams = ();
 pub type ServiceWorkerEnableReturns = ();
 pub struct ServiceWorkerInspectWorkerParams {
-    test: (),
+    pub version_id: (),
 }
 pub type ServiceWorkerInspectWorkerReturns = ();
 pub struct ServiceWorkerSetForceUpdateOnPageLoadParams {
-    test: (),
+    pub force_update_on_page_load: (),
 }
 pub type ServiceWorkerSetForceUpdateOnPageLoadReturns = ();
 pub struct ServiceWorkerSkipWaitingParams {
-    test: (),
+    pub scope_url: (),
 }
 pub type ServiceWorkerSkipWaitingReturns = ();
 pub struct ServiceWorkerStartWorkerParams {
-    test: (),
+    pub scope_url: (),
 }
 pub type ServiceWorkerStartWorkerReturns = ();
 pub type ServiceWorkerStopAllWorkersParams = ();
 pub type ServiceWorkerStopAllWorkersReturns = ();
 pub struct ServiceWorkerStopWorkerParams {
-    test: (),
+    pub version_id: (),
 }
 pub type ServiceWorkerStopWorkerReturns = ();
 pub struct ServiceWorkerUnregisterParams {
-    test: (),
+    pub scope_url: (),
 }
 pub type ServiceWorkerUnregisterReturns = ();
 pub struct ServiceWorkerUpdateRegistrationParams {
-    test: (),
+    pub scope_url: (),
 }
 pub type ServiceWorkerUpdateRegistrationReturns = ();

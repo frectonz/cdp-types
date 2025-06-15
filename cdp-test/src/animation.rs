@@ -55,7 +55,7 @@ pub type AnimationEnableParams = ();
 pub type AnimationEnableReturns = ();
 /// Returns the current time of the an animation.
 pub struct AnimationGetCurrentTimeParams {
-    test: (),
+    pub id: (),
 }
 /// Returns the current time of the an animation.
 pub type AnimationGetCurrentTimeReturns = ();
@@ -65,41 +65,41 @@ pub type AnimationGetPlaybackRateParams = ();
 pub type AnimationGetPlaybackRateReturns = ();
 /// Releases a set of animations to no longer be manipulated.
 pub struct AnimationReleaseAnimationsParams {
-    test: (),
+    pub animations: (),
 }
 /// Releases a set of animations to no longer be manipulated.
 pub type AnimationReleaseAnimationsReturns = ();
 /// Gets the remote object of the Animation.
 pub struct AnimationResolveAnimationParams {
-    test: (),
+    pub animation_id: (),
 }
 /// Gets the remote object of the Animation.
 pub type AnimationResolveAnimationReturns = ();
 /// Seek a set of animations to a particular time within each animation.
 pub struct AnimationSeekAnimationsParams {
-    test: (),
-    test: (),
+    pub animations: (),
+    pub current_time: (),
 }
 /// Seek a set of animations to a particular time within each animation.
 pub type AnimationSeekAnimationsReturns = ();
 /// Sets the paused state of a set of animations.
 pub struct AnimationSetPausedParams {
-    test: (),
-    test: (),
+    pub animations: (),
+    pub paused: (),
 }
 /// Sets the paused state of a set of animations.
 pub type AnimationSetPausedReturns = ();
 /// Sets the playback rate of the document timeline.
 pub struct AnimationSetPlaybackRateParams {
-    test: (),
+    pub playback_rate: (),
 }
 /// Sets the playback rate of the document timeline.
 pub type AnimationSetPlaybackRateReturns = ();
 /// Sets the timing of an animation node.
 pub struct AnimationSetTimingParams {
-    test: (),
-    test: (),
-    test: (),
+    pub animation_id: (),
+    pub duration: (),
+    pub delay: (),
 }
 /// Sets the timing of an animation node.
 pub type AnimationSetTimingReturns = ();

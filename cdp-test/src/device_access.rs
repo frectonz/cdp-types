@@ -16,14 +16,14 @@ pub type DeviceAccessDisableParams = ();
 pub type DeviceAccessDisableReturns = ();
 /// Select a device in response to a DeviceAccess.deviceRequestPrompted event.
 pub struct DeviceAccessSelectPromptParams {
-    test: (),
-    test: (),
+    pub id: (),
+    pub device_id: (),
 }
 /// Select a device in response to a DeviceAccess.deviceRequestPrompted event.
 pub type DeviceAccessSelectPromptReturns = ();
 /// Cancel a prompt in response to a DeviceAccess.deviceRequestPrompted event.
 pub struct DeviceAccessCancelPromptParams {
-    test: (),
+    pub id: (),
 }
 /// Cancel a prompt in response to a DeviceAccess.deviceRequestPrompted event.
 pub type DeviceAccessCancelPromptReturns = ();

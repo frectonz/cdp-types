@@ -29,26 +29,26 @@ pub struct BackgroundServiceEvent {
 }
 /// Enables event updates for the service.
 pub struct BackgroundServiceStartObservingParams {
-    test: (),
+    pub service: (),
 }
 /// Enables event updates for the service.
 pub type BackgroundServiceStartObservingReturns = ();
 /// Disables event updates for the service.
 pub struct BackgroundServiceStopObservingParams {
-    test: (),
+    pub service: (),
 }
 /// Disables event updates for the service.
 pub type BackgroundServiceStopObservingReturns = ();
 /// Set the recording state for the service.
 pub struct BackgroundServiceSetRecordingParams {
-    test: (),
-    test: (),
+    pub should_record: (),
+    pub service: (),
 }
 /// Set the recording state for the service.
 pub type BackgroundServiceSetRecordingReturns = ();
 /// Clears all stored data for the service.
 pub struct BackgroundServiceClearEventsParams {
-    test: (),
+    pub service: (),
 }
 /// Clears all stored data for the service.
 pub type BackgroundServiceClearEventsReturns = ();

@@ -155,7 +155,7 @@ pub struct Rect {
 /// ⚠️ Experimental
 /// Collects class names for the node with given id and all of it's child nodes.
 pub struct DomCollectClassNamesFromSubtreeParams {
-    test: (),
+    pub node_id: (),
 }
 /// ⚠️ Experimental
 /// Collects class names for the node with given id and all of it's child nodes.
@@ -164,9 +164,9 @@ pub type DomCollectClassNamesFromSubtreeReturns = ();
 /** Creates a deep copy of the specified node and places it into the target container before the
 given anchor.*/
 pub struct DomCopyToParams {
-    test: (),
-    test: (),
-    test: (),
+    pub node_id: (),
+    pub target_node_id: (),
+    pub insert_before_node_id: (),
 }
 /// ⚠️ Experimental
 /** Creates a deep copy of the specified node and places it into the target container before the
@@ -175,11 +175,11 @@ pub type DomCopyToReturns = ();
 /** Describes node given its id, does not require domain to be enabled. Does not start tracking any
 objects, can be used for automation.*/
 pub struct DomDescribeNodeParams {
-    test: (),
-    test: (),
-    test: (),
-    test: (),
-    test: (),
+    pub node_id: (),
+    pub backend_node_id: (),
+    pub object_id: (),
+    pub depth: (),
+    pub pierce: (),
 }
 /** Describes node given its id, does not require domain to be enabled. Does not start tracking any
 objects, can be used for automation.*/
@@ -188,10 +188,10 @@ pub type DomDescribeNodeReturns = ();
 Note: exactly one between nodeId, backendNodeId and objectId should be passed
 to identify the node.*/
 pub struct DomScrollIntoViewIfNeededParams {
-    test: (),
-    test: (),
-    test: (),
-    test: (),
+    pub node_id: (),
+    pub backend_node_id: (),
+    pub object_id: (),
+    pub rect: (),
 }
 /** Scrolls the specified rect of the given node into view if not already visible.
 Note: exactly one between nodeId, backendNodeId and objectId should be passed
@@ -205,7 +205,7 @@ pub type DomDisableReturns = ();
 /** Discards search results from the session with the given id. `getSearchResults` should no longer
 be called for that search.*/
 pub struct DomDiscardSearchResultsParams {
-    test: (),
+    pub search_id: (),
 }
 /// ⚠️ Experimental
 /** Discards search results from the session with the given id. `getSearchResults` should no longer
@@ -213,29 +213,29 @@ be called for that search.*/
 pub type DomDiscardSearchResultsReturns = ();
 /// Enables DOM agent for the given page.
 pub struct DomEnableParams {
-    test: (),
+    pub include_whitespace: (),
 }
 /// Enables DOM agent for the given page.
 pub type DomEnableReturns = ();
 /// Focuses the given element.
 pub struct DomFocusParams {
-    test: (),
-    test: (),
-    test: (),
+    pub node_id: (),
+    pub backend_node_id: (),
+    pub object_id: (),
 }
 /// Focuses the given element.
 pub type DomFocusReturns = ();
 /// Returns attributes for the specified node.
 pub struct DomGetAttributesParams {
-    test: (),
+    pub node_id: (),
 }
 /// Returns attributes for the specified node.
 pub type DomGetAttributesReturns = ();
 /// Returns boxes for the given node.
 pub struct DomGetBoxModelParams {
-    test: (),
-    test: (),
-    test: (),
+    pub node_id: (),
+    pub backend_node_id: (),
+    pub object_id: (),
 }
 /// Returns boxes for the given node.
 pub type DomGetBoxModelReturns = ();
@@ -243,9 +243,9 @@ pub type DomGetBoxModelReturns = ();
 /** Returns quads that describe node position on the page. This method
 might return multiple quads for inline nodes.*/
 pub struct DomGetContentQuadsParams {
-    test: (),
-    test: (),
-    test: (),
+    pub node_id: (),
+    pub backend_node_id: (),
+    pub object_id: (),
 }
 /// ⚠️ Experimental
 /** Returns quads that describe node position on the page. This method
@@ -254,8 +254,8 @@ pub type DomGetContentQuadsReturns = ();
 /** Returns the root DOM node (and optionally the subtree) to the caller.
 Implicitly enables the DOM domain events for the current target.*/
 pub struct DomGetDocumentParams {
-    test: (),
-    test: (),
+    pub depth: (),
+    pub pierce: (),
 }
 /** Returns the root DOM node (and optionally the subtree) to the caller.
 Implicitly enables the DOM domain events for the current target.*/
@@ -265,8 +265,8 @@ pub type DomGetDocumentReturns = ();
 Deprecated, as it is not designed to work well with the rest of the DOM agent.
 Use DOMSnapshot.captureSnapshot instead.*/
 pub struct DomGetFlattenedDocumentParams {
-    test: (),
-    test: (),
+    pub depth: (),
+    pub pierce: (),
 }
 #[deprecated]
 /** Returns the root DOM node (and optionally the subtree) to the caller.
@@ -276,9 +276,9 @@ pub type DomGetFlattenedDocumentReturns = ();
 /// ⚠️ Experimental
 /// Finds nodes with a given computed style in a subtree.
 pub struct DomGetNodesForSubtreeByStyleParams {
-    test: (),
-    test: (),
-    test: (),
+    pub node_id: (),
+    pub computed_styles: (),
+    pub pierce: (),
 }
 /// ⚠️ Experimental
 /// Finds nodes with a given computed style in a subtree.
@@ -286,26 +286,26 @@ pub type DomGetNodesForSubtreeByStyleReturns = ();
 /** Returns node id at given location. Depending on whether DOM domain is enabled, nodeId is
 either returned or not.*/
 pub struct DomGetNodeForLocationParams {
-    test: (),
-    test: (),
-    test: (),
-    test: (),
+    pub x: (),
+    pub y: (),
+    pub include_user_agent_shadow_dom: (),
+    pub ignore_pointer_events_none: (),
 }
 /** Returns node id at given location. Depending on whether DOM domain is enabled, nodeId is
 either returned or not.*/
 pub type DomGetNodeForLocationReturns = ();
 /// Returns node's HTML markup.
 pub struct DomGetOuterHtmlParams {
-    test: (),
-    test: (),
-    test: (),
+    pub node_id: (),
+    pub backend_node_id: (),
+    pub object_id: (),
 }
 /// Returns node's HTML markup.
 pub type DomGetOuterHtmlReturns = ();
 /// ⚠️ Experimental
 /// Returns the id of the nearest ancestor that is a relayout boundary.
 pub struct DomGetRelayoutBoundaryParams {
-    test: (),
+    pub node_id: (),
 }
 /// ⚠️ Experimental
 /// Returns the id of the nearest ancestor that is a relayout boundary.
@@ -314,9 +314,9 @@ pub type DomGetRelayoutBoundaryReturns = ();
 /** Returns search results from given `fromIndex` to given `toIndex` from the search with the given
 identifier.*/
 pub struct DomGetSearchResultsParams {
-    test: (),
-    test: (),
-    test: (),
+    pub search_id: (),
+    pub from_index: (),
+    pub to_index: (),
 }
 /// ⚠️ Experimental
 /** Returns search results from given `fromIndex` to given `toIndex` from the search with the given
@@ -342,9 +342,9 @@ pub type DomMarkUndoableStateParams = ();
 pub type DomMarkUndoableStateReturns = ();
 /// Moves node into the new container, places it before the given anchor.
 pub struct DomMoveToParams {
-    test: (),
-    test: (),
-    test: (),
+    pub node_id: (),
+    pub target_node_id: (),
+    pub insert_before_node_id: (),
 }
 /// Moves node into the new container, places it before the given anchor.
 pub type DomMoveToReturns = ();
@@ -352,8 +352,8 @@ pub type DomMoveToReturns = ();
 /** Searches for a given string in the DOM tree. Use `getSearchResults` to access search results or
 `cancelSearch` to end this search session.*/
 pub struct DomPerformSearchParams {
-    test: (),
-    test: (),
+    pub query: (),
+    pub include_user_agent_shadow_dom: (),
 }
 /// ⚠️ Experimental
 /** Searches for a given string in the DOM tree. Use `getSearchResults` to access search results or
@@ -362,7 +362,7 @@ pub type DomPerformSearchReturns = ();
 /// ⚠️ Experimental
 /// Requests that the node is sent to the caller given its path. // FIXME, use XPath
 pub struct DomPushNodeByPathToFrontendParams {
-    test: (),
+    pub path: (),
 }
 /// ⚠️ Experimental
 /// Requests that the node is sent to the caller given its path. // FIXME, use XPath
@@ -370,22 +370,22 @@ pub type DomPushNodeByPathToFrontendReturns = ();
 /// ⚠️ Experimental
 /// Requests that a batch of nodes is sent to the caller given their backend node ids.
 pub struct DomPushNodesByBackendIdsToFrontendParams {
-    test: (),
+    pub backend_node_ids: (),
 }
 /// ⚠️ Experimental
 /// Requests that a batch of nodes is sent to the caller given their backend node ids.
 pub type DomPushNodesByBackendIdsToFrontendReturns = ();
 /// Executes `querySelector` on a given node.
 pub struct DomQuerySelectorParams {
-    test: (),
-    test: (),
+    pub node_id: (),
+    pub selector: (),
 }
 /// Executes `querySelector` on a given node.
 pub type DomQuerySelectorReturns = ();
 /// Executes `querySelectorAll` on a given node.
 pub struct DomQuerySelectorAllParams {
-    test: (),
-    test: (),
+    pub node_id: (),
+    pub selector: (),
 }
 /// Executes `querySelectorAll` on a given node.
 pub type DomQuerySelectorAllReturns = ();
@@ -402,8 +402,8 @@ pub type DomGetTopLayerElementsReturns = ();
 /// ⚠️ Experimental
 /// Returns the NodeId of the matched element according to certain relations.
 pub struct DomGetElementByRelationParams {
-    test: (),
-    test: (),
+    pub node_id: (),
+    pub relation: (),
 }
 /// ⚠️ Experimental
 /// Returns the NodeId of the matched element according to certain relations.
@@ -416,14 +416,14 @@ pub type DomRedoParams = ();
 pub type DomRedoReturns = ();
 /// Removes attribute with given name from an element with given id.
 pub struct DomRemoveAttributeParams {
-    test: (),
-    test: (),
+    pub node_id: (),
+    pub name: (),
 }
 /// Removes attribute with given name from an element with given id.
 pub type DomRemoveAttributeReturns = ();
 /// Removes node with given id.
 pub struct DomRemoveNodeParams {
-    test: (),
+    pub node_id: (),
 }
 /// Removes node with given id.
 pub type DomRemoveNodeReturns = ();
@@ -431,9 +431,9 @@ pub type DomRemoveNodeReturns = ();
 `setChildNodes` events where not only immediate children are retrieved, but all children down to
 the specified depth.*/
 pub struct DomRequestChildNodesParams {
-    test: (),
-    test: (),
-    test: (),
+    pub node_id: (),
+    pub depth: (),
+    pub pierce: (),
 }
 /** Requests that children of the node with given id are returned to the caller in form of
 `setChildNodes` events where not only immediate children are retrieved, but all children down to
@@ -443,7 +443,7 @@ pub type DomRequestChildNodesReturns = ();
 nodes that form the path from the node to the root are also sent to the client as a series of
 `setChildNodes` notifications.*/
 pub struct DomRequestNodeParams {
-    test: (),
+    pub object_id: (),
 }
 /** Requests that the node is sent to the caller given the JavaScript node object reference. All
 nodes that form the path from the node to the root are also sent to the client as a series of
@@ -451,44 +451,44 @@ nodes that form the path from the node to the root are also sent to the client a
 pub type DomRequestNodeReturns = ();
 /// Resolves the JavaScript node object for a given NodeId or BackendNodeId.
 pub struct DomResolveNodeParams {
-    test: (),
-    test: (),
-    test: (),
-    test: (),
+    pub node_id: (),
+    pub backend_node_id: (),
+    pub object_group: (),
+    pub execution_context_id: (),
 }
 /// Resolves the JavaScript node object for a given NodeId or BackendNodeId.
 pub type DomResolveNodeReturns = ();
 /// Sets attribute for an element with given id.
 pub struct DomSetAttributeValueParams {
-    test: (),
-    test: (),
-    test: (),
+    pub node_id: (),
+    pub name: (),
+    pub value: (),
 }
 /// Sets attribute for an element with given id.
 pub type DomSetAttributeValueReturns = ();
 /** Sets attributes on element with given id. This method is useful when user edits some existing
 attribute value and types in several attribute name/value pairs.*/
 pub struct DomSetAttributesAsTextParams {
-    test: (),
-    test: (),
-    test: (),
+    pub node_id: (),
+    pub text: (),
+    pub name: (),
 }
 /** Sets attributes on element with given id. This method is useful when user edits some existing
 attribute value and types in several attribute name/value pairs.*/
 pub type DomSetAttributesAsTextReturns = ();
 /// Sets files for the given file input element.
 pub struct DomSetFileInputFilesParams {
-    test: (),
-    test: (),
-    test: (),
-    test: (),
+    pub files: (),
+    pub node_id: (),
+    pub backend_node_id: (),
+    pub object_id: (),
 }
 /// Sets files for the given file input element.
 pub type DomSetFileInputFilesReturns = ();
 /// ⚠️ Experimental
 /// Sets if stack traces should be captured for Nodes. See `Node.getNodeStackTraces`. Default is disabled.
 pub struct DomSetNodeStackTracesEnabledParams {
-    test: (),
+    pub enable: (),
 }
 /// ⚠️ Experimental
 /// Sets if stack traces should be captured for Nodes. See `Node.getNodeStackTraces`. Default is disabled.
@@ -496,7 +496,7 @@ pub type DomSetNodeStackTracesEnabledReturns = ();
 /// ⚠️ Experimental
 /// Gets stack traces associated with a Node. As of now, only provides stack trace for Node creation.
 pub struct DomGetNodeStackTracesParams {
-    test: (),
+    pub node_id: (),
 }
 /// ⚠️ Experimental
 /// Gets stack traces associated with a Node. As of now, only provides stack trace for Node creation.
@@ -505,7 +505,7 @@ pub type DomGetNodeStackTracesReturns = ();
 /** Returns file information for the given
 File wrapper.*/
 pub struct DomGetFileInfoParams {
-    test: (),
+    pub object_id: (),
 }
 /// ⚠️ Experimental
 /** Returns file information for the given
@@ -521,7 +521,7 @@ pub type DomGetDetachedDomNodesReturns = ();
 /** Enables console to refer to the node with given id via $x (see Command Line API for more details
 $x functions).*/
 pub struct DomSetInspectedNodeParams {
-    test: (),
+    pub node_id: (),
 }
 /// ⚠️ Experimental
 /** Enables console to refer to the node with given id via $x (see Command Line API for more details
@@ -529,22 +529,22 @@ $x functions).*/
 pub type DomSetInspectedNodeReturns = ();
 /// Sets node name for a node with given id.
 pub struct DomSetNodeNameParams {
-    test: (),
-    test: (),
+    pub node_id: (),
+    pub name: (),
 }
 /// Sets node name for a node with given id.
 pub type DomSetNodeNameReturns = ();
 /// Sets node value for a node with given id.
 pub struct DomSetNodeValueParams {
-    test: (),
-    test: (),
+    pub node_id: (),
+    pub value: (),
 }
 /// Sets node value for a node with given id.
 pub type DomSetNodeValueReturns = ();
 /// Sets node HTML markup, returns new node id.
 pub struct DomSetOuterHtmlParams {
-    test: (),
-    test: (),
+    pub node_id: (),
+    pub outer_html: (),
 }
 /// Sets node HTML markup, returns new node id.
 pub type DomSetOuterHtmlReturns = ();
@@ -557,7 +557,7 @@ pub type DomUndoReturns = ();
 /// ⚠️ Experimental
 /// Returns iframe node that owns iframe with the given domain.
 pub struct DomGetFrameOwnerParams {
-    test: (),
+    pub frame_id: (),
 }
 /// ⚠️ Experimental
 /// Returns iframe node that owns iframe with the given domain.
@@ -569,11 +569,11 @@ scroll-state. If no axes are provided and queriesScrollState is false, the
 style container is returned, which is the direct parent or the closest
 element with a matching container-name.*/
 pub struct DomGetContainerForNodeParams {
-    test: (),
-    test: (),
-    test: (),
-    test: (),
-    test: (),
+    pub node_id: (),
+    pub container_name: (),
+    pub physical_axes: (),
+    pub logical_axes: (),
+    pub queries_scroll_state: (),
 }
 /// ⚠️ Experimental
 /** Returns the query container of the given node based on container query
@@ -586,7 +586,7 @@ pub type DomGetContainerForNodeReturns = ();
 /** Returns the descendants of a container query container that have
 container queries against this container.*/
 pub struct DomGetQueryingDescendantsForContainerParams {
-    test: (),
+    pub node_id: (),
 }
 /// ⚠️ Experimental
 /** Returns the descendants of a container query container that have
@@ -596,8 +596,8 @@ pub type DomGetQueryingDescendantsForContainerReturns = ();
 /** Returns the target anchor element of the given anchor query according to
 https://www.w3.org/TR/css-anchor-position-1/#target.*/
 pub struct DomGetAnchorElementParams {
-    test: (),
-    test: (),
+    pub node_id: (),
+    pub anchor_specifier: (),
 }
 /// ⚠️ Experimental
 /** Returns the target anchor element of the given anchor query according to

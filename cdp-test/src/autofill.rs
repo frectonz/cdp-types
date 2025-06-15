@@ -47,16 +47,16 @@ pub struct FilledField {
 /** Trigger autofill on a form identified by the fieldId.
 If the field and related form cannot be autofilled, returns an error.*/
 pub struct AutofillTriggerParams {
-    test: (),
-    test: (),
-    test: (),
+    pub field_id: (),
+    pub frame_id: (),
+    pub card: (),
 }
 /** Trigger autofill on a form identified by the fieldId.
 If the field and related form cannot be autofilled, returns an error.*/
 pub type AutofillTriggerReturns = ();
 /// Set addresses so that developers can verify their forms implementation.
 pub struct AutofillSetAddressesParams {
-    test: (),
+    pub addresses: (),
 }
 /// Set addresses so that developers can verify their forms implementation.
 pub type AutofillSetAddressesReturns = ();

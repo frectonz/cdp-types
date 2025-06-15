@@ -1,13 +1,13 @@
 use crate::common::*;
 /// Request browser port binding.
 pub struct TetheringBindParams {
-    test: (),
+    pub port: (),
 }
 /// Request browser port binding.
 pub type TetheringBindReturns = ();
 /// Request browser port unbinding.
 pub struct TetheringUnbindParams {
-    test: (),
+    pub port: (),
 }
 /// Request browser port unbinding.
 pub type TetheringUnbindReturns = ();

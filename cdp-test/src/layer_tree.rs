@@ -45,7 +45,7 @@ pub struct Layer {
 pub struct PaintProfile(Vec<u64>);
 /// Provides the reasons why the given layer was composited.
 pub struct LayerTreeCompositingReasonsParams {
-    test: (),
+    pub layer_id: (),
 }
 /// Provides the reasons why the given layer was composited.
 pub type LayerTreeCompositingReasonsReturns = ();
@@ -59,41 +59,41 @@ pub type LayerTreeEnableParams = ();
 pub type LayerTreeEnableReturns = ();
 /// Returns the snapshot identifier.
 pub struct LayerTreeLoadSnapshotParams {
-    test: (),
+    pub tiles: (),
 }
 /// Returns the snapshot identifier.
 pub type LayerTreeLoadSnapshotReturns = ();
 /// Returns the layer snapshot identifier.
 pub struct LayerTreeMakeSnapshotParams {
-    test: (),
+    pub layer_id: (),
 }
 /// Returns the layer snapshot identifier.
 pub type LayerTreeMakeSnapshotReturns = ();
 pub struct LayerTreeProfileSnapshotParams {
-    test: (),
-    test: (),
-    test: (),
-    test: (),
+    pub snapshot_id: (),
+    pub min_repeat_count: (),
+    pub min_duration: (),
+    pub clip_rect: (),
 }
 pub type LayerTreeProfileSnapshotReturns = ();
 /// Releases layer snapshot captured by the back-end.
 pub struct LayerTreeReleaseSnapshotParams {
-    test: (),
+    pub snapshot_id: (),
 }
 /// Releases layer snapshot captured by the back-end.
 pub type LayerTreeReleaseSnapshotReturns = ();
 /// Replays the layer snapshot and returns the resulting bitmap.
 pub struct LayerTreeReplaySnapshotParams {
-    test: (),
-    test: (),
-    test: (),
-    test: (),
+    pub snapshot_id: (),
+    pub from_step: (),
+    pub to_step: (),
+    pub scale: (),
 }
 /// Replays the layer snapshot and returns the resulting bitmap.
 pub type LayerTreeReplaySnapshotReturns = ();
 /// Replays the layer snapshot and returns canvas log.
 pub struct LayerTreeSnapshotCommandLogParams {
-    test: (),
+    pub snapshot_id: (),
 }
 /// Replays the layer snapshot and returns canvas log.
 pub type LayerTreeSnapshotCommandLogReturns = ();

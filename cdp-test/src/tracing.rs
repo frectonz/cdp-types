@@ -60,7 +60,7 @@ pub type TracingGetCategoriesReturns = ();
 /// ⚠️ Experimental
 /// Record a clock sync marker in the trace.
 pub struct TracingRecordClockSyncMarkerParams {
-    test: (),
+    pub sync_id: (),
 }
 /// ⚠️ Experimental
 /// Record a clock sync marker in the trace.
@@ -68,23 +68,23 @@ pub type TracingRecordClockSyncMarkerReturns = ();
 /// ⚠️ Experimental
 /// Request a global memory dump.
 pub struct TracingRequestMemoryDumpParams {
-    test: (),
-    test: (),
+    pub deterministic: (),
+    pub level_of_detail: (),
 }
 /// ⚠️ Experimental
 /// Request a global memory dump.
 pub type TracingRequestMemoryDumpReturns = ();
 /// Start trace events collection.
 pub struct TracingStartParams {
-    test: (),
-    test: (),
-    test: (),
-    test: (),
-    test: (),
-    test: (),
-    test: (),
-    test: (),
-    test: (),
+    pub categories: (),
+    pub options: (),
+    pub buffer_usage_reporting_interval: (),
+    pub transfer_mode: (),
+    pub stream_format: (),
+    pub stream_compression: (),
+    pub trace_config: (),
+    pub perfetto_config: (),
+    pub tracing_backend: (),
 }
 /// Start trace events collection.
 pub type TracingStartReturns = ();
