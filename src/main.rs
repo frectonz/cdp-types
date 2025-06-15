@@ -718,6 +718,80 @@ impl Command {
     }
 }
 
+impl Event {
+    fn name_ident(&self, domain: &str) -> Ident {
+        let name = self.name.to_pascal_case();
+
+        format_ident!("{domain}{name}Event")
+    }
+
+    fn description(&self) -> TokenStream {
+        let description = self
+            .description
+            .as_ref()
+            .map(|desc| {
+                let desc = format!(" {desc}");
+                quote! { #[doc = #desc] }
+            })
+            .unwrap_or_default();
+
+        quote! {
+            #description
+        }
+    }
+
+    fn deprecated_flag(&self) -> TokenStream {
+        if self.deprecated {
+            quote! { #[deprecated] }
+        } else {
+            quote! {}
+        }
+    }
+
+    fn experimental_flag(&self) -> TokenStream {
+        if self.experimental {
+            quote! { #[doc = " ⚠️ Experimental"] }
+        } else {
+            quote! {}
+        }
+    }
+
+    fn parameters(&self, protocol_data: &ProtocolData) -> Option<TokenStream> {
+        self.parameters
+            .as_ref()
+            .map(|params| params.into_iter().map(|param| param.to_rust(protocol_data)))
+            .map(|params| quote! { #(#params),* })
+    }
+
+    fn to_rust(&self, domain: &str, protocol_data: &ProtocolData) -> TokenStream {
+        let name = self.name_ident(domain);
+
+        let description = self.description();
+        let deprecated = self.deprecated_flag();
+        let experimental = self.experimental_flag();
+
+        let attrs = quote! {
+            #deprecated
+            #experimental
+            #description
+        };
+
+        self.parameters(protocol_data)
+            .map(|params| {
+                quote! {
+                    #attrs
+                    pub struct #name {
+                        #params
+                    }
+                }
+            })
+            .unwrap_or(quote! {
+                #attrs
+                pub type #name = String;
+            })
+    }
+}
+
 impl Type {
     fn id_ident(&self) -> Ident {
         let id = self.id.to_pascal_case();
@@ -893,11 +967,17 @@ impl Domain {
             .iter()
             .map(|c| c.to_rust(&self.domain, protocol));
 
+        let events = self
+            .events
+            .iter()
+            .map(|e| e.to_rust(&self.domain, protocol));
+
         let content = quote! {
             use crate::common::*;
             #(#dependecies)*
             #(#types)*
             #(#commands)*
+            #(#events)*
         };
 
         RustFile { name, content }
