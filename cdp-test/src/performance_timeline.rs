@@ -35,7 +35,7 @@ pub struct TimelineEvent {
 /** Previously buffered events would be reported before method returns.
 See also: timelineEventAdded*/
 pub struct PerformanceTimelineEnableParams {
-    pub event_types: (),
+    pub event_types: Vec<String>,
 }
 /** Previously buffered events would be reported before method returns.
 See also: timelineEventAdded*/

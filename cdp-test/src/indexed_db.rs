@@ -43,31 +43,31 @@ pub struct KeyPath {
 }
 /// Clears all entries from an object store.
 pub struct IndexedDbClearObjectStoreParams {
-    pub security_origin: (),
-    pub storage_key: (),
-    pub storage_bucket: (),
-    pub database_name: (),
-    pub object_store_name: (),
+    pub security_origin: String,
+    pub storage_key: String,
+    pub storage_bucket: Box<StorageBucket>,
+    pub database_name: String,
+    pub object_store_name: String,
 }
 /// Clears all entries from an object store.
 pub type IndexedDbClearObjectStoreReturns = ();
 /// Deletes a database.
 pub struct IndexedDbDeleteDatabaseParams {
-    pub security_origin: (),
-    pub storage_key: (),
-    pub storage_bucket: (),
-    pub database_name: (),
+    pub security_origin: String,
+    pub storage_key: String,
+    pub storage_bucket: Box<StorageBucket>,
+    pub database_name: String,
 }
 /// Deletes a database.
 pub type IndexedDbDeleteDatabaseReturns = ();
 /// Delete a range of entries from an object store
 pub struct IndexedDbDeleteObjectStoreEntriesParams {
-    pub security_origin: (),
-    pub storage_key: (),
-    pub storage_bucket: (),
-    pub database_name: (),
-    pub object_store_name: (),
-    pub key_range: (),
+    pub security_origin: String,
+    pub storage_key: String,
+    pub storage_bucket: Box<StorageBucket>,
+    pub database_name: String,
+    pub object_store_name: String,
+    pub key_range: Box<KeyRange>,
 }
 /// Delete a range of entries from an object store
 pub type IndexedDbDeleteObjectStoreEntriesReturns = ();
@@ -81,42 +81,42 @@ pub type IndexedDbEnableParams = ();
 pub type IndexedDbEnableReturns = ();
 /// Requests data from object store or index.
 pub struct IndexedDbRequestDataParams {
-    pub security_origin: (),
-    pub storage_key: (),
-    pub storage_bucket: (),
-    pub database_name: (),
-    pub object_store_name: (),
-    pub index_name: (),
-    pub skip_count: (),
-    pub page_size: (),
-    pub key_range: (),
+    pub security_origin: String,
+    pub storage_key: String,
+    pub storage_bucket: Box<StorageBucket>,
+    pub database_name: String,
+    pub object_store_name: String,
+    pub index_name: String,
+    pub skip_count: i64,
+    pub page_size: i64,
+    pub key_range: Box<KeyRange>,
 }
 /// Requests data from object store or index.
 pub type IndexedDbRequestDataReturns = ();
 /// Gets metadata of an object store.
 pub struct IndexedDbGetMetadataParams {
-    pub security_origin: (),
-    pub storage_key: (),
-    pub storage_bucket: (),
-    pub database_name: (),
-    pub object_store_name: (),
+    pub security_origin: String,
+    pub storage_key: String,
+    pub storage_bucket: Box<StorageBucket>,
+    pub database_name: String,
+    pub object_store_name: String,
 }
 /// Gets metadata of an object store.
 pub type IndexedDbGetMetadataReturns = ();
 /// Requests database with given name in given frame.
 pub struct IndexedDbRequestDatabaseParams {
-    pub security_origin: (),
-    pub storage_key: (),
-    pub storage_bucket: (),
-    pub database_name: (),
+    pub security_origin: String,
+    pub storage_key: String,
+    pub storage_bucket: Box<StorageBucket>,
+    pub database_name: String,
 }
 /// Requests database with given name in given frame.
 pub type IndexedDbRequestDatabaseReturns = ();
 /// Requests database names for given security origin.
 pub struct IndexedDbRequestDatabaseNamesParams {
-    pub security_origin: (),
-    pub storage_key: (),
-    pub storage_bucket: (),
+    pub security_origin: String,
+    pub storage_key: String,
+    pub storage_bucket: Box<StorageBucket>,
 }
 /// Requests database names for given security origin.
 pub type IndexedDbRequestDatabaseNamesReturns = ();

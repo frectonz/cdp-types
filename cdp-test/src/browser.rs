@@ -99,10 +99,10 @@ pub enum PrivacySandboxApi {
 /// ⚠️ Experimental
 /// Set permission settings for given origin.
 pub struct BrowserSetPermissionParams {
-    pub permission: (),
-    pub setting: (),
-    pub origin: (),
-    pub browser_context_id: (),
+    pub permission: Box<PermissionDescriptor>,
+    pub setting: Box<PermissionSetting>,
+    pub origin: String,
+    pub browser_context_id: Box<BrowserContextId>,
 }
 /// ⚠️ Experimental
 /// Set permission settings for given origin.
@@ -110,26 +110,26 @@ pub type BrowserSetPermissionReturns = ();
 /// ⚠️ Experimental
 /// Grant specific permissions to the given origin and reject all others.
 pub struct BrowserGrantPermissionsParams {
-    pub permissions: (),
-    pub origin: (),
-    pub browser_context_id: (),
+    pub permissions: Vec<PermissionType>,
+    pub origin: String,
+    pub browser_context_id: Box<BrowserContextId>,
 }
 /// ⚠️ Experimental
 /// Grant specific permissions to the given origin and reject all others.
 pub type BrowserGrantPermissionsReturns = ();
 /// Reset all permission management for all origins.
 pub struct BrowserResetPermissionsParams {
-    pub browser_context_id: (),
+    pub browser_context_id: Box<BrowserContextId>,
 }
 /// Reset all permission management for all origins.
 pub type BrowserResetPermissionsReturns = ();
 /// ⚠️ Experimental
 /// Set the behavior when downloading a file.
 pub struct BrowserSetDownloadBehaviorParams {
-    pub behavior: (),
-    pub browser_context_id: (),
-    pub download_path: (),
-    pub events_enabled: (),
+    pub behavior: String,
+    pub browser_context_id: Box<BrowserContextId>,
+    pub download_path: String,
+    pub events_enabled: bool,
 }
 /// ⚠️ Experimental
 /// Set the behavior when downloading a file.
@@ -137,8 +137,8 @@ pub type BrowserSetDownloadBehaviorReturns = ();
 /// ⚠️ Experimental
 /// Cancel a download if in progress
 pub struct BrowserCancelDownloadParams {
-    pub guid: (),
-    pub browser_context_id: (),
+    pub guid: String,
+    pub browser_context_id: Box<BrowserContextId>,
 }
 /// ⚠️ Experimental
 /// Cancel a download if in progress
@@ -174,8 +174,8 @@ pub type BrowserGetBrowserCommandLineReturns = ();
 /// ⚠️ Experimental
 /// Get Chrome histograms.
 pub struct BrowserGetHistogramsParams {
-    pub query: (),
-    pub delta: (),
+    pub query: String,
+    pub delta: bool,
 }
 /// ⚠️ Experimental
 /// Get Chrome histograms.
@@ -183,8 +183,8 @@ pub type BrowserGetHistogramsReturns = ();
 /// ⚠️ Experimental
 /// Get a Chrome histogram by name.
 pub struct BrowserGetHistogramParams {
-    pub name: (),
-    pub delta: (),
+    pub name: String,
+    pub delta: bool,
 }
 /// ⚠️ Experimental
 /// Get a Chrome histogram by name.
@@ -192,7 +192,7 @@ pub type BrowserGetHistogramReturns = ();
 /// ⚠️ Experimental
 /// Get position and size of the browser window.
 pub struct BrowserGetWindowBoundsParams {
-    pub window_id: (),
+    pub window_id: Box<WindowId>,
 }
 /// ⚠️ Experimental
 /// Get position and size of the browser window.
@@ -200,7 +200,7 @@ pub type BrowserGetWindowBoundsReturns = ();
 /// ⚠️ Experimental
 /// Get the browser window that contains the devtools target.
 pub struct BrowserGetWindowForTargetParams {
-    pub target_id: (),
+    pub target_id: Box<crate::target::TargetId>,
 }
 /// ⚠️ Experimental
 /// Get the browser window that contains the devtools target.
@@ -208,8 +208,8 @@ pub type BrowserGetWindowForTargetReturns = ();
 /// ⚠️ Experimental
 /// Set position and/or size of the browser window.
 pub struct BrowserSetWindowBoundsParams {
-    pub window_id: (),
-    pub bounds: (),
+    pub window_id: Box<WindowId>,
+    pub bounds: Box<Bounds>,
 }
 /// ⚠️ Experimental
 /// Set position and/or size of the browser window.
@@ -217,8 +217,8 @@ pub type BrowserSetWindowBoundsReturns = ();
 /// ⚠️ Experimental
 /// Set dock tile details, platform-specific.
 pub struct BrowserSetDockTileParams {
-    pub badge_label: (),
-    pub image: (),
+    pub badge_label: String,
+    pub image: String,
 }
 /// ⚠️ Experimental
 /// Set dock tile details, platform-specific.
@@ -226,7 +226,7 @@ pub type BrowserSetDockTileReturns = ();
 /// ⚠️ Experimental
 /// Invoke custom browser commands used by telemetry.
 pub struct BrowserExecuteBrowserCommandParams {
-    pub command_id: (),
+    pub command_id: Box<BrowserCommandId>,
 }
 /// ⚠️ Experimental
 /// Invoke custom browser commands used by telemetry.
@@ -234,7 +234,7 @@ pub type BrowserExecuteBrowserCommandReturns = ();
 /** Allows a site to use privacy sandbox features that require enrollment
 without the site actually being enrolled. Only supported on page targets.*/
 pub struct BrowserAddPrivacySandboxEnrollmentOverrideParams {
-    pub url: (),
+    pub url: String,
 }
 /** Allows a site to use privacy sandbox features that require enrollment
 without the site actually being enrolled. Only supported on page targets.*/
@@ -244,10 +244,10 @@ to a trusted coordinator.  Since this is intended for test automation only,
 coordinatorOrigin must be a .test domain. No existing coordinator
 configuration for the origin may exist.*/
 pub struct BrowserAddPrivacySandboxCoordinatorKeyConfigParams {
-    pub api: (),
-    pub coordinator_origin: (),
-    pub key_config: (),
-    pub browser_context_id: (),
+    pub api: Box<PrivacySandboxApi>,
+    pub coordinator_origin: String,
+    pub key_config: String,
+    pub browser_context_id: Box<BrowserContextId>,
 }
 /** Configures encryption keys used with a given privacy sandbox API to talk
 to a trusted coordinator.  Since this is intended for test automation only,

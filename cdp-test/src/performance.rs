@@ -10,7 +10,7 @@ pub type PerformanceDisableParams = ();
 pub type PerformanceDisableReturns = ();
 /// Enable collecting and reporting metrics.
 pub struct PerformanceEnableParams {
-    pub time_domain: (),
+    pub time_domain: String,
 }
 /// Enable collecting and reporting metrics.
 pub type PerformanceEnableReturns = ();
@@ -20,7 +20,7 @@ pub type PerformanceEnableReturns = ();
 Note that this must be called before enabling metrics collection. Calling
 this method while metrics collection is enabled returns an error.*/
 pub struct PerformanceSetTimeDomainParams {
-    pub time_domain: (),
+    pub time_domain: String,
 }
 #[deprecated]
 /// ⚠️ Experimental

@@ -11,10 +11,10 @@ screenshot from the resulting frame. Requires that the target was created with e
 BeginFrameControl. Designed for use with --run-all-compositor-stages-before-draw, see also
 https://goo.gle/chrome-headless-rendering for more background.*/
 pub struct HeadlessExperimentalBeginFrameParams {
-    pub frame_time_ticks: (),
-    pub interval: (),
-    pub no_display_updates: (),
-    pub screenshot: (),
+    pub frame_time_ticks: u64,
+    pub interval: u64,
+    pub no_display_updates: bool,
+    pub screenshot: Box<ScreenshotParams>,
 }
 /** Sends a BeginFrame to the target and returns when the frame was completed. Optionally captures a
 screenshot from the resulting frame. Requires that the target was created with enabled

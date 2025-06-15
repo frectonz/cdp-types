@@ -42,32 +42,32 @@ pub struct DragData {
 /// ⚠️ Experimental
 /// Dispatches a drag event into the page.
 pub struct InputDispatchDragEventParams {
-    pub _type: (),
-    pub x: (),
-    pub y: (),
-    pub data: (),
-    pub modifiers: (),
+    pub _type: String,
+    pub x: u64,
+    pub y: u64,
+    pub data: Box<DragData>,
+    pub modifiers: i64,
 }
 /// ⚠️ Experimental
 /// Dispatches a drag event into the page.
 pub type InputDispatchDragEventReturns = ();
 /// Dispatches a key event to the page.
 pub struct InputDispatchKeyEventParams {
-    pub _type: (),
-    pub modifiers: (),
-    pub timestamp: (),
-    pub text: (),
-    pub unmodified_text: (),
-    pub key_identifier: (),
-    pub code: (),
-    pub key: (),
-    pub windows_virtual_key_code: (),
-    pub native_virtual_key_code: (),
-    pub auto_repeat: (),
-    pub is_keypad: (),
-    pub is_system_key: (),
-    pub location: (),
-    pub commands: (),
+    pub _type: String,
+    pub modifiers: i64,
+    pub timestamp: Box<NetworkTimeSinceEpoch>,
+    pub text: String,
+    pub unmodified_text: String,
+    pub key_identifier: String,
+    pub code: String,
+    pub key: String,
+    pub windows_virtual_key_code: i64,
+    pub native_virtual_key_code: i64,
+    pub auto_repeat: bool,
+    pub is_keypad: bool,
+    pub is_system_key: bool,
+    pub location: i64,
+    pub commands: Vec<String>,
 }
 /// Dispatches a key event to the page.
 pub type InputDispatchKeyEventReturns = ();
@@ -75,7 +75,7 @@ pub type InputDispatchKeyEventReturns = ();
 /** This method emulates inserting text that doesn't come from a key press,
 for example an emoji keyboard or an IME.*/
 pub struct InputInsertTextParams {
-    pub text: (),
+    pub text: String,
 }
 /// ⚠️ Experimental
 /** This method emulates inserting text that doesn't come from a key press,
@@ -86,11 +86,11 @@ pub type InputInsertTextReturns = ();
 Use imeCommitComposition to commit the final text.
 Use imeSetComposition with empty string as text to cancel composition.*/
 pub struct InputImeSetCompositionParams {
-    pub text: (),
-    pub selection_start: (),
-    pub selection_end: (),
-    pub replacement_start: (),
-    pub replacement_end: (),
+    pub text: String,
+    pub selection_start: i64,
+    pub selection_end: i64,
+    pub replacement_start: i64,
+    pub replacement_end: i64,
 }
 /// ⚠️ Experimental
 /** This method sets the current candidate text for IME.
@@ -99,31 +99,31 @@ Use imeSetComposition with empty string as text to cancel composition.*/
 pub type InputImeSetCompositionReturns = ();
 /// Dispatches a mouse event to the page.
 pub struct InputDispatchMouseEventParams {
-    pub _type: (),
-    pub x: (),
-    pub y: (),
-    pub modifiers: (),
-    pub timestamp: (),
-    pub button: (),
-    pub buttons: (),
-    pub click_count: (),
-    pub force: (),
-    pub tangential_pressure: (),
-    pub tilt_x: (),
-    pub tilt_y: (),
-    pub twist: (),
-    pub delta_x: (),
-    pub delta_y: (),
-    pub pointer_type: (),
+    pub _type: String,
+    pub x: u64,
+    pub y: u64,
+    pub modifiers: i64,
+    pub timestamp: Box<NetworkTimeSinceEpoch>,
+    pub button: Box<MouseButton>,
+    pub buttons: i64,
+    pub click_count: i64,
+    pub force: u64,
+    pub tangential_pressure: u64,
+    pub tilt_x: u64,
+    pub tilt_y: u64,
+    pub twist: i64,
+    pub delta_x: u64,
+    pub delta_y: u64,
+    pub pointer_type: String,
 }
 /// Dispatches a mouse event to the page.
 pub type InputDispatchMouseEventReturns = ();
 /// Dispatches a touch event to the page.
 pub struct InputDispatchTouchEventParams {
-    pub _type: (),
-    pub touch_points: (),
-    pub modifiers: (),
-    pub timestamp: (),
+    pub _type: String,
+    pub touch_points: Vec<TouchPoint>,
+    pub modifiers: i64,
+    pub timestamp: Box<NetworkTimeSinceEpoch>,
 }
 /// Dispatches a touch event to the page.
 pub type InputDispatchTouchEventReturns = ();
@@ -134,22 +134,22 @@ pub type InputCancelDraggingReturns = ();
 /// ⚠️ Experimental
 /// Emulates touch event from the mouse event parameters.
 pub struct InputEmulateTouchFromMouseEventParams {
-    pub _type: (),
-    pub x: (),
-    pub y: (),
-    pub button: (),
-    pub timestamp: (),
-    pub delta_x: (),
-    pub delta_y: (),
-    pub modifiers: (),
-    pub click_count: (),
+    pub _type: String,
+    pub x: i64,
+    pub y: i64,
+    pub button: Box<MouseButton>,
+    pub timestamp: Box<NetworkTimeSinceEpoch>,
+    pub delta_x: u64,
+    pub delta_y: u64,
+    pub modifiers: i64,
+    pub click_count: i64,
 }
 /// ⚠️ Experimental
 /// Emulates touch event from the mouse event parameters.
 pub type InputEmulateTouchFromMouseEventReturns = ();
 /// Ignores input events (useful while auditing page).
 pub struct InputSetIgnoreInputEventsParams {
-    pub ignore: (),
+    pub ignore: bool,
 }
 /// Ignores input events (useful while auditing page).
 pub type InputSetIgnoreInputEventsReturns = ();
@@ -157,7 +157,7 @@ pub type InputSetIgnoreInputEventsReturns = ();
 /** Prevents default drag and drop behavior and instead emits `Input.dragIntercepted` events.
 Drag and drop behavior can be directly controlled via `Input.dispatchDragEvent`.*/
 pub struct InputSetInterceptDragsParams {
-    pub enabled: (),
+    pub enabled: bool,
 }
 /// ⚠️ Experimental
 /** Prevents default drag and drop behavior and instead emits `Input.dragIntercepted` events.
@@ -166,11 +166,11 @@ pub type InputSetInterceptDragsReturns = ();
 /// ⚠️ Experimental
 /// Synthesizes a pinch gesture over a time period by issuing appropriate touch events.
 pub struct InputSynthesizePinchGestureParams {
-    pub x: (),
-    pub y: (),
-    pub scale_factor: (),
-    pub relative_speed: (),
-    pub gesture_source_type: (),
+    pub x: u64,
+    pub y: u64,
+    pub scale_factor: u64,
+    pub relative_speed: i64,
+    pub gesture_source_type: Box<GestureSourceType>,
 }
 /// ⚠️ Experimental
 /// Synthesizes a pinch gesture over a time period by issuing appropriate touch events.
@@ -178,18 +178,18 @@ pub type InputSynthesizePinchGestureReturns = ();
 /// ⚠️ Experimental
 /// Synthesizes a scroll gesture over a time period by issuing appropriate touch events.
 pub struct InputSynthesizeScrollGestureParams {
-    pub x: (),
-    pub y: (),
-    pub x_distance: (),
-    pub y_distance: (),
-    pub x_overscroll: (),
-    pub y_overscroll: (),
-    pub prevent_fling: (),
-    pub speed: (),
-    pub gesture_source_type: (),
-    pub repeat_count: (),
-    pub repeat_delay_ms: (),
-    pub interaction_marker_name: (),
+    pub x: u64,
+    pub y: u64,
+    pub x_distance: u64,
+    pub y_distance: u64,
+    pub x_overscroll: u64,
+    pub y_overscroll: u64,
+    pub prevent_fling: bool,
+    pub speed: i64,
+    pub gesture_source_type: Box<GestureSourceType>,
+    pub repeat_count: i64,
+    pub repeat_delay_ms: i64,
+    pub interaction_marker_name: String,
 }
 /// ⚠️ Experimental
 /// Synthesizes a scroll gesture over a time period by issuing appropriate touch events.
@@ -197,11 +197,11 @@ pub type InputSynthesizeScrollGestureReturns = ();
 /// ⚠️ Experimental
 /// Synthesizes a tap gesture over a time period by issuing appropriate touch events.
 pub struct InputSynthesizeTapGestureParams {
-    pub x: (),
-    pub y: (),
-    pub duration: (),
-    pub tap_count: (),
-    pub gesture_source_type: (),
+    pub x: u64,
+    pub y: u64,
+    pub duration: i64,
+    pub tap_count: i64,
+    pub gesture_source_type: Box<GestureSourceType>,
 }
 /// ⚠️ Experimental
 /// Synthesizes a tap gesture over a time period by issuing appropriate touch events.

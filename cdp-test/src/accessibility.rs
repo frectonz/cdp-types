@@ -151,10 +151,10 @@ pub type AccessibilityEnableReturns = ();
 /// ⚠️ Experimental
 /// Fetches the accessibility node and partial accessibility tree for this DOM node, if it exists.
 pub struct AccessibilityGetPartialAxTreeParams {
-    pub node_id: (),
-    pub backend_node_id: (),
-    pub object_id: (),
-    pub fetch_relatives: (),
+    pub node_id: Box<NodeId>,
+    pub backend_node_id: Box<BackendNodeId>,
+    pub object_id: Box<()>,
+    pub fetch_relatives: bool,
 }
 /// ⚠️ Experimental
 /// Fetches the accessibility node and partial accessibility tree for this DOM node, if it exists.
@@ -162,8 +162,8 @@ pub type AccessibilityGetPartialAxTreeReturns = ();
 /// ⚠️ Experimental
 /// Fetches the entire accessibility tree for the root Document
 pub struct AccessibilityGetFullAxTreeParams {
-    pub depth: (),
-    pub frame_id: (),
+    pub depth: i64,
+    pub frame_id: Box<crate::page::FrameId>,
 }
 /// ⚠️ Experimental
 /// Fetches the entire accessibility tree for the root Document
@@ -172,7 +172,7 @@ pub type AccessibilityGetFullAxTreeReturns = ();
 /** Fetches the root node.
 Requires `enable()` to have been called previously.*/
 pub struct AccessibilityGetRootAxNodeParams {
-    pub frame_id: (),
+    pub frame_id: Box<crate::page::FrameId>,
 }
 /// ⚠️ Experimental
 /** Fetches the root node.
@@ -182,9 +182,9 @@ pub type AccessibilityGetRootAxNodeReturns = ();
 /** Fetches a node and all ancestors up to and including the root.
 Requires `enable()` to have been called previously.*/
 pub struct AccessibilityGetAxNodeAndAncestorsParams {
-    pub node_id: (),
-    pub backend_node_id: (),
-    pub object_id: (),
+    pub node_id: Box<NodeId>,
+    pub backend_node_id: Box<BackendNodeId>,
+    pub object_id: Box<()>,
 }
 /// ⚠️ Experimental
 /** Fetches a node and all ancestors up to and including the root.
@@ -194,8 +194,8 @@ pub type AccessibilityGetAxNodeAndAncestorsReturns = ();
 /** Fetches a particular accessibility node by AXNodeId.
 Requires `enable()` to have been called previously.*/
 pub struct AccessibilityGetChildAxNodesParams {
-    pub id: (),
-    pub frame_id: (),
+    pub id: Box<AxNodeId>,
+    pub frame_id: Box<crate::page::FrameId>,
 }
 /// ⚠️ Experimental
 /** Fetches a particular accessibility node by AXNodeId.
@@ -208,11 +208,11 @@ ignored for accessibility, and returns those that match the specified name and r
 node is specified, or the DOM node does not exist, the command returns an error. If neither
 `accessibleName` or `role` is specified, it returns all the accessibility nodes in the subtree.*/
 pub struct AccessibilityQueryAxTreeParams {
-    pub node_id: (),
-    pub backend_node_id: (),
-    pub object_id: (),
-    pub accessible_name: (),
-    pub role: (),
+    pub node_id: Box<NodeId>,
+    pub backend_node_id: Box<BackendNodeId>,
+    pub object_id: Box<()>,
+    pub accessible_name: String,
+    pub role: String,
 }
 /// ⚠️ Experimental
 /** Query a DOM node's accessibility subtree for accessible name and role.

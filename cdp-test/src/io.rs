@@ -4,21 +4,21 @@ use crate::common::*;
 pub struct StreamHandle(String);
 /// Close the stream, discard any temporary backing storage.
 pub struct IoCloseParams {
-    pub handle: (),
+    pub handle: Box<StreamHandle>,
 }
 /// Close the stream, discard any temporary backing storage.
 pub type IoCloseReturns = ();
 /// Read a chunk of the stream
 pub struct IoReadParams {
-    pub handle: (),
-    pub offset: (),
-    pub size: (),
+    pub handle: Box<StreamHandle>,
+    pub offset: i64,
+    pub size: i64,
 }
 /// Read a chunk of the stream
 pub type IoReadReturns = ();
 /// Return UUID of Blob object specified by a remote object id.
 pub struct IoResolveBlobParams {
-    pub object_id: (),
+    pub object_id: Box<()>,
 }
 /// Return UUID of Blob object specified by a remote object id.
 pub type IoResolveBlobReturns = ();

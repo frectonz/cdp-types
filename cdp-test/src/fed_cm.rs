@@ -30,30 +30,30 @@ pub struct Account {
     pub privacy_policy_url: String,
 }
 pub struct FedCmEnableParams {
-    pub disable_rejection_delay: (),
+    pub disable_rejection_delay: bool,
 }
 pub type FedCmEnableReturns = ();
 pub type FedCmDisableParams = ();
 pub type FedCmDisableReturns = ();
 pub struct FedCmSelectAccountParams {
-    pub dialog_id: (),
-    pub account_index: (),
+    pub dialog_id: String,
+    pub account_index: i64,
 }
 pub type FedCmSelectAccountReturns = ();
 pub struct FedCmClickDialogButtonParams {
-    pub dialog_id: (),
-    pub dialog_button: (),
+    pub dialog_id: String,
+    pub dialog_button: Box<DialogButton>,
 }
 pub type FedCmClickDialogButtonReturns = ();
 pub struct FedCmOpenUrlParams {
-    pub dialog_id: (),
-    pub account_index: (),
-    pub account_url_type: (),
+    pub dialog_id: String,
+    pub account_index: i64,
+    pub account_url_type: Box<AccountUrlType>,
 }
 pub type FedCmOpenUrlReturns = ();
 pub struct FedCmDismissDialogParams {
-    pub dialog_id: (),
-    pub trigger_cooldown: (),
+    pub dialog_id: String,
+    pub trigger_cooldown: bool,
 }
 pub type FedCmDismissDialogReturns = ();
 /** Resets the cooldown time, if any, to allow the next FedCM call to show

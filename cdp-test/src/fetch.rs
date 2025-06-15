@@ -21,45 +21,45 @@ pub type FetchDisableReturns = ();
 /** Enables issuing of requestPaused events. A request will be paused until client
 calls one of failRequest, fulfillRequest or continueRequest/continueWithAuth.*/
 pub struct FetchEnableParams {
-    pub patterns: (),
-    pub handle_auth_requests: (),
+    pub patterns: Vec<()>,
+    pub handle_auth_requests: bool,
 }
 /** Enables issuing of requestPaused events. A request will be paused until client
 calls one of failRequest, fulfillRequest or continueRequest/continueWithAuth.*/
 pub type FetchEnableReturns = ();
 /// Causes the request to fail with specified reason.
 pub struct FetchFailRequestParams {
-    pub request_id: (),
-    pub error_reason: (),
+    pub request_id: Box<NetworkRequestId>,
+    pub error_reason: Box<ErrorReason>,
 }
 /// Causes the request to fail with specified reason.
 pub type FetchFailRequestReturns = ();
 /// Provides response to the request.
 pub struct FetchFulfillRequestParams {
-    pub request_id: (),
-    pub response_code: (),
-    pub response_headers: (),
-    pub binary_response_headers: (),
-    pub body: (),
-    pub response_phrase: (),
+    pub request_id: Box<NetworkRequestId>,
+    pub response_code: i64,
+    pub response_headers: Vec<HeaderEntry>,
+    pub binary_response_headers: String,
+    pub body: String,
+    pub response_phrase: String,
 }
 /// Provides response to the request.
 pub type FetchFulfillRequestReturns = ();
 /// Continues the request, optionally modifying some of its parameters.
 pub struct FetchContinueRequestParams {
-    pub request_id: (),
-    pub url: (),
-    pub method: (),
-    pub post_data: (),
-    pub headers: (),
-    pub intercept_response: (),
+    pub request_id: Box<NetworkRequestId>,
+    pub url: String,
+    pub method: String,
+    pub post_data: String,
+    pub headers: Vec<HeaderEntry>,
+    pub intercept_response: bool,
 }
 /// Continues the request, optionally modifying some of its parameters.
 pub type FetchContinueRequestReturns = ();
 /// Continues a request supplying authChallengeResponse following authRequired event.
 pub struct FetchContinueWithAuthParams {
-    pub request_id: (),
-    pub auth_challenge_response: (),
+    pub request_id: Box<NetworkRequestId>,
+    pub auth_challenge_response: Box<()>,
 }
 /// Continues a request supplying authChallengeResponse following authRequired event.
 pub type FetchContinueWithAuthReturns = ();
@@ -68,11 +68,11 @@ pub type FetchContinueWithAuthReturns = ();
 response headers. If either responseCode or headers are modified, all of them
 must be present.*/
 pub struct FetchContinueResponseParams {
-    pub request_id: (),
-    pub response_code: (),
-    pub response_phrase: (),
-    pub response_headers: (),
-    pub binary_response_headers: (),
+    pub request_id: Box<NetworkRequestId>,
+    pub response_code: i64,
+    pub response_phrase: String,
+    pub response_headers: Vec<HeaderEntry>,
+    pub binary_response_headers: String,
 }
 /// ⚠️ Experimental
 /** Continues loading of the paused response, optionally modifying the
@@ -90,7 +90,7 @@ paused in the _redirect received_ state may be differentiated by
 `responseCode` and presence of `location` response header, see
 comments to `requestPaused` for details.*/
 pub struct FetchGetResponseBodyParams {
-    pub request_id: (),
+    pub request_id: Box<NetworkRequestId>,
 }
 /** Causes the body of the response to be received from the server and
 returned as a single string. May only be issued for a request that
@@ -114,7 +114,7 @@ This method is mutually exclusive with getResponseBody.
 Calling other methods that affect the request or disabling fetch
 domain before body is received results in an undefined behavior.*/
 pub struct FetchTakeResponseBodyAsStreamParams {
-    pub request_id: (),
+    pub request_id: Box<NetworkRequestId>,
 }
 /** Returns a handle to the stream representing the response body.
 The request must be paused in the HeadersReceived stage.

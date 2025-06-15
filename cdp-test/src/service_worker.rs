@@ -30,8 +30,8 @@ pub struct ServiceWorkerVersion {
     pub status: Box<ServiceWorkerVersionStatus>,
     pub script_last_modified: u64,
     pub script_response_time: u64,
-    pub controlled_clients: Vec<TargetId>,
-    pub target_id: Box<TargetId>,
+    pub controlled_clients: Vec<crate::target::TargetId>,
+    pub target_id: Box<crate::target::TargetId>,
     pub router_rules: String,
 }
 /// ServiceWorker error message.
@@ -44,55 +44,55 @@ pub struct ServiceWorkerErrorMessage {
     pub column_number: i64,
 }
 pub struct ServiceWorkerDeliverPushMessageParams {
-    pub origin: (),
-    pub registration_id: (),
-    pub data: (),
+    pub origin: String,
+    pub registration_id: Box<RegistrationId>,
+    pub data: String,
 }
 pub type ServiceWorkerDeliverPushMessageReturns = ();
 pub type ServiceWorkerDisableParams = ();
 pub type ServiceWorkerDisableReturns = ();
 pub struct ServiceWorkerDispatchSyncEventParams {
-    pub origin: (),
-    pub registration_id: (),
-    pub tag: (),
-    pub last_chance: (),
+    pub origin: String,
+    pub registration_id: Box<RegistrationId>,
+    pub tag: String,
+    pub last_chance: bool,
 }
 pub type ServiceWorkerDispatchSyncEventReturns = ();
 pub struct ServiceWorkerDispatchPeriodicSyncEventParams {
-    pub origin: (),
-    pub registration_id: (),
-    pub tag: (),
+    pub origin: String,
+    pub registration_id: Box<RegistrationId>,
+    pub tag: String,
 }
 pub type ServiceWorkerDispatchPeriodicSyncEventReturns = ();
 pub type ServiceWorkerEnableParams = ();
 pub type ServiceWorkerEnableReturns = ();
 pub struct ServiceWorkerInspectWorkerParams {
-    pub version_id: (),
+    pub version_id: String,
 }
 pub type ServiceWorkerInspectWorkerReturns = ();
 pub struct ServiceWorkerSetForceUpdateOnPageLoadParams {
-    pub force_update_on_page_load: (),
+    pub force_update_on_page_load: bool,
 }
 pub type ServiceWorkerSetForceUpdateOnPageLoadReturns = ();
 pub struct ServiceWorkerSkipWaitingParams {
-    pub scope_url: (),
+    pub scope_url: String,
 }
 pub type ServiceWorkerSkipWaitingReturns = ();
 pub struct ServiceWorkerStartWorkerParams {
-    pub scope_url: (),
+    pub scope_url: String,
 }
 pub type ServiceWorkerStartWorkerReturns = ();
 pub type ServiceWorkerStopAllWorkersParams = ();
 pub type ServiceWorkerStopAllWorkersReturns = ();
 pub struct ServiceWorkerStopWorkerParams {
-    pub version_id: (),
+    pub version_id: String,
 }
 pub type ServiceWorkerStopWorkerReturns = ();
 pub struct ServiceWorkerUnregisterParams {
-    pub scope_url: (),
+    pub scope_url: String,
 }
 pub type ServiceWorkerUnregisterReturns = ();
 pub struct ServiceWorkerUpdateRegistrationParams {
-    pub scope_url: (),
+    pub scope_url: String,
 }
 pub type ServiceWorkerUpdateRegistrationReturns = ();

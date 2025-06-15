@@ -55,7 +55,7 @@ pub type AnimationEnableParams = ();
 pub type AnimationEnableReturns = ();
 /// Returns the current time of the an animation.
 pub struct AnimationGetCurrentTimeParams {
-    pub id: (),
+    pub id: String,
 }
 /// Returns the current time of the an animation.
 pub type AnimationGetCurrentTimeReturns = ();
@@ -65,41 +65,41 @@ pub type AnimationGetPlaybackRateParams = ();
 pub type AnimationGetPlaybackRateReturns = ();
 /// Releases a set of animations to no longer be manipulated.
 pub struct AnimationReleaseAnimationsParams {
-    pub animations: (),
+    pub animations: Vec<String>,
 }
 /// Releases a set of animations to no longer be manipulated.
 pub type AnimationReleaseAnimationsReturns = ();
 /// Gets the remote object of the Animation.
 pub struct AnimationResolveAnimationParams {
-    pub animation_id: (),
+    pub animation_id: String,
 }
 /// Gets the remote object of the Animation.
 pub type AnimationResolveAnimationReturns = ();
 /// Seek a set of animations to a particular time within each animation.
 pub struct AnimationSeekAnimationsParams {
-    pub animations: (),
-    pub current_time: (),
+    pub animations: Vec<String>,
+    pub current_time: u64,
 }
 /// Seek a set of animations to a particular time within each animation.
 pub type AnimationSeekAnimationsReturns = ();
 /// Sets the paused state of a set of animations.
 pub struct AnimationSetPausedParams {
-    pub animations: (),
-    pub paused: (),
+    pub animations: Vec<String>,
+    pub paused: bool,
 }
 /// Sets the paused state of a set of animations.
 pub type AnimationSetPausedReturns = ();
 /// Sets the playback rate of the document timeline.
 pub struct AnimationSetPlaybackRateParams {
-    pub playback_rate: (),
+    pub playback_rate: u64,
 }
 /// Sets the playback rate of the document timeline.
 pub type AnimationSetPlaybackRateReturns = ();
 /// Sets the timing of an animation node.
 pub struct AnimationSetTimingParams {
-    pub animation_id: (),
-    pub duration: (),
-    pub delay: (),
+    pub animation_id: String,
+    pub duration: u64,
+    pub delay: u64,
 }
 /// Sets the timing of an animation node.
 pub type AnimationSetTimingReturns = ();

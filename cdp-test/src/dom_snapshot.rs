@@ -151,10 +151,10 @@ template contents, and imported documents) in a flattened array, as well as layo
 white-listed computed style information for the nodes. Shadow DOM in the returned DOM tree is
 flattened.*/
 pub struct DomSnapshotGetSnapshotParams {
-    pub computed_style_whitelist: (),
-    pub include_event_listeners: (),
-    pub include_paint_order: (),
-    pub include_user_agent_shadow_tree: (),
+    pub computed_style_whitelist: Vec<String>,
+    pub include_event_listeners: bool,
+    pub include_paint_order: bool,
+    pub include_user_agent_shadow_tree: bool,
 }
 #[deprecated]
 /** Returns a document snapshot, including the full DOM tree of the root node (including iframes,
@@ -167,11 +167,11 @@ template contents, and imported documents) in a flattened array, as well as layo
 white-listed computed style information for the nodes. Shadow DOM in the returned DOM tree is
 flattened.*/
 pub struct DomSnapshotCaptureSnapshotParams {
-    pub computed_styles: (),
-    pub include_paint_order: (),
-    pub include_dom_rects: (),
-    pub include_blended_background_colors: (),
-    pub include_text_color_opacities: (),
+    pub computed_styles: Vec<String>,
+    pub include_paint_order: bool,
+    pub include_dom_rects: bool,
+    pub include_blended_background_colors: bool,
+    pub include_text_color_opacities: bool,
 }
 /** Returns a document snapshot, including the full DOM tree of the root node (including iframes,
 template contents, and imported documents) in a flattened array, as well as layout and
